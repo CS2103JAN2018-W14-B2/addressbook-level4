@@ -20,6 +20,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 public class XmlAddressBookStorage implements AddressBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);
+    private static final String BACKUP_FILE_EXTENSION = ".backup";
 
     private String filePath;
 
@@ -68,7 +69,20 @@ public class XmlAddressBookStorage implements AddressBookStorage {
 
     @Override
     public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, filePath + ".backup");
+        saveAddressBook(addressBook, addFileNameExtentionIfNotNull(filePath));
+    }
+
+    /**
+     *
+     * @param filePath location of data.
+     * @return
+     */
+    private String addFileNameExtentionIfNotNull(String filePath) {
+        if (filePath == null) {
+            return null;
+        } else {
+            return filePath + BACKUP_FILE_EXTENSION;
+        }
     }
 
     /**
