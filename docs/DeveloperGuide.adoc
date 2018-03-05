@@ -798,29 +798,29 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |user |have a user manual |refer to instructions when I forget how to use the App.
+|`* * *` |user |have a user manual |know how to use the app.
 
 |`* * *` |user |have an authentication page |prevent unauthorized access to my information.
 
-|`* * *` |user |update password |prevent unauthorized access the account.
+|`* * *` |user |update my password |keep my account secure.
 
-|`* * *` |employer |view an employee’s contact |view their contact information.
+|`* * *` |employer |view an employee’s contact |contact them.
 
-|`* * *` |employer |edit an employee’s contact |edit their contact information.
+|`* * *` |employer |edit an employee’s contact |update their outdated contact information.
 
-|`* * *` |employer |view an employee’s salary|view their salary information.
+|`* * *` |employer |view an employee’s salary|view their salary.
 
-|`* * *` |employer |edit an employee’s salary|edit their salary information.
+|`* * *` |employer |edit an employee’s salary|update their salary.
 
 |`* * *` |employer |add a new employee |store them in the record.
 
 |`* * *` |employer |delete an existing employee |remove employees that are no longer working.
 
-|`* * *` |employee |edit my password |make my account secure
+|`* * *` |employer |update the schedule |show employees the available slots.
 
-|`* * *` |employee |view the schedule | select from the available slots
+|`* * *` |employee |view the schedule |choose when I want to work.
 
-|`* * *` |employee |select from the available slots | work during that slot
+|`* * *` |employee |select from the available slots |work during that slot.
 
 |`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
 
@@ -832,29 +832,29 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |employer |find employees by outlet |locate details of employees according to the outlet they are working at.
 
-|`* *` |employer |view an employee’s working outlet |view their outlets of working.
+|`* *` |employer |view an employee’s working outlet |view their working outlet.
 
-|`* *` |employer |edit an employee’s working outlet |edit their outlets of working.
+|`* *` |employer |edit an employee’s working outlet |edit their working outlet.
 
 |`* *` |employer |view an employee’s address|view their address information.
 
-|`* *` |employer |edit an employee’s address|edit their address information.
+|`* *` |employer |edit an employee’s address|update their outdated address.
 
-|`* *` |employee |edit my contact and address |update my particulars
+|`* *` |employee |edit my contact and address |update my particulars.
 
-|`* *` |employee |view my salary so far for the month |plan my expenses
+|`* *` |employee |view my salary so far for the month |plan my expenses.
 
-|`*` |employer |add an employee’s photo|view it later
+|`*` |employer |add an employee’s photo|view it at any time.
 
-|`*` |employer |edit an employee’s photo|update the photo of an employee
+|`*` |employer |edit an employee’s photo|change an employee's photo to a newer one.
 
-|`*` |employer |view an employee’s photo|recognize the employee
+|`*` |employer |view an employee’s photo|recognize the employee.
 
-|`*` |employer |remove an employee’s photo|update their old photos
+|`*` |employer |remove an employee’s photo|remove their old photo.
 
-|`*` |employee |add a photo |so that my employer can identify me easily
+|`*` |employee |add a photo |be easily identified by my employer.
 
-|`*` |employee |have notification for the selected slot |feel assured.
+|`*` |employee |have notification for the selected slot |be assured that I am working at that slot.
 |=======================================================================
 
 _{More to be added}_
