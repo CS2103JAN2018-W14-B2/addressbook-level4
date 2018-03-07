@@ -857,22 +857,20 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |employee |have notification for the selected slot |be assured that I am working at that slot.
 |=======================================================================
 
-_{More to be added}_
-
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `PTMan` and the *Actor* is the `employer`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Delete employee
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Employer requests to list employees
+2.  PTMan shows a list of employees
+3.  Employer requests to delete a specific employee in the list
+4.  PTMan deletes the employee
 +
 Use case ends.
 
@@ -886,11 +884,29 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. PTMan shows an error message.
 +
 Use case resumes at step 2.
 
-_{More to be added}_
+[discrete]
+=== Use case: Add employee
+
+*MSS*
+
+1.  Employer enters employee details and working outlet(s)
+2.  PTMan adds the employee
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The entered format is invalid.
++
+[none]
+** 1a1. PTMan shows an error message.
++
+Use case resumes at step 1.
 
 [appendix]
 == Non Functional Requirements
