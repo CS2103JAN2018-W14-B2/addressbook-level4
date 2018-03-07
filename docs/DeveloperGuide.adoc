@@ -863,6 +863,26 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 (For all use cases below, the *System* is the `PTMan` and the *Actor* is the `employer`, unless specified otherwise)
 
 [discrete]
+=== Use case: Add employee
+
+*MSS*
+
+1.  Employer enters employee details and working outlet(s)
+2.  PTMan adds the employee
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The entered format is invalid.
++
+[none]
+** 1a1. PTMan shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
 === Use case: Delete employee
 
 *MSS*
@@ -889,12 +909,14 @@ Use case ends.
 Use case resumes at step 2.
 
 [discrete]
-=== Use case: Add employee
+=== Use case: Edit employee
 
 *MSS*
 
-1.  Employer enters employee details and working outlet(s)
-2.  PTMan adds the employee
+1.  Employer enters an employee's name and working outlet.
+2.  PTMan finds the employee in the corresponding outlet.
+3.  Employer enters new details of the employee that he wants to update.
+4.  PTMan changes the employee's details.
 +
 Use case ends.
 
@@ -907,13 +929,71 @@ Use case ends.
 ** 1a1. PTMan shows an error message.
 +
 Use case resumes at step 1.
+* 1b. The employee cannot be found.
++
+[none]
+** 1b1. PTMan shows an error message.
++
+Use case resumes at step 1.
+* 3a. The entered format of new details is invalid.
++
+[none]
+** 3a1. PTMan shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: Sign up for available time slots
+
+*MSS*
+
+1.  Employee enters a time slot that he wants to sign up and the corresponding outlet.
+2.  PTMan sends a confirm message.
+3.  Employee confirms.
+4.  PTMan updates the indicated time slot in the timetable of the indicated outlet.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The entered format is invalid.
++
+[none]
+** 1a1. PTMan shows an error message.
++
+Use case resumes at step 1.
+* 1b. The time slot is not available.
++
+[none]
+** 1b1. PTMan shows an error message.
++
+Use case resumes at step 1.
+* 1c. The outlet is invalid.
++
+[none]
+** 1c1. PTMan shows an error message.
++
+Use case resumes at step 1.
+* 3a. The employee does not confirm.
++
+[none]
+** 3a1. PTMan shows a message that employee cancels the request.
++
+Use case ends.
 
 [appendix]
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
+.  Should work on both 32-bit and 64-bit environment.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Should respond within 2 seconds after entering any command.
+.  Should be usable by users who has never used a command line interface before.
+.  Should be expected to manage contact details of part-time workers in any outlet.
+.  Should be expected to manage work schedule in any outlet.
+.  Should not be required to handle the printing of contact details and schedules.
 
 _{More to be added}_
 
