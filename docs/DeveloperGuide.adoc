@@ -908,6 +908,34 @@ Use case ends.
 +
 Use case resumes at step 1.
 
+[none]
+* 1b. The entered outlet already exist.
++
+[none]
+** 1b1. PTMan shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Add outlet
+
+*MSS*
+
+1.  Employer enters outlet details
+2.  PTMan adds the outlet into the list of outlet
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The entered format is invalid.
++
+[none]
+** 1a1. PTMan shows an error message.
++
+Use case resumes at step 1.
+
 [appendix]
 == Non Functional Requirements
 
