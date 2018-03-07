@@ -822,9 +822,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |employee |select from the available slots |work during that slot.
 
-|`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
+|`* * *` |employer |add outlet |update the app with new outlets
 
-|`* * ` |employer |sort employees by outlet |have a clearer view of all employees’ details.
+|`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
 
 |`* *` |employer |add a new admin account |have multiple managers.
 
