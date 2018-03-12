@@ -38,6 +38,7 @@ public class OutletInformation {
         }
 
         OutletInformation otherOutletInformation = (OutletInformation) other;
+
         return otherOutletInformation.getName().equals(this.getName())
                 && otherOutletInformation.getMasterPassword().equals(this.getMasterPassword())
                 && otherOutletInformation.getOperatingHours().equals(this.getOperatingHours())
