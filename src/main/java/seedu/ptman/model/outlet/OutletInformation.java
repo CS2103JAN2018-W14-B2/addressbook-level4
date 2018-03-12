@@ -19,13 +19,21 @@ public class OutletInformation {
         this.shifts = new Shifts();
     }
 
-    public Name getName() { return name; }
+    public Name getName() {
+        return name;
+    }
 
-    public Password getMasterPassword() { return masterPassword; }
+    public Password getMasterPassword() {
+        return masterPassword;
+    }
 
-    public OperatingHours getOperatingHours() { return operatingHours; }
+    public OperatingHours getOperatingHours() {
+        return operatingHours;
+    }
 
-    public Shifts getShifts() { return shifts; }
+    public Shifts getShifts() {
+        return shifts;
+    }
 
     @Override
     public boolean equals(Object other) {
