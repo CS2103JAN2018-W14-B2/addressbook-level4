@@ -476,7 +476,7 @@ e.g. `seedu.ptman.logic.LogicManagerTest`
 * Solution: Execute Gradle task `processResources`.
 
 == Dev Ops
-You need to ensure the next few sections are fulfilled so that the project is fully integrated, tested and built for release. You have to be fully aware of the configurations and the infrastructure of the application and the environment of where the application will be installed.
+The following sections help you ensure that the project is fully integrated, tested, and built for release.
 
 === Build Automation
 
@@ -484,7 +484,7 @@ See <<UsingGradle#, UsingGradle.adoc>> to learn how to use Gradle for build auto
 
 === Continuous Integration
 
-We use https://travis-ci.org/[Travis CI] and https://www.appveyor.com/[AppVeyor] to perform _Continuous Integration_ on our projects. See <<UsingTravis#, UsingTravis.adoc>> and <<UsingAppVeyor#, UsingAppVeyor.adoc>> for more details.
+We use https://travis-ci.org/[Travis CI] and https://www.appveyor.com/[AppVeyor] to perform continuous integration on our projects. See <<UsingTravis#, UsingTravis.adoc>> and <<UsingAppVeyor#, UsingAppVeyor.adoc>> for more details.
 
 === Coverage Reporting
 
@@ -504,7 +504,7 @@ Here are the steps to create a new release:
 
 === Managing Dependencies
 
-A project often depends on third-party libraries. For example, PTMan depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing. Managing these _dependencies_ can be automated using Gradle. One advantage of Gradle is that it can download these _dependencies_ automatically, which is better than the below alternatives: +
+A project often depends on third-party libraries. For example, PTMan depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing. Managing these dependencies can be automated using Gradle. One advantage of Gradle is that it can download these dependencies automatically, which is better than the below alternatives: +
 
 ..  Including the third-party libraries in the repo. This bloats the repo size. +
 ..  Making developers download the third-party libraries manually. This creates extra work for developers.
@@ -835,7 +835,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |employer |edit an employee’s contact |update their outdated contact information.
 
-|`* *` |employer |edit outlet information |update outdated outlet information.
+|`* *` |employer |edit the outlet information |update the outdated outlet information.
 
 |`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
 
@@ -861,7 +861,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |employee |add a photo |be easily identified by my employer.
 
-|`*` |employee |have notification for slot confirmation |be assured that I am working at that slot.
+|`*` |employee |have a notification for slot confirmation |be assured that I am working at that slot.
 |=======================================================================
 
 [appendix]
