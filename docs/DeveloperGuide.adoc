@@ -810,21 +810,20 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
+
 |`* * *` |user |have a user manual |know how to use the app.
 
-|`* * *` |user |have an authentication page |prevent unauthorized access to my information.
+|`* * *` |user |have access control |prevent unauthorized access to my information.
 
-|`* * *` |user |update my password |keep my account secure.
+|`* * *` |user |update my password |keep my information secure.
+
+|`* * *` |employer |add a new employee |store them in the record.
 
 |`* * *` |employer |view an employee’s contact |contact them.
 
-|`* * *` |employer |edit an employee’s contact |update their outdated contact information.
+|`* * *` |employer |view an employee’s salary |view their salary.
 
-|`* * *` |employer |view an employee’s salary|view their salary.
-
-|`* * *` |employer |edit an employee’s salary|update their salary.
-
-|`* * *` |employer |add a new employee |store them in the record.
+|`* * *` |employer |edit an employee’s salary |update their salary.
 
 |`* * *` |employer |delete an existing employee |remove employees that are no longer working.
 
@@ -832,21 +831,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |employee |view the schedule |choose when I want to work.
 
-|`* * *` |employee |select from the available slots |work during that slot.
+|`* * *` |employee |select from the available slots in the schedule |work during that slot.
 
-|`* * *` |employer |add outlet |update the app with new outlets
+|`* *` |employer |edit an employee’s contact |update their outdated contact information.
+
+|`* *` |employer |edit outlet information |update outdated outlet information.
 
 |`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
 
-|`* *` |employer |add a new admin account |have multiple managers.
-
 |`* *` |employer |find an employee by name |locate details of employees without having to go through the entire list.
-
-|`* *` |employer |find employees by outlet |locate details of employees according to the outlet they are working at.
-
-|`* *` |employer |view an employee’s working outlet |view their working outlet.
-
-|`* *` |employer |edit an employee’s working outlet |edit their working outlet.
 
 |`* *` |employer |view an employee’s address|view their address information.
 
@@ -856,17 +849,19 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |employee |view my salary so far for the month |plan my expenses.
 
-|`*` |employer |add an employee’s photo|view it at any time.
+|`*` |user |export timetable as image |have easy access to the time slots I'm working at.
 
-|`*` |employer |edit an employee’s photo|change an employee's photo to a newer one.
+|`*` |employer |add an employee’s photo |view it at any time.
 
-|`*` |employer |view an employee’s photo|recognize the employee.
+|`*` |employer |edit an employee’s photo |change an employee's photo to a newer one.
 
-|`*` |employer |remove an employee’s photo|remove their old photo.
+|`*` |employer |view an employee’s photo |recognize the employee.
+
+|`*` |employer |remove an employee’s photo |remove their old photo.
 
 |`*` |employee |add a photo |be easily identified by my employer.
 
-|`*` |employee |have notification for the selected slot |be assured that I am working at that slot.
+|`*` |employee |have notification for slot confirmation |be assured that I am working at that slot.
 |=======================================================================
 
 [appendix]
