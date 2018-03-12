@@ -1,9 +1,13 @@
 package seedu.ptman.model.outlet;
 
-import seedu.ptman.model.Password;
-
 import java.util.Objects;
 
+import seedu.ptman.model.Password;
+
+/**
+ * Represents an outlet in PTMan.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class OutletInformation {
 
     private Name name;

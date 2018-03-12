@@ -3,6 +3,10 @@ package seedu.ptman.model.outlet;
 import static java.util.Objects.requireNonNull;
 import static seedu.ptman.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents operating hours in an outlet.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class OperatingHours {
 
     public static final String MESSAGE_OPERATING_HOUR_CONSTRAINTS =
