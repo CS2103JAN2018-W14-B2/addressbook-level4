@@ -62,4 +62,10 @@ public class NameTest {
         Name other = new Name("another valid name");
         assertFalse(test.equals(other));
     }
+
+    @Test
+    public void hashCode_sameFullName_returnsTrue() {
+        Name test = new Name("valid name");
+        assertEquals(test.hashCode(), "valid name".hashCode());
+    }
 }

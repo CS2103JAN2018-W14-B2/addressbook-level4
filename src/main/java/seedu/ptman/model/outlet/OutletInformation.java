@@ -46,19 +46,11 @@ public class OutletInformation {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        if (!(other instanceof OutletInformation)) {
-            return false;
-        }
-
-        OutletInformation otherOutletInformation = (OutletInformation) other;
-
-        return otherOutletInformation.getName().equals(this.getName())
-                && otherOutletInformation.getMasterPassword().equals(this.getMasterPassword())
-                && otherOutletInformation.getOperatingHours().equals(this.getOperatingHours());
+        return this == other
+                || (other instanceof OutletInformation
+                && ((OutletInformation) other).getName().equals(this.getName())
+                && ((OutletInformation) other).getMasterPassword().equals(this.getMasterPassword())
+                && ((OutletInformation) other).getOperatingHours().equals(this.getOperatingHours()));
     }
 
     @Override

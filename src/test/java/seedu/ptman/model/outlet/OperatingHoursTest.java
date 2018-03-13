@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 import org.junit.Test;
 
@@ -101,5 +102,13 @@ public class OperatingHoursTest {
         OperatingHours test = new OperatingHours(operatingHours);
         OperatingHours other = new OperatingHours(operatingHours);
         assertTrue(test.equals(other));
+    }
+
+    @Test
+    public void hashCode_sameObject_returnsTrue() {
+        String operatingHours = "09:00-22:00";
+        OperatingHours test = new OperatingHours(operatingHours);
+        assertEquals(test.hashCode(), Objects.hash(LocalTime.of(9, 0),
+                LocalTime.of(22, 0)));
     }
 }
