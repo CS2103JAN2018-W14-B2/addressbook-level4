@@ -13,14 +13,14 @@ public class OutletInformation {
     private Name name;
     private Password masterPassword;
     private OperatingHours operatingHours;
-    private Shifts shifts;
+    private ShiftList shiftList;
     //and there should be a default timetable
 
     public OutletInformation() {
         this.name = new Name("Outlet Name");
         this.masterPassword = new Password();
         this.operatingHours = new OperatingHours("09:00-22:00");
-        this.shifts = new Shifts();
+        this.shiftList = new ShiftList();
     }
 
     public Name getName() {
@@ -35,8 +35,8 @@ public class OutletInformation {
         return operatingHours;
     }
 
-    public Shifts getShifts() {
-        return shifts;
+    public ShiftList getShiftList() {
+        return shiftList;
     }
 
     @Override
@@ -54,13 +54,13 @@ public class OutletInformation {
         return otherOutletInformation.getName().equals(this.getName())
                 && otherOutletInformation.getMasterPassword().equals(this.getMasterPassword())
                 && otherOutletInformation.getOperatingHours().equals(this.getOperatingHours())
-                && otherOutletInformation.getShifts().equals(this.getShifts());
+                && otherOutletInformation.getShiftList().equals(this.getShiftList());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, masterPassword, operatingHours, shifts);
+        return Objects.hash(name, masterPassword, operatingHours, shiftList);
     }
 
     @Override
