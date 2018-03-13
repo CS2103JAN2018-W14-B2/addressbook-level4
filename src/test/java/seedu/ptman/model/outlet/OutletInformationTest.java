@@ -1,5 +1,9 @@
 package seedu.ptman.model.outlet;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import seedu.ptman.model.Password;
@@ -32,5 +36,14 @@ public class OutletInformationTest {
         OperatingHours operatingHours = new OperatingHours("09:00-22:00");
         Assert.assertThrows(NullPointerException.class, () -> new OutletInformation(name,
                 masterPassword, null));
+    }
+
+    @Test
+    public void getName_validInput_returnsTrue() {
+        Name name = new Name("outlet");
+        Password masterPassword = new Password();
+        OperatingHours operatingHours = new OperatingHours("09:00-22:00");
+        OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+
     }
 }

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalTime;
+
 import org.junit.Test;
 
 import seedu.ptman.testutil.Assert;
-
-import java.time.LocalTime;
 
 public class OperatingHoursTest {
 
@@ -84,14 +84,14 @@ public class OperatingHoursTest {
     @Test
     public void getStartTime_validInput_returnsTrue() {
         OperatingHours test = new OperatingHours("09:00-22:00");
-        LocalTime startTime = LocalTime.of(9,0);
+        LocalTime startTime = LocalTime.of(9, 0);
         assertEquals(test.getStartTime(), startTime);
     }
 
     @Test
     public void getEndTime_validInput_returnsTrue() {
         OperatingHours test = new OperatingHours("09:00-22:00");
-        LocalTime endTime = LocalTime.of(22,0);
+        LocalTime endTime = LocalTime.of(22, 0);
         assertEquals(test.getEndTime(), endTime);
     }
 
