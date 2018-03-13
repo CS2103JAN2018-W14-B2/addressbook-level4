@@ -14,20 +14,21 @@ import seedu.ptman.model.employee.UniqueEmployeeList;
  */
 public class Shift {
 
-    private static final String MONDAY_FULL_STRING = "Monday";
-    private static final String TUESDAY_FULL_STRING = "Tuesday";
-    private static final String WEDNESDAY_FULL_STRING = "Wednesday";
-    private static final String THURSDAY_FULL_STRING = "Thursday";
-    private static final String FRIDAY_FULL_STRING = "Friday";
-    private static final String SATURDAY_FULL_STRING = "Saturday";
-    private static final String SUNDAY_FULL_STRING = "Sunday";
-    private static final String MONDAY_SHORT_FORM = "Mon";
-    private static final String TUESDAY_SHORT_FORM = "Tue";
-    private static final String WEDNESDAY_SHORT_FORM = "Wed";
-    private static final String THURSDAY_SHORT_FORM = "Thu";
-    private static final String FRIDAY_SHORT_FORM = "Fri";
-    private static final String SATURDAY_SHORT_FORM = "Sat";
-    private static final String SUNDAY_SHORT_FORM = "Sun";
+    protected static final String MONDAY_FULL_STRING = "Monday";
+    protected static final String TUESDAY_FULL_STRING = "Tuesday";
+    protected static final String WEDNESDAY_FULL_STRING = "Wednesday";
+    protected static final String THURSDAY_FULL_STRING = "Thursday";
+    protected static final String FRIDAY_FULL_STRING = "Friday";
+    protected static final String SATURDAY_FULL_STRING = "Saturday";
+    protected static final String SUNDAY_FULL_STRING = "Sunday";
+    protected static final String MONDAY_SHORT_FORM = "Mon";
+    protected static final String TUESDAY_SHORT_FORM = "Tue";
+    protected static final String WEDNESDAY_SHORT_FORM = "Wed";
+    protected static final String THURSDAY_SHORT_FORM = "Thu";
+    protected static final String FRIDAY_SHORT_FORM = "Fri";
+    protected static final String SATURDAY_SHORT_FORM = "Sat";
+    protected static final String SUNDAY_SHORT_FORM = "Sun";
+
     private static final String MESSAGE_DAY_CONSTRAINTS = "Day must be either in full or short form. "
             + "For example, Monday or Mon, and they are case-sensitive.";
 
