@@ -84,4 +84,14 @@ public class OutletInformationTest {
         OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
         assertEquals(outlet.hashCode(), Objects.hash(name, masterPassword, operatingHours));
     }
+
+    @Test
+    public void toString_validInput_returnsTrue() {
+        Name name = new Name("outlet");
+        Password masterPassword = new Password();
+        OperatingHours operatingHours = new OperatingHours("09:00-22:00");
+        OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+        String expected = "outlet Operating Hour: 09:00-22:00";
+        assertEquals(outlet.toString(), expected);
+    }
 }

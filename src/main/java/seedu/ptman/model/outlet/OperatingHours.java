@@ -63,6 +63,7 @@ public class OperatingHours {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getStartTime())
+                .append("-")
                 .append(getEndTime());
         return builder.toString();
     }

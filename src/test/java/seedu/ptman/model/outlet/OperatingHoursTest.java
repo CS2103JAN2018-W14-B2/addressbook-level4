@@ -111,4 +111,11 @@ public class OperatingHoursTest {
         assertEquals(test.hashCode(), Objects.hash(LocalTime.of(9, 0),
                 LocalTime.of(22, 0)));
     }
+
+    @Test
+    public void toString_validInput_returnsTrue() {
+        String operatingHours = "09:00-22:00";
+        OperatingHours test = new OperatingHours(operatingHours);
+        assertEquals(test.toString(), operatingHours);
+    }
 }
