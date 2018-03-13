@@ -1,7 +1,7 @@
 package seedu.ptman.model.outlet;
 
-import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.ptman.commons.util.AppUtil.checkArgument;
+import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
@@ -96,8 +96,9 @@ public class ShiftList {
     /**
      * Returns true if a given string is a valid shift list.
      */
-    public static boolean isValidShiftList(Shift mondayShift, Shift tuesdayShift, Shift wednesdayShift, Shift thursdayShift,
-                                           Shift fridayShift, Shift saturdayShift, Shift sundayShift) {
+    public static boolean isValidShiftList(Shift mondayShift, Shift tuesdayShift, Shift wednesdayShift,
+                                           Shift thursdayShift, Shift fridayShift, Shift saturdayShift,
+                                           Shift sundayShift) {
         boolean isMondayShift = mondayShift.getDay().equals(Shift.MONDAY_FULL_STRING)
                 || mondayShift.getDay().equals(Shift.MONDAY_SHORT_FORM);
         boolean isTuesdayShift = tuesdayShift.getDay().equals(Shift.TUESDAY_FULL_STRING)

@@ -88,7 +88,7 @@ public class Shift {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDay())
                 .append(" Employees: ");
-        for(Employee e : getEmployeesOfTheDay()) {
+        for (Employee e : getEmployeesOfTheDay()) {
             builder.append(e.getName());
         };
         return builder.toString();
