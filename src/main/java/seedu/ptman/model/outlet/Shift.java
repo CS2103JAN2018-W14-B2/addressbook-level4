@@ -90,7 +90,7 @@ public class Shift {
                 .append(" Employees: ");
         for (Employee e : getEmployeesOfTheDay()) {
             builder.append(e.getName());
-        };
+        }
         return builder.toString();
     }
 
