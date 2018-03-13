@@ -430,7 +430,7 @@ image::chrome_save_as_pdf.png[width="300"]
 [[Testing]]
 == Testing
 
-This section describes how to run tests, different types of tests and troubleshooting of tests.
+This section explains how to run tests, the different types of tests and test troubleshooting.
 
 === Running Tests
 
@@ -464,7 +464,7 @@ We have two types of tests:
 
 .  *GUI Tests*
 * These are tests involving the GUI. They include:
-.. _System tests_ that test the entire App by simulating user actions on the GUI. These are in the `systemtests` package.
+.. _System tests_ that test the entire app by simulating user actions on the GUI. These are in the `systemtests` package.
 .. _Unit tests_ that test the individual components. These are in the `seedu.ptman.ui` package.
 .  *Non-GUI Tests*
 * These are tests not involving the GUI. They include:
@@ -478,14 +478,12 @@ e.g. `seedu.ptman.logic.LogicManagerTest`
 
 === Troubleshooting Testing
 
-If you discover any mistakes in the tests, follow this format to troubleshoot testing:
+The common problems encountered while testing are listed here.
 
-**Problem 1:** `HelpWindowTest` fails with a `NullPointerException`.
+**Problem:** `HelpWindowTest` fails with a `NullPointerException`.
 
 * Reason: One of its dependencies, `UserGuide.html` in `src/main/resources/docs` is missing.
 * Solution: Execute Gradle task `processResources`.
-
-**Problem 2:** etc.
 
 == Dev Ops
 
