@@ -1,5 +1,7 @@
 package seedu.ptman.model.outlet;
 
+import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.util.Objects;
 
 import seedu.ptman.model.Password;
@@ -13,14 +15,17 @@ public class OutletInformation {
     private Name name;
     private Password masterPassword;
     private OperatingHours operatingHours;
-    private ShiftList shiftList;
+    //shift needed
     //and there should be a default timetable
 
-    public OutletInformation() {
-        this.name = new Name("Outlet Name");
-        this.masterPassword = new Password();
-        this.operatingHours = new OperatingHours("09:00-22:00");
-        this.shiftList = new ShiftList();
+    /**
+     * Constructor of an outlet
+     */
+    public OutletInformation(Name name, Password masterPassword, OperatingHours operatingHours) {
+        requireAllNonNull(name, masterPassword, operatingHours);
+        this.name = name;
+        this.masterPassword = masterPassword;
+        this.operatingHours = operatingHours;
     }
 
     public Name getName() {
@@ -33,10 +38,6 @@ public class OutletInformation {
 
     public OperatingHours getOperatingHours() {
         return operatingHours;
-    }
-
-    public ShiftList getShiftList() {
-        return shiftList;
     }
 
     @Override
@@ -53,14 +54,13 @@ public class OutletInformation {
 
         return otherOutletInformation.getName().equals(this.getName())
                 && otherOutletInformation.getMasterPassword().equals(this.getMasterPassword())
-                && otherOutletInformation.getOperatingHours().equals(this.getOperatingHours())
-                && otherOutletInformation.getShiftList().equals(this.getShiftList());
+                && otherOutletInformation.getOperatingHours().equals(this.getOperatingHours());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, masterPassword, operatingHours, shiftList);
+        return Objects.hash(name, masterPassword, operatingHours);
     }
 
     @Override
