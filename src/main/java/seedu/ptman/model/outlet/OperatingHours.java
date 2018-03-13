@@ -37,7 +37,7 @@ public class OperatingHours {
     /**
      * Converts a valid string of time to Local Time
      */
-    private LocalTime convertStringToLocalTime(String time) {
+    public static LocalTime convertStringToLocalTime(String time) {
         String[] splitedTime = time.split(":");
         int hour = Integer.parseInt(splitedTime[0]);
         int minute = Integer.parseInt(splitedTime[1]);

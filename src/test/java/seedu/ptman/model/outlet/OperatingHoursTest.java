@@ -1,11 +1,14 @@
 package seedu.ptman.model.outlet;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import seedu.ptman.testutil.Assert;
+
+import java.time.LocalTime;
 
 public class OperatingHoursTest {
 
@@ -69,5 +72,34 @@ public class OperatingHoursTest {
         assertTrue(OperatingHours.isValidOperatingHours("09:00-22:00"));
         assertTrue(OperatingHours.isValidOperatingHours("10:00-21:00"));
         assertTrue(OperatingHours.isValidOperatingHours("08:00-18:00"));
+    }
+
+    @Test
+    public void convertStringToLocalTime_validInput_returnsLocalTime() {
+        LocalTime localTime = LocalTime.of(9, 0);
+        String test = "09:00";
+        assertEquals(OperatingHours.convertStringToLocalTime(test), localTime);
+    }
+
+    @Test
+    public void getStartTime_validInput_returnsTrue() {
+        OperatingHours test = new OperatingHours("09:00-22:00");
+        LocalTime startTime = LocalTime.of(9,0);
+        assertEquals(test.getStartTime(), startTime);
+    }
+
+    @Test
+    public void getEndTime_validInput_returnsTrue() {
+        OperatingHours test = new OperatingHours("09:00-22:00");
+        LocalTime endTime = LocalTime.of(22,0);
+        assertEquals(test.getEndTime(), endTime);
+    }
+
+    @Test
+    public void equals_sameOperatingHours_returnsTrue() {
+        String operatingHours = "09:00-22:00";
+        OperatingHours test = new OperatingHours(operatingHours);
+        OperatingHours other = new OperatingHours(operatingHours);
+        assertTrue(test.equals(other));
     }
 }
