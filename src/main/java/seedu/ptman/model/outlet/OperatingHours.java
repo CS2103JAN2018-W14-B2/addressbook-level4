@@ -3,6 +3,9 @@ package seedu.ptman.model.outlet;
 import static java.util.Objects.requireNonNull;
 import static seedu.ptman.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalTime;
+import java.util.Objects;
+
 /**
  * Represents operating hours in an outlet.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -15,17 +18,36 @@ public class OperatingHours {
     public static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
     public static final String OPERATING_HOUR_VALIDATION_REGEX = TIME24HOURS_PATTERN + "-"
             + TIME24HOURS_PATTERN;
-    public final String value;
+    public final LocalTime startTime;
+    public final LocalTime endTime;
 
     /**
-     * Constructs a {@code Phone}.
-     *
-     * @param operatingHours A valid phone number.
+     * Constructor of operating hour
      */
     public OperatingHours(String operatingHours) {
         requireNonNull(operatingHours);
         checkArgument(isValidOperatingHours(operatingHours), MESSAGE_OPERATING_HOUR_CONSTRAINTS);
-        this.value = operatingHours;
+        String[] splitedTime = operatingHours.split("-");
+        this.startTime = convertStringToLocalTime(splitedTime[0]);
+        this.endTime = convertStringToLocalTime(splitedTime[1]);
+    }
+
+    /**
+     * Converts a valid string of time to Local Time
+     */
+    private LocalTime convertStringToLocalTime(String time) {
+        String[] splitedTime = time.split(":");
+        int hour = Integer.parseInt(splitedTime[0]);
+        int minute = Integer.parseInt(splitedTime[1]);
+        return LocalTime.of(hour, minute);
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
     }
 
     /**
@@ -37,19 +59,23 @@ public class OperatingHours {
 
     @Override
     public String toString() {
-        return value;
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getStartTime())
+                .append(getEndTime());
+        return builder.toString();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof OperatingHours // instanceof handles nulls
-                && this.value.equals(((OperatingHours) other).value)); // state check
+                && this.startTime.equals(((OperatingHours) other).startTime)
+                && this.endTime.equals(((OperatingHours) other).endTime)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return Objects.hash(startTime, endTime);
     }
 
 }
