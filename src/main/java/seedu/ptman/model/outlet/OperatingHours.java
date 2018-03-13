@@ -22,7 +22,9 @@ public class OperatingHours {
     public final LocalTime endTime;
 
     /**
-     * Constructor of operating hour
+     * Constructs an {@code OperatingHours}.
+     *
+     * @param operatingHours A valid string of operating hours.
      */
     public OperatingHours(String operatingHours) {
         requireNonNull(operatingHours);

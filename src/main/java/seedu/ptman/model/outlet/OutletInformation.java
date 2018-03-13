@@ -19,7 +19,11 @@ public class OutletInformation {
     //and there should be a default timetable
 
     /**
-     * Constructor of an outlet
+     * Constructs an {@code OutletInformation}.
+     *
+     * @param name a valid outlet name
+     * @param masterPassword a valid master password
+     * @param operatingHours a valid operating hours
      */
     public OutletInformation(Name name, Password masterPassword, OperatingHours operatingHours) {
         requireAllNonNull(name, masterPassword, operatingHours);

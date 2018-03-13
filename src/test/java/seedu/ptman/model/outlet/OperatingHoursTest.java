@@ -21,20 +21,25 @@ public class OperatingHoursTest {
     }
 
     @Test
-    public void isValidOperatingHours() {
-        // null operatingHours
+    public void isValidOperatingHours_nullOperatingHours_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> OperatingHours.isValidOperatingHours(null));
+    }
 
-        // blank operatingHours
+    @Test
+    public void isValidOperatingHours_blankOperatingHours_returnsFalse() {
         assertFalse(OperatingHours.isValidOperatingHours("")); // empty string
         assertFalse(OperatingHours.isValidOperatingHours(" ")); // spaces only
+    }
 
-        // missing parts
+    @Test
+    public void isValidOperatingHours_missingParts_returnsFalse() {
         assertFalse(OperatingHours.isValidOperatingHours("-22:00")); // missing start time
         assertFalse(OperatingHours.isValidOperatingHours("09:00-")); // missing end time
         assertFalse(OperatingHours.isValidOperatingHours("-")); // missing both start and end time
+    }
 
-        // invalid parts
+    @Test
+    public void isValidOperatingHours_invalidParts_returnsFalse() {
         assertFalse(OperatingHours.isValidOperatingHours("25:00-22:00")); // invalid hour in start time
         assertFalse(OperatingHours.isValidOperatingHours("090:00-22:00")); // more than two numbers of hour
         assertFalse(OperatingHours.isValidOperatingHours("09:99-22:00")); // invalid minute in start time
@@ -57,9 +62,10 @@ public class OperatingHoursTest {
         assertFalse(OperatingHours.isValidOperatingHours("09:00/22:00")); // invalid '/' symbol used to connect
         assertFalse(OperatingHours.isValidOperatingHours("09:00.22:00")); // invalid '.' symbol used to connect
         assertFalse(OperatingHours.isValidOperatingHours("09:00@22:00")); // invalid '@' symbol used to connect
+    }
 
-
-        // valid operatingHours
+    @Test
+    public void isValidOperatingHours_validOperatingHours_returnsTrue() {
         assertTrue(OperatingHours.isValidOperatingHours("09:00-22:00"));
         assertTrue(OperatingHours.isValidOperatingHours("10:00-21:00"));
         assertTrue(OperatingHours.isValidOperatingHours("08:00-18:00"));
