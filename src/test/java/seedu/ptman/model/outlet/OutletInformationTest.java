@@ -44,6 +44,34 @@ public class OutletInformationTest {
         Password masterPassword = new Password();
         OperatingHours operatingHours = new OperatingHours("09:00-22:00");
         OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+        assertEquals(outlet.getName(), name);
+    }
 
+    @Test
+    public void getMasterPassword_validInput_returnsTrue() {
+        Name name = new Name("outlet");
+        Password masterPassword = new Password();
+        OperatingHours operatingHours = new OperatingHours("09:00-22:00");
+        OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+        assertEquals(outlet.getMasterPassword(), masterPassword);
+    }
+
+    @Test
+    public void getOperatingHours_validInput_returnsTrue() {
+        Name name = new Name("outlet");
+        Password masterPassword = new Password();
+        OperatingHours operatingHours = new OperatingHours("09:00-22:00");
+        OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+        assertEquals(outlet.getOperatingHours(), operatingHours);
+    }
+
+    @Test
+    public void equals_sameOutletInformation_returnsTrue() {
+        Name name = new Name("outlet");
+        Password masterPassword = new Password();
+        OperatingHours operatingHours = new OperatingHours("09:00-22:00");
+        OutletInformation outlet = new OutletInformation(name, masterPassword, operatingHours);
+        OutletInformation other = new OutletInformation(name, masterPassword, operatingHours);
+        assertTrue(outlet.equals(other));
     }
 }
