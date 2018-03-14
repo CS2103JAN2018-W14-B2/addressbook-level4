@@ -264,21 +264,43 @@ Alias: `c`
 
 ==== View all details of employee
 PTMan do not only allow user to view who is working in the outlet, details of address and phone numbers are not shown hence this command allot employer to view all the detail of employe. +
-Format: `viewall` `pw/AdminPassword`
+Format: `viewall pw/AdminPassword`
 
-==== Edit outlet all information [v2.0?]
-PTman outlets should be able to modify anytime by the admin. +
-Format: unclear
-
-==== Add shift to outlet
-PTman outlets should be able to add shift to the timetable indicating with how many people the shift needs. +
-Format: `addshift` `startday` `starttime`` `endtime`
+==== Edit outlet information [coming in v1.3]
+PTman outlet information can be modified anytime by the admin. +
+Format: `editoutlet pw/MasterPassword n/name h/OperatingHours` +
 
 [NOTE]
 ====
-`startday` in DDMMYY format. +
+`OperatingHours` in HHMM-HHMM format. +
+For example, `h/0900-2200` +
+====
+
+==== Change master password [coming in v1.3]
+PTman should be able to allow employers to change master password. +
+Format: `cmp old/CurrentPassword new/ModifiedPassword` +
+
+==== Add shift to outlet [coming in v1.4]
+PTman outlets should be able to add a shift to the timetable indicating with how many people the shift needs. +
+Format: `addshift date `starttime endtime employeename1 employeename2 ...` +
+
+[NOTE]
+====
+`date` in DDMMYY format. +
 `starttime` `endtime` in HHMM format
 ====
+
+==== Add employee to shift [coming in v1.4]
+PTman outlets should be able to add an employee to a shift in the timetable. +
+Format: `addto date starttime endtime employeename` +
+
+==== Delete employee from shift [coming in v1.4]
+PTman outlets should be able to delete an employee from a shift in the timetable. +
+Format: `deletefrom date starttime endtime employeename` +
+
+==== Reset to default shift [coming in v1.4]
+PTman outlets should be able to reset a shift from the timetable to its default value. +
+Format: `resetshift date starttime endtime` +
 
 === Employee features
 These commands can only be executed by employees and require a password.
