@@ -137,7 +137,8 @@ Exits the app. +
 === Employer Features
 These commands are privileged, and can only be executed by the employer. These commands requires the employer's admin password.
 
-IMPORTANT: Admin password must always be entered as the *last* parameter of a command.
+[CAUTION]
+Admin password must always be entered as the *last* parameter of a command.
 
 ==== Adding an employee: `add`
 
@@ -326,7 +327,7 @@ These commands can only be executed by employees and require the employee's pass
 
 ==== Choose shift: `take`
 Employee are able to choose the time slot they want from the timetable. +
-*Format:* `take n/NAME pw/PASSWORD [i/SLOT_INDEX]... `
+*Format:* `take n/NAME pw/PASSWORD i/SLOT_INDEX... `
 
 Examples:
 
