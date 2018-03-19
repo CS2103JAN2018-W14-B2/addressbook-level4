@@ -2,7 +2,15 @@ package seedu.ptman.logic.parser;
 
 import static seedu.ptman.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.ptman.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_PASSWORD;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_SALARY;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,7 +74,7 @@ public class PartTimeManagerParser {
 
         case ClearCommand.COMMAND_WORD:
         case ClearCommand.COMMAND_ALIAS:
-            return new ClearCommandParser().parse(arguments);
+            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_ALIAS:
@@ -88,14 +96,30 @@ public class PartTimeManagerParser {
 
         case UndoCommand.COMMAND_WORD:
         case UndoCommand.COMMAND_ALIAS:
-            return new UndoCommandParser().parse(arguments);
+            return new UndoCommand();
 
         case RedoCommand.COMMAND_WORD:
         case RedoCommand.COMMAND_ALIAS:
-            return new RedoCommandParser().parse(arguments);
+            return new RedoCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    /**
+     * Extract out password when given a commandText
+     * @param commandText
+     * @return password in String
+     */
+    public String parseCommandForPassword(String commandText) throws ParseException {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(commandText, PREFIX_NAME, PREFIX_ADDRESS,
+                PREFIX_PHONE, PREFIX_SALARY, PREFIX_EMAIL, PREFIX_PASSWORD, PREFIX_TAG);
+        Optional<String> passwordOptional = argMultimap.getValue(PREFIX_PASSWORD);
+
+        if (!passwordOptional.isPresent()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, commandText));
+        }
+        return argMultimap.getValue(PREFIX_PASSWORD).get();
     }
 }

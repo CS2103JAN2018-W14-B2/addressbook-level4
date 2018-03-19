@@ -51,17 +51,13 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
         resetData(toBeCopied);
     }
 
-
-    /**
-     * Check if given password is of outlet's
-     * @param password
-     * @return true if password is the same
-     */
-    public boolean isAdminPassword(Password password) {
-        return this.password.equals(password);
+    //// authorization operations
+    public boolean isAdmin(String password) {
+        return this.password.isCorrectPassword(password);
     }
 
     //// list overwrite operations
+
     public void setEmployees(List<Employee> employees) throws DuplicateEmployeeException {
         this.employees.setEmployees(employees);
     }

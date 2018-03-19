@@ -6,8 +6,6 @@ import seedu.ptman.logic.CommandHistory;
 import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.logic.commands.exceptions.CommandException;
 import seedu.ptman.model.Model;
-import seedu.ptman.model.Password;
-import seedu.ptman.model.employee.exceptions.InvalidPasswordException;
 
 /**
  * Redo the previously undone command.
@@ -19,22 +17,12 @@ public class RedoCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Redo success!";
     public static final String MESSAGE_FAILURE = "No more commands to redo!";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redo previous undo command.\n "
-            + "Example: " + COMMAND_WORD + " " + "pw/AdminPassword";
-
-    private Password toCheck;
-
-    public RedoCommand(Password password) {
-        toCheck = password;
+    public RedoCommand() {
+        isAdminCommand = true;
     }
     @Override
     public CommandResult execute() throws CommandException {
-        requireAllNonNull(model, toCheck, undoRedoStack);
-
-        if (!model.isAdminPassword(toCheck)) {
-            throw new InvalidPasswordException();
-        }
-
+        requireAllNonNull(model, undoRedoStack);
 
         if (!undoRedoStack.canRedo()) {
             throw new CommandException(MESSAGE_FAILURE);
@@ -48,12 +36,5 @@ public class RedoCommand extends Command {
     public void setData(Model model, CommandHistory commandHistory, UndoRedoStack undoRedoStack) {
         this.model = model;
         this.undoRedoStack = undoRedoStack;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof RedoCommand // instanceof handles nulls
-                && toCheck.equals(((RedoCommand) other).toCheck));
     }
 }

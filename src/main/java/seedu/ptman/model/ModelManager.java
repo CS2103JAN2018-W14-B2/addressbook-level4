@@ -74,9 +74,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public synchronized boolean isAdminPassword(Password password) {
-        requireNonNull(password);
-        return partTimeManager.isAdminPassword(password);
+    public synchronized boolean isAdmin(String password) {
+        return partTimeManager.isAdmin(password);
     }
 
     @Override

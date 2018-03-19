@@ -21,7 +21,6 @@ import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.logic.commands.exceptions.CommandException;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.PartTimeManager;
-import seedu.ptman.model.Password;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.NameContainsKeywordsPredicate;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
@@ -153,8 +152,8 @@ public class CommandTestUtil {
     /**
      * Returns an {@code UndoCommand} with the given {@code model} and {@code undoRedoStack} set.
      */
-    public static UndoCommand prepareUndoCommand(Model model, UndoRedoStack undoRedoStack, Password password) {
-        UndoCommand undoCommand = new UndoCommand(password);
+    public static UndoCommand prepareUndoCommand(Model model, UndoRedoStack undoRedoStack) {
+        UndoCommand undoCommand = new UndoCommand();
         undoCommand.setData(model, new CommandHistory(), undoRedoStack);
         return undoCommand;
     }
@@ -162,8 +161,8 @@ public class CommandTestUtil {
     /**
      * Returns a {@code RedoCommand} with the given {@code model} and {@code undoRedoStack} set.
      */
-    public static RedoCommand prepareRedoCommand(Model model, UndoRedoStack undoRedoStack, Password password) {
-        RedoCommand redoCommand = new RedoCommand(password);
+    public static RedoCommand prepareRedoCommand(Model model, UndoRedoStack undoRedoStack) {
+        RedoCommand redoCommand = new RedoCommand();
         redoCommand.setData(model, new CommandHistory(), undoRedoStack);
         return redoCommand;
     }

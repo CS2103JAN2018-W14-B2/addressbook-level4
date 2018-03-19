@@ -18,7 +18,6 @@ import seedu.ptman.logic.commands.CommandResult;
 import seedu.ptman.logic.commands.RedoCommand;
 import seedu.ptman.logic.commands.UndoCommand;
 import seedu.ptman.logic.commands.UndoableCommand;
-import seedu.ptman.model.Password;
 
 public class UndoRedoStackTest {
     private final DummyCommand dummyCommandOne = new DummyCommand();
@@ -26,7 +25,6 @@ public class UndoRedoStackTest {
     private final DummyUndoableCommand dummyUndoableCommandTwo = new DummyUndoableCommand();
 
     private UndoRedoStack undoRedoStack = new UndoRedoStack();
-    private Password defaultPassword = new Password();
 
     @Test
     public void push_nonUndoableCommand_redoStackClearedAndCommandNotAdded() {
@@ -61,13 +59,13 @@ public class UndoRedoStackTest {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
-        undoRedoStack.push(new UndoCommand(defaultPassword));
+        undoRedoStack.push(new UndoCommand());
         assertStackStatus(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
 
         // empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne), Collections.emptyList());
-        undoRedoStack.push(new UndoCommand(defaultPassword));
+        undoRedoStack.push(new UndoCommand());
         assertStackStatus(Collections.singletonList(dummyUndoableCommandOne), Collections.emptyList());
     }
 
@@ -76,13 +74,13 @@ public class UndoRedoStackTest {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
-        undoRedoStack.push(new RedoCommand(defaultPassword));
+        undoRedoStack.push(new RedoCommand());
         assertStackStatus(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
 
         // empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne), Collections.emptyList());
-        undoRedoStack.push(new RedoCommand(defaultPassword));
+        undoRedoStack.push(new RedoCommand());
         assertStackStatus(Collections.singletonList(dummyUndoableCommandOne), Collections.emptyList());
     }
 

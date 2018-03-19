@@ -10,6 +10,7 @@ import static seedu.ptman.logic.parser.CliSyntax.PREFIX_SALARY;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.ptman.commons.exceptions.IllegalValueException;
 import seedu.ptman.logic.commands.AddCommand;
@@ -38,7 +39,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_ADDRESS, PREFIX_SALARY, PREFIX_TAG, PREFIX_PASSWORD);
 
-        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_SALARY,
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_SALARY,
                 PREFIX_EMAIL, PREFIX_PASSWORD) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
@@ -50,13 +51,20 @@ public class AddCommandParser implements Parser<AddCommand> {
             Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
             Salary salary = ParserUtil.parseSalary(argMultimap.getValue(PREFIX_SALARY)).get();
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+
             Employee employee = new Employee(name, phone, email, address, salary, new Password(), tagList);
-            Password adminPassword = ParserUtil.parsePassword(argMultimap.getValue(PREFIX_PASSWORD)).get();
-
-            return new AddCommand(employee, adminPassword);
-
+            return new AddCommand(employee);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }
     }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
 }

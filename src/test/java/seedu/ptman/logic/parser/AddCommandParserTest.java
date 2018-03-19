@@ -41,7 +41,6 @@ import static seedu.ptman.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import org.junit.Test;
 
 import seedu.ptman.logic.commands.AddCommand;
-import seedu.ptman.model.Password;
 import seedu.ptman.model.employee.Address;
 import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Employee;
@@ -53,7 +52,7 @@ import seedu.ptman.testutil.EmployeeBuilder;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
-    private Password defaultPassword = new Password();
+
     @Test
     public void parse_allFieldsPresent_success() {
         Employee expectedEmployee = new EmployeeBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
@@ -63,27 +62,27 @@ public class AddCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + SALARY_DESC_BOB + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployee, defaultPassword));
+                new AddCommand(expectedEmployee));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + SALARY_DESC_BOB + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployee, defaultPassword));
+                new AddCommand(expectedEmployee));
 
         // multiple phones - last phone accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + SALARY_DESC_BOB + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployee, defaultPassword));
+                new AddCommand(expectedEmployee));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_AMY + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + SALARY_DESC_BOB  + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployee, defaultPassword));
+                new AddCommand(expectedEmployee));
 
         // multiple addresses - last ptman accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_AMY
                 + ADDRESS_DESC_BOB + SALARY_DESC_BOB + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployee, defaultPassword));
+                new AddCommand(expectedEmployee));
 
         // multiple tags - all accepted
         Employee expectedEmployeeMultipleTags =
@@ -92,7 +91,7 @@ public class AddCommandParserTest {
                 .withPassword(DEFAULT1_HASH).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                + SALARY_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND + DEFAULT_DESC_ADMINPASSWORD,
-                new AddCommand(expectedEmployeeMultipleTags, defaultPassword));
+                new AddCommand(expectedEmployeeMultipleTags));
     }
 
     @Test
@@ -102,7 +101,7 @@ public class AddCommandParserTest {
                 .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withSalary(VALID_SALARY_AMY)
                 .withPassword(DEFAULT1_HASH).withTags().build();
         assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-                + SALARY_DESC_AMY + DEFAULT_DESC_ADMINPASSWORD, new AddCommand(expectedEmployee, defaultPassword));
+                        + SALARY_DESC_AMY + DEFAULT_DESC_ADMINPASSWORD, new AddCommand(expectedEmployee));
     }
 
     @Test

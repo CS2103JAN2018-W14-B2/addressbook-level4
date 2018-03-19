@@ -11,7 +11,6 @@ import seedu.ptman.logic.CommandHistory;
 import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.ModelManager;
-import seedu.ptman.model.Password;
 import seedu.ptman.model.UserPrefs;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.testutil.EmployeeBuilder;
@@ -22,10 +21,9 @@ import seedu.ptman.testutil.EmployeeBuilder;
 public class AddCommandIntegrationTest {
 
     private Model model;
-    private Password defaultPassword;
+
     @Before
     public void setUp() {
-        defaultPassword = new Password();
         model = new ModelManager(getTypicalPartTimeManager(), new UserPrefs());
     }
 
@@ -36,22 +34,21 @@ public class AddCommandIntegrationTest {
         Model expectedModel = new ModelManager(model.getPartTimeManager(), new UserPrefs());
         expectedModel.addEmployee(validEmployee);
 
-        assertCommandSuccess(prepareCommand(validEmployee, model, defaultPassword), model,
+        assertCommandSuccess(prepareCommand(validEmployee, model), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, validEmployee), expectedModel);
     }
 
     @Test
     public void execute_duplicateEmployee_throwsCommandException() {
         Employee employeeInList = model.getPartTimeManager().getEmployeeList().get(0);
-        assertCommandFailure(prepareCommand(employeeInList, model, defaultPassword), model,
-                AddCommand.MESSAGE_DUPLICATE_EMPLOYEE);
+        assertCommandFailure(prepareCommand(employeeInList, model), model, AddCommand.MESSAGE_DUPLICATE_EMPLOYEE);
     }
 
     /**
      * Generates a new {@code AddCommand} which upon execution, adds {@code employee} into the {@code model}.
      */
-    private AddCommand prepareCommand(Employee employee, Model model, Password password) {
-        AddCommand command = new AddCommand(employee, password);
+    private AddCommand prepareCommand(Employee employee, Model model) {
+        AddCommand command = new AddCommand(employee);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
