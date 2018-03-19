@@ -919,30 +919,78 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 *MSS*
 
-1.  Employer enters employee details and working outlet(s)
-2.  PTMan adds the employee
+1.  Employer logs in to their admin account.
+2.  Employer enters the employee's details.
+3.  PTMan adds the employee.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. The entered format is invalid.
+* 2a. The entered format is invalid.
 +
 [none]
-** 1a1. PTMan shows an error message.
+** 2a1. PTMan shows an error message.
 +
 Use case resumes at step 1.
+
+=== Use case: Add shift
+
+*MSS*
+
+1.  Employer logs in to their admin account.
+2.  Employer enters the shift details.
+3.  PTMan adds the shift.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The entered format is invalid.
++
+[none]
+** 2a1. PTMan shows an error message.
++
+Use case resumes at step 1.
+
+=== Use case: Delete shift
+
+*MSS*
+
+1.  Employer logs in to their admin account.
+2.  Employer enters the shift's index.
+3.  PTMan deletes the shift.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The entered format is invalid.
++
+[none]
+** 2a1. PTMan shows an error message.
++
+Use case resumes at step 2.
+[none]
+* 2b. The entered index does not exist.
++
+[none]
+** 2b1. PTMan shows an error message.
++
+Use case resumes at step 2.
 
 [discrete]
 === Use case: Delete employee
 
 *MSS*
 
-1.  Employer requests to list employees
-2.  PTMan shows a list of employees
-3.  Employer requests to delete a specific employee in the list
-4.  PTMan deletes the employee
+1.  Employer requests to list employees.
+2.  PTMan shows a list of employees.
+3.  Employer requests to delete a specific employee in the list.
+4.  PTMan deletes the employee.
 +
 Use case ends.
 
@@ -965,44 +1013,42 @@ Use case resumes at step 2.
 
 *MSS*
 
-1.  Employer enters an employee's name and working outlet.
-2.  PTMan finds the employee in the corresponding outlet.
-3.  Employer enters new details of the employee that he wants to update.
-4.  PTMan changes the employee's details.
+1.  Employer logs in to their admin account.
+2.  Employer enters the employee's index and the new details of the employee.
+3.  PTMan changes the employee's details.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. The entered format is invalid.
+* 2a. The entered format is invalid.
 +
 [none]
-** 1a1. PTMan shows an error message.
+** 2a1. PTMan shows an error message.
 +
-Use case resumes at step 1.
-* 1b. The employee cannot be found.
-+
-[none]
-** 1b1. PTMan shows an error message.
-+
-Use case resumes at step 1.
-* 3a. The entered format of new details is invalid.
+Use case resumes at step 2.
+* 2b. The employee cannot be found.
 +
 [none]
-** 3a1. PTMan shows an error message.
+** 2b1. PTMan shows an error message.
 +
-Use case resumes at step 3.
+Use case resumes at step 2.
+* 2c. The entered format of new details is invalid.
++
+[none]
+** 2c1. PTMan shows an error message.
++
+Use case resumes at step 2.
 
 [discrete]
-=== Use case: Sign up for available time slots
+=== Use case: Sign up for available shifts
 
 *MSS*
 
-1.  Employee enters a time slot that he wants to sign up and the corresponding outlet.
-2.  PTMan sends a confirm message.
-3.  Employee confirms.
-4.  PTMan updates the indicated time slot in the timetable of the indicated outlet.
+1.  Employee enters a shift that he wants to work in.
+2.  PTMan sends a confirmation message to the employee.
+3.  PTMan updates the indicated time slot in the timetable of the indicated outlet.
 +
 Use case ends.
 
@@ -1015,54 +1061,16 @@ Use case ends.
 ** 1a1. PTMan shows an error message.
 +
 Use case resumes at step 1.
-* 1b. The time slot is not available.
+* 1b. The shift is full.
 +
 [none]
 ** 1b1. PTMan shows an error message.
 +
 Use case resumes at step 1.
-* 1c. The outlet is invalid.
-+
-[none]
-** 1c1. PTMan shows an error message.
-+
-Use case resumes at step 1.
-* 3a. The employee does not confirm.
-+
-[none]
-** 3a1. PTMan shows a message that employee cancels the request.
-+
-Use case ends.
 
 [none]
-* 1b. The entered outlet already exist.
-+
-[none]
-** 1b1. PTMan shows an error message.
-+
-Use case resumes at step 1.
 
 [discrete]
-=== Use case: Add outlet
-
-*MSS*
-
-1.  Employer enters outlet details
-2.  PTMan adds the outlet into the list of outlet
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. The entered format is invalid.
-+
-[none]
-** 1a1. PTMan shows an error message.
-+
-Use case resumes at step 1.
-
-[appendix]
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
@@ -1127,19 +1135,17 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
-=== Deleting a person
+=== Deleting an employee
 
-. Deleting a person while all persons are listed
+. Deleting an employee while all employees are listed
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Prerequisites: List all employees using the `list` command. Multiple persons in the list.
 .. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   Expected: First employee is deleted from the list. Details of the deleted employee shown in the status message. Timestamp in the status bar is updated.
 .. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   Expected: No employee is deleted. Error details shown in the status message. Status bar remains the same.
 .. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
    Expected: Similar to previous.
-
-_{ more test cases ... }_
 
 === Saving data
 
