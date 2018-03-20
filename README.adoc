@@ -38,6 +38,6 @@ _Marco Jakob_.
 
 * AddressBook-Level4 project created by https://github.com/nus-cs2103-AY1718S2/addressbook-level4[SE-EDU] initiative
 
-* Libraries used: https://github.com/TomasMikula/EasyBind[EasyBind], https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit4[JUnit4]
+* Libraries used: https://github.com/TomasMikula/EasyBind[EasyBind], https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit4[JUnit4], https://github.com/dlemmermann/CalendarFX[CalendarFX]
 
 == Licence : link:LICENSE[MIT]
