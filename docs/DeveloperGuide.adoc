@@ -438,6 +438,11 @@ This section highlights the considerations behind our application's design choic
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+=== Outlet Feature
+
+==== Current Implementation
+The basic outlet information is stored in a separate file and managed by OutletInformation class.
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
@@ -893,8 +898,8 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 *Chin Chye*:
 
 . *Access Control (Major)*:
-.. *Password*: Added password to every single employee and outlet.
-.. *Login for edit/admin Mode*: Using the password in outlet, employer are able to login to access admin function.
+.. *Password*: Give password to every employee and outlet to protect from accidental/misuse of command.
+.. *Login for edit/admin Mode*: Using the password in outlet, employer are able to login to access admin functions.
 .. *Change/reset password command*: Employee and employer are able to change/reset password to keep their data/password a secret.
 . *Salary (Minor)*: Added salary to employee. This variable is used to keep track of how much employee has earned so far.
 
@@ -1145,12 +1150,10 @@ Use case resumes at step 1.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 .  Should respond within 2 seconds after entering any command.
-.  Should be usable by users who has never used a command line interface before.
-.  Should be expected to manage contact details of part-time workers in any outlet.
-.  Should be expected to manage work schedule in any outlet.
+.  Should be able to use by users who has never used a command line interface before.
+.  Should be able to manage contact details of part-time workers in any outlet.
+.  Should be able to manage work schedule in any outlet.
 .  Should not be required to handle the printing of contact details and schedules.
-
-_{More to be added}_
 
 [appendix]
 == Glossary

@@ -16,11 +16,13 @@ import seedu.ptman.model.employee.UniqueEmployeeList;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 import seedu.ptman.model.outlet.OperatingHours;
+import seedu.ptman.model.outlet.OutletContact;
 import seedu.ptman.model.outlet.OutletInformation;
 import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.UniqueShiftList;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
+import seedu.ptman.model.outlet.exceptions.NoOutletInformationFieldChangeException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
 import seedu.ptman.model.tag.Tag;
 import seedu.ptman.model.tag.UniqueTagList;
@@ -148,8 +150,9 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
         employees.setEmployee(target, syncedEditedEmployee);
     }
 
-    public void updateOutlet(OutletName name, OperatingHours operatingHours) {
-        outlet.setOutletInformation(name, operatingHours);
+    public void updateOutlet(OutletName name, OperatingHours operatingHours, OutletContact outletContact)
+            throws NoOutletInformationFieldChangeException {
+        outlet.setOutletInformation(name, operatingHours, outletContact);
     }
 
     public String getOutletInformationMessage() {

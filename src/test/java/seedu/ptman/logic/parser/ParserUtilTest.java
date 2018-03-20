@@ -17,7 +17,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.ptman.commons.exceptions.IllegalValueException;
-import seedu.ptman.model.Password;
 import seedu.ptman.model.employee.Address;
 import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Name;
@@ -25,6 +24,7 @@ import seedu.ptman.model.employee.Phone;
 import seedu.ptman.model.outlet.Capacity;
 import seedu.ptman.model.outlet.Day;
 import seedu.ptman.model.outlet.OperatingHours;
+import seedu.ptman.model.outlet.OutletContact;
 import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Time;
 import seedu.ptman.model.tag.Tag;
@@ -37,7 +37,7 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_OUTLET_NAME = "Awesome@Outlet";
-    private static final String INVALID_MASTER_PASSWORD = " ";
+    private static final String INVALID_OUTLET_CONTACT = "+1234";
     private static final String INVALID_OPERATING_HOURS = "09:00/18:00";
     private static final String INVALID_DAY = "tue";
     private static final String INVALID_TIME = "1pm";
@@ -49,7 +49,7 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
     private static final String VALID_OUTLET_NAME = "AwesomeOutlet";
-    private static final String VALID_MASTER_PASSWORD = "PASSWORD";
+    private static final String VALID_OUTLET_CONTACT = "91234567";
     private static final String VALID_OPERATING_HOURS = "09:00-18:00";
     private static final String VALID_DAY = "tuesday";
     private static final String VALID_TIME = "1300";
@@ -390,39 +390,39 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseMasterPassword_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseMasterPassword((String) null));
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseMasterPassword((Optional<String>) null));
+    public void parseOutletContact_null_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseOutletContact((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseOutletContact((Optional<String>) null));
     }
 
     @Test
-    public void parseMasterPassword_invalidValue_throwsIllegalValueException() {
-        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseMasterPassword(
-                INVALID_MASTER_PASSWORD));
-        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseMasterPassword(
-                Optional.of(INVALID_MASTER_PASSWORD)));
+    public void parseOutletContact_invalidValue_throwsIllegalValueException() {
+        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseOutletContact(
+                INVALID_OUTLET_CONTACT));
+        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseOutletContact(
+                Optional.of(INVALID_OUTLET_CONTACT)));
     }
 
     @Test
-    public void parseMasterPassword_optionalEmpty_returnsOptionalEmpty() throws Exception {
-        assertFalse(ParserUtil.parseMasterPassword(Optional.empty()).isPresent());
+    public void parseOutletContact_optionalEmpty_returnsOptionalEmpty() throws Exception {
+        assertFalse(ParserUtil.parseOutletContact(Optional.empty()).isPresent());
     }
 
     @Test
-    public void parseMasterPassword_validValueWithoutWhitespace_returnsMasterPassword() throws Exception {
-        Password expectedMasterPassword = new Password(VALID_MASTER_PASSWORD);
-        assertEquals(expectedMasterPassword, ParserUtil.parseMasterPassword(VALID_MASTER_PASSWORD));
-        assertEquals(Optional.of(expectedMasterPassword), ParserUtil.parseMasterPassword(
-                Optional.of(VALID_MASTER_PASSWORD)));
+    public void parseOutletContact_validValueWithoutWhitespace_returnsOutletContact() throws Exception {
+        OutletContact expectedOutletContact = new OutletContact(VALID_OUTLET_CONTACT);
+        assertEquals(expectedOutletContact, ParserUtil.parseOutletContact(VALID_OUTLET_CONTACT));
+        assertEquals(Optional.of(expectedOutletContact), ParserUtil.parseOutletContact(
+                Optional.of(VALID_OUTLET_CONTACT)));
     }
 
     @Test
-    public void parseMasterPassword_validValueWithWhitespace_returnsTrimmedMasterPassword() throws Exception {
-        String masterPasswordWithWhitespace = WHITESPACE + VALID_MASTER_PASSWORD + WHITESPACE;
-        Password expectedMasterPassword = new Password(VALID_MASTER_PASSWORD);
-        assertEquals(expectedMasterPassword, ParserUtil.parseMasterPassword(masterPasswordWithWhitespace));
-        assertEquals(Optional.of(expectedMasterPassword), ParserUtil.parseMasterPassword(
-                Optional.of(masterPasswordWithWhitespace)));
+    public void parseOutletContact_validValueWithWhitespace_returnsTrimmedOutletContact() throws Exception {
+        String outletContactWithWhitespace = WHITESPACE + VALID_OUTLET_CONTACT + WHITESPACE;
+        OutletContact expectedOutletContact = new OutletContact(VALID_OUTLET_CONTACT);
+        assertEquals(expectedOutletContact, ParserUtil.parseOutletContact(outletContactWithWhitespace));
+        assertEquals(Optional.of(expectedOutletContact), ParserUtil.parseOutletContact(
+                Optional.of(outletContactWithWhitespace)));
     }
 
 

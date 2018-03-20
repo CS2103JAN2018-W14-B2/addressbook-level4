@@ -7,9 +7,11 @@ import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 import seedu.ptman.model.outlet.OperatingHours;
+import seedu.ptman.model.outlet.OutletContact;
 import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
+import seedu.ptman.model.outlet.exceptions.NoOutletInformationFieldChangeException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
 import seedu.ptman.model.tag.Tag;
 
@@ -70,7 +72,8 @@ public interface Model {
     /**
      * Replaces the given employee {@code target} with {@code editedEmployee}.
      */
-    void updateOutlet(OutletName name, OperatingHours operatingHours);
+    void updateOutlet(OutletName name, OperatingHours operatingHours, OutletContact outletContact)
+            throws NoOutletInformationFieldChangeException;
 
     String getOutletInformationMessage();
 

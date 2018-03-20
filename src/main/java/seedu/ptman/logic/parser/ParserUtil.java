@@ -20,6 +20,7 @@ import seedu.ptman.model.employee.Salary;
 import seedu.ptman.model.outlet.Capacity;
 import seedu.ptman.model.outlet.Day;
 import seedu.ptman.model.outlet.OperatingHours;
+import seedu.ptman.model.outlet.OutletContact;
 import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Time;
 import seedu.ptman.model.tag.Tag;
@@ -272,29 +273,29 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String masterPassword} into a {@code Password}.
+     * Parses a {@code String outletContact} into a {@code OutletContact}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalValueException if the given {@code masterPassword} is invalid.
+     * @throws IllegalValueException if the given {@code OutletContact} is invalid.
      */
-    public static Password parseMasterPassword(String masterPassword) throws IllegalValueException {
-        requireNonNull(masterPassword);
-        String trimmedMasterPassword = masterPassword.trim();
-        if (!Password.isValidPassword(trimmedMasterPassword)) {
-            throw new IllegalValueException(Password.MESSAGE_PASSWORD_CONSTRAINTS);
+    public static OutletContact parseOutletContact(String outletContact) throws IllegalValueException {
+        requireNonNull(outletContact);
+        String trimmedOutletContact = outletContact.trim();
+        if (!OutletContact.isValidOutletContact(trimmedOutletContact)) {
+            throw new IllegalValueException(OutletContact.MESSAGE_OUTLET_CONTACT_CONSTRAINTS);
         }
-        return new Password(trimmedMasterPassword);
+        return new OutletContact(trimmedOutletContact);
     }
 
     /**
-     * Parses a {@code Optional<String> masterPassword} into an {@code Optional<Password>}
-     * if {@code masterPassword} is present.
+     * Parses a {@code Optional<String> outletContact} into an {@code Optional<OutletContact>}
+     * if {@code outletContact} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<Password> parseMasterPassword(Optional<String> masterPassword)
+    public static Optional<OutletContact> parseOutletContact(Optional<String> outletContact)
             throws IllegalValueException {
-        requireNonNull(masterPassword);
-        return masterPassword.isPresent() ? Optional.of(parseMasterPassword(masterPassword.get())) : Optional.empty();
+        requireNonNull(outletContact);
+        return outletContact.isPresent() ? Optional.of(parseOutletContact(outletContact.get())) : Optional.empty();
     }
 
     /**

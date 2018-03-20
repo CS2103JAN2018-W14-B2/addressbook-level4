@@ -7,9 +7,9 @@ import static seedu.ptman.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_CAPACITY;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_DAY;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.ptman.logic.parser.CliSyntax.PREFIX_MASTER_PASSWORD;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OPERATING_HOURS;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OUTLET_CONTACT;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OUTLET_NAME;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_PASSWORD;
 
@@ -53,7 +53,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_OUTLET_NAME = "ValidOutlet";
     public static final String VALID_OPERATING_HOURS = "09:00-22:00";
-    public static final String VALID_MASTER_PASSWORD = "DEFAULT1";
+    public static final String VALID_OUTLET_CONTACT = "912345678";
     public static final String DEFAULT1_HASH = "wkqTFuX6NX3hucWqn2ZxB24cRo73LssRq7IDOk6Zx00=";
     public static final String DEFAULT_PASSWORD = "DEFAULT1";
 
@@ -96,7 +96,7 @@ public class CommandTestUtil {
 
     public static final String OUTLET_NAME_DESC = " " + PREFIX_OUTLET_NAME + VALID_OUTLET_NAME;
     public static final String OPERATING_HOURS_DESC = " " + PREFIX_OPERATING_HOURS + VALID_OPERATING_HOURS;
-    public static final String MASTER_PASSWORD_DESC = " " + PREFIX_MASTER_PASSWORD + VALID_MASTER_PASSWORD;
+    public static final String OUTLET_CONTACT_DESC = " " + PREFIX_OUTLET_CONTACT + VALID_OUTLET_CONTACT;
     public static final String DEFAULT_DESC_ADMINPASSWORD = " " + PREFIX_PASSWORD + DEFAULT_PASSWORD;
 
     public static final String ADMINPASSWORD_DESC_DEFAULT = " " + PREFIX_PASSWORD + DEFAULT_PASSWORD;
@@ -108,7 +108,7 @@ public class CommandTestUtil {
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_OUTLET_NAME_DESC = " " + PREFIX_OUTLET_NAME + "Invalid@Outlet";
     public static final String INVALID_OPERATING_HOURS_DESC = " " + PREFIX_OPERATING_HOURS + "09:00/22:00";
-    public static final String INVALID_MASTER_PASSWORD_DESC = " " + PREFIX_MASTER_PASSWORD + " ";
+    public static final String INVALID_OUTLET_CONTACT_DESC = " " + PREFIX_OUTLET_CONTACT + "91234567@";
     public static final String INVALID_DESC_ADMINPASSWORD = " " + PREFIX_PASSWORD + "wrongpassword";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

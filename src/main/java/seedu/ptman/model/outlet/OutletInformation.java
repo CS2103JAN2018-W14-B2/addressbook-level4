@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import seedu.ptman.model.Password;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
+import seedu.ptman.model.outlet.exceptions.NoOutletInformationFieldChangeException;
 
 /**
  * Represents an outlet in PTMan.
@@ -16,26 +17,28 @@ public class OutletInformation {
 
     private static final String DEFAULT_OUTLET_NAME = "DefaultOutlet";
     private static final String DEFAULT_OPERATING_HOURS = "09:00-22:00";
+    private static final String DEFAULT_OUTLET_CONTACT = "91234567";
 
     private OutletName name;
     private Password masterPassword;
     private OperatingHours operatingHours;
+    private OutletContact outletContact;
     private Timetable timetable;
 
     /**
      * Constructs an {@code OutletInformation}.
      *
      * @param name a valid outlet name
-     * @param masterPassword a valid master password
      * @param operatingHours a valid operating hours
      */
-    public OutletInformation(OutletName name, Password masterPassword, OperatingHours operatingHours,
+    public OutletInformation(OutletName name, OperatingHours operatingHours, OutletContact outletContact,
                              Timetable timetable) {
-        requireAllNonNull(name, masterPassword, operatingHours, timetable);
+        requireAllNonNull(name, operatingHours, outletContact, timetable);
         this.name = name;
-        this.masterPassword = masterPassword;
         this.operatingHours = operatingHours;
+        this.outletContact = outletContact;
         this.timetable = timetable;
+        this.masterPassword = new Password();
     }
 
     /**
@@ -45,6 +48,7 @@ public class OutletInformation {
         this.name = new OutletName(DEFAULT_OUTLET_NAME);
         this.masterPassword = new Password();
         this.operatingHours = new OperatingHours(DEFAULT_OPERATING_HOURS);
+        this.outletContact = new OutletContact(DEFAULT_OUTLET_CONTACT);
         this.timetable = new Timetable(LocalDate.now());
     }
 
@@ -64,14 +68,28 @@ public class OutletInformation {
         return operatingHours;
     }
 
+    public OutletContact getOutletContact() {
+        return outletContact;
+    }
+
     public Timetable getTimetable() {
         return timetable;
     }
 
-    public void setOutletInformation(OutletName name, OperatingHours operatingHours) {
-        requireAllNonNull(name, operatingHours);
-        this.name = name;
-        this.operatingHours = operatingHours;
+    public void setOutletInformation(OutletName name, OperatingHours operatingHours, OutletContact outletContact)
+            throws NoOutletInformationFieldChangeException {
+        if (name == null && operatingHours == null && outletContact == null) {
+            throw new NoOutletInformationFieldChangeException();
+        }
+        if (name != null) {
+            this.name = name;
+        }
+        if (operatingHours != null) {
+            this.operatingHours = operatingHours;
+        }
+        if (outletContact != null) {
+            this.outletContact = outletContact;
+        }
     }
 
     @Override
@@ -96,7 +114,9 @@ public class OutletInformation {
         builder.append("Outlet Name: ")
                 .append(getName())
                 .append(" Operating Hour: ")
-                .append(getOperatingHours());
+                .append(getOperatingHours())
+                .append(" Contact: ")
+                .append(getOutletContact());
         return builder.toString();
     }
 
