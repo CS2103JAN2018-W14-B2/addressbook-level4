@@ -1,5 +1,6 @@
 package seedu.ptman.logic.commands;
 
+import static seedu.ptman.commons.core.Messages.MESSAGE_ACCESS_DENIED;
 import static seedu.ptman.logic.UndoRedoStackUtil.prepareStack;
 import static seedu.ptman.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.ptman.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -18,6 +19,7 @@ import seedu.ptman.logic.CommandHistory;
 import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.ModelManager;
+import seedu.ptman.model.Password;
 import seedu.ptman.model.UserPrefs;
 
 public class RedoCommandTest {
@@ -34,6 +36,8 @@ public class RedoCommandTest {
         deleteCommandTwo.setData(model, EMPTY_COMMAND_HISTORY, EMPTY_STACK);
         deleteCommandOne.preprocessUndoableCommand();
         deleteCommandTwo.preprocessUndoableCommand();
+        // in Admin Mode
+        model.setTrueAdminMode(new Password());
     }
 
     @Test
@@ -54,5 +58,9 @@ public class RedoCommandTest {
 
         // no command in redoStack
         assertCommandFailure(redoCommand, model, RedoCommand.MESSAGE_FAILURE);
+
+        // not in admin mode
+        model.setFalseAdminMode();
+        assertCommandFailure(redoCommand, model, MESSAGE_ACCESS_DENIED);
     }
 }

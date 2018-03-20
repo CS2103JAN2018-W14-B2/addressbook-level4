@@ -2,14 +2,8 @@ package seedu.ptman.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static seedu.ptman.testutil.TypicalShifts.MONDAY_AM;
-import static seedu.ptman.testutil.TypicalShifts.MONDAY_PM;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -19,7 +13,6 @@ import org.junit.rules.ExpectedException;
 import javafx.collections.ObservableList;
 import seedu.ptman.logic.CommandHistory;
 import seedu.ptman.logic.UndoRedoStack;
-import seedu.ptman.logic.commands.exceptions.CommandException;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.PartTimeManager;
 import seedu.ptman.model.Password;
@@ -27,76 +20,59 @@ import seedu.ptman.model.ReadOnlyPartTimeManager;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
+import seedu.ptman.model.employee.exceptions.InvalidPasswordException;
 import seedu.ptman.model.outlet.OperatingHours;
 import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
 import seedu.ptman.model.tag.Tag;
-import seedu.ptman.testutil.ShiftBuilder;
 
-public class AddShiftCommandTest {
 
+
+public class LogInAdminCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void constructor_nullShift_throwsNullPointerException() {
+    public void constructor_nullPassword_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        new AddShiftCommand(null);
+        new LogInAdminCommand(null);
     }
 
     @Test
-    public void execute_shiftAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingShiftAdded modelStub = new ModelStubAcceptingShiftAdded();
-        modelStub.setTrueAdminMode(new Password());
+    public void execute_passwordAcceptedByModel_logInSuccessful() throws Exception {
+        ModelStubAcceptingAllPassword modelStub = new ModelStubAcceptingAllPassword();
+        modelStub.setIsAdminMode(false); // not already adminMode
+        modelStub.setIsSetTrueAdminMode(true); // password accepted.
+        CommandResult commandResult = getLogInAdminCommandTest(new Password(), modelStub).execute();
 
-        Shift validShift = new ShiftBuilder().build();
-        CommandResult commandResult = getAddShiftCommandForShift(validShift, modelStub).execute();
-
-        assertEquals(String.format(AddShiftCommand.MESSAGE_SUCCESS, validShift), commandResult.feedbackToUser);
-        assertEquals(Arrays.asList(validShift), modelStub.shiftsAdded);
+        assertEquals(LogInAdminCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
     }
 
     @Test
-    public void execute_duplicateShift_throwsCommandException() throws Exception {
-        ModelStub modelStub = new ModelStubThrowingDuplicateShiftException();
-        modelStub.setTrueAdminMode(new Password());
-        Shift validShift = new ShiftBuilder().build();
-
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(AddShiftCommand.MESSAGE_DUPLICATE_SHIFT);
-
-        getAddShiftCommandForShift(validShift, modelStub).execute();
+    public void execute_correctPassword_alreadyLoggedIn() throws Exception {
+        ModelStubAcceptingAllPassword modelStub = new ModelStubAcceptingAllPassword();
+        modelStub.setIsAdminMode(true); // already in adminMode
+        modelStub.setIsSetTrueAdminMode(true); // password accepted.
+        CommandResult commandResult = getLogInAdminCommandTest(new Password(), modelStub).execute();
+        assertEquals(LogInAdminCommand.MESSAGE_LOGGEDIN, commandResult.feedbackToUser);
     }
 
     @Test
-    public void equals() {
-        AddShiftCommand addMondayAmCommand = new AddShiftCommand(MONDAY_AM);
-        AddShiftCommand addMondayPmCommand = new AddShiftCommand(MONDAY_PM);
-
-        // same object -> returns true
-        assertTrue(addMondayAmCommand.equals(addMondayAmCommand));
-
-        // same values -> returns true
-        AddShiftCommand addMondayAmCommandCopy = new AddShiftCommand(MONDAY_AM);
-        assertTrue(addMondayAmCommand.equals(addMondayAmCommandCopy));
-
-        // different types -> returns false
-        assertFalse(addMondayAmCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(addMondayAmCommand.equals(null));
-
-        // different employee -> returns false
-        assertFalse(addMondayAmCommand.equals(addMondayPmCommand));
+    public void execute_wrongPassword_invalidPasswordException() throws Exception {
+        ModelStubAcceptingAllPassword modelStub = new ModelStubAcceptingAllPassword();
+        modelStub.setIsAdminMode(false); // not in adminMode
+        modelStub.setIsSetTrueAdminMode(false); // password rejected.
+        thrown.expect(InvalidPasswordException.class);
+        getLogInAdminCommandTest(new Password(), modelStub).execute();
     }
 
     /**
-     * Generates a new AddCommand with the details of the given employee.
+     * Generates a new LogInAdminCommand with the details of the given employee.
      */
-    private AddShiftCommand getAddShiftCommandForShift(Shift shift, Model model) {
-        AddShiftCommand command = new AddShiftCommand(shift);
+    private LogInAdminCommand getLogInAdminCommandTest(Password password, Model model) {
+        LogInAdminCommand command = new LogInAdminCommand(password);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
@@ -111,10 +87,6 @@ public class AddShiftCommandTest {
         }
 
         @Override
-        public void addShift(Shift shift) throws DuplicateShiftException {
-            fail("This method should not be called.");
-        }
-        @Override
         public boolean isAdminMode() {
             fail("This method should not be called.");
             return false;
@@ -123,12 +95,15 @@ public class AddShiftCommandTest {
         @Override
         public boolean setTrueAdminMode(Password password) {
             fail("This method should not be called.");
-
             return false;
         }
 
         @Override
         public void setFalseAdminMode() {
+            fail("This method should not be called.");
+        }
+
+        public void addShift(Shift shift) throws DuplicateShiftException {
             fail("This method should not be called.");
         }
 
@@ -195,57 +170,39 @@ public class AddShiftCommandTest {
     }
 
     /**
-     * A Model stub that always throw a DuplicateEmployeeException when trying to add an employee.
+     * A Model stub that always accept the password being given.
      */
-    private class ModelStubThrowingDuplicateShiftException extends ModelStub {
-        @Override
-        public void addShift(Shift shift) throws DuplicateShiftException {
-            throw new DuplicateShiftException();
-        }
-
-        @Override
-        public boolean isAdminMode() {
-            return true;
-        }
-
+    private class ModelStubAcceptingAllPassword extends ModelStub {
+        private boolean isSetTrueAdminMode = false;
+        private boolean isAdminMode = false;
         @Override
         public boolean setTrueAdminMode(Password password) {
             requireNonNull(password);
-            return true;
+            return isSetTrueAdminMode;
+        }
+
+        @Override
+        public boolean isAdminMode()  {
+            return isAdminMode;
         }
 
         @Override
         public ReadOnlyPartTimeManager getPartTimeManager() {
             return new PartTimeManager();
         }
-    }
 
-    /**
-     * A Model stub that always accept the employee being added.
-     */
-    private class ModelStubAcceptingShiftAdded extends ModelStub {
-        final ArrayList<Shift> shiftsAdded = new ArrayList<>();
-
-        @Override
-        public void addShift(Shift shift) throws DuplicateShiftException {
-            requireNonNull(shift);
-            shiftsAdded.add(shift);
+        /**
+         * set for test case purpose only.
+         */
+        public void setIsAdminMode(boolean isAdminMode) {
+            this.isAdminMode = isAdminMode;
         }
 
-        @Override
-        public boolean setTrueAdminMode(Password password) {
-            requireNonNull(password);
-            return true;
-        }
-
-        @Override
-        public boolean isAdminMode() {
-            return true;
-        }
-
-        @Override
-        public ReadOnlyPartTimeManager getPartTimeManager() {
-            return new PartTimeManager();
+        /**
+         * set for test case purpose only.
+         */
+        public void setIsSetTrueAdminMode(boolean isSetTrueAdminMode) {
+            this.isSetTrueAdminMode = isSetTrueAdminMode;
         }
     }
 

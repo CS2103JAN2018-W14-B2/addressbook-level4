@@ -15,9 +15,9 @@ import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.UniqueEmployeeList;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
-import seedu.ptman.model.outlet.Name;
 import seedu.ptman.model.outlet.OperatingHours;
 import seedu.ptman.model.outlet.OutletInformation;
+import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.UniqueShiftList;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
@@ -34,9 +34,8 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
     private final UniqueEmployeeList employees;
     private final UniqueShiftList shifts;
     private final UniqueTagList tags;
-    private final Password password;
+    private boolean isAdminMode;
     private final OutletInformation outlet;
-
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -48,8 +47,8 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
         employees = new UniqueEmployeeList();
         shifts = new UniqueShiftList();
         tags = new UniqueTagList();
-        password = new Password();
-        outlet = new OutletInformation(new Name("asd"), new Password(""), new OperatingHours("11:00-14:00"));
+        outlet = new OutletInformation();
+        isAdminMode = false;
     }
 
     public PartTimeManager() {}
@@ -63,8 +62,17 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
     }
 
     //// authorization operations
-    public boolean isAdmin(String password) {
-        return this.password.isCorrectPassword(password);
+    public boolean isAdminMode() {
+        return this.isAdminMode;
+    }
+
+    /**
+     * Check if given password is of outlet's
+     * @param password
+     * @return true if password is the same
+     */
+    public boolean isAdminPassword(Password password) {
+        return outlet.getMasterPassword().equals(password);
     }
 
     //// list overwrite operations
@@ -140,6 +148,14 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
         employees.setEmployee(target, syncedEditedEmployee);
     }
 
+    public void updateOutlet(OutletName name, OperatingHours operatingHours) {
+        outlet.setOutletInformation(name, operatingHours);
+    }
+
+    public String getOutletInformationMessage() {
+        return outlet.toString();
+    }
+
     /**
      *  Updates the master tag list to include tags in {@code employee} that are not in the list.
      *  @return a copy of this {@code employee} such that every tag in this employee points to a Tag
@@ -202,6 +218,10 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
     }
 
     //// util methods
+    public void setAdminMode(boolean isAdmin) {
+        isAdminMode = isAdmin;
+    }
+
 
     /**
      * Remove tag from Employee if the tag exist in Employee.

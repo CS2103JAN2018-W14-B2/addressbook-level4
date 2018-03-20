@@ -21,14 +21,18 @@ import seedu.ptman.logic.commands.Command;
 import seedu.ptman.logic.commands.DeleteCommand;
 import seedu.ptman.logic.commands.DeleteShiftCommand;
 import seedu.ptman.logic.commands.EditCommand;
+import seedu.ptman.logic.commands.EditOutletCommand;
 import seedu.ptman.logic.commands.ExitCommand;
 import seedu.ptman.logic.commands.FindCommand;
 import seedu.ptman.logic.commands.HelpCommand;
 import seedu.ptman.logic.commands.HistoryCommand;
 import seedu.ptman.logic.commands.ListCommand;
+import seedu.ptman.logic.commands.LogInAdminCommand;
+import seedu.ptman.logic.commands.LogOutAdminCommand;
 import seedu.ptman.logic.commands.RedoCommand;
 import seedu.ptman.logic.commands.SelectCommand;
 import seedu.ptman.logic.commands.UndoCommand;
+import seedu.ptman.logic.commands.ViewOutletCommand;
 import seedu.ptman.logic.parser.exceptions.ParseException;
 
 /**
@@ -57,6 +61,12 @@ public class PartTimeManagerParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
+
+        case LogOutAdminCommand.COMMAND_WORD:
+            return new LogOutAdminCommand();
+
+        case LogInAdminCommand.COMMAND_WORD:
+            return new LogInAdminCommandParser().parse(arguments);
 
         case AddCommand.COMMAND_WORD:
         case AddCommand.COMMAND_ALIAS:
@@ -111,6 +121,14 @@ public class PartTimeManagerParser {
         case RedoCommand.COMMAND_WORD:
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
+
+        case EditOutletCommand.COMMAND_WORD:
+        case EditOutletCommand.COMMAND_ALIAS:
+            return new EditOutletCommandParser().parse(arguments);
+
+        case ViewOutletCommand.COMMAND_WORD:
+        case ViewOutletCommand.COMMAND_ALIAS:
+            return new ViewOutletCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -12,6 +12,7 @@ import static seedu.ptman.testutil.TypicalEmployees.getTypicalPartTimeManager;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_FIRST_EMPLOYEE;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_SECOND_EMPLOYEE;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import seedu.ptman.commons.core.Messages;
@@ -20,6 +21,7 @@ import seedu.ptman.logic.CommandHistory;
 import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.ModelManager;
+import seedu.ptman.model.Password;
 import seedu.ptman.model.UserPrefs;
 import seedu.ptman.model.employee.Employee;
 
@@ -30,6 +32,11 @@ import seedu.ptman.model.employee.Employee;
 public class DeleteCommandTest {
 
     private Model model = new ModelManager(getTypicalPartTimeManager(), new UserPrefs());
+
+    @Before
+    public void setMode_adminMode() {
+        model.setTrueAdminMode(new Password());
+    }
 
     @Test
     public void execute_validIndexUnfilteredList_success() throws Exception {
@@ -50,6 +57,14 @@ public class DeleteCommandTest {
         DeleteCommand deleteCommand = prepareCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_EMPLOYEE_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_notInAdminMode_throwsCommandExceptionAccessDenied() throws Exception {
+        model.setFalseAdminMode();
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredEmployeeList().size());
+        DeleteCommand deleteCommand = prepareCommand(outOfBoundIndex);
+        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_ACCESS_DENIED);
     }
 
     @Test

@@ -20,10 +20,13 @@ import seedu.ptman.logic.UndoRedoStack;
 import seedu.ptman.logic.commands.exceptions.CommandException;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.PartTimeManager;
+import seedu.ptman.model.Password;
 import seedu.ptman.model.ReadOnlyPartTimeManager;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
+import seedu.ptman.model.outlet.OperatingHours;
+import seedu.ptman.model.outlet.OutletName;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
@@ -106,13 +109,29 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean isAdminMode() {
+            fail("This method should not be called.");
+            return false;
+        }
+
+        @Override
+        public boolean setTrueAdminMode(Password password) {
+            fail("This method should not be called.");
+            return false;
+        }
+
+        @Override
+        public void setFalseAdminMode() {
+            fail("This method should not be called.");
+        }
+
         public void addShift(Shift shift) throws DuplicateShiftException {
             fail("This method should not be called.");
         }
 
         public boolean isAdmin(String password) {
             fail("This method should not be called.");
-            return true;
+            return false;
         }
 
         @Override
@@ -140,6 +159,17 @@ public class AddCommandTest {
         public void updateEmployee(Employee target, Employee editedEmployee)
                 throws DuplicateEmployeeException {
             fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateOutlet(OutletName name, OperatingHours operatingHours) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public String getOutletInformationMessage() {
+            fail("This method should not be called.");
+            return null;
         }
 
         @Override
@@ -175,6 +205,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean isAdminMode() {
+            return true;
+        }
+
+        @Override
         public ReadOnlyPartTimeManager getPartTimeManager() {
             return new PartTimeManager();
         }
@@ -190,6 +225,11 @@ public class AddCommandTest {
         public void addEmployee(Employee employee) throws DuplicateEmployeeException {
             requireNonNull(employee);
             employeesAdded.add(employee);
+        }
+
+        @Override
+        public boolean isAdminMode()  {
+            return true;
         }
 
         @Override
