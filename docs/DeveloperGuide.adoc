@@ -440,8 +440,65 @@ This section highlights the considerations behind our application's design choic
 
 === Outlet Feature
 
-==== Current Implementation
-The basic outlet information is stored in a separate file and managed by OutletInformation class.
+==== Reason for implementation
+PTMan is designed for outlets such as bubble tea shops and fast food resturants which require a large number of part-time workers.
+This outlet feature stores basic outlet information such as outlet name, operating hours, contact number, admin password and timetable for workers.
+Such details are essential to facilitate other functions such as the access control system and the timetable displayed in the GUI.
+
+==== Current implementation
+
+===== Model component
+
+Currently, the `OutletInformation` object initialized in the `PartTimeManager` is created by calling its default constructor:
+----
+OutletInformation()
+----
+This default constructor initializes the five fields of `OutletInformation` to respective default values:
+----
+    public OutletInformation() {
+        this.name = new OutletName(DEFAULT_OUTLET_NAME);
+        this.masterPassword = new Password();
+        this.operatingHours = new OperatingHours(DEFAULT_OPERATING_HOURS);
+        this.outletContact = new OutletContact(DEFAULT_OUTLET_CONTACT);
+        this.timetable = new Timetable(LocalDate.now());
+    }
+----
+This saves the time of any employer new to PTMan because the creation of an outlet has already been done with default values.
+Employers can edit those values by entering an `editoutlet` command.
+However, there is an alternative way to create an `OutletInformation` object:
+----
+OutletInformation(OutletName outletName, OperatingHours operatingHours, OutletContact outletContact, Timetable timetable)
+----
+This constructor allows flexity in storing outlet information, but master password must be set to the default value.
+It is because this default password is used for employer's first login and any employer cannot change his password without the first login.
+stored in a separate file and managed by the `OutletInformation` class. +
+
+===== Logic component
+
+Currently, there are two commands that allows employers to change fields of the `OutletInformation` object. +
+
+*Edit outlet command*
+
+After login with correct master password, using the `editoutlet` command, employers should be able to edit the outlet information including
+outlet name, operating hours and contact numbers. Master password can only be changed using changemasterpassword command,
+while timetable can only be set with relevant commands.
+[NOTE]
+Editing with some fields not specified is allowed.
+For example, editoutlet n/OUTLETNAME is allowed. This enables employers to edit only the information required for change.
+
+*Change master password command*
+
+After login with correct master password, using the `changemasterpassword` command, employers should be able to change the master password as well.
+However, due to the possibility that previous employer forgot to log out, changemasterpassword command requires
+the old password for further verification. This reduces the risk of password getting stolen.
+
+===== Storage component
+
+All outlet information is stored in a separate file with data encryption to ensure crucial data cannot be interpreted by any third party.
+
+===== UI component
+Outlet information is displayed in the outlet panel above the time table.
+Any change in the outlet information will be reflected immediately after the command.
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
