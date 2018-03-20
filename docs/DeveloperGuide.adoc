@@ -265,8 +265,8 @@ Example: `new Time("1030")` creates a `Time` object representing 10:30am.
 [NOTE]
 The string argument should represent a time in the 24-hour format.
 
-. `Capacity`: A class that wraps an integer indicating the number of employees required for the shift. +
-Example: `new Capacity("4")`
+. `Capacity`: A class that wraps an integer that indicates the number of employees required for the shift. +
+Example: `new Capacity("4")` creates a `Capacity` object representing integer `4`.
 
 In addition to these classes, `Shift` also contains a `UniqueEmployeeList` which is empty when `Shift` is constructed.
 This is used to store employees that have applied for this shift.
