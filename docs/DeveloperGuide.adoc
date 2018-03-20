@@ -240,6 +240,58 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== Shifts feature
+*Reason for implementation*
+
+PTMan is designed to give employees the freedom and flexibility to choose the shifts they want to work in.
+By allowing employers to add or delete shifts, employees can then apply for shifts that are available.
+
+*How it is implemented*
+
+A `Shift` object is created using it's constructor:
+----
+Shift(Day day, Time startTime, Time endTime, Capacity capacity)
+----
+
+Explanation for arguments:
+
+. `Day`: A class that wraps Java's `DayOfWeek` enum. It indicates the day that the shift is on. +
+Example: `new Day("monday")` creates a `Day` object representing Monday.
+[NOTE]
+The string argument is not case-sensitive, but should be a valid day of week spelt in full.
+
+. `Time`: A class that wraps Java's `LocalTime` class. It indicates the either the starting time or ending time of the shift. +
+Example: `new Time("1030")` creates a `Time` object representing 10:30am.
+[NOTE]
+The string argument should represent a time in the 24-hour format.
+
+. `Capacity`: A class that wraps an integer indicating the number of employees required for the shift. +
+Example: `new Capacity("4")`
+
+In addition to these classes, `Shift` also contains a `UniqueEmployeeList` which is empty when `Shift` is constructed.
+This is used to store employees that have applied for this shift.
+
+To store a list of shifts, we may use a `UniqueShiftList` to ensure there are no duplicate shifts.
+
+The following commands directly interact with the `Shift` class:
+
+. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `OutletInformation`.
+. `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `OutletInformation`.
+. `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
+. `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
+
+
+*Reasons for how it is implemented*
+
+* We wrap the arguments in the classes above so that we may carry out validity checks in those classes.
+
+* `Time` uses Java's well-documented `LocalTime` class for easy integration with the GUI timetable.
+
+* `UniqueEmployeeList` is used to ensure there are no duplicate employees in the shift.
+
+
+
+
 // tag::undoredo[]
 === Undo/Redo feature
 ==== Current Implementation
