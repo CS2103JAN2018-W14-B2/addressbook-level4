@@ -248,7 +248,7 @@ By allowing employers to add or delete shifts, employees can then apply for shif
 
 *How it is implemented*
 
-A `Shift` object is created using it's constructor:
+A `Shift` object is created using its constructor:
 ----
 Shift(Day day, Time startTime, Time endTime, Capacity capacity)
 ----
@@ -290,6 +290,49 @@ The following commands directly interact with the `Shift` class:
 * `UniqueEmployeeList` is used to ensure there are no duplicate employees in the shift.
 
 
+// tag::timetable
+=== Timetable feature
+==== Reason for implementation
+
+A timetable GUI is useful for employers, as it provides visual aid for them to add and remove shifts from the application.
+It is also helpful for both employers and employees to find out which shifts are still available and requires workers. +
+This implementation reflects the changes that resulted from the Shift commands, such as the adding and removing of shifts, as well
+as the updating of slots left for each shift. +
+On top of this, the selection of each employee will highlight the shifts that they have chosen to work for the week. Users are
+then allowed to export the timetable as an image for future reference, without having to boot up the application, hence
+bringing users convenience.
+
+==== How it is implemented
+
+The timetable GUI is created with the help of the https://github.com/dlemmermann/CalendarFX[CalendarFX] library, and `TimetablePanel`
+ is the main class in charge of displaying the timetable.
+
+A `TimetablePanel` is created with its constructor:
+----
+TimetablePanel(ObservableList<Shift> shiftObservableList)`
+----
+
+The `TimetablePanel` is initialised in the `MainWindow` class in the following way:
+----
+TimetablePanel timetablePanel = new TimetablePanel(logic.getFilteredShiftList());
+----
+
+`TimetablePanel` takes in an `ObservableList<Shift>` object, which is an unmodifiable sorted view of the filtered shifts.
+ `TimetablePanel` then uses these `Shift` objects to set the Entries in the timetable view, in the method `setShifts()`.+
+
+The timetable GUI automatically refreshes to update the timetable view by calling the `updateTimetableView()` method whenever
+there is a `PartTimeManagerChangedEvent`. This ensures the timetable is always updated when a shift is added, removed, or altered.
+
+===== Select employee to view working shifts
+
+`TimetablePanel` also subscribes to `EmployeePanelSelectionChangedEvent` to detect if a certain employee is selected. If so,
+the timetable will reflect the employee's shifts in a different color by calling `loadEmployeeTimetable(Employee employee)`. +
+More to be updated in v1.3.
+
+===== Export timetable to image
+
+To be updated in v1.3.
+// end::timetable
 
 
 // tag::undoredo[]
