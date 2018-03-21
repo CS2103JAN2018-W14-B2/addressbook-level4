@@ -23,7 +23,7 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of employees */
     ObservableList<Employee> getFilteredEmployeeList();
 
-    /** Returns an unmodifiable sorted view of the filtered employee list */
+    /** Returns an unmodifiable sorted view of the filtered shifts */
     ObservableList<Shift> getFilteredShiftList();
 
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
