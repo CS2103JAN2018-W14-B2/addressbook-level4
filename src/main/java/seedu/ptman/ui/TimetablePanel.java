@@ -3,8 +3,8 @@ package seedu.ptman.ui;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.temporal.WeekFields;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.WeekFields;
 import java.util.Locale;
 import java.util.logging.Logger;
 
@@ -28,7 +28,7 @@ import seedu.ptman.model.outlet.OutletInformation;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.Timetable;
 
-
+//@@author hzxcaryn
 /**
  * Displays the GUI Timetable.
  */
@@ -125,7 +125,8 @@ public class TimetablePanel extends UiPart<Region> {
             LocalDate date = getDateOfShift(shift.getDay().toDayOfWeek());
             Interval timeInterval = new Interval(date, shift.getStartTime().getLocalTime(),
                     date, shift.getEndTime().getLocalTime());
-            Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft(), timeInterval);
+            Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft(),
+                    timeInterval);
             Calendar entryType = getEntryType(shift);
             entryType.addEntry(shiftEntry);
             index++;
