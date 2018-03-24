@@ -309,16 +309,23 @@ The timetable GUI is created with the help of the https://github.com/dlemmermann
 
 A `TimetablePanel` is created with its constructor:
 ----
-TimetablePanel(ObservableList<Shift> shiftObservableList)`
+TimetablePanel(ObservableList<Shift> shiftObservableList, OutletInformation outletInformation)
 ----
 
 The `TimetablePanel` is initialised in the `MainWindow` class in the following way:
 ----
-TimetablePanel timetablePanel = new TimetablePanel(logic.getFilteredShiftList());
+TimetablePanel timetablePanel = new TimetablePanel(logic.getFilteredShiftList(), logic.getOutletInformation());
 ----
 
-`TimetablePanel` takes in an `ObservableList<Shift>` object, which is an unmodifiable sorted view of the filtered shifts.
- `TimetablePanel` then uses these `Shift` objects to set the Entries in the timetable view, in the method `setShifts()`.+
+`TimetablePanel` takes in:
+
+ * An `ObservableList<Shift>` object, which is an unmodifiable sorted view of the filtered shifts.
+ * An `OutletInformation` object, which contains information of the outlet that is required to build the timetable.
+  In particular, the operating hours of the outlet.
+
+`TimetablePanel` then uses these `Shift` objects to set the Entries in the timetable view, in the method `setShifts()`.
+The operating hours acquired from `OutletInformation` is then used in `updateTimetableView()` to ensure that the timetable
+displays all the time slots within this time range. +
 
 The timetable GUI automatically refreshes to update the timetable view by calling the `updateTimetableView()` method whenever
 there is a `PartTimeManagerChangedEvent`. This ensures the timetable is always updated when a shift is added, removed, or altered.
