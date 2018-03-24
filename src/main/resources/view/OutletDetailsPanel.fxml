@@ -5,15 +5,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121">
     <VBox>
-        <Label fx:id="outletNamePanelHeader" styleClass="panel_large_label"/>
+        <Label fx:id="outletNamePanelHeader" styleClass="panel_large_label" />
+        <Label fx:id="outletInformation" styleClass="outlet-information" />
+
         <padding>
-            <Insets top="20" right="15" bottom="15" left="15" />
+            <Insets bottom="15" left="15" right="15" top="20" />
         </padding>
-        <StackPane fx:id="placeHolder" xmlns="http://javafx.com/javafx/8"
-                   xmlns:fx="http://javafx.com/fxml/1">
-            <Label fx:id="outletInformation" styleClass="outlet-information"/>
-        </StackPane>
     </VBox>
 </StackPane>
