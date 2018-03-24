@@ -125,7 +125,7 @@ public class TimetablePanel extends UiPart<Region> {
             LocalDate date = getDateOfShift(shift.getDay().toDayOfWeek());
             Interval timeInterval = new Interval(date, shift.getStartTime().getLocalTime(),
                     date, shift.getEndTime().getLocalTime());
-            Entry<String> shiftEntry = new Entry<>("Slot " + index + "\nSlots left: " + shift.getSlotsLeft(), timeInterval);
+            Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft(), timeInterval);
             Calendar entryType = getEntryType(shift);
             entryType.addEntry(shiftEntry);
             index++;
