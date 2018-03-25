@@ -27,6 +27,7 @@ public class OutletDetailsPanelHandle extends NodeHandle<Node> {
     private String lastRememberedOutletOperatingHours;
     private String lastRememberedOutletContact;
     private String lastRememberedOutletEmail;
+    private String lastRememberedOutletAnnouncement;
 
     public OutletDetailsPanelHandle(Node outletDetailsNode) {
         super(outletDetailsNode);
@@ -106,6 +107,21 @@ public class OutletDetailsPanelHandle extends NodeHandle<Node> {
         boolean isOutletContactChanged = !lastRememberedOutletContact.equals(getOutletContact());
         boolean isOutletEmailChanged = !lastRememberedOutletEmail.equals(getOutletContact());
         return isOutletOperatingHoursChanged && isOutletContactChanged && isOutletEmailChanged;
+    }
+
+    /**
+     * Remembers the outlet name in the outlet panel.
+     */
+    public void rememberOutletAnnouncement() {
+        lastRememberedOutletAnnouncement = getAnnouncement();
+    }
+
+    /**
+     * Returns true if the current outlet name is different from the value remembered by the most recent
+     * {@code rememberOutletName()} call.
+     */
+    public boolean isOutletAnnouncementChanged() {
+        return !lastRememberedOutletAnnouncement.equals(getAnnouncement());
     }
 
 }
