@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.ptman.commons.core.LogsCenter;
+import seedu.ptman.commons.events.ui.AnnouncementChangedEvent;
 import seedu.ptman.commons.events.ui.OutletInformationChangedEvent;
 import seedu.ptman.commons.events.ui.OutletNameChangedEvent;
 import seedu.ptman.model.outlet.OutletInformation;
@@ -30,6 +31,9 @@ public class OutletDetailsPanel extends UiPart<Region> {
     @FXML
     private Label outletInformation;
 
+    @FXML
+    private Label announcement;
+
 
     public OutletDetailsPanel(OutletInformation outlet) {
         super(FXML);
@@ -37,6 +41,7 @@ public class OutletDetailsPanel extends UiPart<Region> {
         outletInformation.setWrapText(true);
         setOutletInformation(outlet.toString());
         setOutletName(outlet.getName().toString());
+        setAnnouncement(outlet.getAnnouncement().toString());
 
         registerAsAnEventHandler(this);
     }
@@ -49,6 +54,10 @@ public class OutletDetailsPanel extends UiPart<Region> {
         outletInformation.setText(information);
     }
 
+    private void setAnnouncement(String text) {
+        announcement.setText(text);
+    }
+
     @Subscribe
     private void handleOutletInformationChangedEvent(OutletInformationChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -59,5 +68,11 @@ public class OutletDetailsPanel extends UiPart<Region> {
     private void handleOutletNameChangedEvent(OutletNameChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         Platform.runLater(() -> setOutletName(event.message));
+    }
+
+    @Subscribe
+    public void handleAnnouncementChangedEvent(AnnouncementChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        Platform.runLater(() -> setAnnouncement(event.information));
     }
 }

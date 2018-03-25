@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import guitests.guihandles.OutletDetailsPanelHandle;
+import seedu.ptman.commons.events.ui.AnnouncementChangedEvent;
 import seedu.ptman.commons.events.ui.OutletInformationChangedEvent;
 import seedu.ptman.commons.events.ui.OutletNameChangedEvent;
 import seedu.ptman.model.outlet.OutletInformation;
@@ -15,6 +16,7 @@ import seedu.ptman.model.outlet.OutletInformation;
 public class OutletDetailsPanelTest extends GuiUnitTest {
     private OutletInformationChangedEvent outletInformationChangedEventStub;
     private OutletNameChangedEvent outletNameChangedEventStub;
+    private AnnouncementChangedEvent announcementChangedEventStub;
 
     private OutletDetailsPanel outletDetailsPanel;
     private OutletDetailsPanelHandle outletDetailsPanelHandle;
@@ -24,6 +26,7 @@ public class OutletDetailsPanelTest extends GuiUnitTest {
     public void setUp() {
         outletInformationChangedEventStub = new OutletInformationChangedEvent("New Outlet Information");
         outletNameChangedEventStub = new OutletNameChangedEvent("New Outlet Name");
+        announcementChangedEventStub = new AnnouncementChangedEvent("New Announcement");
         outletDetailsPanel = new OutletDetailsPanel(outlet);
 
         uiPartRule.setUiPart(outletDetailsPanel);
@@ -48,6 +51,11 @@ public class OutletDetailsPanelTest extends GuiUnitTest {
         postNow(outletNameChangedEventStub);
         String expectedOutletName = "New Outlet Name";
         assertEquals(expectedOutletName, outletDetailsPanelHandle.getOutletName());
+
+        // Announcement Updated
+        postNow(announcementChangedEventStub);
+        String expectedAnnouncement = "New Announcement";
+        assertEquals(expectedAnnouncement, outletDetailsPanelHandle.getAnnouncement());
 
     }
 

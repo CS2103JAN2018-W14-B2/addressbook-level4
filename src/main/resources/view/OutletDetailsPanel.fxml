@@ -9,7 +9,7 @@
     <VBox>
         <Label fx:id="outletNamePanelHeader" styleClass="panel_large_label" />
         <Label fx:id="outletInformation" styleClass="outlet-information" />
-
+        <Label fx:id="announcement" styleClass="announcement"/>
         <padding>
             <Insets bottom="15" left="15" right="15" top="20" />
         </padding>

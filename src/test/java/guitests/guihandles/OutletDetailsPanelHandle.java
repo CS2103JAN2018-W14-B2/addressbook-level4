@@ -13,9 +13,11 @@ public class OutletDetailsPanelHandle extends NodeHandle<Node> {
 
     private static final String OUTLET_NAME_ID = "#outletNamePanelHeader";
     private static final String OUTLET_INFORMATION_ID = "#outletInformation";
+    private static final String OUTLET_ANNOUNCEMENT_ID = "#announcement";
 
     private final Label outletNameNode;
     private final Label outletInformationNode;
+    private final Label outletAnnouncementNode;
 
     private String lastRememberedOutletName;
     private String lastRememberedOutletInformation;
@@ -25,6 +27,7 @@ public class OutletDetailsPanelHandle extends NodeHandle<Node> {
 
         this.outletNameNode = getChildNode(OUTLET_NAME_ID);
         this.outletInformationNode = getChildNode(OUTLET_INFORMATION_ID);
+        this.outletAnnouncementNode = getChildNode(OUTLET_ANNOUNCEMENT_ID);
     }
 
     /**
@@ -32,6 +35,13 @@ public class OutletDetailsPanelHandle extends NodeHandle<Node> {
      */
     public String getOutletName() {
         return outletNameNode.getText();
+    }
+
+    /**
+     * @return the outlet info in outlet panel.
+     */
+    public String getAnnouncement() {
+        return outletAnnouncementNode.getText();
     }
 
     /**

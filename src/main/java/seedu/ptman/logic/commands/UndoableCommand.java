@@ -5,6 +5,7 @@ import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.ptman.model.Model.PREDICATE_SHOW_ALL_EMPLOYEES;
 
 import seedu.ptman.commons.core.EventsCenter;
+import seedu.ptman.commons.events.ui.AnnouncementChangedEvent;
 import seedu.ptman.commons.events.ui.OutletInformationChangedEvent;
 import seedu.ptman.commons.events.ui.OutletNameChangedEvent;
 import seedu.ptman.logic.commands.exceptions.CommandException;
@@ -46,6 +47,7 @@ public abstract class UndoableCommand extends Command {
         OutletInformation previousOutlet = previousPartTimeManager.getOutletInformation();
         EventsCenter.getInstance().post(new OutletInformationChangedEvent(previousOutlet.toString()));
         EventsCenter.getInstance().post(new OutletNameChangedEvent(previousOutlet.getName().toString()));
+        EventsCenter.getInstance().post(new AnnouncementChangedEvent(previousOutlet.getAnnouncement().toString()));
     }
 
     /**
