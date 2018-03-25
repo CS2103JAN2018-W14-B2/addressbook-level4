@@ -165,7 +165,7 @@ public class OutletInformation {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Operating Hour: ")
+        builder.append("Operating Hours: ")
                 .append(getOperatingHours())
                 .append(" Contact: ")
                 .append(getOutletContact())

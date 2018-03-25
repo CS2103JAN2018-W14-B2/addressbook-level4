@@ -126,7 +126,7 @@ public class OutletInformationTest {
         Announcement announcement = new Announcement("New Announcement.");
         OutletInformation outlet = new OutletInformation(name, operatingHours, outletContact, outletEmail,
                 password, announcement);
-        String expected = "Operating Hour: 09:00-22:00 Contact: 91234567 "
+        String expected = "Operating Hours: 09:00-22:00 Contact: 91234567 "
                 + "Email: outlet@gmail.com";
         assertEquals(outlet.toString(), expected);
     }

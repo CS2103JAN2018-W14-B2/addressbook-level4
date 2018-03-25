@@ -29,7 +29,13 @@ public class OutletDetailsPanel extends UiPart<Region> {
     private Label outletNamePanelHeader;
 
     @FXML
-    private Label outletInformation;
+    private Label operatingHours;
+
+    @FXML
+    private Label outletContact;
+
+    @FXML
+    private Label outletEmail;
 
     @FXML
     private Label announcement;
@@ -38,8 +44,10 @@ public class OutletDetailsPanel extends UiPart<Region> {
     public OutletDetailsPanel(OutletInformation outlet) {
         super(FXML);
         this.outlet = outlet;
-        outletInformation.setWrapText(true);
-        setOutletInformation(outlet.toString());
+        //outletInformation.setWrapText(true);
+        setOutletInformation(outlet.getOperatingHours().toString(),
+                outlet.getOutletContact().toString(),
+                outlet.getOutletEmail().toString());
         setOutletName(outlet.getName().toString());
         setAnnouncement(outlet.getAnnouncement().toString());
 
@@ -50,8 +58,10 @@ public class OutletDetailsPanel extends UiPart<Region> {
         outletNamePanelHeader.setText(name);
     }
 
-    private void setOutletInformation(String information) {
-        outletInformation.setText(information);
+    private void setOutletInformation(String operatingHours, String outletContact, String outletEmail) {
+        this.operatingHours.setText(operatingHours + "    ");
+        this.outletContact.setText(outletContact + "    ");
+        this.outletEmail.setText(outletEmail);
     }
 
     private void setAnnouncement(String text) {
@@ -61,7 +71,7 @@ public class OutletDetailsPanel extends UiPart<Region> {
     @Subscribe
     private void handleOutletInformationChangedEvent(OutletInformationChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        Platform.runLater(() -> setOutletInformation(event.information));
+        Platform.runLater(() -> setOutletInformation(event.operatingHours, event.outletContact, event.outletEmail));
     }
 
     @Subscribe
