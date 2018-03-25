@@ -112,11 +112,40 @@ Returns `john` and `John Doe`.
 * `find Betsy Tim John` +
 Returns any employee having names `Betsy`, `Tim`, or `John`.
 
-==== Listing all employees : `list`
+==== Listing all employees: `list`
 
 Shows a list of all employees in PTMan. +
 *Format:* `list` +
 *Shorthand:* `l`
+
+==== Show employee shifts: `select`
+
+Displays the shifts of the selected employee on the timetable view. +
+*Format:* `select INDEX` +
+*Shorthand:* `s INDEX`
+
+Examples:
+
+* `list` +
+`select 2` +
+Selects the 2nd employee in PTMan and displays his/her shifts in the timetable view.
+* `find Betsy` +
+`select 1` +
+Selects the 1st employee in the results of the `find` command and displays his/her shifts in the timetable view.
+
+==== Export timetable as image: `export`
+
+Exports the current timetable displayed as an image and saves it locally. +
+*Format:* `export` +
+*Shorthand:* `exp`
+
+Examples:
+
+* `export` +
+Exports the current timetable in PTMan.
+* `select 1` +
+`export` +
+Exports the timetable with the shifts of the 1st employee in PTMan.
 
 ==== Listing entered commands: `history`
 
