@@ -107,7 +107,7 @@ public class TimetablePanel extends UiPart<Region> {
         DetailedWeekView detailedWeekView = timetableView.getWeekPage().getDetailedWeekView();
         detailedWeekView.setEarlyLateHoursStrategy(DayViewBase.EarlyLateHoursStrategy.HIDE);
         detailedWeekView.setHoursLayoutStrategy(DayViewBase.HoursLayoutStrategy.FIXED_HOUR_COUNT);
-        detailedWeekView.setVisibleHours(Math.max((int) ChronoUnit.HOURS.between(startTime, endTime), 12));
+        detailedWeekView.setVisibleHours((int) ChronoUnit.HOURS.between(startTime, endTime));
         detailedWeekView.setShowScrollBar(false);
         detailedWeekView.setEnableCurrentTimeMarker(false);
     }
