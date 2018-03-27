@@ -23,6 +23,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import seedu.ptman.commons.core.LogsCenter;
 import seedu.ptman.commons.events.model.PartTimeManagerChangedEvent;
+import seedu.ptman.commons.events.ui.EmployeePanelSelectionChangedEvent;
+import seedu.ptman.model.employee.Employee;
+import seedu.ptman.model.employee.UniqueEmployeeList;
 import seedu.ptman.model.outlet.OutletInformation;
 import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.Timetable;
@@ -48,6 +51,10 @@ public class TimetablePanel extends UiPart<Region> {
     private Calendar timetableAvail;
     private Calendar timetableRunningOut;
     private Calendar timetableFull;
+    private Calendar timetableEmployee;
+    private Calendar timetableOthers;
+
+    private Employee currentEmployee = null;
 
     protected TimetablePanel(ObservableList<Shift> shiftObservableList, OutletInformation outletInformation) {
         super(FXML);
@@ -126,10 +133,34 @@ public class TimetablePanel extends UiPart<Region> {
                     date, shift.getEndTime().getLocalTime());
             Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft(),
                     timeInterval);
-            Calendar entryType = getEntryType(shift);
-            entryType.addEntry(shiftEntry);
+            setEntryType(shift, shiftEntry);
             index++;
         }
+    }
+
+    private void setEntryType(Shift shift, Entry<String> shiftEntry) {
+        Calendar entryType;
+        if (currentEmployee != null) {
+            entryType = getEntryTypeEmployee(shift);
+        } else {
+            entryType = getEntryTypeMain(shift);
+        }
+        entryType.addEntry(shiftEntry);
+    }
+
+    /**
+     * Checks if currentEmployee is in input shift
+     * @param shift
+     * @return true if currentEmployee is in input shift, false if not.
+     */
+    private boolean isCurrentEmployeeInShift(Shift shift) {
+        UniqueEmployeeList employees = shift.getUniqueEmployeeList();
+        for (Employee employee : employees) {
+            if (employee.equals(currentEmployee)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -145,7 +176,7 @@ public class TimetablePanel extends UiPart<Region> {
      * @return the entryType (a Calendar object) for the shift, which reflects
      * the color of the shift in the timetableView.
      */
-    private Calendar getEntryType(Shift shift) {
+    private Calendar getEntryTypeMain(Shift shift) {
         int ratio = shift.getSlotsLeft() / shift.getCapacity().getCapacity();
         if (ratio <= 0) {
             return timetableFull;
@@ -153,6 +184,14 @@ public class TimetablePanel extends UiPart<Region> {
             return timetableRunningOut;
         } else {
             return timetableAvail;
+        }
+    }
+
+    private Calendar getEntryTypeEmployee(Shift shift) {
+        if (isCurrentEmployeeInShift(shift)) {
+            return timetableEmployee;
+        } else {
+            return timetableOthers;
         }
     }
 
@@ -187,10 +226,25 @@ public class TimetablePanel extends UiPart<Region> {
         calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull);
     }
 
+    /**
+     * Replaces the timetable view with a new timetable, with shifts taken by the employee being highlighted
+     * @param employee
+     */
+    private void loadEmployeeTimetable(Employee employee) {
+        currentEmployee = employee;
+        
+    }
+
     @Subscribe
     private void handleShiftChangedEvent(PartTimeManagerChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event) + ": Updating timetable view....");
         Platform.runLater(() -> updateTimetableView());
+    }
+
+    @Subscribe
+    private void handleEmployeePanelSelectionChangedEvent(EmployeePanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        Platform.runLater(() -> loadEmployeeTimetable(event.getNewSelection().employee));
     }
 
 }

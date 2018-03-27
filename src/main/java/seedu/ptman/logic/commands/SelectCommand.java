@@ -18,7 +18,8 @@ public class SelectCommand extends Command {
     public static final String COMMAND_ALIAS = "s";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the employee identified by the index number used in the last employee listing.\n"
+            + ": Selects the employee identified by the index number used in the last employee listing and highlights"
+            + "his/her shifts in the timetable.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
