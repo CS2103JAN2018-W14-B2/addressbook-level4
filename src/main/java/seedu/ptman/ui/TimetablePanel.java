@@ -60,6 +60,13 @@ public class TimetablePanel extends UiPart<Region> {
     private static final Style ENTRY_YELLOW_STYLE = Style.STYLE3;
     private static final Style ENTRY_RED_STYLE = Style.STYLE5;
     private static final Style ENTRY_BROWN_STYLE = Style.STYLE7;
+
+    public static Calendar TIMETABLE_AVAIL;
+    public static Calendar TIMETABLE_RUNNING_OUT;
+    public static Calendar TIMETABLE_FULL;
+    public static Calendar TIMETABLE_EMPLOYEE;
+    public static Calendar TIMETABLE_OTHERS;
+
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
@@ -69,11 +76,6 @@ public class TimetablePanel extends UiPart<Region> {
     private ObservableList<Shift> shiftObservableList;
     private OutletInformation outletInformation;
 
-    private Calendar timetableAvail;
-    private Calendar timetableRunningOut;
-    private Calendar timetableFull;
-    private Calendar timetableEmployee;
-    private Calendar timetableOthers;
 
     private Employee currentEmployee = null;
 
@@ -205,11 +207,11 @@ public class TimetablePanel extends UiPart<Region> {
     private Calendar getEntryTypeMain(Shift shift) {
         int ratio = shift.getSlotsLeft() / shift.getCapacity().getCapacity();
         if (ratio <= 0) {
-            return timetableFull;
+            return TIMETABLE_FULL;
         } else if (ratio <= 0.5 || shift.getCapacity().getCapacity() < MAX_SLOTS_LEFT_RUNNING_OUT) {
-            return timetableRunningOut;
+            return TIMETABLE_RUNNING_OUT;
         } else {
-            return timetableAvail;
+            return TIMETABLE_AVAIL;
         }
     }
 
@@ -219,9 +221,9 @@ public class TimetablePanel extends UiPart<Region> {
      */
     private Calendar getEntryTypeEmployee(Shift shift) {
         if (isCurrentEmployeeInShift(shift)) {
-            return timetableEmployee;
+            return TIMETABLE_EMPLOYEE;
         } else {
-            return timetableOthers;
+            return TIMETABLE_OTHERS;
         }
     }
 
@@ -253,22 +255,22 @@ public class TimetablePanel extends UiPart<Region> {
      * Initialises all the Calendar objects
      */
     private void initialiseEntries() {
-        timetableAvail = new Calendar("Available");
-        timetableRunningOut = new Calendar("Running Out");
-        timetableFull = new Calendar("Full");
-        timetableEmployee = new Calendar("Employee's shift");
-        timetableOthers = new Calendar("Other shifts");
+        TIMETABLE_AVAIL = new Calendar("Available");
+        TIMETABLE_RUNNING_OUT = new Calendar("Running Out");
+        TIMETABLE_FULL = new Calendar("Full");
+        TIMETABLE_EMPLOYEE = new Calendar("Employee's shift");
+        TIMETABLE_OTHERS = new Calendar("Other shifts");
     }
 
     /**
      * Sets the color styles of the entries
      */
     private void setEntryStyles() {
-        timetableAvail.setStyle(ENTRY_GREEN_STYLE);
-        timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
-        timetableFull.setStyle(ENTRY_RED_STYLE);
-        timetableEmployee.setStyle(ENTRY_BLUE_STYLE);
-        timetableOthers.setStyle(ENTRY_BROWN_STYLE);
+        TIMETABLE_AVAIL.setStyle(ENTRY_GREEN_STYLE);
+        TIMETABLE_RUNNING_OUT.setStyle(ENTRY_YELLOW_STYLE);
+        TIMETABLE_FULL.setStyle(ENTRY_RED_STYLE);
+        TIMETABLE_EMPLOYEE.setStyle(ENTRY_BLUE_STYLE);
+        TIMETABLE_OTHERS.setStyle(ENTRY_BROWN_STYLE);
     }
 
     /**
@@ -277,8 +279,8 @@ public class TimetablePanel extends UiPart<Region> {
     private void addCalendars(CalendarSource calendarSource) {
         initialiseEntries();
         setEntryStyles();
-        calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull,
-                timetableEmployee, timetableOthers);
+        calendarSource.getCalendars().addAll(TIMETABLE_AVAIL, TIMETABLE_RUNNING_OUT, TIMETABLE_FULL,
+                TIMETABLE_EMPLOYEE, TIMETABLE_OTHERS);
     }
 
     /**

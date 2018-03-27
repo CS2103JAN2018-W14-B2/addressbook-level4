@@ -7,10 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.calendarfx.model.Entry;
+
 import guitests.guihandles.EmployeeCardHandle;
 import guitests.guihandles.EmployeeListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import seedu.ptman.model.employee.Employee;
+import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.ui.EmployeeCard;
 
 /**
@@ -45,6 +48,20 @@ public class GuiTestAssert {
         assertEquals(expectedEmployee.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
         assertTagEquals(expectedEmployee, actualCard);
+    }
+
+    /**
+     * Asserts that {@code actualEntry} displays the details of {@code expectedShift}.
+     */
+    public static void assertEntryDisplaysShift(Shift expectedShift, Entry actualEntry, int index) {
+        assertEquals(expectedShift.getDay().getDayOfWeek().toString() + expectedShift.getStartTime().getLocalTime(),
+                actualEntry.getStartDate().getDayOfWeek().toString() + actualEntry.getStartTime());
+        assertEquals(expectedShift.getDay().getDayOfWeek(), actualEntry.getStartDate().getDayOfWeek());
+        assertEquals(expectedShift.getDay().getDayOfWeek(), actualEntry.getEndDate().getDayOfWeek());
+        assertEquals(expectedShift.getStartTime().getLocalTime(), actualEntry.getStartTime());
+        assertEquals(expectedShift.getEndTime().getLocalTime(), actualEntry.getEndTime());
+        assertEquals("SHIFT " + index + "\nSlots left: " + expectedShift.getSlotsLeft(),
+                actualEntry.getTitle());
     }
 
     /**
