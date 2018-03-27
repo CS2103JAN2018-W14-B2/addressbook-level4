@@ -44,10 +44,13 @@ import seedu.ptman.model.outlet.Timetable;
  */
 public class TimetablePanel extends UiPart<Region> {
 
+    public static final String TIMETABLE_IMAGE_FILE_NAME_DEFAULT = "MyTimetable";
+    public static final String TIMETABLE_IMAGE_FILE_FORMAT = "png";
+
+    private static final int TIMETABLE_IMAGE_PIXEL_SCALE = 2;
     private static final String FXML = "TimetableView.fxml";
     private static final int MAX_SLOTS_LEFT_RUNNING_OUT = 3;
-    private static final String TIMETABLE_IMAGE_FILE_FORMAT = "png";
-    private static final int TIMETABLE_IMAGE_PIXEL_SCALE = 2;
+
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -216,8 +219,8 @@ public class TimetablePanel extends UiPart<Region> {
     /**
      * Exports timetable as image and save it locally
      */
-    private void exportTimetableAsImage() {
-        File imageFile = new File("." + File.separator + "MyTimetable." + TIMETABLE_IMAGE_FILE_FORMAT);
+    private void exportTimetableAsImage(String filename) {
+        File imageFile = new File("." + File.separator + filename + "." + TIMETABLE_IMAGE_FILE_FORMAT);
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(takeSnapshot(), null), TIMETABLE_IMAGE_FILE_FORMAT, imageFile);
         } catch (IOException e) {
@@ -229,8 +232,14 @@ public class TimetablePanel extends UiPart<Region> {
      * Exports timetable as image and email it
      * @param email
      */
-    private void exportTimetableAsImageAndEmail(Email email) {
-        //TODO: Implement this method when emailing service is up.
+    private void exportTimetableAsImageAndEmail(String filename, Email email) {
+        //TODO: This method should send image as email when emailing service is up.
+        File imageFile = new File("." + File.separator + filename + "." + TIMETABLE_IMAGE_FILE_FORMAT);
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(takeSnapshot(), null), TIMETABLE_IMAGE_FILE_FORMAT, imageFile);
+        } catch (IOException e) {
+            logger.warning("Error taking snapshot of timetable.");
+        }
     }
 
     @Subscribe
@@ -242,14 +251,14 @@ public class TimetablePanel extends UiPart<Region> {
     @Subscribe
     private void handleExportTimetableAsImageRequestEvent(ExportTimetableAsImageRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event) + ": Exporting timetable as image....");
-        Platform.runLater(() -> exportTimetableAsImage());
+        Platform.runLater(() -> exportTimetableAsImage(event.filename));
     }
 
     @Subscribe
     private void handleExportTimetableAsImageAndEmailRequestEvent(ExportTimetableAsImageAndEmailRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event)
                 + ": Exporting timetable as image to send email....");
-        Platform.runLater(() -> exportTimetableAsImageAndEmail(event.email));
+        Platform.runLater(() -> exportTimetableAsImageAndEmail(event.filename, event.email));
     }
 
 }

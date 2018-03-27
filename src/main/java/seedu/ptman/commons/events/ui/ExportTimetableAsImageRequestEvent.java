@@ -7,6 +7,12 @@ import seedu.ptman.commons.events.BaseEvent;
  */
 public class ExportTimetableAsImageRequestEvent extends BaseEvent {
 
+    public final String filename;
+
+    public ExportTimetableAsImageRequestEvent(String filename) {
+        this.filename = filename;
+    }
+
     @Override
     public String toString() {
         return this.getClass().getSimpleName();
