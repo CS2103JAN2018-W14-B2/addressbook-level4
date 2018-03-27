@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 import com.calendarfx.model.Calendar;
+import com.calendarfx.model.Calendar.Style;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.model.Interval;
@@ -54,11 +55,11 @@ public class TimetablePanel extends UiPart<Region> {
     private static final String FXML = "TimetableView.fxml";
     private static final int MAX_SLOTS_LEFT_RUNNING_OUT = 3;
 
-    private static final com.calendarfx.model.Calendar.Style ENTRY_GREEN_STYLE = Calendar.Style.STYLE1;
-    private static final com.calendarfx.model.Calendar.Style ENTRY_BLUE_STYLE = Calendar.Style.STYLE2;
-    private static final com.calendarfx.model.Calendar.Style ENTRY_YELLOW_STYLE = Calendar.Style.STYLE3;
-    private static final com.calendarfx.model.Calendar.Style ENTRY_RED_STYLE = Calendar.Style.STYLE5;
-    private static final com.calendarfx.model.Calendar.Style ENTRY_BROWN_STYLE = Calendar.Style.STYLE7;
+    private static final Style ENTRY_GREEN_STYLE = Style.STYLE1;
+    private static final Style ENTRY_BLUE_STYLE = Style.STYLE2;
+    private static final Style ENTRY_YELLOW_STYLE = Style.STYLE3;
+    private static final Style ENTRY_RED_STYLE = Style.STYLE5;
+    private static final Style ENTRY_BROWN_STYLE = Style.STYLE7;
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
@@ -159,7 +160,7 @@ public class TimetablePanel extends UiPart<Region> {
     }
 
     /**
-     * Sets the entry type (aka the colour) of the shift in the timetable
+     * Sets the entry type (aka the color) of the shift in the timetable
      * @param shift
      * @param shiftEntry
      */
@@ -248,6 +249,9 @@ public class TimetablePanel extends UiPart<Region> {
         setTimetableRange();
     }
 
+    /**
+     * Initialises all the Calendar objects
+     */
     private void initialiseEntries() {
         timetableAvail = new Calendar("Available");
         timetableRunningOut = new Calendar("Running Out");
@@ -256,7 +260,10 @@ public class TimetablePanel extends UiPart<Region> {
         timetableOthers = new Calendar("Other shifts");
     }
 
-    private void initialiseEntryStyles() {
+    /**
+     * Sets the color styles of the entries
+     */
+    private void setEntryStyles() {
         timetableAvail.setStyle(ENTRY_GREEN_STYLE);
         timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
         timetableFull.setStyle(ENTRY_RED_STYLE);
@@ -269,7 +276,7 @@ public class TimetablePanel extends UiPart<Region> {
      */
     private void addCalendars(CalendarSource calendarSource) {
         initialiseEntries();
-        initialiseEntryStyles();
+        setEntryStyles();
         calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull,
                 timetableEmployee, timetableOthers);
     }
