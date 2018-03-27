@@ -337,7 +337,7 @@ For example, `h/0900-2200` +
 ====
 
 ==== Changing admin password: `cap` [coming in v1.4]
-PTman should be able to allow employers to change admin password. +
+Changes the admin password. +
 *Format:* `cap old/CURRENT_ADMIN_PASSWORD new/NEW_ADMIN_PASSWORD` +
 
 ==== Creating an announcement: `announcement`
