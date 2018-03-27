@@ -51,7 +51,10 @@ public class TimetablePanel extends UiPart<Region> {
     private static final String FXML = "TimetableView.fxml";
     private static final int MAX_SLOTS_LEFT_RUNNING_OUT = 3;
 
-
+    private static final com.calendarfx.model.Calendar.Style ENTRY_GREEN_STYLE = Calendar.Style.STYLE1;
+    private static final com.calendarfx.model.Calendar.Style ENTRY_YELLOW_STYLE = Calendar.Style.STYLE3;
+    private static final com.calendarfx.model.Calendar.Style ENTRY_RED_STYLE = Calendar.Style.STYLE5;
+    
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
@@ -61,9 +64,9 @@ public class TimetablePanel extends UiPart<Region> {
     private ObservableList<Shift> shiftObservableList;
     private OutletInformation outletInformation;
 
-    private Calendar timetableAvail;
-    private Calendar timetableRunningOut;
-    private Calendar timetableFull;
+    private Calendar timetableAvail = new Calendar("Available");
+    private Calendar timetableRunningOut = new Calendar("Running Out");
+    private Calendar timetableFull = new Calendar("Full");
 
     protected TimetablePanel(ObservableList<Shift> shiftObservableList, OutletInformation outletInformation) {
         super(FXML);
@@ -191,14 +194,9 @@ public class TimetablePanel extends UiPart<Region> {
      * Adds all relevant Calendars (entryTypes) to its source
      */
     private void addCalendars(CalendarSource calendarSource) {
-        // TODO: Improve code quality of this method
-        timetableAvail = new Calendar("Available");
-        timetableRunningOut = new Calendar("Running Out");
-        timetableFull = new Calendar("Full");
-
-        timetableAvail.setStyle(Calendar.Style.STYLE1); // Green
-        timetableRunningOut.setStyle(Calendar.Style.STYLE3); // Yellow
-        timetableFull.setStyle(Calendar.Style.STYLE5); // Red
+        timetableAvail.setStyle(ENTRY_GREEN_STYLE);
+        timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
+        timetableFull.setStyle(ENTRY_RED_STYLE);
 
         calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull);
     }
