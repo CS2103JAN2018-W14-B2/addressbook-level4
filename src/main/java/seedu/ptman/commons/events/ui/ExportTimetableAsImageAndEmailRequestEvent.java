@@ -8,14 +8,10 @@ import seedu.ptman.model.employee.Email;
  */
 public class ExportTimetableAsImageAndEmailRequestEvent extends BaseEvent {
 
-    private final Email email;
+    public final Email email;
 
     public ExportTimetableAsImageAndEmailRequestEvent(Email email) {
         this.email = email;
-    }
-
-    public Email getEmail() {
-        return email;
     }
 
     @Override

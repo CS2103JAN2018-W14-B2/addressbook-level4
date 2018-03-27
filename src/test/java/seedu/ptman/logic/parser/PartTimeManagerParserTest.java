@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static seedu.ptman.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.ptman.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.ptman.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OPERATING_HOURS;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OUTLET_CONTACT;
 import static seedu.ptman.logic.parser.CliSyntax.PREFIX_OUTLET_EMAIL;
@@ -30,6 +31,7 @@ import seedu.ptman.logic.commands.EditCommand;
 import seedu.ptman.logic.commands.EditCommand.EditEmployeeDescriptor;
 import seedu.ptman.logic.commands.EditOutletCommand;
 import seedu.ptman.logic.commands.ExitCommand;
+import seedu.ptman.logic.commands.ExportCommand;
 import seedu.ptman.logic.commands.FindCommand;
 import seedu.ptman.logic.commands.HelpCommand;
 import seedu.ptman.logic.commands.HistoryCommand;
@@ -39,6 +41,7 @@ import seedu.ptman.logic.commands.RedoCommand;
 import seedu.ptman.logic.commands.SelectCommand;
 import seedu.ptman.logic.commands.UndoCommand;
 import seedu.ptman.logic.parser.exceptions.ParseException;
+import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.NameContainsKeywordsPredicate;
 import seedu.ptman.model.outlet.Announcement;
@@ -196,6 +199,25 @@ public class PartTimeManagerParserTest {
                 + " " + announcement);
         assertEquals(new AnnouncementCommand(new Announcement(announcement)), command);
     }
+
+    @Test
+    public void parseCommand_export() throws Exception {
+        String email = "example@gmail.com";
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " "
+                + PREFIX_EMAIL + email);
+        assertTrue(parser.parseCommand(ExportCommand.COMMAND_WORD) instanceof ExportCommand);
+        assertEquals(new ExportCommand(new Email(email)), command);
+    }
+
+    @Test
+    public void parseCommand_exportAlias() throws Exception {
+        String email = "example@gmail.com";
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_ALIAS + " "
+                + PREFIX_EMAIL + email);
+        assertTrue(parser.parseCommand(ExportCommand.COMMAND_WORD) instanceof ExportCommand);
+        assertEquals(new ExportCommand(new Email(email)), command);
+    }
+
 
     @Test
     public void parseCommand_exit() throws Exception {

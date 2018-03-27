@@ -250,7 +250,7 @@ public class TimetablePanel extends UiPart<Region> {
     private void handleExportTimetableAsImageAndEmailRequestEvent(ExportTimetableAsImageAndEmailRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event)
                 + ": Exporting timetable as image to send email....");
-        Platform.runLater(() -> exportTimetableAsImageAndEmail(event.getEmail()));
+        Platform.runLater(() -> exportTimetableAsImageAndEmail(event.email));
     }
 
 }

@@ -27,14 +27,13 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_SAVE_SUCCESS = "Timetable is successfully exported!";
     public static final String MESSAGE_EMAIL_SUCCESS = "Timetable is successfully sent to your email!";
 
-    private static Email emailToSendImageTo;
-    private static boolean hasEmail;
+    private final Email emailToSendImageTo;
 
     /**
      * Creates an ExportCommand to save the timetable as image locally
      */
     public ExportCommand() {
-        hasEmail = false;
+        emailToSendImageTo = null;
     }
 
     /**
@@ -44,18 +43,34 @@ public class ExportCommand extends Command {
     public ExportCommand(Email email) {
         requireNonNull(email);
         emailToSendImageTo = email;
-        hasEmail = true;
     }
 
     @Override
     public CommandResult execute() {
-        if (hasEmail) {
+        if (emailToSendImageTo != null) {
             EventsCenter.getInstance().post(new ExportTimetableAsImageAndEmailRequestEvent(emailToSendImageTo));
             return new CommandResult(MESSAGE_EMAIL_SUCCESS);
         } else {
             EventsCenter.getInstance().post(new ExportTimetableAsImageRequestEvent());
             return new CommandResult(MESSAGE_SAVE_SUCCESS);
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ExportCommand)) {
+            return false;
+        }
+
+        // state check
+        ExportCommand e = (ExportCommand) other;
+        return emailToSendImageTo.equals(e.emailToSendImageTo);
     }
 
 }
