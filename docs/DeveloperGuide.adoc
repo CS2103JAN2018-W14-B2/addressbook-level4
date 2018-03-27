@@ -248,7 +248,7 @@ By allowing employers to add or delete shifts, employees can then apply for shif
 
 *How it is implemented*
 
-A `Shift` object is created using its constructor:
+A `Shift` object is created using it's constructor:
 ----
 Shift(Day day, Time startTime, Time endTime, Capacity capacity)
 ----
