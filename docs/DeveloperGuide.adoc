@@ -248,9 +248,15 @@ By allowing employers to add or delete shifts, employees can then apply for shif
 
 ==== How it is implemented
 
+In order to create a shift, the date, starting time, ending time, and capacity of the shift must be specified.
+Figure 11 is a class diagram that displays the association between `Shift` and other components in the `Model`.
+
+.Overview of the Shift class in the Model
+image::ShiftClassDiagram.png[width="800"]
+
 A `Shift` object is created using it's constructor:
 ----
-Shift(Day day, Time startTime, Time endTime, Capacity capacity)
+Shift(Date date, Time startTime, Time endTime, Capacity capacity)
 ----
 
 Explanation for arguments:
@@ -273,13 +279,12 @@ This is used to store employees that have applied for this shift.
 
 To store a list of shifts, we may use a `UniqueShiftList` to ensure there are no duplicate shifts.
 
-The following commands directly interact with the `Shift` class:
+The following are commands that directly interact with the `Shift` class:
 
-. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `OutletInformation`.
-. `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `OutletInformation`.
+. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`.
+. `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `PartTimeManager`.
 . `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
 . `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
-
 
 ==== Reasons for how it is implemented
 
