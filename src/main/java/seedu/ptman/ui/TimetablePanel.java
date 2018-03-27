@@ -55,8 +55,10 @@ public class TimetablePanel extends UiPart<Region> {
     private static final int MAX_SLOTS_LEFT_RUNNING_OUT = 3;
 
     private static final com.calendarfx.model.Calendar.Style ENTRY_GREEN_STYLE = Calendar.Style.STYLE1;
+    private static final com.calendarfx.model.Calendar.Style ENTRY_BLUE_STYLE = Calendar.Style.STYLE2;
     private static final com.calendarfx.model.Calendar.Style ENTRY_YELLOW_STYLE = Calendar.Style.STYLE3;
     private static final com.calendarfx.model.Calendar.Style ENTRY_RED_STYLE = Calendar.Style.STYLE5;
+    private static final com.calendarfx.model.Calendar.Style ENTRY_BROWN_STYLE = Calendar.Style.STYLE7;
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
@@ -66,9 +68,9 @@ public class TimetablePanel extends UiPart<Region> {
     private ObservableList<Shift> shiftObservableList;
     private OutletInformation outletInformation;
 
-    private Calendar timetableAvail = new Calendar("Available");
-    private Calendar timetableRunningOut = new Calendar("Running Out");
-    private Calendar timetableFull = new Calendar("Full");
+    private Calendar timetableAvail;
+    private Calendar timetableRunningOut;
+    private Calendar timetableFull;
     private Calendar timetableEmployee;
     private Calendar timetableOthers;
 
@@ -156,6 +158,11 @@ public class TimetablePanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Sets the entry type (aka the colour) of the shift in the timetable
+     * @param shift
+     * @param shiftEntry
+     */
     private void setEntryType(Shift shift, Entry<String> shiftEntry) {
         Calendar entryType;
         if (currentEmployee != null) {
@@ -191,7 +198,7 @@ public class TimetablePanel extends UiPart<Region> {
     }
 
     /**
-     * @return the entryType (a Calendar object) for the shift, which reflects
+     * @return the entryType (a Calendar object) for the shift in the main timetable view, which reflects
      * the color of the shift in the timetableView.
      */
     private Calendar getEntryTypeMain(Shift shift) {
@@ -205,12 +212,25 @@ public class TimetablePanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * @return the entryType (a Calendar object) for the shift in the employee timetable view, which reflects
+     * the color of the shift in the timetableView.
+     */
     private Calendar getEntryTypeEmployee(Shift shift) {
         if (isCurrentEmployeeInShift(shift)) {
             return timetableEmployee;
         } else {
             return timetableOthers;
         }
+    }
+
+    /**
+     * Replaces the timetable view with a new timetable, with shifts taken by the employee being highlighted
+     * @param employee
+     */
+    private void loadEmployeeTimetable(Employee employee) {
+        currentEmployee = employee;
+        updateTimetableView();
     }
 
     /**
@@ -228,24 +248,30 @@ public class TimetablePanel extends UiPart<Region> {
         setTimetableRange();
     }
 
+    private void initialiseEntries() {
+        timetableAvail = new Calendar("Available");
+        timetableRunningOut = new Calendar("Running Out");
+        timetableFull = new Calendar("Full");
+        timetableEmployee = new Calendar("Employee's shift");
+        timetableOthers = new Calendar("Other shifts");
+    }
+
+    private void initialiseEntryStyles() {
+        timetableAvail.setStyle(ENTRY_GREEN_STYLE);
+        timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
+        timetableFull.setStyle(ENTRY_RED_STYLE);
+        timetableEmployee.setStyle(ENTRY_BLUE_STYLE);
+        timetableOthers.setStyle(ENTRY_BROWN_STYLE);
+    }
+
     /**
      * Adds all relevant Calendars (entryTypes) to its source
      */
     private void addCalendars(CalendarSource calendarSource) {
-        timetableAvail.setStyle(ENTRY_GREEN_STYLE);
-        timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
-        timetableFull.setStyle(ENTRY_RED_STYLE);
-
-        calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull);
-    }
-
-    /**
-     * Replaces the timetable view with a new timetable, with shifts taken by the employee being highlighted
-     * @param employee
-     */
-    private void loadEmployeeTimetable(Employee employee) {
-        currentEmployee = employee;
-
+        initialiseEntries();
+        initialiseEntryStyles();
+        calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull,
+                timetableEmployee, timetableOthers);
     }
 
     /**
