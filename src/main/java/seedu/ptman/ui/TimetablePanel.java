@@ -54,7 +54,6 @@ public class TimetablePanel extends UiPart<Region> {
     private static final com.calendarfx.model.Calendar.Style ENTRY_GREEN_STYLE = Calendar.Style.STYLE1;
     private static final com.calendarfx.model.Calendar.Style ENTRY_YELLOW_STYLE = Calendar.Style.STYLE3;
     private static final com.calendarfx.model.Calendar.Style ENTRY_RED_STYLE = Calendar.Style.STYLE5;
-    
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
