@@ -7,10 +7,10 @@ import static seedu.ptman.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.ptman.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.ptman.logic.commands.CommandTestUtil.prepareRedoCommand;
 import static seedu.ptman.logic.commands.CommandTestUtil.prepareUndoCommand;
-import static seedu.ptman.testutil.TypicalEmployees.getTypicalPartTimeManager;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_FIRST_SHIFT;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_OUT_OF_BOUNDS_SHIFT;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_SECOND_SHIFT;
+import static seedu.ptman.testutil.TypicalShifts.getTypicalPartTimeManagerWithShifts;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,11 +28,12 @@ import seedu.ptman.model.outlet.Shift;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code DeleteCommand}.
+ * {@code DeleteShiftCommand}.
  */
 public class DeleteShiftCommandTest {
 
-    private Model model = new ModelManager(getTypicalPartTimeManager(), new UserPrefs(), new OutletInformation());
+    private Model model = new ModelManager(getTypicalPartTimeManagerWithShifts(), new UserPrefs(),
+            new OutletInformation());
 
     @Before
     public void setupAdminMode() {

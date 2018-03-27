@@ -13,7 +13,6 @@ import java.util.Base64;
  */
 public class Password {
 
-
     public static final String MESSAGE_PASSWORD_CONSTRAINTS =
             "Password should be at least 8 character and no spaces.";
 

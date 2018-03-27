@@ -36,12 +36,9 @@ public interface Model {
     /** Adds the given shift */
     void addShift(Shift shift) throws DuplicateShiftException;
 
-
-
     boolean isAdminMode();
 
     /**
-     * Replaces the given employee {@code target}
      * check if given password {@code password}
      * is authorized and set to admin mode
      *
@@ -53,6 +50,20 @@ public interface Model {
      * guarantee to set false
      */
     void setFalseAdminMode();
+
+    boolean isAdminPassword(Password password);
+
+    void setAdminPassword(Password password);
+
+    /**
+     * Store and map employee temporarily password with the given employee and password.
+     */
+    void storeResetPassword(Employee employee, Password tempPassword);
+
+    /**
+     * check if the {@code tempPassword} given is the temporarily password for the {@code employee}
+     */
+    boolean isCorrectTempPwd(Employee employee, Password tempPassword);
 
     /**
      * Delete tag from all employees
@@ -86,6 +97,10 @@ public interface Model {
     void updateFilteredEmployeeList(Predicate<Employee> predicate);
 
     void deleteShift(Shift shiftToDelete) throws ShiftNotFoundException;
+
+    void updateShift(Shift shiftToApply, Shift editedShift) throws ShiftNotFoundException, DuplicateShiftException;
+
+    void updateFilteredShiftList(Predicate<Shift> predicate);
 
     OutletInformation getOutletInformation();
 }

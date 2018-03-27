@@ -1096,6 +1096,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |update my password |keep my information secure.
 
+|`* * *` |user |reset my password |reset when i forget my password.
+
 |`* * *` |employer |add a new employee |store them in the record.
 
 |`* * *` |employer |view an employee’s contact |contact them.

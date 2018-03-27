@@ -1,5 +1,6 @@
 package seedu.ptman.model.outlet;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
@@ -99,6 +100,16 @@ public class OutletInformation {
         return timetable;
     }
 
+    /**
+     * Set the outlet password.
+     * only set after checking against outlet password.
+     * @param password
+     */
+    public void setOutletPassword (Password password) {
+        requireNonNull(password);
+        this.masterPassword = password;
+
+    }
     public Announcement getAnnouncement() {
         return announcement;
     }
@@ -123,6 +134,7 @@ public class OutletInformation {
         }
     }
 
+
     public void setOutletInformation(OutletInformation outlet) throws NoOutletInformationFieldChangeException {
         try {
             requireAllNonNull(outlet.getName(), outlet.getOperatingHours(), outlet.getMasterPassword(),
@@ -143,6 +155,7 @@ public class OutletInformation {
     public void setAnnouncement(Announcement announcement) {
         this.announcement = announcement;
     }
+
 
     @Override
     public boolean equals(Object other) {

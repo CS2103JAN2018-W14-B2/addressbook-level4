@@ -111,6 +111,17 @@ public class AddShiftCommandTest {
         }
 
         @Override
+        public boolean isAdminPassword(Password password) {
+            fail("This method should not be called.");
+            return false;
+        }
+
+        @Override
+        public void setAdminPassword(Password password) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void addShift(Shift shift) throws DuplicateShiftException {
             fail("This method should not be called.");
         }
@@ -123,7 +134,6 @@ public class AddShiftCommandTest {
         @Override
         public boolean setTrueAdminMode(Password password) {
             fail("This method should not be called.");
-
             return false;
         }
 
@@ -132,6 +142,16 @@ public class AddShiftCommandTest {
             fail("This method should not be called.");
         }
 
+        @Override
+        public void storeResetPassword(Employee employee, Password tempPassword) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public boolean isCorrectTempPwd(Employee employee, Password tempPassword) {
+            fail("This method should not be called.");
+            return false;
+        }
 
         @Override
         public void deleteTagFromAllEmployee(Tag tag) {
@@ -196,6 +216,17 @@ public class AddShiftCommandTest {
 
         @Override
         public void deleteShift(Shift shiftToDelete) throws ShiftNotFoundException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateShift(Shift shiftToApply, Shift editedShift)
+                throws ShiftNotFoundException, DuplicateShiftException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredShiftList(Predicate<Shift> predicate) {
             fail("This method should not be called.");
         }
     }
