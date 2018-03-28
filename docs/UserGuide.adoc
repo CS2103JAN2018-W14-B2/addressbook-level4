@@ -1,4 +1,4 @@
-= PTMan - User Guide
+= image:ptman_logo_ug.png[width="400"]
 :toc:
 :toclevels: 3
 :toc-title:

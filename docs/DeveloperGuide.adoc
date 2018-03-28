@@ -1,4 +1,4 @@
-= PTMan - Developer Guide
+= image:ptman_logo_dg.png[width="400"]
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -1122,7 +1122,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |employer |edit an employee’s contact |update their outdated contact information.
 
 |`* *` |employer |edit the outlet information |update the outdated outlet information.
-
+c
 |`* *` |employer |sort employees by name |have a clearer view of all employees’ details.
 
 |`* *` |employer |find an employee by name |locate details of employees without having to go through the entire list.
