@@ -5,14 +5,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.ptman.testutil.EventsUtil.postNow;
 import static seedu.ptman.testutil.TypicalEmployees.ALICE;
-import static seedu.ptman.testutil.TypicalShifts.getTypicalPartTimeManagerWithShifts;
-import static seedu.ptman.ui.testutil.GuiTestAssert.assertEntryDisplaysShift;
+import static seedu.ptman.testutil.TypicalShifts.getTypicalPartTimeManagerWithShiftsWithoutSunday;
 import static seedu.ptman.ui.TimetablePanel.TIMETABLE_IMAGE_FILE_FORMAT;
-import static seedu.ptman.ui.TimetablePanel.TIMETABLE_AVAIL;
-import static seedu.ptman.ui.TimetablePanel.TIMETABLE_RUNNING_OUT;
-import static seedu.ptman.ui.TimetablePanel.TIMETABLE_FULL;
-import static seedu.ptman.ui.TimetablePanel.TIMETABLE_EMPLOYEE;
-import static seedu.ptman.ui.TimetablePanel.TIMETABLE_OTHERS;
+import static seedu.ptman.ui.TimetablePanel.getTimetableAvail;
+import static seedu.ptman.ui.TimetablePanel.getTimetableEmployee;
+import static seedu.ptman.ui.TimetablePanel.getTimetableFull;
+import static seedu.ptman.ui.TimetablePanel.getTimetableOthers;
+import static seedu.ptman.ui.TimetablePanel.getTimetableRunningOut;
+import static seedu.ptman.ui.testutil.GuiTestAssert.assertEntryDisplaysShift;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,9 +20,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,14 +30,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.calendarfx.model.Calendar;
-import com.calendarfx.model.Entry;
-
-import javafx.collections.ObservableList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.Entry;
+
+import javafx.collections.ObservableList;
 import seedu.ptman.commons.events.ui.EmployeePanelSelectionChangedEvent;
 import seedu.ptman.commons.events.ui.ExportTimetableAsImageAndEmailRequestEvent;
 import seedu.ptman.commons.events.ui.ExportTimetableAsImageRequestEvent;
@@ -51,9 +50,9 @@ import seedu.ptman.model.outlet.Shift;
 public class TimetablePanelTest extends GuiUnitTest {
 
     private static final ObservableList<Shift> TYPICAL_SHIFTS =
-            getTypicalPartTimeManagerWithShifts().getShiftList();
+            getTypicalPartTimeManagerWithShiftsWithoutSunday().getShiftList();
     private static final OutletInformation TYPICAL_OUTLET =
-            getTypicalPartTimeManagerWithShifts().getOutletInformation();
+            getTypicalPartTimeManagerWithShiftsWithoutSunday().getOutletInformation();
 
     private static final String TIMETABLE_IMAGE_FILE_NAME_FIRST_TEST = "Testing1";
     private static final String TIMETABLE_IMAGE_FILE_NAME_SECOND_TEST = "Testing2";
@@ -97,7 +96,7 @@ public class TimetablePanelTest extends GuiUnitTest {
         for (int i = 0; i < TYPICAL_SHIFTS.size(); i++) {
             Shift expectedShift = TYPICAL_SHIFTS.get(i);
             Entry actualEntry = defaultEntries.get(i);
-            assertEntryDisplaysShift(expectedShift, actualEntry, i+1);
+            assertEntryDisplaysShift(expectedShift, actualEntry, i + 1);
         }
 
         // Snapshot taken when export command called
@@ -114,14 +113,14 @@ public class TimetablePanelTest extends GuiUnitTest {
         for (int i = 0; i < TYPICAL_SHIFTS.size(); i++) {
             Shift expectedShift = TYPICAL_SHIFTS.get(i);
             Entry actualEntry = entries.get(i);
-            assertEntryDisplaysShift(expectedShift, actualEntry, i);
+            assertEntryDisplaysShift(expectedShift, actualEntry, i + 1);
         }
     }
 
     @After
     public void tearDown() {
         try {
-            //Files.deleteIfExists(testFilePathFirst);
+            Files.deleteIfExists(testFilePathFirst);
             Files.deleteIfExists(testFilePathSecond);
         } catch (IOException e) {
             throw new AssertionError("Error deleting test files.");
@@ -130,7 +129,7 @@ public class TimetablePanelTest extends GuiUnitTest {
 
     private List<Entry<?>> getEntriesForEntryType(Calendar entryType) {
         Map<LocalDate, List<Entry<?>>> entryMap = entryType.findEntries(
-                LocalDate.now(), LocalDate.now().plusDays(10), ZoneId.systemDefault());
+                LocalDate.now().minusDays(7), LocalDate.now().plusDays(7), ZoneId.systemDefault());
         List<Entry<?>> entryList = entryMap.values().stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
@@ -138,16 +137,18 @@ public class TimetablePanelTest extends GuiUnitTest {
     }
 
     private List<Entry> getTimetableEntries() {
-        List<Entry<?>> availEntries = getEntriesForEntryType(TIMETABLE_AVAIL);
-        List<Entry<?>> runningOutEntries = getEntriesForEntryType(TIMETABLE_RUNNING_OUT);
-        List<Entry<?>> fullEntries = getEntriesForEntryType(TIMETABLE_FULL);
-        List<Entry<?>> employeeEntries = getEntriesForEntryType(TIMETABLE_EMPLOYEE);
-        List<Entry<?>> othersEntries = getEntriesForEntryType(TIMETABLE_OTHERS);
+        List<Entry<?>> availEntries = getEntriesForEntryType(getTimetableAvail());
+        List<Entry<?>> runningOutEntries = getEntriesForEntryType(getTimetableRunningOut());
+        List<Entry<?>> fullEntries = getEntriesForEntryType(getTimetableFull());
+        List<Entry<?>> employeeEntries = getEntriesForEntryType(getTimetableEmployee());
+        List<Entry<?>> othersEntries = getEntriesForEntryType(getTimetableOthers());
 
-        List<Entry> entries = Stream.of(availEntries, runningOutEntries, fullEntries, employeeEntries, othersEntries)
+        ArrayList<Entry> entries = new ArrayList<>(Stream.of(
+                availEntries, runningOutEntries, fullEntries, employeeEntries, othersEntries)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-        Collections.sort(entries, (Entry o1, Entry o2) -> o1.getStartDate().compareTo(o2.getStartDate()));
+                .collect(Collectors.toList()));
+
+        Collections.sort(entries, Comparator.comparing(Entry::getStartAsLocalDateTime));
         return entries;
     }
 

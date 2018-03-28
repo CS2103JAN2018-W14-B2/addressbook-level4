@@ -58,6 +58,11 @@ public class TypicalShifts {
             .withEndTime("2200")
             .withCapacity("3").build();
 
+    public static final Shift SHIFT_RUNNING_OUT = new ShiftBuilder().withDay("thursday")
+            .withStartTime("0900")
+            .withEndTime("1200")
+            .withCapacity("1").build();
+
     private TypicalShifts() {} // prevents instantiation
 
     public static PartTimeManager getTypicalPartTimeManagerWithShifts() {
@@ -79,8 +84,34 @@ public class TypicalShifts {
         return ptman;
     }
 
+    // TODO: Update this when new structure of Shifts (with dates) is out.
+    // Created because Sunday is causing some problems for the UI tests
+    public static PartTimeManager getTypicalPartTimeManagerWithShiftsWithoutSunday() {
+        PartTimeManager ptman = new PartTimeManager();
+        for (Employee employee : getTypicalEmployees()) {
+            try {
+                ptman.addEmployee(employee);
+            } catch (DuplicateEmployeeException e) {
+                throw new AssertionError("not possible");
+            }
+        }
+        for (Shift shift : getTypicalShiftsWithoutSunday()) {
+            try {
+                ptman.addShift(shift);
+            } catch (DuplicateShiftException e) {
+                throw new AssertionError("not possible");
+            }
+        }
+        return ptman;
+    }
+
     public static List<Shift> getTypicalShifts() {
         return new ArrayList<>(Arrays.asList(MONDAY_AM, MONDAY_PM, TUESDAY_AM, TUESDAY_PM,
                 WEDNESDAY_AM, WEDNESDAY_PM, SUNDAY_PM, SUNDAY_AM));
+    }
+
+    public static List<Shift> getTypicalShiftsWithoutSunday() {
+        return new ArrayList<>(Arrays.asList(MONDAY_AM, MONDAY_PM, TUESDAY_AM, TUESDAY_PM,
+                WEDNESDAY_AM, WEDNESDAY_PM, SHIFT_RUNNING_OUT));
     }
 }

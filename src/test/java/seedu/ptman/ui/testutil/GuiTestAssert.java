@@ -54,8 +54,6 @@ public class GuiTestAssert {
      * Asserts that {@code actualEntry} displays the details of {@code expectedShift}.
      */
     public static void assertEntryDisplaysShift(Shift expectedShift, Entry actualEntry, int index) {
-        assertEquals(expectedShift.getDay().getDayOfWeek().toString() + expectedShift.getStartTime().getLocalTime(),
-                actualEntry.getStartDate().getDayOfWeek().toString() + actualEntry.getStartTime());
         assertEquals(expectedShift.getDay().getDayOfWeek(), actualEntry.getStartDate().getDayOfWeek());
         assertEquals(expectedShift.getDay().getDayOfWeek(), actualEntry.getEndDate().getDayOfWeek());
         assertEquals(expectedShift.getStartTime().getLocalTime(), actualEntry.getStartTime());

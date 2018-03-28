@@ -61,11 +61,11 @@ public class TimetablePanel extends UiPart<Region> {
     private static final Style ENTRY_RED_STYLE = Style.STYLE5;
     private static final Style ENTRY_BROWN_STYLE = Style.STYLE7;
 
-    public static Calendar TIMETABLE_AVAIL;
-    public static Calendar TIMETABLE_RUNNING_OUT;
-    public static Calendar TIMETABLE_FULL;
-    public static Calendar TIMETABLE_EMPLOYEE;
-    public static Calendar TIMETABLE_OTHERS;
+    private static Calendar timetableAvail;
+    private static Calendar timetableEmployee;
+    private static Calendar timetableFull;
+    private static Calendar timetableOthers;
+    private static Calendar timetableRunningOut;
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -98,6 +98,26 @@ public class TimetablePanel extends UiPart<Region> {
 
     public CalendarView getRoot() {
         return this.timetableView;
+    }
+
+    public static Calendar getTimetableAvail() {
+        return timetableAvail;
+    }
+
+    public static Calendar getTimetableRunningOut() {
+        return timetableRunningOut;
+    }
+
+    public static Calendar getTimetableFull() {
+        return timetableFull;
+    }
+
+    public static Calendar getTimetableEmployee() {
+        return timetableEmployee;
+    }
+
+    public static Calendar getTimetableOthers() {
+        return timetableOthers;
     }
 
     /**
@@ -207,11 +227,11 @@ public class TimetablePanel extends UiPart<Region> {
     private Calendar getEntryTypeMain(Shift shift) {
         int ratio = shift.getSlotsLeft() / shift.getCapacity().getCapacity();
         if (ratio <= 0) {
-            return TIMETABLE_FULL;
+            return timetableFull;
         } else if (ratio <= 0.5 || shift.getCapacity().getCapacity() < MAX_SLOTS_LEFT_RUNNING_OUT) {
-            return TIMETABLE_RUNNING_OUT;
+            return timetableRunningOut;
         } else {
-            return TIMETABLE_AVAIL;
+            return timetableAvail;
         }
     }
 
@@ -221,9 +241,9 @@ public class TimetablePanel extends UiPart<Region> {
      */
     private Calendar getEntryTypeEmployee(Shift shift) {
         if (isCurrentEmployeeInShift(shift)) {
-            return TIMETABLE_EMPLOYEE;
+            return timetableEmployee;
         } else {
-            return TIMETABLE_OTHERS;
+            return timetableOthers;
         }
     }
 
@@ -255,22 +275,22 @@ public class TimetablePanel extends UiPart<Region> {
      * Initialises all the Calendar objects
      */
     private void initialiseEntries() {
-        TIMETABLE_AVAIL = new Calendar("Available");
-        TIMETABLE_RUNNING_OUT = new Calendar("Running Out");
-        TIMETABLE_FULL = new Calendar("Full");
-        TIMETABLE_EMPLOYEE = new Calendar("Employee's shift");
-        TIMETABLE_OTHERS = new Calendar("Other shifts");
+        timetableAvail = new Calendar("Available");
+        timetableRunningOut = new Calendar("Running Out");
+        timetableFull = new Calendar("Full");
+        timetableEmployee = new Calendar("Employee's shift");
+        timetableOthers = new Calendar("Other shifts");
     }
 
     /**
      * Sets the color styles of the entries
      */
     private void setEntryStyles() {
-        TIMETABLE_AVAIL.setStyle(ENTRY_GREEN_STYLE);
-        TIMETABLE_RUNNING_OUT.setStyle(ENTRY_YELLOW_STYLE);
-        TIMETABLE_FULL.setStyle(ENTRY_RED_STYLE);
-        TIMETABLE_EMPLOYEE.setStyle(ENTRY_BLUE_STYLE);
-        TIMETABLE_OTHERS.setStyle(ENTRY_BROWN_STYLE);
+        timetableAvail.setStyle(ENTRY_GREEN_STYLE);
+        timetableRunningOut.setStyle(ENTRY_YELLOW_STYLE);
+        timetableFull.setStyle(ENTRY_RED_STYLE);
+        timetableEmployee.setStyle(ENTRY_BLUE_STYLE);
+        timetableOthers.setStyle(ENTRY_BROWN_STYLE);
     }
 
     /**
@@ -279,8 +299,8 @@ public class TimetablePanel extends UiPart<Region> {
     private void addCalendars(CalendarSource calendarSource) {
         initialiseEntries();
         setEntryStyles();
-        calendarSource.getCalendars().addAll(TIMETABLE_AVAIL, TIMETABLE_RUNNING_OUT, TIMETABLE_FULL,
-                TIMETABLE_EMPLOYEE, TIMETABLE_OTHERS);
+        calendarSource.getCalendars().addAll(timetableAvail, timetableRunningOut, timetableFull,
+                timetableEmployee, timetableOthers);
     }
 
     /**
