@@ -1131,11 +1131,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |employer |edit an employee’s address|update their outdated address.
 
+|`* *` |employee |view my own shifts in the timetable |so that I can easily recall when I need to work.
+
+|`* *` |employee |export timetable as image |have easy access to the time slots I'm working at.
+
 |`* *` |employee |edit my contact and address |update my particulars.
 
 |`* *` |employee |view my salary so far for the month |plan my expenses.
-
-|`*` |user |export timetable as image |have easy access to the time slots I'm working at.
 
 |`*` |employer |add an employee’s photo |view it at any time.
 
