@@ -27,6 +27,7 @@ import seedu.ptman.logic.commands.DeleteShiftCommand;
 import seedu.ptman.logic.commands.EditCommand;
 import seedu.ptman.logic.commands.EditOutletCommand;
 import seedu.ptman.logic.commands.ExitCommand;
+import seedu.ptman.logic.commands.ExportCommand;
 import seedu.ptman.logic.commands.FindCommand;
 import seedu.ptman.logic.commands.HelpCommand;
 import seedu.ptman.logic.commands.HistoryCommand;
@@ -34,6 +35,8 @@ import seedu.ptman.logic.commands.ListCommand;
 import seedu.ptman.logic.commands.LogInAdminCommand;
 import seedu.ptman.logic.commands.LogOutAdminCommand;
 import seedu.ptman.logic.commands.RedoCommand;
+import seedu.ptman.logic.commands.ResetMasterPasswordCommand;
+import seedu.ptman.logic.commands.ResetPasswordCommand;
 import seedu.ptman.logic.commands.SelectCommand;
 import seedu.ptman.logic.commands.UnapplyCommand;
 import seedu.ptman.logic.commands.UndoCommand;
@@ -80,6 +83,14 @@ public class PartTimeManagerParser {
         case ChangeMasterPasswordCommand.COMMAND_WORD:
         case ChangeMasterPasswordCommand.COMMAND_ALIAS:
             return new ChangeMasterPasswordCommandParser().parse(arguments);
+
+        case ResetPasswordCommand.COMMAND_WORD:
+        case ResetPasswordCommand.COMMAND_ALIAS:
+            return new ResetPasswordCommandParser().parse(arguments);
+
+        case ResetMasterPasswordCommand.COMMAND_WORD:
+        case ResetMasterPasswordCommand.COMMAND_ALIAS:
+            return new ResetMasterPasswordCommandParser().parse(arguments);
 
         case ApplyCommand.COMMAND_WORD:
         case ApplyCommand.COMMAND_ALIAS:
@@ -154,6 +165,10 @@ public class PartTimeManagerParser {
         case AnnouncementCommand.COMMAND_WORD:
         case AnnouncementCommand.COMMAND_ALIAS:
             return new AnnouncementCommandParser().parse(arguments);
+
+        case ExportCommand.COMMAND_WORD:
+        case ExportCommand.COMMAND_ALIAS:
+            return new ExportCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
