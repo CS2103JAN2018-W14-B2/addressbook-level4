@@ -2,6 +2,8 @@ package seedu.ptman.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,6 +13,7 @@ import java.util.Locale;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import javax.mail.MessagingException;
 
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Calendar.Style;
@@ -35,6 +38,7 @@ import seedu.ptman.commons.events.model.PartTimeManagerChangedEvent;
 import seedu.ptman.commons.events.ui.EmployeePanelSelectionChangedEvent;
 import seedu.ptman.commons.events.ui.ExportTimetableAsImageAndEmailRequestEvent;
 import seedu.ptman.commons.events.ui.ExportTimetableAsImageRequestEvent;
+import seedu.ptman.commons.services.EmailService;
 import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.UniqueEmployeeList;
@@ -333,12 +337,17 @@ public class TimetablePanel extends UiPart<Region> {
      * @param email
      */
     private void exportTimetableAsImageAndEmail(String filename, Email email) {
-        //TODO: This method should send image as email when emailing service is up.
-        File imageFile = new File("." + File.separator + filename + "." + TIMETABLE_IMAGE_FILE_FORMAT);
+        String pathName = "." + File.separator + filename + "." + TIMETABLE_IMAGE_FILE_FORMAT;
+        File imageFile = new File(pathName);
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(takeSnapshot(), null), TIMETABLE_IMAGE_FILE_FORMAT, imageFile);
+            EmailService emailService = EmailService.getInstance();
+            emailService.sendTimetableAttachment(email.toString(), pathName);
+            Files.deleteIfExists(Paths.get(pathName));
         } catch (IOException e) {
             logger.warning("Error taking snapshot of timetable.");
+        } catch (MessagingException e) {
+            logger.warning("Error sending timetable as email.");
         }
     }
 
