@@ -68,6 +68,12 @@ public class EmailService {
         Transport.send(message);
     }
 
+    /**
+     * Send exported timetable image as an attachment to user
+     * @param email
+     * @param filename
+     * @throws MessagingException
+     */
     public void sendTimetableAttachment(String email, String filename) throws MessagingException {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(senderEmailTimetable));
