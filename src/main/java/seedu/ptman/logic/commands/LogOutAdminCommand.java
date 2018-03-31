@@ -1,6 +1,5 @@
 package seedu.ptman.logic.commands;
 
-
 import seedu.ptman.commons.core.EventsCenter;
 import seedu.ptman.commons.events.model.UserModeChangedEvent;
 

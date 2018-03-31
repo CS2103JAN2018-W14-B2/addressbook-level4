@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 
+import guitests.guihandles.AdminModeDisplayHandle;
 import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.EmployeeListPanelHandle;
@@ -38,6 +39,7 @@ import seedu.ptman.logic.commands.SelectCommand;
 import seedu.ptman.model.Model;
 import seedu.ptman.model.PartTimeManager;
 import seedu.ptman.testutil.TypicalEmployees;
+import seedu.ptman.ui.AdminModeDisplay;
 import seedu.ptman.ui.BrowserPanel;
 import seedu.ptman.ui.CommandBox;
 import seedu.ptman.ui.ResultDisplay;
@@ -56,6 +58,8 @@ public abstract class PartTimeManagerSystemTest {
 
     private List<String> defaultStyleOfResultDisplay;
     private List<String> errorStyleOfResultDisplay;
+    private List<String> defaultStyleOfAdminModeDisplay;
+    private List<String> loginStyleOfAdminModeDisplay;
 
     private MainWindowHandle mainWindowHandle;
     private TestApp testApp;
@@ -75,6 +79,12 @@ public abstract class PartTimeManagerSystemTest {
         defaultStyleOfResultDisplay = mainWindowHandle.getResultDisplay().getStyleClass();
         errorStyleOfResultDisplay = mainWindowHandle.getResultDisplay().getStyleClass();
         errorStyleOfResultDisplay.add(ResultDisplay.ERROR_STYLE_CLASS);
+
+        defaultStyleOfAdminModeDisplay = mainWindowHandle.getAdminModeDisplay().getStyleClass();
+        loginStyleOfAdminModeDisplay = mainWindowHandle.getAdminModeDisplay().getStyleClass();
+        loginStyleOfAdminModeDisplay.remove(AdminModeDisplay.LABEL_STYLE_CLASS_NON_ADMIN);
+        loginStyleOfAdminModeDisplay.add(AdminModeDisplay.LABEL_STYLE_CLASS_ADMIN);
+
         assertApplicationStartingStateIsCorrect();
     }
 
@@ -104,6 +114,10 @@ public abstract class PartTimeManagerSystemTest {
 
     public CommandBoxHandle getCommandBox() {
         return mainWindowHandle.getCommandBox();
+    }
+
+    public AdminModeDisplayHandle getAdminModeDisplay() {
+        return mainWindowHandle.getAdminModeDisplay();
     }
 
     public EmployeeListPanelHandle getEmployeeListPanel() {
@@ -260,6 +274,21 @@ public abstract class PartTimeManagerSystemTest {
         assertEquals(errorStyleOfResultDisplay, getResultDisplay().getStyleClass());
     }
 
+
+    /**
+     * Asserts that the admin mode display shows the default(logout) style.
+     */
+    protected void assertAdminModeDisplayShowsDefaultStyle() {
+        assertEquals(defaultStyleOfAdminModeDisplay, getAdminModeDisplay().getStyleClass());
+    }
+
+    /**
+     * Asserts that the admin mode display shows the login style.
+     */
+    protected void assertAdminModeDisplayShowsLoginStyle() {
+        assertEquals(loginStyleOfAdminModeDisplay, getAdminModeDisplay().getStyleClass());
+    }
+
     /**
      * Asserts that the entire outlet panel remains the same.
      */
@@ -311,6 +340,7 @@ public abstract class PartTimeManagerSystemTest {
             assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
             assertEquals(String.format(NUM_EMPLOYEES_STATUS,
                     getModel().getPartTimeManager().getEmployeeList().size()), getStatusBarFooter().getNumEmployees());
+            assertAdminModeDisplayShowsDefaultStyle();
         } catch (Exception e) {
             throw new AssertionError("Starting state is wrong.", e);
         }
