@@ -1,6 +1,7 @@
 package seedu.ptman.ui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.ptman.testutil.EventsUtil.postNow;
@@ -66,6 +67,7 @@ public class TimetablePanelTest extends GuiUnitTest {
 
     private Path testFilePathFirst;
     private Path testFilePathSecond;
+    private String testFilePathNameSecond;
 
     @Before
     public void setUp() {
@@ -77,8 +79,9 @@ public class TimetablePanelTest extends GuiUnitTest {
 
         testFilePathFirst = Paths.get("." + File.separator + TIMETABLE_IMAGE_FILE_NAME_FIRST_TEST + "."
                 + TIMETABLE_IMAGE_FILE_FORMAT);
-        testFilePathSecond = Paths.get("." + File.separator + TIMETABLE_IMAGE_FILE_NAME_SECOND_TEST + "."
-                + TIMETABLE_IMAGE_FILE_FORMAT);
+        testFilePathNameSecond = "." + File.separator + TIMETABLE_IMAGE_FILE_NAME_SECOND_TEST + "."
+                + TIMETABLE_IMAGE_FILE_FORMAT;
+        testFilePathSecond = Paths.get(testFilePathNameSecond);
 
         timetablePanel = new TimetablePanel(TYPICAL_SHIFTS, TYPICAL_OUTLET);
 
@@ -103,9 +106,11 @@ public class TimetablePanelTest extends GuiUnitTest {
         postNow(exportTimetableAsImageRequestEventStub);
         assertTrue(Files.exists(testFilePathFirst) && Files.isRegularFile(testFilePathFirst));
 
-        // Snapshot taken when export and email command called
+        // Snapshot taken when export and email command called: Emailed file is not saved locally
+        File testFileSecond = new File(testFilePathNameSecond);
         postNow(exportTimetableAsImageAndEmailRequestEventStub);
-        assertTrue(Files.exists(testFilePathSecond) && Files.isRegularFile(testFilePathSecond));
+        assertFalse(Files.exists(testFilePathSecond));
+        assertFalse(testFileSecond.exists());
 
         // Associated shifts of employee highlighted
         postNow(employeePanelSelectionChangedEventStub);
