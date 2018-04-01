@@ -229,7 +229,7 @@ public class TimetablePanel extends UiPart<Region> {
      * the color of the shift in the timetableView.
      */
     private Calendar getEntryTypeMain(Shift shift) {
-        int ratio = shift.getSlotsLeft() / shift.getCapacity().getCapacity();
+        float ratio = (float) shift.getSlotsLeft() / (float) shift.getCapacity().getCapacity();
         if (ratio <= 0) {
             return timetableFull;
         } else if (ratio <= 0.5 || shift.getCapacity().getCapacity() < MAX_SLOTS_LEFT_RUNNING_OUT) {
