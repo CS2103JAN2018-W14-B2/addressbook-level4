@@ -2,7 +2,7 @@ package seedu.ptman.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.ptman.model.outlet.Timetable.getWeekFromDate;
+import static seedu.ptman.commons.util.DateUtil.getWeekFromDate;
 
 import java.time.LocalDate;
 import java.util.HashMap;
