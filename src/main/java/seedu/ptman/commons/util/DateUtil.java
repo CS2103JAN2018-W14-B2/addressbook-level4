@@ -1,5 +1,7 @@
 package seedu.ptman.commons.util;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
@@ -14,14 +16,16 @@ public class DateUtil {
      * Returns the week number for {@code date} from the start of the year
      */
     public static int getWeekFromDate(LocalDate date) {
+        requireNonNull(date);
         TemporalField woy = WeekFields.of(Locale.FRANCE).weekOfWeekBasedYear();
         return date.get(woy);
     }
 
     /**
-     * Given a {@code date}, returns the date of the start of the given week
+     * Given a {@code date}, returns the date of the week's Monday
      */
-    public static LocalDate findStartOfWeekDate(LocalDate date) {
+    public static LocalDate getMondayOfDate(LocalDate date) {
+        requireNonNull(date);
         int week = getWeekFromDate(date);
         // We use Locale.FRANCE because it sets the first day of the week
         // to be Monday.
