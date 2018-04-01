@@ -260,6 +260,11 @@ public class TimetablePanel extends UiPart<Region> {
         updateTimetableView();
     }
 
+    private void loadMainTimetable() {
+        currentEmployee = null;
+        updateTimetableView();
+    }
+
     /**
      * Replaces timetableView with a new timetable with updated shift and outlet information
      */
@@ -360,7 +365,13 @@ public class TimetablePanel extends UiPart<Region> {
     @Subscribe
     private void handleEmployeePanelSelectionChangedEvent(EmployeePanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        Platform.runLater(() -> loadEmployeeTimetable(event.getNewSelection().employee));
+        Platform.runLater(() -> {
+            if (event.hasNewSelection()) {
+                loadEmployeeTimetable(event.getNewSelection().employee);
+            } else {
+                loadMainTimetable();
+            }
+        });
     }
 
     @Subscribe
