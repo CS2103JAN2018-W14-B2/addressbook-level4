@@ -1,4 +1,4 @@
-package seedu.ptman.model.outlet;
+package seedu.ptman.model.shift;
 
 import static seedu.ptman.commons.util.AppUtil.checkArgument;
 import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
@@ -14,6 +14,7 @@ import seedu.ptman.model.employee.UniqueEmployeeList;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 
+//@@author shanwpf
 /**
  * Represents a shift that employees can work in.
  */

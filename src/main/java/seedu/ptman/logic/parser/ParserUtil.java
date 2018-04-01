@@ -17,13 +17,13 @@ import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Name;
 import seedu.ptman.model.employee.Phone;
 import seedu.ptman.model.employee.Salary;
-import seedu.ptman.model.outlet.Capacity;
-import seedu.ptman.model.outlet.Date;
 import seedu.ptman.model.outlet.OperatingHours;
 import seedu.ptman.model.outlet.OutletContact;
 import seedu.ptman.model.outlet.OutletEmail;
 import seedu.ptman.model.outlet.OutletName;
-import seedu.ptman.model.outlet.Time;
+import seedu.ptman.model.shift.Capacity;
+import seedu.ptman.model.shift.Date;
+import seedu.ptman.model.shift.Time;
 import seedu.ptman.model.tag.Tag;
 
 /**

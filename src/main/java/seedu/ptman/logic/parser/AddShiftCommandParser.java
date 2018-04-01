@@ -11,10 +11,10 @@ import java.util.stream.Stream;
 import seedu.ptman.commons.exceptions.IllegalValueException;
 import seedu.ptman.logic.commands.AddShiftCommand;
 import seedu.ptman.logic.parser.exceptions.ParseException;
-import seedu.ptman.model.outlet.Capacity;
-import seedu.ptman.model.outlet.Date;
-import seedu.ptman.model.outlet.Shift;
-import seedu.ptman.model.outlet.Time;
+import seedu.ptman.model.shift.Capacity;
+import seedu.ptman.model.shift.Date;
+import seedu.ptman.model.shift.Shift;
+import seedu.ptman.model.shift.Time;
 
 /**
  * Parses input arguments and creates a new AddShiftCommand object

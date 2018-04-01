@@ -9,11 +9,12 @@ import java.util.List;
 import seedu.ptman.model.PartTimeManager;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
-import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
+import seedu.ptman.model.shift.Shift;
 
+//@@author shanwpf
 /**
- * A utility class containing a list of {@code Employee} objects to be used in tests.
+ * A utility class containing a list of {@code Shift} objects to be used in tests.
  */
 public class TypicalShifts {
 

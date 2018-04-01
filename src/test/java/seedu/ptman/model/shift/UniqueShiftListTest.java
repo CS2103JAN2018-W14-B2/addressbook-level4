@@ -1,4 +1,4 @@
-package seedu.ptman.model.outlet;
+package seedu.ptman.model.shift;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -17,6 +17,7 @@ import org.junit.rules.ExpectedException;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
 
+//@@author shanwpf
 public class UniqueShiftListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

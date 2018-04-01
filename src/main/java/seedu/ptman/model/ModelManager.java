@@ -21,10 +21,10 @@ import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 import seedu.ptman.model.outlet.OutletInformation;
-import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.exceptions.DuplicateShiftException;
 import seedu.ptman.model.outlet.exceptions.NoOutletInformationFieldChangeException;
 import seedu.ptman.model.outlet.exceptions.ShiftNotFoundException;
+import seedu.ptman.model.shift.Shift;
 import seedu.ptman.model.tag.Tag;
 
 /**
@@ -159,6 +159,7 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
+    //@@author shanwpf
     @Override
     public void addShift(Shift shift) throws DuplicateShiftException {
         partTimeManager.addShift(shift);
@@ -188,6 +189,7 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(predicate);
         filteredShifts.setPredicate(predicate);
     }
+    //@@author
 
     @Override
     public void updateEmployee(Employee target, Employee editedEmployee)

@@ -31,11 +31,12 @@ import seedu.ptman.model.Password;
 import seedu.ptman.model.UserPrefs;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.outlet.OutletInformation;
-import seedu.ptman.model.outlet.Shift;
+import seedu.ptman.model.shift.Shift;
 import seedu.ptman.testutil.Assert;
 import seedu.ptman.testutil.EmployeeBuilder;
 import seedu.ptman.testutil.ShiftBuilder;
 
+//@@author shanwpf
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand)
  * and unit tests for UnapplyCommand.

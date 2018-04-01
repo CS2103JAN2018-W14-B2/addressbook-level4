@@ -43,8 +43,8 @@ import seedu.ptman.model.employee.Email;
 import seedu.ptman.model.employee.Employee;
 import seedu.ptman.model.employee.UniqueEmployeeList;
 import seedu.ptman.model.outlet.OutletInformation;
-import seedu.ptman.model.outlet.Shift;
 import seedu.ptman.model.outlet.Timetable;
+import seedu.ptman.model.shift.Shift;
 
 //@@author hzxcaryn
 /**

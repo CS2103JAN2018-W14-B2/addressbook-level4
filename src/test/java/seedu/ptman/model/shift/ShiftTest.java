@@ -1,4 +1,4 @@
-package seedu.ptman.model.outlet;
+package seedu.ptman.model.shift;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -12,6 +12,7 @@ import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
 import seedu.ptman.testutil.Assert;
 import seedu.ptman.testutil.ShiftBuilder;
 
+//@@author shanwpf
 public class ShiftTest {
 
     @Test

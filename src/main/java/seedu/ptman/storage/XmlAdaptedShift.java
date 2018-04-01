@@ -8,11 +8,12 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.ptman.commons.exceptions.IllegalValueException;
 import seedu.ptman.model.employee.Employee;
-import seedu.ptman.model.outlet.Capacity;
-import seedu.ptman.model.outlet.Date;
-import seedu.ptman.model.outlet.Shift;
-import seedu.ptman.model.outlet.Time;
+import seedu.ptman.model.shift.Capacity;
+import seedu.ptman.model.shift.Date;
+import seedu.ptman.model.shift.Shift;
+import seedu.ptman.model.shift.Time;
 
+//@@author shanwpf
 /**
  * JAXB-friendly version of the Shift.
  */

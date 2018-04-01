@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import seedu.ptman.commons.exceptions.IllegalValueException;
-import seedu.ptman.model.outlet.Capacity;
-import seedu.ptman.model.outlet.Date;
-import seedu.ptman.model.outlet.Time;
+import seedu.ptman.model.shift.Capacity;
+import seedu.ptman.model.shift.Date;
+import seedu.ptman.model.shift.Time;
 import seedu.ptman.testutil.Assert;
 
 public class XmlAdaptedShiftTest {

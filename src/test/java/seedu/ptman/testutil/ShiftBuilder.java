@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.ptman.model.employee.Employee;
-import seedu.ptman.model.outlet.Capacity;
-import seedu.ptman.model.outlet.Date;
-import seedu.ptman.model.outlet.Shift;
-import seedu.ptman.model.outlet.Time;
+import seedu.ptman.model.shift.Capacity;
+import seedu.ptman.model.shift.Date;
+import seedu.ptman.model.shift.Shift;
+import seedu.ptman.model.shift.Time;
 
+//@@author shanwpf
 /**
- * A utility class to help with building Employee objects.
+ * A utility class to help with building Shift objects.
  */
 public class ShiftBuilder {
 
