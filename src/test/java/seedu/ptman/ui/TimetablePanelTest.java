@@ -59,7 +59,8 @@ public class TimetablePanelTest extends GuiUnitTest {
     private static final String TIMETABLE_IMAGE_FILE_NAME_SECOND_TEST = "Testing2";
     private static final Email TIMETABLE_IMAGE_EMAIL_TEST = new Email("example@gmail.com");
 
-    private EmployeePanelSelectionChangedEvent employeePanelSelectionChangedEventStub;
+    private EmployeePanelSelectionChangedEvent employeePanelSelectionChangedEventAliceStub;
+    private EmployeePanelSelectionChangedEvent employeePanelSelectionChangedEventNullStub;
     private ExportTimetableAsImageRequestEvent exportTimetableAsImageRequestEventStub;
     private ExportTimetableAsImageAndEmailRequestEvent exportTimetableAsImageAndEmailRequestEventStub;
 
@@ -71,7 +72,10 @@ public class TimetablePanelTest extends GuiUnitTest {
 
     @Before
     public void setUp() {
-        employeePanelSelectionChangedEventStub = new EmployeePanelSelectionChangedEvent(new EmployeeCard(ALICE, 0));
+        employeePanelSelectionChangedEventAliceStub =
+                new EmployeePanelSelectionChangedEvent(new EmployeeCard(ALICE, 0));
+        employeePanelSelectionChangedEventNullStub = new EmployeePanelSelectionChangedEvent(null);
+
         exportTimetableAsImageRequestEventStub =
                 new ExportTimetableAsImageRequestEvent(TIMETABLE_IMAGE_FILE_NAME_FIRST_TEST);
         exportTimetableAsImageAndEmailRequestEventStub = new ExportTimetableAsImageAndEmailRequestEvent(
@@ -113,11 +117,20 @@ public class TimetablePanelTest extends GuiUnitTest {
         assertFalse(testFileSecond.exists());
 
         // Associated shifts of employee highlighted
-        postNow(employeePanelSelectionChangedEventStub);
-        List<Entry> entries = getTimetableEntries();
+        postNow(employeePanelSelectionChangedEventAliceStub);
+        List<Entry> entriesAfterSelectionEventAlice = getTimetableEntries();
         for (int i = 0; i < TYPICAL_SHIFTS.size(); i++) {
             Shift expectedShift = TYPICAL_SHIFTS.get(i);
-            Entry actualEntry = entries.get(i);
+            Entry actualEntry = entriesAfterSelectionEventAlice.get(i);
+            assertEntryDisplaysShift(expectedShift, actualEntry, i + 1);
+        }
+
+        // Load back to default timetable view: Displays current week view
+        postNow(employeePanelSelectionChangedEventNullStub);
+        List<Entry> entriesAfterSelectionEventNull = getTimetableEntries();
+        for (int i = 0; i < TYPICAL_SHIFTS.size(); i++) {
+            Shift expectedShift = TYPICAL_SHIFTS.get(i);
+            Entry actualEntry = entriesAfterSelectionEventNull.get(i);
             assertEntryDisplaysShift(expectedShift, actualEntry, i + 1);
         }
     }
