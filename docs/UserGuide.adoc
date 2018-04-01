@@ -137,7 +137,7 @@ Selects the 1st employee in the results of the `find` command and displays his/h
 
 Displays the main timetable view (of the current week). Useful for users to navigate back to main timetable view
 after using the `select` command. +
-*Format:* `main` 
+*Format:* `main`
 
 ==== Export timetable as image: `export`
 
