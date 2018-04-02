@@ -248,13 +248,21 @@ By allowing employers to add or delete shifts, employees can then apply for shif
 
 ==== How it is implemented
 
-In order to create a shift, the date, starting time, ending time, and capacity of the shift must be specified.
+The `Shift` class represents a shift in PTMan. +
+
+It stores:
+
+. The `Date` of the shift.
+. The starting and ending `Time` of the shift.
+. The employee `Capacity` for the shift.
+. The `UniqueEmployeeList` of employees working in the shift.
+
 Figure 11 is a class diagram that displays the association between `Shift` and other components in the `Model`.
 
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
 
-A `Shift` object is created using it's constructor:
+A `Shift` object is created using its constructor:
 ----
 Shift(Date date, Time startTime, Time endTime, Capacity capacity)
 ----
@@ -277,7 +285,7 @@ Example: `new Capacity("4")` creates a `Capacity` object representing integer `4
 In addition to these classes, `Shift` also contains a `UniqueEmployeeList` which is empty when `Shift` is constructed.
 This is used to store employees that have applied for this shift.
 
-To store a list of shifts, we may use a `UniqueShiftList` to ensure there are no duplicate shifts.
+To store a list of shifts, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
 
 The following are commands that directly interact with the `Shift` class:
 
@@ -285,6 +293,18 @@ The following are commands that directly interact with the `Shift` class:
 . `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `PartTimeManager`.
 . `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
 . `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
+
+The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index.
+Having a large number of shifts that are not visible in PTMan will cause the visible shifts to have a large index. To avoid this, we only index shifts that are visible in the current timetable view. +
+This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` to filter shifts in the current week as shown below:
+----
+// In Model
+public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
+    getWeekFromDate(shift.getDate().getLocalDate()) == getWeekFromDate(LocalDate.now());
+
+// In ModelManager
+updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
+----
 
 ==== Reasons for how it is implemented
 
