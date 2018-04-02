@@ -149,7 +149,7 @@ image::SDforDeletePerson.png[width="800"]
 [NOTE]
 Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-Figure 4 below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+_Figure 4_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 .Component interactions for `delete 1` command (part 2)
 image::SDforDeletePersonEventHandling.png[width="800"]
@@ -257,7 +257,7 @@ It stores:
 . The employee `Capacity` for the shift.
 . The `UniqueEmployeeList` of employees working in the shift.
 
-Figure 11 is a class diagram that displays the association between `Shift` and other components in the `Model`.
+_Figure 11_ is a class diagram that displays the association between `Shift` and other components in the `Model`.
 
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
