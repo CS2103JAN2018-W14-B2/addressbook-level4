@@ -91,11 +91,13 @@ Displays the help window. +
 
 *Format:* `help`
 
-
+[TIP]
+====
 Alternatively, you can find the help option by pressing kbd:[F1] or from the menu bar, as shown in _Figure 2_.
 
 image::Ui_help.png[width="790"]
 _Figure 2._ Accessing help option from the menu bar +
+====
 
 
 [[Find]]
@@ -145,6 +147,9 @@ Examples:
 * To select the employee `1` in the results of the `find` command and display their shifts in the timetable, type: +
 `find Betsy` +
 `select 1` +
+
+[TIP]
+Alternatively, you can select an employee simply by clicking on the employee's card in the employee list
 
 [TIP]
 To stop displaying the employee's shifts on the timetable, use the `main` command. +
@@ -310,14 +315,14 @@ An employee can have any number of tags (including 0)
 
 Guided Example:
 
-* We have an employee *John Doe* with phone number *98765432*, email address *johnd@example.com*, and stays in *311, Clementi Ave 2, #02-25*.
+. We have an employee *John Doe* with phone number *98765432*, email address *johnd@example.com*, and stays in *311, Clementi Ave 2, #02-25*.
 He has earned *$0* so far, and takes the role of a *Barista* and a *Cashier*. +
 To add John Doe into PTMan, we can do the following as illustrated in _Figure 3_.
 +
 image::Ui_add1.png[width="790"]
 _Figure 3._ Example of `add` command usage +
-+
-Click kbd:[Enter] and you would see a confirmation message below the command bar, and John Doe being added into your Employee list.
+
+. Click kbd:[Enter] and you would see a confirmation message below the command bar, and John Doe being added into your Employee list.
 _Figure 4_ shows how PTMan should look like after the above command.
 +
 image::Ui_add2.png[width="790"]
@@ -421,15 +426,15 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 
 Guided Example:
 
-* When you first start using PTMan, your outlet name will be DefaultOutlet, and the outlet information would not reflect that of your outlet.
+. When you first start using PTMan, your outlet name will be DefaultOutlet, and the outlet information would not reflect that of your outlet.
 Your outlet is called *AwesomeCoffee*, with operating hours from *10am* to *11pm*.
 The outlet's contact number is *98134086* and has email *awesomecoffee@gmail.com*. +
 To make these changes into PTMan, we can do the following as illustrated in _Figure 5_.
 +
 image::Ui_editoutlet1.png[width="790"]
 _Figure 5._ Example of `add` command usage +
-+
-Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
+
+. Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
 _Figure 6_ shows how PTMan should look like after the above command.
 +
 image::Ui_editoutlet2.png[width="790"]
@@ -445,14 +450,14 @@ Sets an announcement for the outlet. +
 
 Guided Example:
 
-* Your store has a *new drink released this coming Wednesday*, and you want your employees who come working on Wednesday to be
+. Your store has a *new drink released this coming Wednesday*, and you want your employees who come working on Wednesday to be
 familiar with the recipe for it. Why not leave a note for your employees so that they can be prepared for their shifts?
 To make an announcement in PTMan, we can dp the following as illustrated in _Figure 7_.
 +
 image::Ui_announcement1.png[width="790"]
 _Figure 7._ Example of `add` command usage +
-+
-Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the announcement.
+
+. Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the announcement.
 _Figure 8_ shows how PTMan should look like after the above command.
 +
 image::Ui_announcement2.png[width="790"]
