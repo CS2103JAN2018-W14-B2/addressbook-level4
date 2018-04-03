@@ -19,6 +19,11 @@
 
 
 /* Classes */
+.root {
+    -fx-accent: #AFAFAF;
+    -fx-focus-color: #AFAFAF;
+}
+
 .background {
     -fx-background-color: #FBFBFB;
     background-color: #FBFBFB; /* Used in the default.html file */
