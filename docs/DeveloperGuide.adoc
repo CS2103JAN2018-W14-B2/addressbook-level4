@@ -389,7 +389,7 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
 This results in the desired shift indexing as shown in _Figure 14_ below.
 
 .Example of Desired Shift Indexing
-image::ShiftIndexGood.png[width="800"]
+image::ShiftIndexGood.png[width=800]
 
 // tag::timetable
 === Timetable feature
