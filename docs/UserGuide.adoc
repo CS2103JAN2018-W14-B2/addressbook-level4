@@ -96,7 +96,7 @@ Displays the help window. +
 Alternatively, you can find the help option by pressing kbd:[F1] or from the menu bar, as shown in _Figure 2_.
 
 image::Ui_help.png[width="790"]
-_Figure 2._ Accessing help option from the menu bar +
+_Figure 2._ Accessing help option from the menu bar
 ====
 
 
@@ -432,13 +432,13 @@ The outlet's contact number is *98134086* and has email *awesomecoffee@gmail.com
 To make these changes into PTMan, we can do the following as illustrated in _Figure 5_.
 +
 image::Ui_editoutlet1.png[width="790"]
-_Figure 5._ Example of `add` command usage +
+_Figure 5._ Example of `editoutlet` command usage +
 
 . Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
 _Figure 6_ shows how PTMan should look like after the above command.
 +
 image::Ui_editoutlet2.png[width="790"]
-_Figure 6._ Successful addition of employee into PTMan +
+_Figure 6._ Successful editing of outlet information in PTMan +
 
 
 [[Announcement]]
@@ -455,13 +455,13 @@ familiar with the recipe for it. Why not leave a note for your employees so that
 To make an announcement in PTMan, we can dp the following as illustrated in _Figure 7_.
 +
 image::Ui_announcement1.png[width="790"]
-_Figure 7._ Example of `add` command usage +
+_Figure 7._ Example of `announce` command usage +
 
 . Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the announcement.
 _Figure 8_ shows how PTMan should look like after the above command.
 +
 image::Ui_announcement2.png[width="790"]
-_Figure 8._ Successful addition of employee into PTMan +
+_Figure 8._ Successful announcement made in PTMan +
 
 
 [[Addshift]]
