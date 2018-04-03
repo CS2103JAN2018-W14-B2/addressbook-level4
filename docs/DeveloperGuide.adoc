@@ -461,22 +461,63 @@ TimetablePanel timetablePanel = new TimetablePanel(logic.getFilteredShiftList(),
  * An `OutletInformation` object, which contains information of the outlet that is required to build the timetable.
   In particular, the operating hours of the outlet.
 
-`TimetablePanel` then uses these `Shift` objects to set the `Entries` in the timetable view, in the method `setShifts()`.
-The operating hours acquired from `OutletInformation` is then used in `updateTimetableView()` to ensure that the timetable
+`TimetablePanel` then uses the `Shift` objects in the `ObservableList<Shift>` to set the `Entries` in the timetable view, in the method `setShifts()`.
+The operating hours acquired from `OutletInformation` is then used in `setTimetableRange()` to ensure that the timetable
 displays all the time slots within this time range. +
+ +
 
-The timetable GUI automatically refreshes to update the timetable view by calling the `updateTimetableView()` method whenever
-there is a `PartTimeManagerChangedEvent`. This ensures the timetable is always updated when a shift is added, removed, or altered.
+*Viewing of Individual Employee's Shifts*
 
-===== Select employee to view working shifts
+PTMan allows employees to highlight their own shifts on the timetable GUI through `SelectCommand`. When a particular employee is
+being selected, an `EmployeePanelSelectionChangedEvent` is posted with the selected employee as the argument to indicate the change. +
 
-`TimetablePanel` also subscribes to `EmployeePanelSelectionChangedEvent` to detect if a certain employee is selected. If so,
-the timetable will reflect the employee's shifts in a different color by calling `loadEmployeeTimetable(Employee employee)`. +
-More to be updated in v1.3.
+`EmployeePanelSelectionChangedEvent` has the following constructor:
+----
+public EmployeePanelSelectionChangedEvent(EmployeeCard newSelection)
+----
 
-===== Export timetable to image
+`TimetablePanel` subscribes to this event and handles it by calling the `loadEmployeeTimetable` method for the `newSelection`. +
+ +
 
-To be updated in v1.3.
+*Returning to Main View of Timetable GUI*
+
+The returning to main timetable view is called through `MainCommand`, which also posts an `EmployeePanelSelectionChangedEvent` event
+with null as the argument.
+
+`TimetablePanel` subscribes to this event and handles it by calling the `loadMainTimetable` method. +
+ +
+
+*Updating of Timetable GUI*
+
+The main method in charge of updating the timetable GUI is the `updateTimetableView()` method. This method is called whenever
+a `PartTimeManagerChangedEvent` or `EmployeePanelSelectionChangedEvent` is posted. +
+
+Here are some examples of how `updateTimetableView()` is called: +
+
+* A `Shift` is added, removed, or altered:
+`PartTimeManagerChangedEvent` is posted which calls `updateTimetableView()` to rebuild the timetable view with the changed shifts.
+* `OutletInformation` is edited:
+`PartTimeManagerChangedEvent` is posted which calls `updateTimetableView()` to rebuild the timetable view to fit in the updated operating hours.
+* Selection of an employee:
+`EmployeePanelSelectionChangedEvent` is posted which calls `loadEmployeeTimetable` or `loadMainTimetable` accordingly. Both of these
+methods call `updateTimetableView()` to rebuild the timetable view with the appropriate `Entry` colors. +
+ +
+
+*Export Timetable*
+
+Exporting of the timetable is triggered by `ExportCommand`, which:
+
+* Saves the timetable as an image locally if no email address is specified, or
+* Sends the timetable as an image through email if an email address is specified.
+
+The former posts an `ExportTimetableAsImageRequestEvent`, while the latter posts an `ExportTimetableAsImageAndEmailRequestEvent`,
+both of which are subscribed to by `TimetablePanel`. +
+`TimetablePanel` handles them by calling `exportTimetableAsImage` and `exportTimetableAsImageAndEmail` methods respectively.
+How the exporting works is that a Snapshot is first taken of the `timetableView` Node, and then being written into a file locally.
+If `exportTimetableAsImageAndEmail` is called instead of `exportTimetableAsImage`, we will go on further to email this image
+through the `EmailService` class, and then finally delete the local file containing the Snapshot.
+
+
 // end::timetable
 
 
@@ -1181,7 +1222,8 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 
 . *Timetable (Major)*:
 .. *Timetable GUI*: Added the interactive timetable GUI for employees to interact through the Shift commands.
-.. *Export as Image*: Added a command for exporting timetable as image.
+.. *Export Timetable*: Added a command for exporting timetable as image.
+.. *View Shifts applied by employee*: Modified a command for employees to view their own shifts on the timetable GUI.
 . *Tag colors (Minor)*: Added different colors for different tags inside person cards. Tags are allocated colors based on their hashcode.
 
 *Bangjie*:
