@@ -247,7 +247,8 @@ public class PartTimeManagerParserTest {
                         + " pw/DEFAULT1 " + " pw/DEFAULT2 " + " pw/DEFAULT2 ");
         assertEquals(new ChangeAdminPasswordCommand(passwords), command);
     }
-    //@@author
+
+    //@@author SunBangJie
     @Test
     public void parseCommand_editoutlet() throws Exception {
         String name = "EditedOutlet";
@@ -294,6 +295,7 @@ public class PartTimeManagerParserTest {
         assertEquals(new AnnouncementCommand(new Announcement(announcement)), command);
     }
 
+    //@@author hzxcaryn
     @Test
     public void parseCommand_export() throws Exception {
         String email = "example@gmail.com";
@@ -312,7 +314,7 @@ public class PartTimeManagerParserTest {
         assertEquals(new ExportCommand(new Email(email)), command);
     }
 
-
+    //@@author
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
@@ -341,12 +343,14 @@ public class PartTimeManagerParserTest {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
+    //@@author hzxcaryn
     @Test
     public void parseCommand_main() throws Exception {
         assertTrue(parser.parseCommand(MainCommand.COMMAND_WORD) instanceof MainCommand);
         assertTrue(parser.parseCommand(MainCommand.COMMAND_WORD + " 3") instanceof MainCommand);
     }
 
+    //@@author
     @Test
     public void parseCommand_history() throws Exception {
         assertTrue(parser.parseCommand(HistoryCommand.COMMAND_WORD) instanceof HistoryCommand);

@@ -202,7 +202,7 @@ The `Logic` component:
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
-.Interactions Inside the Logic Component for the `delete 1` Command
+.Interactions inside the Logic Component for the `delete 1` Admin Command
 image::DeletePersonSdForLogic.png[width="800"]
 
 [[Design-Model]]
@@ -251,7 +251,8 @@ Such details are essential to facilitate other functions such as the access cont
 
 ==== Current implementation
 
-The `OutletInformation` class represents an outlet in PTMan. +
+The `OutletInformation` class represents an outlet in PTMan.
+It supports relevant commands that utilizes attributes of this class and it is also responsible for UI display and local storage. +
 
 _Figure 11_ is a class diagram that displays the association between `OutletInformation` and other components in the `Model`.
 
@@ -288,15 +289,43 @@ while the timetable can only be modified with the relevant `Shift` commands.
 Editing with some fields unspecified is allowed.
 For example, editoutlet n/OUTLETNAME is a valid command. This enables employers to edit only the information required for change.
 
-*Change admin password command*
+The current implementation to check some fields are specified is in the `setOutletInformation` method of the `OutletInformation` class.
+When all fields are null, it throws a new exception as shown below:
+----
+//in OutletInformation class
+public void setOutletInformation(OutletName name, OperatingHours operatingHours, OutletContact outletContact, OutletEmail outletEmail) throws NoOutletInformationFieldChangeException {
+    ...
+    if (name == null && operatingHours == null && outletContact == null && outletEmail == null) {
+        throw new NoOutletInformationFieldChangeException();
+    }
+    ...
+}
+----
+This exception is then handled by the `EditOutletCommand`.
+When the exception is caught, the `CommandException` with a message of command failure will be thrown,
+with reference to the function below:
+----
+//in EditOutletCommand class
+public CommandResult executeUndoableCommand() throws CommandException {
+    ...
+    try {
+        editedOutlet.setOutletInformation(name, operatingHours, outletContact, outletEmail);
+    } catch (NoOutletInformationFieldChangeException e) {
+        throw new CommandException(MESSAGE_EDIT_OUTLET_FAILURE);
+    }
+    ...
+}
+----
 
-The `changeadminpassword` command allows employers to change the admin password.
-For increased security, `changeadminpassword` command requires the current password for further verification.
-This reduces the risk of the password getting stolen. You can find out more information on password in <<Password Class>>.
+*Change master password command*
+
+After login with correct admin password, using the `changemasterpw` command, employers should be able to change the admin password.
+However, due to the possibility that previous employer forgot to log out, `changemasterpw` command requires
+the old password for further verification. This reduces the risk of password getting stolen. You can find out more information on password in _Section 4.5 Password class_.
 
 *Announcement command*
 
-The "announcement" command allows employers to create an announcement visible to all employees.
+After login with correct admin password, using the "announcement" command, employers should be able to create an announcement visible to all employees.
 This allows employers to broadcast important messages to employees. For example, when there is an urgent need of manpower in a specific time slot,
 employers can create an announcement to inform the employees who can sign up for the corresponding time slot upon receving the announcement.
 
@@ -600,7 +629,7 @@ This section highlights the considerations behind our application's design choic
 
 
 
-=== Password Class
+=== Password feature
 
 ==== Reason for implementation
 As PTMan is currently designed to use locally on a system, both employer and employee must go through the same system to allocate their preferred slot or to edit the data in PTMan. A Password class is given to both employer and employee to ensure that they are the authorized person that is using the system.
@@ -621,33 +650,42 @@ To create a password with desired password String, one can invoke the method bel
 createPassword(String password)
 ----
 
-==== Reasons for how it is implemented
+As of version 1.2, each person and outlet now has a class password. Refer to the diagram below:
+
+.Overview of the Password class in Model
+image::PasswordClassDiagram.png[width="700"]
+
+
 The reason of converting password string to hashCode is to protect user’s password from being seen in the storage file.  Anyone who get hold of the data are not able to convert the hashCode back to the original password string as SHA-256 is a https://en.wikipedia.org/wiki/Collision_resistance[collision resistant] hash.
 
-=== Feature Admin Mode
+=== Admin Mode/Admin Command Feature
 
 ==== Reason for implementation
-Initial stage of PTMan require huge amount of manual input by admin. To promote hassle-free command, employers can log in to admin mode and use the command provided without the need to enter the password for every command.
+Initial startup of PTMan require huge amount of manual input by admin. To promote hassle-free commands, employers can log in to admin mode with `login` command and use the command provided without the need to be autheticated for every command.
 
-==== How it is implemented
+==== How it is implemented  (Admin mode)
 Model component now implement three new API for logic component to use.
 ----
 boolean isAdminMode();
 boolean setTrueAdminMode(Password password);
 
-/** guarantee to break out from adminMode */
+/** guarantee to set adminMode to false */
 setFalseAdminMode();
 ----
 
 `setTrueAdminMode(Password password)` requires a password that will check against the outlet password and set admin mode accordingly. Failing to give the correct password will result in returning false.
 
-[NOTE]
-In order to enable the command to be usable only in command mode the code below must be added to the execution() of the command *first*.
+==== How it is implemented (Admin Command)
+In order to enable commands to be usable only in admin mode the code below must be added to the execution() of the command *first*.
 ----
 if (!model.isAdminMode()) {
     throw new CommandException(MESSAGE_ACCESS_DENIED);
 }
 ----
+The sequence Diagram below illustrate how the admin command is generally executed.
+
+.Interactions inside the Logic Component for the `delete 1` Admin Command
+image::DeletePersonSdForLogic.png[width="800"]
 
 // tag::dataencryption[]
 === Data Encryption
@@ -663,7 +701,17 @@ Therefore, local storage files are encrypted to prevent any direct interpretatio
 
 Currently, any data is encrypted in the Advanced Encryption Standard (AES) before writing into XML files.
 Data read from XML files must be decrypted before passing to the constructor of any object.
-This implementation successfully prevents any user of the computer directly interpreting the stored information.
+The function below demonstrates how outlet data is encrypted using the encrypt(String text) function: +
+----
+public XmlAdaptedOutletInformation(String outletName, String operatingHours, String outletContact, String outletEmail, String passwordHash, String announcement) {
+    ...
+    this.outletName = encrypt(outletName);
+    ...
+}
+----
+Similarly, decrypt(String encryptedText) can be called to decrypt data read from XML files. +
+
+The current implementation successfully prevents any user of the computer directly interpreting the stored information.
 However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in _Figure 15_.
 It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found pattern.
 

@@ -11,6 +11,7 @@ import seedu.ptman.commons.events.ui.ExportTimetableAsImageAndEmailRequestEvent;
 import seedu.ptman.commons.events.ui.ExportTimetableAsImageRequestEvent;
 import seedu.ptman.model.employee.Email;
 
+//@@author hzxcaryn
 /**
  * Exports current timetable view as an image locally
  */

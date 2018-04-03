@@ -277,7 +277,7 @@ public abstract class PartTimeManagerSystemTest {
         assertEquals(errorStyleOfResultDisplay, getResultDisplay().getStyleClass());
     }
 
-
+    //@@author hzxcaryn
     /**
      * Asserts that the admin mode display shows the default(logout) style.
      */
@@ -302,6 +302,7 @@ public abstract class PartTimeManagerSystemTest {
         assertFalse(handle.isOutletNameChanged());
     }
 
+    //@@author
     /**
      * Asserts that the entire status bar remains the same.
      */
