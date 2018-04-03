@@ -371,6 +371,10 @@ Similar to `ApplyCommand`, we create a copy of the `Shift` to be modified, remov
 The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1. +
+As seen in _Figure 13_ below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.
+
+.Example of Undesired Shift Indexing
+image::ShiftIndexBad.png[width="800"]
 
 To avoid this, we only want to index shifts that are visible in the current timetable view. +
 This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` in `ModelManager` to filter shifts in the current week as shown below:
@@ -382,6 +386,10 @@ public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
 // In ModelManager
 updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
 ----
+This results in the desired shift indexing as shown in _Figure 14_ below.
+
+.Example of Desired Shift Indexing
+image::ShiftIndexGood.png[width="800"]
 
 // tag::timetable
 === Timetable feature
