@@ -142,7 +142,7 @@
 }
 
 .list-cell {
-    -fx-label-padding: 8 6 8 6;
+    -fx-label-padding: 12 6 12 6;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
     -fx-border-color: transparent transparent #DDDEE4 transparent;
@@ -177,28 +177,28 @@
     -fx-font-weight: bold;
     -fx-font-size: 16px;
     -fx-text-fill: white;
-    -fx-padding: 10;
+    -fx-padding: 10 15 10 20;
 }
 
 .panel_large_label {
     -fx-font-family: "Proxima Nova Alt";
     -fx-font-weight: bold;
-    -fx-font-size: 23px;
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
     -fx-text-fill: #ABD0CE;
-    -fx-padding: 15 5 5 15;
+    -fx-padding: 18 5 5 15;
 }
 
 .cell_big_label {
     -fx-font-family: "Gotham Rounded Book";
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 13px;
-    -fx-padding: 3 0 0 0;
+    -fx-padding: 2 0 0 0;
     -fx-text-fill: #010504;
 }
 
