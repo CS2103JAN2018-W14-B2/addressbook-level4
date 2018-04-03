@@ -503,7 +503,7 @@ Here are some examples of how `updateTimetableView()` is called: +
 methods call `updateTimetableView()` to rebuild the timetable view with the appropriate `Entry` colors. +
  +
 
-*Export Timetable*
+*Exporting Timetable*
 
 Exporting of the timetable is triggered by `ExportCommand`, which:
 
