@@ -333,7 +333,7 @@ A `Shift` object is created using its constructor:
 Shift(Date date, Time startTime, Time endTime, Capacity capacity)
 ----
 
-Explanation for arguments:
+A shift contains the following classes:
 
 . `Date`: A class that wraps Java's `LocalDate` class. It indicates the date that the shift is on. +
 Example: `new Date("12-03-18")` creates a `Date` object representing 12 March 2018.
@@ -346,12 +346,14 @@ Example: `new Time("1030")` creates a `Time` object representing 10:30am.
 The string argument should represent a time in the 24-hour format.
 
 . `Capacity`: A class that wraps an integer that indicates the number of employees required for the shift. +
-Example: `new Capacity("4")` creates a `Capacity` object representing integer `4`.
+Example: `new Capacity("4")` creates a `Capacity` object representing the integer `4`.
 
-In addition to these classes, `Shift` also contains a `UniqueEmployeeList` which is empty when `Shift` is constructed.
-This is used to store employees that have applied for this shift.
+. `UniqueEmployeeList`: This is used to store employees that have applied for the shift and guarantees there are no duplicate employees in the shift.
 
-To store a list of shifts, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
+`Date` and `Time` use Java's `LocalDate` and `LocalTime` classes for easy integration with the timetable.
+They also make formatting simple through the use of Java's `DateTimeFormatter`.
+
+To store a list of shifts in `PartTimeManager`, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
 
 The following are commands that directly interact with the `Shift` class:
 
@@ -360,8 +362,8 @@ The following are commands that directly interact with the `Shift` class:
 . `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
 . `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
 
-The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index.
-Having a large number of shifts that are not visible in PTMan will cause the visible shifts to have a large index. To avoid this, we only index shifts that are visible in the current timetable view. +
+The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
+Having shifts that are earlier than the current timetable week will cause the visible shifts to have indexes that do not start from 1. To avoid this, we only index shifts that are visible in the current timetable view. +
 This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` to filter shifts in the current week as shown below:
 ----
 // In Model
