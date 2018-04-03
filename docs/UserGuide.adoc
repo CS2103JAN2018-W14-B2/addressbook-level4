@@ -264,11 +264,7 @@ Refer to <<Logging out of admin mode: `logout`>> for more information.
 
 [[Logout]]
 ==== Logging out of admin mode: `logout`
-<<<<<<< HEAD
 Logs out of admin mode, preventing further usage of employer features.
-=======
-Logs out of admin mode, preventing the use of employer commands.
->>>>>>> f5b15090ff40f027db051f023b4a06c129113ce6
 
 *Format:* `logout`
 
