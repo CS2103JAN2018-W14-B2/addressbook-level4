@@ -10,6 +10,7 @@ import org.junit.Test;
 import seedu.ptman.commons.events.ui.EmployeePanelSelectionChangedEvent;
 import seedu.ptman.ui.testutil.EventsCollectorRule;
 
+//@@author hzxcaryn
 public class MainCommandTest {
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();

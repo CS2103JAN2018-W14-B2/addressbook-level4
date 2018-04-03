@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
+//@@author hzxcaryn
 /**
  * Displays the PTMan logo at the left side of the command box.
  */

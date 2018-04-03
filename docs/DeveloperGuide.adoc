@@ -65,7 +65,9 @@ You may check that you have setup the project correctly by following these steps
 
 This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours. To rectify:
 
-. Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS) . Select `Editor` > `Code Style` > `Java` . Click on the `Imports` tab to set the order.
+. Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS)
+. Select `Editor` > `Code Style` > `Java`
+. Click on the `Imports` tab to set the order:
 * For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements.
 * For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`.
 
@@ -73,7 +75,7 @@ Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> docume
 
 ==== Updating documentation to match your fork
 
-After forking the repo, links in the documentation will still point to the `CS2103JAN2018/main` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `CS2103JAN2018/main`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
+After forking the repo, links in the documentation will still point to the `CS2103JAN2018-W14-B2/main` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `CS2103JAN2018-W14-B2/main`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
 
 ==== Setting up CI
 
@@ -116,22 +118,20 @@ Here are some quick overviews of each component:
 ** At app launch: Initializing the components in the correct sequence, and connecting them up with each other.
 ** At shut down: Shutting down the components and invoking cleanup methods where necessary.
 
-* <<Design-Commons,*`Commons`*>> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architectural level.
+* <<Design-Commons,*`Commons`*>> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architectural level:
 
 ** `EventsCenter` : This class (written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]) is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design).
 ** `LogsCenter` : Used by many classes to write log messages to the app's log file.
-
-The rest of the app consists of four components:
 
 * <<Design-Ui,*`UI`*>>: Displays the UI of the app.
 * <<Design-Logic,*`Logic`*>>: Executes commands.
 * <<Design-Model,*`Model`*>>: Holds the data of the app in-memory.
 * <<Design-Storage,*`Storage`*>>: Reads data from, and writes data to, the hard disk.
 
-Each of the four components:
+The `UI`, `Logic`, `Model` and `Storage` components:
 
-* Defines their API in an `interface` with the same name as the component.
-* Exposes their functionality using a `{Component Name}Manager` class.
+* Define their API in an `interface` with the same name as the component.
+* Expose their functionality using a `{Component Name}Manager` class.
 
 For example, the `Logic` component, illustrated by _Figure 2_, defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
@@ -193,14 +193,16 @@ image::LogicCommandClassDiagram.png[width="800"]
 *API* :
 link:{repoURL}/src/main/java/seedu/ptman/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `PartTimeManagerParser` class to parse the user command.
+The `Logic` component:
+
+.  Uses the `PartTimeManagerParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
-.  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
+  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
-.Interactions Inside the Logic Component for the `delete 1` Command
+.Interactions inside the Logic Component for the `delete 1` Admin Command
 image::DeletePersonSdForLogic.png[width="800"]
 
 [[Design-Model]]
@@ -211,12 +213,12 @@ image::ModelClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/ptman/model/Model.java[`Model.java`]
 
-The `Model`,
+The `Model` component:
 
-* stores a `UserPref` object that represents the user's preferences.
-* stores the PartTimeManager data in memory.
-* exposes an unmodifiable `ObservableList<Employee>` and `ObservableList<Shift>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the lists change.
-* does not depend on any of the other three components (`UI`, `Storage` and `Logic`).
+* Stores a `UserPref` object that represents the user's preferences.
+* Stores the `PartTimeManager` data in memory.
+* Exposes an unmodifiable `ObservableList<Employee>` and `ObservableList<Shift>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the lists change.
+* Does not depend on any of the other three components (`UI`, `Storage` and `Logic`).
 
 [[Design-Storage]]
 === Storage component
@@ -226,10 +228,10 @@ image::StorageClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/ptman/storage/Storage.java[`Storage.java`]
 
-The `Storage` component,
+The `Storage` component:
 
-* can save `UserPref` objects in json format and read it back.
-* can save the PartTimeManager data in xml format and read it back.
+* Saves `UserPref` objects in json format and reads it back.
+* Saves the PartTimeManager data in xml format and reads it back.
 
 [[Design-Commons]]
 === Common classes
@@ -249,7 +251,8 @@ Such details are essential to facilitate other functions such as the access cont
 
 ==== Current implementation
 
-The `OutletInformation` class represents an outlet in PTMan. +
+The `OutletInformation` class represents an outlet in PTMan.
+It supports relevant commands that utilizes attributes of this class and it is also responsible for UI display and local storage. +
 
 _Figure 11_ is a class diagram that displays the association between `OutletInformation` and other components in the `Model`.
 
@@ -270,8 +273,8 @@ However, there is an alternative way to create an `OutletInformation` object:
 ----
 OutletInformation(OutletName outletName, OperatingHours operatingHours, OutletContact outletContact, OutletEmail outletEmail, Announcement announcement)
 ----
-This constructor allows flexibility in storing outlet information where most fields can be initialized with specific values except the master password.
-The master password of an outlet must be set to the default value because it is used for employer's first login and it is impossible to change any password without the first login. +
+This constructor allows flexibility in storing outlet information where most fields can be initialized with specific values except the admin password.
+The admin password of an outlet must be set to the default value because it is used for employer's first login and it is impossible to change any password without the first login. +
 
 ===== Relevant commands
 
@@ -279,29 +282,57 @@ Currently, there are three commands that allows employers to change fields of th
 
 *Edit outlet command*
 
-After login with correct master password, using the `editoutlet` command, employers should be able to edit the outlet information including
-outlet name, operating hours, contact numbers and email. Master password can only be changed using `changemasterpassword` command,
-while timetable can only be set with relevant `shift` commands.
+The `editoutlet` command allows employers to edit the outlet information including
+outlet name, operating hours, contact numbers and email. The admin password can only be changed using the `changeadminpassword` command,
+while the timetable can only be modified with the relevant `Shift` commands.
 [NOTE]
 Editing with some fields unspecified is allowed.
 For example, editoutlet n/OUTLETNAME is a valid command. This enables employers to edit only the information required for change.
 
+The current implementation to check some fields are specified is in the `setOutletInformation` method of the `OutletInformation` class.
+When all fields are null, it throws a new exception as shown below:
+----
+//in OutletInformation class
+public void setOutletInformation(OutletName name, OperatingHours operatingHours, OutletContact outletContact, OutletEmail outletEmail) throws NoOutletInformationFieldChangeException {
+    ...
+    if (name == null && operatingHours == null && outletContact == null && outletEmail == null) {
+        throw new NoOutletInformationFieldChangeException();
+    }
+    ...
+}
+----
+This exception is then handled by the `EditOutletCommand`.
+When the exception is caught, the `CommandException` with a message of command failure will be thrown,
+with reference to the function below:
+----
+//in EditOutletCommand class
+public CommandResult executeUndoableCommand() throws CommandException {
+    ...
+    try {
+        editedOutlet.setOutletInformation(name, operatingHours, outletContact, outletEmail);
+    } catch (NoOutletInformationFieldChangeException e) {
+        throw new CommandException(MESSAGE_EDIT_OUTLET_FAILURE);
+    }
+    ...
+}
+----
+
 *Change master password command*
 
-After login with correct master password, using the `changemasterpassword` command, employers should be able to change the master password.
-However, due to the possibility that previous employer forgot to log out, `changemasterpassword` command requires
+After login with correct admin password, using the `changemasterpw` command, employers should be able to change the admin password.
+However, due to the possibility that previous employer forgot to log out, `changemasterpw` command requires
 the old password for further verification. This reduces the risk of password getting stolen. You can find out more information on password in _Section 4.5 Password class_.
 
 *Announcement command*
 
-After login with correct master password, using the "announcement" command, employers should be able to create an announcement visible to all employees.
+After login with correct admin password, using the "announcement" command, employers should be able to create an announcement visible to all employees.
 This allows employers to broadcast important messages to employees. For example, when there is an urgent need of manpower in a specific time slot,
 employers can create an announcement to inform the employees who can sign up for the corresponding time slot upon receving the announcement.
 
 ===== Store and display outlet information
 
 All outlet information is stored in a separate file with data encryption to ensure that crucial data cannot be interpreted by any third party.
-You can refer to _Section 4.7 Data Encryption_ for more information on how data is encrypted.
+You can refer to <<Data Encryption>> for more information on how data is encrypted.
 
 In addition, outlet information is displayed in the outlet panel above the timetable.
 Any change in the outlet information will be reflected immediately after the command.
@@ -310,7 +341,7 @@ Any change in the outlet information will be reflected immediately after the com
 ==== Reason for implementation
 
 PTMan is designed to give employees the freedom and flexibility to choose the shifts they want to work in.
-By allowing employers to add or delete shifts, employees can then apply for shifts that are available.
+By allowing employers to add or delete shifts, employees can then apply for the shifts that are available.
 
 ==== How it is implemented
 
@@ -328,12 +359,14 @@ _Figure 12_ is a class diagram that displays the association between `Shift` and
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
 
+*Shift* +
+
 A `Shift` object is created using its constructor:
 ----
 Shift(Date date, Time startTime, Time endTime, Capacity capacity)
 ----
 
-Explanation for arguments:
+A shift contains the following classes:
 
 . `Date`: A class that wraps Java's `LocalDate` class. It indicates the date that the shift is on. +
 Example: `new Date("12-03-18")` creates a `Date` object representing 12 March 2018.
@@ -346,23 +379,44 @@ Example: `new Time("1030")` creates a `Time` object representing 10:30am.
 The string argument should represent a time in the 24-hour format.
 
 . `Capacity`: A class that wraps an integer that indicates the number of employees required for the shift. +
-Example: `new Capacity("4")` creates a `Capacity` object representing integer `4`.
+Example: `new Capacity("4")` creates a `Capacity` object representing the integer `4`.
 
-In addition to these classes, `Shift` also contains a `UniqueEmployeeList` which is empty when `Shift` is constructed.
-This is used to store employees that have applied for this shift.
+. `UniqueEmployeeList`: This is used to store employees that have applied for the shift and guarantees there are no duplicate employees in the shift.
 
-To store a list of shifts, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
+`Date` and `Time` use Java's `LocalDate` and `LocalTime` classes for easy integration with the timetable.
+They also make formatting and parsing simple through the use of Java's `DateTimeFormatter`.
+
+To store a list of shifts in `PartTimeManager`, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
+
+*Commands* +
 
 The following are commands that directly interact with the `Shift` class:
 
-. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`.
+. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`. +
 . `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `PartTimeManager`.
-. `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
-. `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
+. `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`. +
+To adhere to defensive programming practices, instead of simply adding the `Employee` to the `Shift`, `ApplyCommand`:
+.. Creates a copy of the specified `Shift`
+.. Adds the `Employee` to the copy.
+.. Replaces the original `Shift` with the copy.
+. `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`. +
+Similar to `ApplyCommand`, `UnapplyCommand`:
+.. Creates a copy of the specified `Shift`.
+.. Removes the `Employee` from the copy.
+.. Replaces the original with the copy.
 
-The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index.
-Having a large number of shifts that are not visible in PTMan will cause the visible shifts to have a large index. To avoid this, we only index shifts that are visible in the current timetable view. +
-This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` to filter shifts in the current week as shown below:
+*Shift Indexing* +
+
+The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
+The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
+However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1. +
+As seen in _Figure 13_ below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.
+
+.Example of Undesired Shift Indexing
+image::ShiftIndexBad.png[width="800"]
+
+To avoid this, we only want to index shifts that are visible in the current timetable view. +
+This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` in `ModelManager` to filter shifts in the current week as shown below:
 ----
 // In Model
 public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
@@ -371,27 +425,20 @@ public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
 // In ModelManager
 updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
 ----
+This results in the desired shift indexing as shown in _Figure 14_ below.
 
-==== Reasons for how it is implemented
-
-* We wrap the arguments in the classes above so that we may carry out validity checks in those classes.
-
-* `Time` and `Date` uses Java's well-documented `LocalTime` and `LocalDate` classes for easy integration with the GUI timetable.
-
-* `UniqueEmployeeList` is used to ensure there are no duplicate employees in the shift.
-
+.Example of Desired Shift Indexing
+image::ShiftIndexGood.png[width=800]
 
 // tag::timetable
 === Timetable feature
 ==== Reason for implementation
 
-A timetable GUI is useful for employers, as it provides visual aid for them to add and remove shifts from the application.
-It is also helpful for both employers and employees to find out which shifts are still available and requires workers. +
-This implementation reflects the changes that resulted from the Shift commands, such as the adding and removing of shifts, as well
+A timetable GUI is useful for employers and employees, as it allows them to visualise the shifts and access them via their indexes. +
+This implementation reflects the changes that resulted from the shift commands, such as the adding and removing of shifts, as well
 as the updating of slots left for each shift. +
 On top of this, the selection of each employee will highlight the shifts that they have chosen to work for the week. Users are
-then allowed to export the timetable as an image for future reference, without having to boot up the application, hence
-bringing users convenience.
+then allowed to export the timetable as an image for future reference without the need for the app.
 
 ==== How it is implemented
 
@@ -414,7 +461,7 @@ TimetablePanel timetablePanel = new TimetablePanel(logic.getFilteredShiftList(),
  * An `OutletInformation` object, which contains information of the outlet that is required to build the timetable.
   In particular, the operating hours of the outlet.
 
-`TimetablePanel` then uses these `Shift` objects to set the Entries in the timetable view, in the method `setShifts()`.
+`TimetablePanel` then uses these `Shift` objects to set the `Entries` in the timetable view, in the method `setShifts()`.
 The operating hours acquired from `OutletInformation` is then used in `updateTimetableView()` to ensure that the timetable
 displays all the time slots within this time range. +
 
@@ -582,7 +629,7 @@ This section highlights the considerations behind our application's design choic
 
 
 
-=== Password Class
+=== Password feature
 
 ==== Reason for implementation
 As PTMan is currently designed to use locally on a system, both employer and employee must go through the same system to allocate their preferred slot or to edit the data in PTMan. A Password class is given to both employer and employee to ensure that they are the authorized person that is using the system.
@@ -603,33 +650,42 @@ To create a password with desired password String, one can invoke the method bel
 createPassword(String password)
 ----
 
-==== Reasons for how it is implemented
+As of version 1.2, each person and outlet now has a class password. Refer to the diagram below:
+
+.Overview of the Password class in Model
+image::PasswordClassDiagram.png[width="700"]
+
+
 The reason of converting password string to hashCode is to protect user’s password from being seen in the storage file.  Anyone who get hold of the data are not able to convert the hashCode back to the original password string as SHA-256 is a https://en.wikipedia.org/wiki/Collision_resistance[collision resistant] hash.
 
-=== Feature Admin Mode
+=== Admin Mode/Admin Command Feature
 
 ==== Reason for implementation
-Initial stage of PTMan require huge amount of manual input by admin. To promote hassle-free command, employers can log in to admin mode and use the command provided without the need to enter the password for every command.
+Initial startup of PTMan require huge amount of manual input by admin. To promote hassle-free commands, employers can log in to admin mode with `login` command and use the command provided without the need to be autheticated for every command.
 
-==== How it is implemented
+==== How it is implemented  (Admin mode)
 Model component now implement three new API for logic component to use.
 ----
 boolean isAdminMode();
 boolean setTrueAdminMode(Password password);
 
-/** guarantee to break out from adminMode */
+/** guarantee to set adminMode to false */
 setFalseAdminMode();
 ----
 
 `setTrueAdminMode(Password password)` requires a password that will check against the outlet password and set admin mode accordingly. Failing to give the correct password will result in returning false.
 
-[NOTE]
-In order to enable the command to be usable only in command mode the code below must be added to the execution() of the command *first*.
+==== How it is implemented (Admin Command)
+In order to enable commands to be usable only in admin mode the code below must be added to the execution() of the command *first*.
 ----
 if (!model.isAdminMode()) {
     throw new CommandException(MESSAGE_ACCESS_DENIED);
 }
 ----
+The sequence Diagram below illustrate how the admin command is generally executed.
+
+.Interactions inside the Logic Component for the `delete 1` Admin Command
+image::DeletePersonSdForLogic.png[width="800"]
 
 // tag::dataencryption[]
 === Data Encryption
@@ -645,7 +701,17 @@ Therefore, local storage files are encrypted to prevent any direct interpretatio
 
 Currently, any data is encrypted in the Advanced Encryption Standard (AES) before writing into XML files.
 Data read from XML files must be decrypted before passing to the constructor of any object.
-This implementation successfully prevents any user of the computer directly interpreting the stored information.
+The function below demonstrates how outlet data is encrypted using the encrypt(String text) function: +
+----
+public XmlAdaptedOutletInformation(String outletName, String operatingHours, String outletContact, String outletEmail, String passwordHash, String announcement) {
+    ...
+    this.outletName = encrypt(outletName);
+    ...
+}
+----
+Similarly, decrypt(String encryptedText) can be called to decrypt data read from XML files. +
+
+The current implementation successfully prevents any user of the computer directly interpreting the stored information.
 However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in _Figure 15_.
 It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found pattern.
 
@@ -660,18 +726,18 @@ The XMLCipher package from apache.org can be used to encrypt the XML file stored
 
 === Logging
 
-We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+We are using the `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
 
-* The logging level can be controlled using the `logLevel` setting in the configuration file (See <<Implementation-Configuration>>)
-* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
+* The logging level can be controlled using the `logLevel` setting in the configuration file. (See <<Implementation-Configuration>>)
+* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level.
 * Currently, log messages are output to `Console` and to a `.log` file.
 
 *Logging Levels*
 
-* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
-* `WARNING` : Can continue, but with caution
-* `INFO` : Information showing the noteworthy actions by the App
-* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+* `SEVERE` : Logs critical problems which may possibly cause the termination of the application.
+* `WARNING` : Logs potential problems.
+* `INFO` : Logs the noteworthy actions of app.
+* `FINE` : Logs details that are not usually noteworthy but may be useful in debugging e.g. printing the actual list instead of just it's size.
 
 [[Implementation-Configuration]]
 === Configuration

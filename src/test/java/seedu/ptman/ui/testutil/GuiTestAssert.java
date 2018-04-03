@@ -50,6 +50,7 @@ public class GuiTestAssert {
         assertTagEquals(expectedEmployee, actualCard);
     }
 
+    //@@author hzxcaryn
     /**
      * Asserts that {@code actualEntry} displays the details of {@code expectedShift}.
      */
@@ -103,6 +104,7 @@ public class GuiTestAssert {
                 assertEquals(Arrays.asList(LABEL_DEFAULT_STYLE, getTagColor(tag)), actualCard.getTagStyleClasses(tag)));
     }
 
+    //@@author
     /**
      * Asserts that the list in {@code employeeListPanelHandle} displays the details of {@code employees} correctly and
      * in the correct order.

@@ -68,6 +68,7 @@ public class EmailService {
                 + "Please reset your password immediately in PTMan.\n\nBest Regards,\nThe PTMan Team");
         Transport.send(message);
     }
+
     //@@author hzxcaryn
     /**
      * Send exported timetable image as an attachment to user

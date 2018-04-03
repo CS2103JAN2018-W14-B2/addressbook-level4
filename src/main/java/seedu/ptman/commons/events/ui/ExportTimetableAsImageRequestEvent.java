@@ -2,6 +2,7 @@ package seedu.ptman.commons.events.ui;
 
 import seedu.ptman.commons.events.BaseEvent;
 
+//@@author hzxcaryn
 /**
  * An event requesting to export the timetable view as an image locally
  */
