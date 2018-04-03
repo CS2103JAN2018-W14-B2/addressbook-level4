@@ -87,7 +87,9 @@ public class TimetablePanel extends UiPart<Region> {
         this.outletInformation = outletInformation;
 
         timetableView = new CalendarView();
+        setTimetableViewStyle();
         showRelevantViewsOnly();
+
         // disable clicks on timetable view
         timetableView.getWeekPage().setMouseTransparent(true);
 
@@ -118,6 +120,14 @@ public class TimetablePanel extends UiPart<Region> {
 
     public static Calendar getTimetableOthers() {
         return timetableOthers;
+    }
+
+    /**
+     * Sets the style of the timetable view
+     */
+    private void setTimetableViewStyle() {
+        ObservableList<String> styleClass = timetableView.getStyleClass();
+        styleClass.add("timetable-container");
     }
 
     /**
@@ -174,8 +184,8 @@ public class TimetablePanel extends UiPart<Region> {
             LocalDate date = shift.getDate().getLocalDate();
             Interval timeInterval = new Interval(date, shift.getStartTime().getLocalTime(),
                     date, shift.getEndTime().getLocalTime());
-            Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft(),
-                    timeInterval);
+            Entry<String> shiftEntry = new Entry<>("SHIFT " + index + "\nSlots left: " + shift.getSlotsLeft()
+                    + "/" + shift.getCapacity().getCapacity(), timeInterval);
             setEntryType(shift, shiftEntry);
             index++;
         }
@@ -335,11 +345,16 @@ public class TimetablePanel extends UiPart<Region> {
             ImageIO.write(SwingFXUtils.fromFXImage(takeSnapshot(), null), TIMETABLE_IMAGE_FILE_FORMAT, imageFile);
             EmailService emailService = EmailService.getInstance();
             emailService.sendTimetableAttachment(email.toString(), pathName);
-            Files.deleteIfExists(Paths.get(pathName));
         } catch (IOException e) {
             logger.warning("Error taking snapshot of timetable.");
         } catch (MessagingException e) {
             logger.warning("Error sending timetable as email.");
+        }
+
+        try {
+            Files.deleteIfExists(Paths.get(pathName));
+        } catch (IOException e) {
+            logger.warning("Error deleting exported and emailed timetable image.");
         }
     }
 

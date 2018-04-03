@@ -13,7 +13,7 @@ import seedu.ptman.commons.core.LogsCenter;
 import seedu.ptman.commons.events.model.UserModeChangedEvent;
 
 /**
- * Admin mode panel of the app. Displays whether the user is in admin mode or not.
+ * Admin mode display of the app. Displays whether the user is in admin mode or not.
  */
 public class AdminModeDisplay extends UiPart<Region> {
 
@@ -21,7 +21,7 @@ public class AdminModeDisplay extends UiPart<Region> {
     public static final String LABEL_STYLE_CLASS_NON_ADMIN = "label-non-admin-mode";
 
     private static final String adminModeText = "Admin Mode";
-    private static final Logger logger = LogsCenter.getLogger(ResultDisplay.class);
+    private static final Logger logger = LogsCenter.getLogger(AdminModeDisplay.class);
     private static final String FXML = "AdminModeDisplay.fxml";
 
     @FXML

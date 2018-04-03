@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -11,13 +10,10 @@
     <VBox>
         <Label fx:id="outletNamePanelHeader" styleClass="panel_large_label" />
         <HBox fx:id="outletInformation">
-            <Label fx:id="operatingHours" styleClass="outlet-information">><graphic><FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" /></graphic></Label>
-            <Label fx:id="outletContact" styleClass="outlet-information">><graphic><FontAwesomeIconView fill="WHITE" glyphName="PHONE" /></graphic></Label>
-            <Label fx:id="outletEmail" styleClass="outlet-information">><graphic><FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" /></graphic></Label>
+            <Label fx:id="operatingHours">><graphic><FontAwesomeIconView fill="#969696" glyphName="CALENDAR" /></graphic></Label>
+            <Label fx:id="outletContact">><graphic><FontAwesomeIconView fill="#969696" glyphName="PHONE" /></graphic></Label>
+            <Label fx:id="outletEmail">><graphic><FontAwesomeIconView fill="#969696" glyphName="ENVELOPE" /></graphic></Label>
         </HBox>
-        <Label fx:id="announcement" styleClass="announcement"><graphic><FontAwesomeIconView fill="WHITE" glyphName="BULLHORN" /></graphic></Label>
-        <padding>
-            <Insets bottom="15" left="15" right="15" top="20" />
-        </padding>
+        <Label fx:id="announcement"><graphic><FontAwesomeIconView fill="#969696" glyphName="BULLHORN" /></graphic></Label>
     </VBox>
 </StackPane>

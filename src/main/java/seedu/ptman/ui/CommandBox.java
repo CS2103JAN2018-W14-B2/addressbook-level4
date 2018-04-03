@@ -54,7 +54,7 @@ public class CommandBox extends UiPart<Region> {
         commandTextFieldInput.textProperty()
                 .addListener((observable, oldText, newText) -> commandTextFieldOutput.setText(processInput(newText)));
 
-        commandTextFieldInput.setSkin(new TextFieldCaretControlSkin(commandTextFieldInput, Color.WHITE));
+        commandTextFieldInput.setSkin(new TextFieldCaretControlSkin(commandTextFieldInput, Color.web("969696")));
         historySnapshot = logic.getHistorySnapshot();
         tooltip.setText("Tip: Enter \"help\" when you get stuck");
         commandTextFieldInput.setTooltip(tooltip);
