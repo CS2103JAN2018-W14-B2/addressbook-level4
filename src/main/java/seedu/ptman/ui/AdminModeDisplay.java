@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 import seedu.ptman.commons.core.LogsCenter;
 import seedu.ptman.commons.events.model.UserModeChangedEvent;
 
+//@@author hzxcaryn
 /**
  * Admin mode display of the app. Displays whether the user is in admin mode or not.
  */

@@ -2,6 +2,7 @@ package seedu.ptman.commons.events.model;
 
 import seedu.ptman.commons.events.BaseEvent;
 
+//@@author hzxcaryn
 /**
  * Indicates that the user mode has changed. (Admin mode or not)
  */

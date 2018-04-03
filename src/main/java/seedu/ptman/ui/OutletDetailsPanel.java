@@ -14,7 +14,7 @@ import seedu.ptman.commons.events.ui.OutletInformationChangedEvent;
 import seedu.ptman.commons.events.ui.OutletNameChangedEvent;
 import seedu.ptman.model.outlet.OutletInformation;
 
-//@@author SunBangjie
+//@@author hzxcaryn
 /**
  * The Outlet Panel of the App, which displays the Outlet name and details
  */
@@ -65,10 +65,12 @@ public class OutletDetailsPanel extends UiPart<Region> {
         this.outletEmail.setText(outletEmail);
     }
 
+    //@@author SunBangjie
     private void setAnnouncement(String text) {
         announcement.setText(text);
     }
 
+    //@@author hzxcaryn
     @Subscribe
     private void handleOutletInformationChangedEvent(OutletInformationChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -81,6 +83,7 @@ public class OutletDetailsPanel extends UiPart<Region> {
         Platform.runLater(() -> setOutletName(event.message));
     }
 
+    //@@author SunBangjie
     @Subscribe
     public void handleAnnouncementChangedEvent(AnnouncementChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));

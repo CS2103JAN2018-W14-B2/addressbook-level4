@@ -2,6 +2,7 @@ package guitests.guihandles;
 
 import javafx.scene.Node;
 
+//@@author hzxcaryn
 /**
  * A handler for the {@code TimetableView} of the UI
  */
