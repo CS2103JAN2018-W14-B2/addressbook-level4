@@ -310,7 +310,7 @@ Any change in the outlet information will be reflected immediately after the com
 ==== Reason for implementation
 
 PTMan is designed to give employees the freedom and flexibility to choose the shifts they want to work in.
-By allowing employers to add or delete shifts, employees can then apply for shifts that are available.
+By allowing employers to add or delete shifts, employees can then apply for the shifts that are available.
 
 ==== How it is implemented
 
@@ -328,6 +328,7 @@ _Figure 12_ is a class diagram that displays the association between `Shift` and
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
 
+*Shift* +
 A `Shift` object is created using its constructor:
 ----
 Shift(Date date, Time startTime, Time endTime, Capacity capacity)
@@ -355,16 +356,24 @@ They also make formatting simple through the use of Java's `DateTimeFormatter`.
 
 To store a list of shifts in `PartTimeManager`, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
 
+*Commands* +
 The following are commands that directly interact with the `Shift` class:
 
-. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`.
+. `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`. +
 . `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `PartTimeManager`.
-. `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`.
-. `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`.
+. `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`. +
+To adhere to defensive programming practices, instead of simply adding the `Employee` to the `Shift`, we create a copy of the original `Shift` and add the employee to the copy.
+Then, we replace the original shift with the copy.
+. `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`. +
+Similar to `ApplyCommand`, we create a copy of the `Shift` to be modified, remove the `Employee` from the copy, then replace the original with the copy.
 
+*Shift Indexing* +
 The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
-Having shifts that are earlier than the current timetable week will cause the visible shifts to have indexes that do not start from 1. To avoid this, we only index shifts that are visible in the current timetable view. +
-This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` to filter shifts in the current week as shown below:
+The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
+However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1. +
+
+To avoid this, we only want to index shifts that are visible in the current timetable view. +
+This can be achieved by setting the `Predicate<Shift>` for the `FilteredList<Shift>` in `ModelManager` to filter shifts in the current week as shown below:
 ----
 // In Model
 public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
@@ -373,15 +382,6 @@ public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
 // In ModelManager
 updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
 ----
-
-==== Reasons for how it is implemented
-
-* We wrap the arguments in the classes above so that we may carry out validity checks in those classes.
-
-* `Time` and `Date` uses Java's well-documented `LocalTime` and `LocalDate` classes for easy integration with the GUI timetable.
-
-* `UniqueEmployeeList` is used to ensure there are no duplicate employees in the shift.
-
 
 // tag::timetable
 === Timetable feature
