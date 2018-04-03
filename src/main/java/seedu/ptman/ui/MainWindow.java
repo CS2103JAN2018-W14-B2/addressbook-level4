@@ -47,6 +47,9 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane outletDetailsPanelPlaceholder;
 
     @FXML
+    private StackPane ptmanLogoDisplayPlaceholder;
+
+    @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
@@ -134,6 +137,9 @@ public class MainWindow extends UiPart<Stage> {
 
         employeeListPanel = new EmployeeListPanel(logic.getFilteredEmployeeList());
         employeeListPanelPlaceholder.getChildren().add(employeeListPanel.getRoot());
+
+        PtmanLogoDisplay ptmanLogoDisplay = new PtmanLogoDisplay();
+        ptmanLogoDisplayPlaceholder.getChildren().add(ptmanLogoDisplay.getRoot());
 
         AdminModeDisplay adminModeDisplay = new AdminModeDisplay(logic.isAdminMode());
         adminModeDisplayPlaceholder.getChildren().add(adminModeDisplay.getRoot());
