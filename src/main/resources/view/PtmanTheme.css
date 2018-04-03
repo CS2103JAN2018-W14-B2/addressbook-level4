@@ -87,9 +87,9 @@
 }
 
 .table-view {
-    -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-base: #FBFBFB;
+    -fx-control-inner-background: #FBFBFB;
+    -fx-background-color: #FBFBFB;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -106,7 +106,7 @@
     -fx-border-color:
         transparent
         transparent
-        derive(-fx-base, 80%)
+        #FBFBFB
         transparent;
     -fx-border-insets: 0 10 1 0;
 }
@@ -145,20 +145,17 @@
     -fx-label-padding: 12 6 12 6;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
-    -fx-border-color: transparent transparent #DDDEE4 transparent;
-    -fx-border-width: 1px;
+    -fx-background-color: #FBFBFB;
 }
 
 .list-cell:filled {
     -fx-background-color: #FBFBFB;
+    -fx-border-color: transparent transparent #DDDEE4 transparent;
+    -fx-border-width: 1px;
 }
 
 .list-cell:filled:selected {
     -fx-background-color: #EFEFEF;
-}
-
-.list-cell:filled:selected #cardPane {
-    /*Selected TODO*/
 }
 
 .list-cell .label {
@@ -237,8 +234,8 @@
 }
 
 .status-bar-with-border {
-    -fx-background-color: derive(#1d1d1d, 30%);
-    -fx-border-color: derive(#1d1d1d, 25%);
+    -fx-background-color: #EFEFEF;
+    -fx-border-color: #EFEFEF;
     -fx-border-width: 1px;
 }
 
@@ -309,7 +306,7 @@
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #FBFBFB;
     -fx-font-family: "Proxima Nova Alt", "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
@@ -322,7 +319,7 @@
 
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
-  -fx-text-fill: #1d1d1d;
+  -fx-text-fill: #FBFBFB;
 }
 
 .button:focused {
@@ -335,7 +332,7 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #FBFBFB;
     -fx-text-fill: white;
 }
 
@@ -345,15 +342,15 @@
 }
 
 .button:default:hover {
-    -fx-background-color: derive(-fx-focus-color, 30%);
+    -fx-background-color: #EFEFEF;
 }
 
 .dialog-pane {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #FBFBFB;
 }
 
 .dialog-pane > *.button-bar > *.container {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #FBFBFB;
 }
 
 .dialog-pane > *.label.content {
@@ -363,7 +360,7 @@
 }
 
 .dialog-pane:header *.header-panel {
-    -fx-background-color: derive(#1d1d1d, 25%);
+    -fx-background-color: #FBFBFB;
 }
 
 .dialog-pane:header *.header-panel *.label {
@@ -449,10 +446,6 @@
     -fx-font-size: 16px;
     -fx-text-fill: #969696;
 
-}
-
-#filterField, #employeeListPanel, #employeeWebpage {
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
 }
 
 #resultDisplay .content {
