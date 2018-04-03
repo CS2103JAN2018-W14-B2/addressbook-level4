@@ -50,7 +50,6 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 === First Time Setup For Employers
 If you are using PTMan for the first time as an employer, you should change your admin password and the default outlet information by following these steps:
->>>>>>> f5b15090ff40f027db051f023b4a06c129113ce6
 
 . Login to admin mode executing the command: `login pw/DEFAULT1` (`DEFAULT1` is the default admin password)
 . Change the default admin password by executing the command: `changeadminpw pw/DEFAULT1 pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD`
@@ -166,10 +165,10 @@ after using the `select` command. +
 [[Export]]
 ==== Exporting the timetable as image: `export`
 
-Exports the current timetable displayed as an image and saves it locally. +
+Exports the current timetable displayed as an image and either saves it locally, or emails the exported timetable to the input email address. +
 
-*Format:* `export` +
-*Shorthand:* `exp`
+*Format:* `export [e/EMAIL]` +
+*Shorthand:* `exp [e/EMAIL]`
 
 Examples:
 
@@ -178,6 +177,9 @@ Examples:
 * To export the timetable with the shifts of employee `1` in PTMan, type: +
 `select 1` +
 `export` +
+* To export the timetable with the shifts of employee `1` in PTMan and send the exported timetable as email, type: +
+`select ` +
+`export e/email@example.com`
 
 [[History]]
 ==== Listing entered commands: `history`
