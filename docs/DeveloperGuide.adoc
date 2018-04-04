@@ -354,6 +354,7 @@ You can refer to <<Data Encryption>> for more information on how data is encrypt
 In addition, outlet information is displayed in the outlet panel above the timetable.
 Any change in the outlet information will be reflected immediately after the command.
 
+// tag::shifts[]
 === Shifts feature
 ==== Reason for implementation
 
@@ -449,6 +450,7 @@ This results in the desired shift indexing as shown in _<<fig-ShiftIndexGood>>_ 
 [[fig-ShiftIndexGood]]
 .Example of Desired Shift Indexing
 image::ShiftIndexGood.png[width=800]
+// end::shifts[]
 
 // tag::timetable
 === Timetable feature
