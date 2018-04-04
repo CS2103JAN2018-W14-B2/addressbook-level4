@@ -32,7 +32,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Gotham Rounded Book";
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
     -fx-opacity: 0.9;
 }
 
@@ -117,7 +117,6 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-alignment: center-left;
-    -fx-opacity: 1;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
@@ -155,18 +154,17 @@
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .list-cell .label {
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .panel_medium_text {
     -fx-font-family: "Proxima Nova Alt";
     -fx-font-size: 13px;
     -fx-text-fill: white;
-    -fx-line-space: 1.6;
 }
 
 .panel_big_label {
@@ -218,7 +216,7 @@
 }
 
 .status-bar {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .result-display {
@@ -234,8 +232,8 @@
 }
 
 .status-bar-with-border {
-    -fx-background-color: #F5F8FA;
-    -fx-border-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
+    -fx-border-color: #EFF2F5;
     -fx-border-width: 1px;
 }
 
@@ -244,7 +242,7 @@
 }
 
 .grid-pane {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .grid-pane .anchor-pane {
@@ -252,7 +250,7 @@
 }
 
 .context-menu {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .context-menu .label {
@@ -260,7 +258,7 @@
 }
 
 .menu-bar {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .menu-bar .label {
@@ -283,7 +281,7 @@
 
 .menu-item:hover,
 .menu-item:focused {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
     -fx-cursor: hand;
 }
 
@@ -342,7 +340,7 @@
 }
 
 .button:default:hover {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .dialog-pane {
@@ -371,7 +369,7 @@
 }
 
 .scroll-bar {
-    -fx-background-color: #F5F8FA;
+    -fx-background-color: #EFF2F5;
 }
 
 .scroll-bar .thumb {
