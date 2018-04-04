@@ -52,27 +52,45 @@ public class EmployeeListPanel extends UiPart<Region> {
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         logger.fine("Selection in employee list panel changed to : '" + newValue + "'");
-                        raise(new EmployeePanelSelectionChangedEvent(newValue));
+                    } else {
+                        logger.fine("Employee list panel deselected");
                     }
+                    raise(new EmployeePanelSelectionChangedEvent(newValue));
                 });
     }
 
     /**
      * Scrolls to the {@code EmployeeCard} at the {@code index} and selects it.
      */
-    private void scrollTo(int index) {
+    private void scrollToAndSelect(int index) {
         Platform.runLater(() -> {
             employeeListView.scrollTo(index);
             employeeListView.getSelectionModel().clearAndSelect(index);
         });
     }
 
+    //@@author hzxcaryn
+    /**
+     * Scrools to the top of the {@code EmployeeListPanel} and deselect any current selection.
+     */
+    private void scrollToTopAndDeselect() {
+        Platform.runLater(() -> {
+            employeeListView.scrollTo(0);
+            employeeListView.getSelectionModel().clearSelection();
+        });
+    }
+
     @Subscribe
     private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        scrollTo(event.targetIndex);
+        if (event.isNewSelection) {
+            scrollToAndSelect(event.targetIndex);
+        } else {
+            scrollToTopAndDeselect();
+        }
     }
 
+    //@@author
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code EmployeeCard}.
      */

@@ -9,9 +9,11 @@ import seedu.ptman.commons.events.BaseEvent;
 public class JumpToListRequestEvent extends BaseEvent {
 
     public final int targetIndex;
+    public final boolean isNewSelection;
 
-    public JumpToListRequestEvent(Index targetIndex) {
+    public JumpToListRequestEvent(Index targetIndex, boolean isNewSelection) {
         this.targetIndex = targetIndex.getZeroBased();
+        this.isNewSelection = isNewSelection;
     }
 
     @Override

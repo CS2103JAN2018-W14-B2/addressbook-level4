@@ -21,9 +21,8 @@ public class EmployeeListPanelTest extends GuiUnitTest {
     private static final ObservableList<Employee> TYPICAL_EMPLOYEES =
             FXCollections.observableList(getTypicalEmployees());
 
-    private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT =
-            new JumpToListRequestEvent(INDEX_SECOND_EMPLOYEE);
-
+    private static final JumpToListRequestEvent JUMP_TO_SECOND_AND_SELECT_EVENT =
+            new JumpToListRequestEvent(INDEX_SECOND_EMPLOYEE, true);
     private EmployeeListPanelHandle employeeListPanelHandle;
 
     @Before
@@ -49,7 +48,7 @@ public class EmployeeListPanelTest extends GuiUnitTest {
 
     @Test
     public void handleJumpToListRequestEvent() {
-        postNow(JUMP_TO_SECOND_EVENT);
+        postNow(JUMP_TO_SECOND_AND_SELECT_EVENT);
         guiRobot.pauseForHuman();
 
         EmployeeCardHandle expectedCard =
