@@ -25,8 +25,8 @@
 }
 
 .background {
-    -fx-background-color: #FBFBFB;
-    background-color: #FBFBFB; /* Used in the default.html file */
+    -fx-background-color: #FFFFFF;
+    background-color: #FFFFFF; /* Used in the default.html file */
 }
 
 .label {
@@ -87,9 +87,9 @@
 }
 
 .table-view {
-    -fx-base: #FBFBFB;
-    -fx-control-inner-background: #FBFBFB;
-    -fx-background-color: #FBFBFB;
+    -fx-base: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-background-color: #FFFFFF;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -106,7 +106,7 @@
     -fx-border-color:
         transparent
         transparent
-        #FBFBFB
+        #FFFFFF
         transparent;
     -fx-border-insets: 0 10 1 0;
 }
@@ -130,7 +130,7 @@
 }
 
 .split-pane {
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
@@ -138,24 +138,24 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
 }
 
 .list-cell {
     -fx-label-padding: 12 6 12 6;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
 }
 
 .list-cell:filled {
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
     -fx-border-color: transparent transparent #DDDEE4 transparent;
     -fx-border-width: 1px;
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .list-cell .label {
@@ -200,17 +200,17 @@
 }
 
 .anchor-pane {
-     -fx-background-color: #FBFBFB;
+     -fx-background-color: #FFFFFF;
 }
 
 .pane-with-border {
-     -fx-background-color: #FBFBFB;
+     -fx-background-color: #FFFFFF;
      -fx-border-color: transparent transparent #DDDEE4 transparent;
      -fx-border-top-width: 1px;
 }
 
 .pane-with-dark-background {
-     -fx-background-color: #EBEBEB;
+     -fx-background-color: #F5F8FA;
 }
 
 .pane-with-mint-background {
@@ -218,24 +218,24 @@
 }
 
 .status-bar {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 15px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .status-bar .label {
     -fx-font-family: "Proxima Nova Alt";
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .status-bar-with-border {
-    -fx-background-color: #EBEBEB;
-    -fx-border-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
+    -fx-border-color: #F5F8FA;
     -fx-border-width: 1px;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .grid-pane {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .grid-pane .anchor-pane {
@@ -252,21 +252,21 @@
 }
 
 .context-menu {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .context-menu .label {
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .menu-bar {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .menu-bar .label {
     -fx-font-size: 15px;
     -fx-font-family: "Gotham Rounded Book";
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .menu-button:hover,
@@ -283,13 +283,13 @@
 
 .menu-item:hover,
 .menu-item:focused {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
     -fx-cursor: hand;
 }
 
 .menu-item:hover > .label,
 .menu-item:focused > .label {
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 .menu .left-container {
@@ -306,7 +306,7 @@
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
     -fx-font-family: "Proxima Nova Alt", "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
@@ -319,7 +319,7 @@
 
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
-  -fx-text-fill: #FBFBFB;
+  -fx-text-fill: #FFFFFF;
 }
 
 .button:focused {
@@ -332,7 +332,7 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
     -fx-text-fill: white;
 }
 
@@ -342,15 +342,15 @@
 }
 
 .button:default:hover {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .dialog-pane {
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
 }
 
 .dialog-pane > *.button-bar > *.container {
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
 }
 
 .dialog-pane > *.label.content {
@@ -360,7 +360,7 @@
 }
 
 .dialog-pane:header *.header-panel {
-    -fx-background-color: #FBFBFB;
+    -fx-background-color: #FFFFFF;
 }
 
 .dialog-pane:header *.header-panel *.label {
@@ -371,7 +371,7 @@
 }
 
 .scroll-bar {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
 }
 
 .scroll-bar .thumb {
@@ -409,13 +409,13 @@
 #outletInformation .label {
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 14px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 #announcement {
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 14px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
     -fx-padding: 0 5 10 20;
 }
 
@@ -426,21 +426,21 @@
 
 #commandTypeLabel {
     -fx-font-size: 11px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 
 #commandTextField {
-    -fx-background-color: transparent #FBFBFB transparent #FBFBFB;
+    -fx-background-color: transparent #FFFFFF transparent #FFFFFF;
     -fx-background-insets: 0;
     -fx-border-insets: 0;
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 16px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #7A8492;
 }
 
 #resultDisplay .content {
-    -fx-background-color: #EBEBEB;
+    -fx-background-color: #F5F8FA;
     -fx-background-radius: 0;
 }
 
