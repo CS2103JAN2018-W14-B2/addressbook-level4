@@ -48,7 +48,7 @@ public class EmployeeListPanelTest extends GuiUnitTest {
             EmployeeCardHandle actualCard = employeeListPanelHandle.getEmployeeCardHandle(i);
 
             assertCardDisplaysEmployee(expectedEmployee, actualCard);
-            assertEquals(Integer.toString(i + 1) + ". ", actualCard.getId());
+            assertEquals(Integer.toString(i + 1), actualCard.getId());
         }
     }
 

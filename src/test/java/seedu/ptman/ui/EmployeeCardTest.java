@@ -64,7 +64,7 @@ public class EmployeeCardTest extends GuiUnitTest {
         EmployeeCardHandle employeeCardHandle = new EmployeeCardHandle(employeeCard.getRoot());
 
         // verify id is displayed correctly
-        assertEquals(Integer.toString(expectedId) + ". ", employeeCardHandle.getId());
+        assertEquals(Integer.toString(expectedId), employeeCardHandle.getId());
 
         // verify employee details are displayed correctly
         assertCardDisplaysEmployee(expectedEmployee, employeeCardHandle);
