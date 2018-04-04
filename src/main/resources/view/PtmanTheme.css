@@ -32,7 +32,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Gotham Rounded Book";
-    -fx-text-fill: #555555;
+    -fx-text-fill: #666666;
     -fx-opacity: 0.9;
 }
 
@@ -53,7 +53,7 @@
 .label-admin-mode {
     -fx-hgap: 7;
     -fx-vgap: 3;
-    -fx-background-color: #E57373;
+    -fx-background-color: #E16A66;
     -fx-text-fill: white;
     -fx-padding: 5 5 5 5;
     -fx-border-radius: 2;
@@ -155,11 +155,11 @@
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .list-cell .label {
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .panel_medium_text {
@@ -182,7 +182,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #ABD0CE;
+    -fx-text-fill: #5AC2BC;
     -fx-padding: 18 5 5 15;
 }
 
@@ -210,32 +210,32 @@
 }
 
 .pane-with-dark-background {
-     -fx-background-color: #EFEFEF;
+     -fx-background-color: #EBEBEB;
 }
 
 .pane-with-mint-background {
-    -fx-background-color: #ABD0CE;
+    -fx-background-color: #5AC2BC;
 }
 
 .status-bar {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 15px;
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .status-bar .label {
     -fx-font-family: "Proxima Nova Alt";
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .status-bar-with-border {
-    -fx-background-color: #EFEFEF;
-    -fx-border-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
+    -fx-border-color: #EBEBEB;
     -fx-border-width: 1px;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .grid-pane {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .grid-pane .anchor-pane {
@@ -252,27 +252,27 @@
 }
 
 .context-menu {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .context-menu .label {
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .menu-bar {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .menu-bar .label {
     -fx-font-size: 15px;
     -fx-font-family: "Gotham Rounded Book";
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .menu-button:hover,
 .menu-button:focused,
 .menu-button:showing {
-    -fx-background-color: #ABD0CE;
+    -fx-background-color: #5AC2BC;
 }
 
 .menu-button:hover > .label,
@@ -283,13 +283,13 @@
 
 .menu-item:hover,
 .menu-item:focused {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
     -fx-cursor: hand;
 }
 
 .menu-item:hover > .label,
 .menu-item:focused > .label {
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 .menu .left-container {
@@ -342,7 +342,7 @@
 }
 
 .button:default:hover {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .dialog-pane {
@@ -371,7 +371,7 @@
 }
 
 .scroll-bar {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
 }
 
 .scroll-bar .thumb {
@@ -409,13 +409,13 @@
 #outletInformation .label {
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 14px;
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 #announcement {
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 14px;
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
     -fx-padding: 0 5 10 20;
 }
 
@@ -426,7 +426,7 @@
 
 #commandTypeLabel {
     -fx-font-size: 11px;
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 
@@ -436,11 +436,11 @@
     -fx-border-insets: 0;
     -fx-font-family: "Gotham Rounded Book";
     -fx-font-size: 16px;
-    -fx-text-fill: #969696;
+    -fx-text-fill: #666666;
 }
 
 #resultDisplay .content {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #EBEBEB;
     -fx-background-radius: 0;
 }
 
