@@ -235,10 +235,11 @@ public class UnapplyCommandTest {
 
     @Test
     public void execute_incorrectPassword_throwsInvalidPasswordException() {
-        UnapplyCommand applyCommand = new UnapplyCommand(INDEX_FIRST_EMPLOYEE, INDEX_FIRST_SHIFT,
+        model.setFalseAdminMode();
+        UnapplyCommand unapplyCommand = new UnapplyCommand(INDEX_FIRST_EMPLOYEE, INDEX_FIRST_SHIFT,
                 Optional.of(new Password("wrongPassword")));
-        applyCommand.setData(model, new CommandHistory(), new UndoRedoStack());
-        Assert.assertThrows(InvalidPasswordException.class, applyCommand::execute);
+        unapplyCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+        Assert.assertThrows(InvalidPasswordException.class, unapplyCommand::execute);
     }
 
     @Test

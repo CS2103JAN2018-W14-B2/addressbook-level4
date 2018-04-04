@@ -3,8 +3,9 @@ package seedu.ptman.model.shift;
 import static seedu.ptman.commons.util.AppUtil.checkArgument;
 import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.List;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Set;
 
 import com.google.common.collect.Iterables;
 
@@ -46,19 +47,14 @@ public class Shift {
         setEmployees(shift);
     }
 
-    public Shift(Date date, Time startTime, Time endTime, Capacity capacity, List<Employee> employees) {
+    public Shift(Date date, Time startTime, Time endTime, Capacity capacity, Set<Employee> employees) {
         requireAllNonNull(date, startTime, endTime, capacity, employees);
         checkArgument(endTime.isAfter(startTime), MESSAGE_SHIFT_CONSTRAINTS);
         this.startTime = startTime;
         this.endTime = endTime;
         this.capacity = capacity;
         this.date = date;
-        this.uniqueEmployeeList = new UniqueEmployeeList();
-        try {
-            this.uniqueEmployeeList.setEmployees(employees);
-        } catch (DuplicateEmployeeException e) {
-            e.printStackTrace();
-        }
+        this.uniqueEmployeeList = new UniqueEmployeeList(employees);
     }
 
     protected boolean contains(Employee employee) {
@@ -175,5 +171,13 @@ public class Shift {
 
     public Date getDate() {
         return date;
+    }
+
+    public boolean containsEmployee(Employee key) {
+        return uniqueEmployeeList.contains(key);
+    }
+
+    public Set<Employee> getEmployees() {
+        return Collections.unmodifiableSet(uniqueEmployeeList.toSet());
     }
 }

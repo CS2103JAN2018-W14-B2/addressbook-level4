@@ -173,7 +173,7 @@ public class XmlAdaptedShiftTest {
     @Test
     public void setAttributesFromSource_validInputs_returnsSameObject() {
         Shift shift = new Shift(new Date(VALID_DATE), new Time(VALID_START_TIME), new Time(VALID_END_TIME),
-                new Capacity(VALID_CAPACITY), THURSDAY_AM.getEmployeeList());
+                new Capacity(VALID_CAPACITY), THURSDAY_AM.getEmployees());
         XmlAdaptedShift xmlAdaptedShift = new XmlAdaptedShift();
         XmlAdaptedShift sameXmlAdaptedShift = new XmlAdaptedShift();
         xmlAdaptedShift.setAttributesFromSource(shift);

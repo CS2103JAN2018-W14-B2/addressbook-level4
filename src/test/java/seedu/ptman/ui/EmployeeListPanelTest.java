@@ -1,8 +1,10 @@
 package seedu.ptman.ui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static seedu.ptman.testutil.EventsUtil.postNow;
 import static seedu.ptman.testutil.TypicalEmployees.getTypicalEmployees;
+import static seedu.ptman.testutil.TypicalIndexes.INDEX_FIRST_EMPLOYEE;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_SECOND_EMPLOYEE;
 import static seedu.ptman.ui.testutil.GuiTestAssert.assertCardDisplaysEmployee;
 import static seedu.ptman.ui.testutil.GuiTestAssert.assertCardEquals;
@@ -21,8 +23,11 @@ public class EmployeeListPanelTest extends GuiUnitTest {
     private static final ObservableList<Employee> TYPICAL_EMPLOYEES =
             FXCollections.observableList(getTypicalEmployees());
 
-    private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT =
-            new JumpToListRequestEvent(INDEX_SECOND_EMPLOYEE);
+    private static final JumpToListRequestEvent JUMP_TO_SECOND_AND_SELECT_EVENT =
+            new JumpToListRequestEvent(INDEX_SECOND_EMPLOYEE, true);
+
+    private static final JumpToListRequestEvent JUMP_TO_TOP_AND_DESELECT_EVENT =
+            new JumpToListRequestEvent(INDEX_FIRST_EMPLOYEE, false);
 
     private EmployeeListPanelHandle employeeListPanelHandle;
 
@@ -49,12 +54,19 @@ public class EmployeeListPanelTest extends GuiUnitTest {
 
     @Test
     public void handleJumpToListRequestEvent() {
-        postNow(JUMP_TO_SECOND_EVENT);
+        // new selection
+        postNow(JUMP_TO_SECOND_AND_SELECT_EVENT);
         guiRobot.pauseForHuman();
 
         EmployeeCardHandle expectedCard =
                 employeeListPanelHandle.getEmployeeCardHandle(INDEX_SECOND_EMPLOYEE.getZeroBased());
         EmployeeCardHandle selectedCard = employeeListPanelHandle.getHandleToSelectedCard();
         assertCardEquals(expectedCard, selectedCard);
+
+        // remove selection
+        postNow(JUMP_TO_TOP_AND_DESELECT_EVENT);
+        guiRobot.pauseForHuman();
+
+        assertFalse(employeeListPanelHandle.isAnyCardSelected());
     }
 }

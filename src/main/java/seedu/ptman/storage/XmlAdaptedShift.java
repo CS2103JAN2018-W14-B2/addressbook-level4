@@ -4,6 +4,7 @@ import static seedu.ptman.commons.encrypter.DataEncrypter.decrypt;
 import static seedu.ptman.commons.encrypter.DataEncrypter.encrypt;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -180,7 +181,7 @@ public class XmlAdaptedShift {
         final Time endTime = decryptTime(this.endTime);
         final Capacity capacity = decryptCapacity();
 
-        return new Shift(date, startTime, endTime, capacity, employees);
+        return new Shift(date, startTime, endTime, capacity, new HashSet<>(employees));
     }
 
     @Override

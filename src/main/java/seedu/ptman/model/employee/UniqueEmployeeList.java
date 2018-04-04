@@ -3,8 +3,10 @@ package seedu.ptman.model.employee;
 import static java.util.Objects.requireNonNull;
 import static seedu.ptman.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,14 @@ import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 public class UniqueEmployeeList implements Iterable<Employee> {
 
     private final ObservableList<Employee> internalList = FXCollections.observableArrayList();
+
+    public UniqueEmployeeList() {}
+
+    public UniqueEmployeeList(Set<Employee> employees) {
+        requireAllNonNull(employees);
+        internalList.addAll(employees);
+        assert CollectionUtil.elementsAreUnique(internalList);
+    }
 
     /**
      * Returns true if the list contains an equivalent employee as the given argument.
@@ -101,6 +111,15 @@ public class UniqueEmployeeList implements Iterable<Employee> {
         return FXCollections.unmodifiableObservableList(internalList);
     }
 
+    /**
+     * Returns all employees in this list as a Set.
+     * This set is mutable and change-insulated against the internal list.
+     */
+    public Set<Employee> toSet() {
+        assert CollectionUtil.elementsAreUnique(internalList);
+        return new HashSet<>(internalList);
+    }
+
     @Override
     public Iterator<Employee> iterator() {
         return internalList.iterator();
@@ -117,4 +136,5 @@ public class UniqueEmployeeList implements Iterable<Employee> {
     public int hashCode() {
         return internalList.hashCode();
     }
+
 }

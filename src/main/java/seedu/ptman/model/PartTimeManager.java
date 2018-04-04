@@ -226,6 +226,7 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
      */
     public boolean removeEmployee(Employee key) throws EmployeeNotFoundException {
         if (employees.remove(key)) {
+            removeEmployeeFromAllShifts(key);
             removeUnusedTag();
             return true;
         } else {
@@ -234,6 +235,26 @@ public class PartTimeManager implements ReadOnlyPartTimeManager {
     }
 
     //@@author shanwpf
+    /**
+     * Removes {@code key} from all shifts
+     * @throws EmployeeNotFoundException if the {@code key} is not found
+     */
+    private void removeEmployeeFromAllShifts(Employee key) throws EmployeeNotFoundException {
+        for (Shift shift : shifts) {
+            if (shift.containsEmployee(key)) {
+                Shift copy = new Shift(shift);
+                try {
+                    copy.removeEmployee(key);
+                    shifts.setShift(shift, copy);
+                } catch (DuplicateShiftException e) {
+                    throw new AssertionError("shifts should never be duplicates");
+                } catch (ShiftNotFoundException e) {
+                    throw new AssertionError("shift should always exist");
+                }
+            }
+        }
+    }
+
     /**
      * Removes {@code key} from this {@code PartTimeManager}.
      * @throws ShiftNotFoundException if the {@code key} is not in this {@code PartTimeManager}

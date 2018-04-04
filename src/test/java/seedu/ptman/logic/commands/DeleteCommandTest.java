@@ -8,9 +8,10 @@ import static seedu.ptman.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.ptman.logic.commands.CommandTestUtil.prepareRedoCommand;
 import static seedu.ptman.logic.commands.CommandTestUtil.prepareUndoCommand;
 import static seedu.ptman.logic.commands.CommandTestUtil.showEmployeeAtIndex;
-import static seedu.ptman.testutil.TypicalEmployees.getTypicalPartTimeManager;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_FIRST_EMPLOYEE;
+import static seedu.ptman.testutil.TypicalIndexes.INDEX_FIRST_SHIFT;
 import static seedu.ptman.testutil.TypicalIndexes.INDEX_SECOND_EMPLOYEE;
+import static seedu.ptman.testutil.TypicalShifts.getTypicalPartTimeManagerWithShifts;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,11 @@ import seedu.ptman.model.ModelManager;
 import seedu.ptman.model.Password;
 import seedu.ptman.model.UserPrefs;
 import seedu.ptman.model.employee.Employee;
+import seedu.ptman.model.employee.exceptions.DuplicateEmployeeException;
+import seedu.ptman.model.employee.exceptions.EmployeeNotFoundException;
 import seedu.ptman.model.outlet.OutletInformation;
+import seedu.ptman.model.shift.Shift;
+import seedu.ptman.model.shift.exceptions.ShiftFullException;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -32,7 +37,8 @@ import seedu.ptman.model.outlet.OutletInformation;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalPartTimeManager(), new UserPrefs(), new OutletInformation());
+    private Model model = new ModelManager(getTypicalPartTimeManagerWithShifts(),
+            new UserPrefs(), new OutletInformation());
 
     @Before
     public void setMode_adminMode() {
@@ -79,6 +85,27 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_EMPLOYEE_SUCCESS, employeeToDelete);
 
         Model expectedModel = new ModelManager(model.getPartTimeManager(), new UserPrefs(), new OutletInformation());
+        expectedModel.deleteEmployee(employeeToDelete);
+        showNoEmployee(expectedModel);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validIndexEmployeeInShift_employeeRemovedFromShiftSuccess()
+            throws ShiftFullException, DuplicateEmployeeException, EmployeeNotFoundException {
+        showEmployeeAtIndex(model, INDEX_FIRST_EMPLOYEE);
+
+        model.updateFilteredShiftList(Model.PREDICATE_SHOW_ALL_SHIFTS);
+        Shift shift = model.getFilteredShiftList().get(INDEX_FIRST_SHIFT.getZeroBased());
+        Employee employeeToDelete = model.getFilteredEmployeeList().get(INDEX_FIRST_EMPLOYEE.getZeroBased());
+        shift.addEmployee(employeeToDelete);
+        DeleteCommand deleteCommand = prepareCommand(INDEX_FIRST_EMPLOYEE);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_EMPLOYEE_SUCCESS, employeeToDelete);
+
+        Model expectedModel = new ModelManager(model.getPartTimeManager(), new UserPrefs(), new OutletInformation());
+        expectedModel.updateFilteredShiftList(Model.PREDICATE_SHOW_ALL_SHIFTS);
         expectedModel.deleteEmployee(employeeToDelete);
         showNoEmployee(expectedModel);
 

@@ -7,7 +7,7 @@ import static seedu.ptman.logic.commands.MainCommand.MESSAGE_SUCCESS;
 import org.junit.Rule;
 import org.junit.Test;
 
-import seedu.ptman.commons.events.ui.EmployeePanelSelectionChangedEvent;
+import seedu.ptman.commons.events.ui.JumpToListRequestEvent;
 import seedu.ptman.ui.testutil.EventsCollectorRule;
 
 //@@author hzxcaryn
@@ -19,7 +19,7 @@ public class MainCommandTest {
     public void execute_main_success() {
         CommandResult result = new MainCommand().execute();
         assertEquals(MESSAGE_SUCCESS, result.feedbackToUser);
-        assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof EmployeePanelSelectionChangedEvent);
+        assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof JumpToListRequestEvent);
         assertTrue(eventsCollectorRule.eventsCollector.getSize() == 1);
     }
 }

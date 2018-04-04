@@ -13,6 +13,7 @@ ifdef::env-github[]
 :note-caption: :information_source:
 endif::[]
 :repoURL: https://github.com/CS2103JAN2018-W14-B2/main
+:xrefstyle: short
 
 By: `W14-B2`      Since: `March 2018`      Licence: `MIT`
 
@@ -38,11 +39,11 @@ This app will not work with earlier versions of Java 8.
 +
 .  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for PTMan.
-.  Double-click the file to start the app. The graphical user interface (GUI) should appear in a few seconds.
+.  Double-click the file to start the app. The graphical user interface (GUI) as seen in _<<fig-Startup>>_ should appear in a few seconds.
 +
+[[fig-Startup]]
+.Successful start up window
 image::Ui_startup.png[width="790"]
-_Figure 1._ Successful start up window +
- +
 .  Type a command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
@@ -92,10 +93,11 @@ Displays the help window. +
 
 [TIP]
 ====
-Alternatively, you can find the help option by pressing kbd:[F1] or from the menu bar, as shown in _Figure 2_.
+Alternatively, you can find the help option by pressing kbd:[F1] or from the menu bar, as shown in _<<fig-Help>>_.
 
+[[fig-Help]]
+.Accessing the Help Option From the Menu Bar
 image::Ui_help.png[width="790"]
-_Figure 2._ Accessing help option from the menu bar
 ====
 
 
@@ -319,16 +321,18 @@ Guided Example:
 
 . We have an employee *John Doe* with phone number *98765432*, email address *johnd@example.com*, and stays in *311, Clementi Ave 2, #02-25*.
 He has earned *$0* so far, and takes the role of a *Barista* and a *Cashier*. +
-To add John Doe into PTMan, we can do the following as illustrated in _Figure 3_.
+To add John Doe into PTMan, we can do the following as illustrated in _<<fig-Add1>>_.
 +
+[[fig-Add1]]
+.Example of `add` command usage +
 image::Ui_add1.png[width="790"]
-_Figure 3._ Example of `add` command usage +
 
 . Click kbd:[Enter] and you would see a confirmation message below the command bar, and John Doe being added into your Employee list.
-_Figure 4_ shows how PTMan should look like after the above command.
+_<<fig-Add2>>_ shows how PTMan should look like after the above command.
 +
+[[fig-Add2]]
+.Successful addition of employee into PTMan +
 image::Ui_add2.png[width="790"]
-_Figure 4._ Successful addition of employee into PTMan +
 
 
 More Examples:
@@ -431,16 +435,18 @@ Guided Example:
 . When you first start using PTMan, your outlet name will be DefaultOutlet, and the outlet information would not reflect that of your outlet.
 Your outlet is called *AwesomeCoffee*, with operating hours from *10am* to *11pm*.
 The outlet's contact number is *98134086* and has email *awesomecoffee@gmail.com*. +
-To make these changes into PTMan, we can do the following as illustrated in _Figure 5_.
+To make these changes into PTMan, we can do the following as illustrated in _<<fig-Edit1>>_.
 +
+[[fig-Edit1]]
+.Example of `editoutlet` command usage +
 image::Ui_editoutlet1.png[width="790"]
-_Figure 5._ Example of `editoutlet` command usage +
 
 . Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
-_Figure 6_ shows how PTMan should look like after the above command.
+_<<fig-Edit2>>_ shows how PTMan should look like after the above command.
 +
+[[fig-Edit2]]
+.Successful editing of outlet information in PTMan +
 image::Ui_editoutlet2.png[width="790"]
-_Figure 6._ Successful editing of outlet information in PTMan +
 
 
 [[Announcement]]
@@ -454,16 +460,18 @@ Guided Example:
 
 . Your store has a *new drink released this coming Wednesday*, and you want your employees who come working on Wednesday to be
 familiar with the recipe for it. Why not leave a note for your employees so that they can be prepared for their shifts?
-To make an announcement in PTMan, we can dp the following as illustrated in _Figure 7_.
+To make an announcement in PTMan, we can do the following as illustrated in _<<fig-Announce1>>_.
 +
+[[fig-Announce1]]
+.Example of `announce` command usage +
 image::Ui_announcement1.png[width="790"]
-_Figure 7._ Example of `announce` command usage +
 
 . Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the announcement.
-_Figure 8_ shows how PTMan should look like after the above command.
+_<<fig-Announce2>>_ shows how PTMan should look like after the above command.
 +
+[[fig-Announce2]]
+.Successful announcement made in PTMan +
 image::Ui_announcement2.png[width="790"]
-_Figure 8._ Successful announcement made in PTMan +
 
 
 [[Addshift]]

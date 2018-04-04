@@ -11,6 +11,7 @@ ifdef::env-github[]
 :note-caption: :information_source:
 endif::[]
 :repoURL: https://github.com/CS2103JAN2018-W14-B2/main/tree/master/
+:xrefstyle: short
 
 By: `W14-B2`      Since: `March 2018`      Licence: `MIT`
 
@@ -103,8 +104,9 @@ Here are some tips before you get started with coding:
 [[Design-Architecture]]
 === Architecture
 
-_Figure 1_ below illustrates the high-level design of the app.
+_<<fig-ArchitectureDiagram>>_ below illustrates the high-level design of the app.
 
+[[fig-ArchitectureDiagram]]
 .Architecture Diagram
 image::Architecture.png[width="600"]
 
@@ -133,24 +135,27 @@ The `UI`, `Logic`, `Model` and `Storage` components:
 * Define their API in an `interface` with the same name as the component.
 * Expose their functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component, illustrated by _Figure 2_, defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component, illustrated by _<<fig-LogicClassDiagram>>_, defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
+[[fig-LogicClassDiagram]]
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width="800"]
 
 [discrete]
 ==== Events-Driven nature of the design
 
-_Figure 3_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
+_<<fig-DeleteSeq1>>_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
+[[fig-DeleteSeq1]]
 .Component interactions for `delete 1` command (part 1)
 image::SDforDeletePerson.png[width="800"]
 
 [NOTE]
 Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-_Figure 4_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+_<<fig-DeleteSeq2>>_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
+[[fig-DeleteSeq2]]
 .Component interactions for `delete 1` command (part 2)
 image::SDforDeletePersonEventHandling.png[width="800"]
 
@@ -162,9 +167,10 @@ The sections below give more details of each component.
 [[Design-Ui]]
 === UI component
 
-The `UI` component is responsible for displaying information to the user. +
-_Figure 5_ below shows the structure of the `UI` component.
+The `UI` component is responsible for displaying information to the user.
+_<<fig-UI>>_ below shows the structure of the `UI` component.
 
+[[fig-UI]]
 .Structure of the UI Component
 image::UiClassDiagram.png[width="800"]
 
@@ -183,11 +189,16 @@ The `UI` component:
 [[Design-Logic]]
 === Logic component
 
-[[fig-LogicClassDiagram]]
+_<<fig-LogicClassDiagram2>>_ shows the overall structure of the `Logic` component.
+
+[[fig-LogicClassDiagram2]]
 .Structure of the Logic Component
 image::LogicClassDiagram.png[width="800"]
 
-.Structure of Commands in the Logic Component. This diagram shows finer details concerning `XYZCommand` and `Command` in <<fig-LogicClassDiagram>>
+_<<fig-CommandStructure>>_ shows finer details concerning `XYZCommand` and `Command` in _<<fig-LogicClassDiagram2>>_
+
+[[fig-CommandStructure]]
+.Structure of Commands in the Logic Component.
 image::LogicCommandClassDiagram.png[width="800"]
 
 *API* :
@@ -200,14 +211,17 @@ The `Logic` component:
   The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+_<<fig-DeleteSd>>_ is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
+[[fig-DeleteSd]]
 .Interactions inside the Logic Component for the `delete 1` Admin Command
 image::DeletePersonSdForLogic.png[width="800"]
 
 [[Design-Model]]
 === Model component
+_<<fig-ModelClassDiagram>>_ shows the overview of the `Model` component.
 
+[[fig-ModelClassDiagram]]
 .Structure of the Model Component
 image::ModelClassDiagram.png[width="800"]
 
@@ -222,7 +236,9 @@ The `Model` component:
 
 [[Design-Storage]]
 === Storage component
+_<<fig-StorageClassDiagram>>_ shows the overview of the `Storage` component.
 
+[[fig-StorageClassDiagram]]
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
 
@@ -254,8 +270,9 @@ Such details are essential to facilitate other functions such as the access cont
 The `OutletInformation` class represents an outlet in PTMan.
 It supports relevant commands that utilizes attributes of this class and it is also responsible for UI display and local storage. +
 
-_Figure 11_ is a class diagram that displays the association between `OutletInformation` and other components in the `Model`.
+_<<fig-OutletClassDiagram>>_ is a class diagram that displays the association between `OutletInformation` and other components in the `Model`.
 
+[[fig-OutletClassDiagram]]
 .Overview of the OutletInformation class in the Model
 image::OutletInformationClassDiagram.png[width="800"]
 
@@ -354,8 +371,9 @@ It stores:
 . The employee `Capacity` for the shift.
 . The `UniqueEmployeeList` of employees working in the shift.
 
-_Figure 12_ is a class diagram that displays the association between `Shift` and other components in the `Model`.
+_<<fig-ShiftClassDiagram>>_ is a class diagram that displays the association between `Shift` and other components in the `Model`.
 
+[[fig-ShiftClassDiagram]]
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
 
@@ -395,23 +413,24 @@ The following are commands that directly interact with the `Shift` class:
 . `AddShiftCommand`: Creates a `Shift` and adds it to the `UniqueShiftList` in `PartTimeManager`. +
 . `DeleteShiftCommand`: Deletes a `Shift` from the `UniqueShiftList` in `PartTimeManager`.
 . `ApplyCommand`: Adds an `Employee` to the `UniqueEmployeeList` in the `Shift`. +
-To adhere to defensive programming practices, instead of simply adding the `Employee` to the `Shift`, `ApplyCommand`:
-.. Creates a copy of the specified `Shift`
-.. Adds the `Employee` to the copy.
-.. Replaces the original `Shift` with the copy.
+To adhere to defensive programming practices, instead of simply adding the `Employee` to the `Shift`, `ApplyCommand` does the following:
+.. Create a copy of the specified `Shift`
+.. Add the `Employee` to the copy.
+.. Replace the original `Shift` with the copy.
 . `UnapplyCommand`: Removes an `Employee` from the `UniqueEmployeeList` in the `Shift`. +
-Similar to `ApplyCommand`, `UnapplyCommand`:
-.. Creates a copy of the specified `Shift`.
-.. Removes the `Employee` from the copy.
-.. Replaces the original with the copy.
+Similar to `ApplyCommand`, `UnapplyCommand` will:
+.. Create a copy of the specified `Shift`.
+.. Remove the `Employee` from the copy.
+.. Replace the original with the copy.
 
 *Shift Indexing* +
 
 The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1. +
-As seen in _Figure 13_ below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.
+As seen in _<<fig-ShiftIndexBad>>_ below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.
 
+[[fig-ShiftIndexBad]]
 .Example of Undesired Shift Indexing
 image::ShiftIndexBad.png[width="800"]
 
@@ -425,8 +444,9 @@ public static Predicate<Shift> PREDICATE_SHOW_WEEK_SHIFTS = shift ->
 // In ModelManager
 updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);
 ----
-This results in the desired shift indexing as shown in _Figure 14_ below.
+This results in the desired shift indexing as shown in _<<fig-ShiftIndexGood>>_ below.
 
+[[fig-ShiftIndexGood]]
 .Example of Desired Shift Indexing
 image::ShiftIndexGood.png[width=800]
 
@@ -527,15 +547,16 @@ through the `EmailService` class, and then finally delete the local file contain
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the Part-time Manager (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
-`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. The following diagram (_Figure 13_) shows the inheritance diagram for commands:
+`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. The following diagram (_<<fig-LogicCommand>>_) shows the inheritance diagram for commands:
 {nbsp} +
 
+[[fig-LogicCommand]]
 .Inheritance Diagram for commands
 image::LogicCommandClassDiagram.png[width="800"]
 
 {nbsp} +
 
-As you can see from _Figure 13_, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the Part-time Manager before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implement the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+As you can see from _<<fig-LogicCommand>>_, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the Part-time Manager before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implement the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
 
 Commands that are not undoable are implemented this way:
 [source,java]
@@ -595,8 +616,9 @@ image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
 If the `undoStack` is empty, then there are no other commands left to be undone, and an `Exception` will be thrown when popping the `undoStack`.
 
 {nbsp} +
-The following sequence diagram (_Figure 14_) shows how the undo operation works:
+The following sequence diagram (_<<fig-UndoRedoSD>>_) shows how the undo operation works:
 
+[[fig-UndoRedoSD]]
 .Sequence Diagram for Undo Operation
 image::UndoRedoSequenceDiagram.png[width="800"]
 
@@ -691,8 +713,9 @@ To create a password with desired password String, one can invoke the method bel
 createPassword(String password)
 ----
 
-As of version 1.2, each person and outlet now has a class password. Refer to the diagram below:
+As of version 1.2, each person and outlet now has a `Password` class. You may refer to _<<fig-PasswordCD>>_ for an overview of the `Password` class.
 
+[[fig-PasswordCD]]
 .Overview of the Password class in Model
 image::PasswordClassDiagram.png[width="700"]
 
@@ -723,8 +746,9 @@ if (!model.isAdminMode()) {
     throw new CommandException(MESSAGE_ACCESS_DENIED);
 }
 ----
-The sequence Diagram below illustrate how the admin command is generally executed.
+_<<fig-DeleteSD>>_ below illustrates how the admin command is generally executed.
 
+[[fig-DeleteSD]]
 .Interactions inside the Logic Component for the `delete 1` Admin Command
 image::DeletePersonSdForLogic.png[width="800"]
 
@@ -753,9 +777,10 @@ public XmlAdaptedOutletInformation(String outletName, String operatingHours, Str
 Similarly, decrypt(String encryptedText) can be called to decrypt data read from XML files. +
 
 The current implementation successfully prevents any user of the computer directly interpreting the stored information.
-However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in _Figure 15_.
+However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in _<<fig-OutletEncrypt>>_.
 It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found pattern.
 
+[[fig-OutletEncrypt]]
 .Example of Encrypted XML File of Outlet Information
 image::OutletInformationEncryptedXMLFile.jpg[width="700"]
 
@@ -810,10 +835,11 @@ Here are the steps to convert the project documentation files to PDF format:
 .  Follow the instructions in <<UsingGradle#rendering-asciidoc-files, UsingGradle.adoc>> to convert the AsciiDoc files in the `docs/` directory to HTML format.
 .  Go to `build/docs` folder, your should see the generated HTML files.
 .  Right click on the file and select `Open with` -> `Google Chrome`. You should see a Google Chrome window.
-.  Click on the `Print` option in Chrome's menu. You should see a `Print` window as shown in _Figure 16_ below.
+.  Click on the `Print` option in Chrome's menu. You should see a `Print` window as shown in _<<fig-SaveDoc>>_ below.
 .  Set the destination to `Save as PDF`.
-.  Click `Save` to save a copy of the file in PDF format. For the best results, use the settings indicated in _Figure 14_.
+.  Click `Save` to save a copy of the file in PDF format. For the best results, use the settings indicated in _<<fig-SaveDoc>>_.
 
+[[fig-SaveDoc]]
 .Saving Documentation as PDF Files in Chrome
 image::chrome_save_as_pdf.png[width="300"]
 
