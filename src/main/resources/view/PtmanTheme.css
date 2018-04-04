@@ -1,3 +1,4 @@
+/* @@author hzxcaryn */
 /* Fonts */
 @font-face {
     src: url("/fonts/Gotham-Rounded-Book.ttf");
@@ -24,8 +25,8 @@
 
 /* Classes */
 .root {
-    -fx-accent: #AFAFAF;
-    -fx-focus-color: #AFAFAF;
+    -fx-accent: #8E9AAA;
+    -fx-focus-color: #8E9AAA;
 }
 
 .background {
@@ -205,7 +206,7 @@
 
 .cell_small_label {
     -fx-font-family: "Gotham Rounded Book";
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-padding: 2 0 0 0;
     -fx-text-fill: #010504;
 }
