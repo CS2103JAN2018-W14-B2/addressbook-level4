@@ -34,8 +34,17 @@ public class ChangePasswordCommand extends Command {
     public static final String COMMAND_WORD = "changepw";
     public static final String COMMAND_ALIAS = "cp";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " INDEX" + " pw/currentPassword "
-            + "pw/NewPassword "  + "pw/ConfirmNewPassword ";
+    public static final String COMMAND_FORMAT = "INDEX "
+            + "pw/CURRENT_PASSWORD "
+            + "pw/NEW_PASSWORD "
+            + "pw/CONFIRM_NEW_PASSWORD";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes employee password.\n"
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: "
+            + "1 "
+            + "pw/DEFAULT1 "
+            + "pw/hunter1 "  + "pw/hunter1";
 
 
     public static final String MESSAGE_INVALID_CONFIMREDPASSWORD = "New password entered are not the same";

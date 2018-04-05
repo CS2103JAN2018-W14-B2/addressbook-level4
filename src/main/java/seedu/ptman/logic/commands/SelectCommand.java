@@ -17,11 +17,14 @@ public class SelectCommand extends Command {
     public static final String COMMAND_WORD = "select";
     public static final String COMMAND_ALIAS = "s";
 
+    public static final String COMMAND_FORMAT = "EMPLOYEE_INDEX";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Selects the employee identified by the index number used in the last employee listing and highlights"
             + "his/her shifts in the timetable.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + " (must be a positive integer)"
+            + "\nExample: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SELECT_EMPLOYEE_SUCCESS = "Selected Employee: %1$s";
 

@@ -24,7 +24,11 @@ public class ResetPasswordCommand extends Command {
     public static final String COMMAND_WORD = "resetpw";
     public static final String COMMAND_ALIAS = "rp";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " INDEX";
+    public static final String COMMAND_FORMAT = "EMPLOYEE_INDEX";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Resets password for the chosen employee.\n"
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + "2";
     public static final String MESSAGE_SUCCESS = "Email with the new password is sent to you at: %1$s";
 
     public static final String MESSAGE_SENTFAIL = "Reset password Fail, please check your internet connection";

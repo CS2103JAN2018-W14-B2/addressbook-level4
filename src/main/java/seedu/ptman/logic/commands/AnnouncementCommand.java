@@ -16,9 +16,13 @@ import seedu.ptman.model.outlet.exceptions.NoOutletInformationFieldChangeExcepti
 public class AnnouncementCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "announcement";
     public static final String COMMAND_ALIAS = "announce";
+
+    public static final String COMMAND_FORMAT = "ANNOUNCEMENT_MESSAGE";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the announcement of the outlet "
             + "in admin mode. Existing values will be overwritten by the input values.\n"
-            + "Example: " + COMMAND_WORD + " "
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " "
             + "This is a new announcement.";
     public static final String MESSAGE_EDIT_OUTLET_SUCCESS = "Announcement successfully updated.";
     public static final String MESSAGE_EDIT_OUTLET_FAILURE = "New announcement cannot be empty."

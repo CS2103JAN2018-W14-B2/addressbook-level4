@@ -21,10 +21,13 @@ public class DeleteShiftCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "deleteshift";
     public static final String COMMAND_ALIAS = "ds";
 
+    public static final String COMMAND_FORMAT = "SHIFT_INDEX";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the shift identified by the index number used in the timetable.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + " (must be a positive integer)"
+            + "\nExample: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_SHIFT_SUCCESS = "Deleted Shift: %1$s";
 

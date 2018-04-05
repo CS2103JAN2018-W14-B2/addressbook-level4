@@ -151,7 +151,7 @@ _<<fig-DeleteSeq1>>_ below shows how the components interact for the scenario wh
 image::SDforDeletePerson.png[width="800"]
 
 [NOTE]
-Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the PTMan data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 _<<fig-DeleteSeq2>>_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 

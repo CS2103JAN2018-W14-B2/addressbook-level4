@@ -26,14 +26,15 @@ public class EditOutletCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "editoutlet";
     public static final String COMMAND_ALIAS = "eo";
 
+    public static final String COMMAND_FORMAT = "[" + PREFIX_OUTLET_NAME + "OUTLETNAME] "
+            + "[" + PREFIX_OPERATING_HOURS + "OPERATINGHOURS] "
+            + "[" + PREFIX_OUTLET_CONTACT + "CONTACT] "
+            + "[" + PREFIX_OUTLET_EMAIL + "EMAIL] ";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the outlet in admin "
             + "mode. Existing values will be overwritten by the input values.\n"
             + "Parameters: "
-            + "[" + PREFIX_OUTLET_NAME + "OUTLETNAME] "
-            + "[" + PREFIX_OPERATING_HOURS + "OPERATINGHOURS] "
-            + "[" + PREFIX_OUTLET_CONTACT + "CONTACT] "
-            + "[" + PREFIX_OUTLET_EMAIL + "EMAIL] "
-            + "Example: " + COMMAND_WORD + " "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_OUTLET_NAME + "AwesomeOutlet "
             + PREFIX_OPERATING_HOURS + "09:00-22:00 "
             + PREFIX_OUTLET_CONTACT + "91234567 "

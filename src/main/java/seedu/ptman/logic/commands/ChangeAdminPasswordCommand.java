@@ -20,12 +20,18 @@ public class ChangeAdminPasswordCommand extends Command {
     public static final String COMMAND_WORD = "changeadminpw";
     public static final String COMMAND_ALIAS = "cap";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " pw/currentPassword "
-            + "pw/NewPassword "  + "pw/ConfirmNewPassword ";
+    public static final String COMMAND_FORMAT = "pw/CURRENT_PASSWORD "
+            + "pw/NEW_PASSWORD "  + "pw/CONFIRM_NEW_PASSWORD";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes admin password.\n"
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: "
+            + "pw/DEFAULT1 "
+            + "pw/hunter1 "  + "pw/hunter1";
 
 
-    public static final String MESSAGE_INVALID_CONFIMREDPASSWORD = "New password entered are not the same";
-    public static final String MESSAGE_SUCCESS = "your master password is changed.";
+    public static final String MESSAGE_INVALID_CONFIMREDPASSWORD = "New password entered are not the same.";
+    public static final String MESSAGE_SUCCESS = "Your master password is changed.";
 
 
     private final ArrayList<String> passwords;

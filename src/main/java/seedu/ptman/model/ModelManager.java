@@ -48,7 +48,7 @@ public class ModelManager extends ComponentManager implements Model {
         super();
         requireAllNonNull(partTimeManager, userPrefs, outletInformation);
 
-        logger.fine("Initializing with address book: " + partTimeManager + " and user prefs " + userPrefs);
+        logger.fine("Initializing with PTMan: " + partTimeManager + " and user prefs " + userPrefs);
 
         this.partTimeManager = new PartTimeManager(partTimeManager);
         try {

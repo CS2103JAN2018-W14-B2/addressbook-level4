@@ -29,12 +29,14 @@ public class ApplyCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "apply";
     public static final String COMMAND_ALIAS = "ap";
 
+    public static final String COMMAND_FORMAT = "EMPLOYEE_INDEX (must be a positive integer) "
+            + "SHIFT_INDEX "
+            + "[" + PREFIX_PASSWORD + "PASSWORD]";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Applies an employee for the shift identified by the index number.\n"
-            + "Parameters: EMPLOYEE_INDEX (must be a positive integer) "
-            + "SHIFT_INDEX "
-            + "[" + PREFIX_PASSWORD + "PASSWORD]\n"
-            + "Example: " + COMMAND_WORD + " 1 1 " + PREFIX_PASSWORD + "hunter2";
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " 1 1 " + PREFIX_PASSWORD + "hunter2";
 
     public static final String MESSAGE_APPLY_SHIFT_SUCCESS = "Employee %1$s applied for shift %2$s";
     public static final String MESSAGE_DUPLICATE_EMPLOYEE = "Employee is already in the shift";
