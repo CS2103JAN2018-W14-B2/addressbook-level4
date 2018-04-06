@@ -19,8 +19,7 @@ By: `W14-B2`      Since: `March 2018`      Licence: `MIT`
 
 == Introduction
 
-Part-Time Manager (PTMan) is an application made for companies to manage their part-timers and their respective working schedules. +
- +
+Part-Time Manager (PTMan) is an application made for companies to manage their part-timers and their respective working schedules.
 PTMan allows managers to easily schedule work shifts and keep track of their employees' information.
 It also allows the part-timers to have the flexibility of choosing their own working schedules by applying for the available shifts.
 The primary mode of interaction with PTMan is via keyboard commands, so if you are a proficient typist, then you will feel right at home using PTMan!
@@ -49,7 +48,8 @@ image::Ui_startup.png[width="790"]
 .  Type a command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
-**You may refer to <<Commands>> for more details of each command.**
+[NOTE]
+You may refer to <<Commands>> for more details of the available commands.
 
 [IMPORTANT]
 If you are a manager, you have access to <<Admin Mode, admin mode>>. Admin mode allows you to access all the <<Manager Commands, manager commands>>.
@@ -68,7 +68,7 @@ Managers can refer to <<Admin mode>> for admin authentication, while employees c
 ==== Admin mode
 For managers, admin mode allows you to access all the <<Manager Commands, manager commands>> in PTMan.
 To enter admin mode, please refer to <<Logging in to admin mode: `login`>>.
-
+// TODO: SCREENSHOT
 [NOTE]
 The default admin password is `DEFAULT1`.
 
@@ -87,6 +87,9 @@ The default employee password is `DEFAULT1`.
 It is crucial to change the default employee password to prevent unauthorized execution of employee commands.
 You may refer to <<Changing employee password: `cp`>> for instructions on how to do so.
 
+=== Timetable
+// TODO: Introduce the timetable + screenshot
+
 === Shift Management
 If you are a manager, PTMan allows you to manage your employees' work shifts.
 The timetable automatically displays the shifts in the current week, allowing you and your employees to easily view the shifts.
@@ -94,6 +97,7 @@ The timetable automatically displays the shifts in the current week, allowing yo
 If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.
 
 === Outlet Management
+// TODO: Introduce the outlet + screenshot
 
 === Saving the data
 
@@ -147,6 +151,8 @@ Logs in to <<Admin Mode, admin mode>>, allowing you to use all the manager comma
 
 *Format:* `login pw/AdminPassword`
 
+// TODO: SCREENSHOT
+
 [IMPORTANT]
 Please remember to logout when you are done to prevent unauthorized access to manager commands. +
 Refer to <<Logging out of admin mode: `logout`>> for more information.
@@ -167,6 +173,7 @@ Changes the <<Admin Mode, admin mode>> password.
 [IMPORTANT]
 To prevent unauthorized access to admin mode, managers should execute this command upon running PTMan for the first time.
 
+// TODO: SCREENSHOT
 Examples:
 
 * If the current admin password is `DEFAULT1` and you wish to change it to `hunter2`, type: +
@@ -183,6 +190,7 @@ The password should be at least 8 characters long.
 Resets your <<Admin Mode, admin mode>> password and sends a randomly generated password to the outlet's email address. +
 You may use the new password to login to admin mode to change the password.
 
+// TODO: SCREENSHOT + EMAIL SCREENSHOT
 *Format:* `resetadminpw` +
 *Shorthand:* `rap`
 
@@ -244,6 +252,7 @@ An employee's password can only be edited by the employee. +
 * You can remove all the employee's tags by typing `t/` without specifying any tags after it.
 ****
 
+// TODO: SCREENSHOT BEFORE + AFTER
 Examples:
 
 * To edit the phone number and email address of the employee `1` to be `91234567` and `johndoe@example.com` respectively, type: +
@@ -351,6 +360,7 @@ Edits the outlet information. +
 * `OPERATING_HOURS` are in HHMM-HHMM format.
 ****
 
+// TODO: SCREENSHOT BEFORE + AFTER
 Examples:
 
 * To edit the name, operating hours, contact number, and email of the outlet to be `CoolCafe`, `8am to 8pm`, `91234567`, and `coolcafe@example.com` respectively, type: +
@@ -409,6 +419,7 @@ image::Ui_announcement2.png[width="790"]
 ==== Adding a shift: `addshift`
 Adds a shift to the timetable to indicate that you require employees at that period. +
 
+// TODO: SCREENSHOT
 *Format:* `addshift d/DATE ts/START_TIME te/END_TIME c/EMPLOYEE_CAPACITY` +
 *Shorthand:* `as`
 
@@ -455,6 +466,7 @@ Applies an employee for a shift. +
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
+// TODO: SCREENSHOT
 Examples:
 
 * To apply employee `2` for shift `1`, type: +
@@ -503,6 +515,7 @@ Applies for a shift. +
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
+// TODO: SCREENSHOT
 Examples:
 
 * If your index in the employee list is `2` and you want to apply for shift `1`, type: +
@@ -535,7 +548,7 @@ Examples:
 // end::shiftemployee[]
 
 [[Cp]]
-==== Changing your password: `cp`
+==== Changing your employee password: `cp`
 Changes your employee password.
 For security purposes, you are highly encouraged to change your password the moment your account is created. +
 
@@ -554,12 +567,13 @@ Examples:
 `cp 2 pw/mypassword pw/NewPassw0rd pw/NewPassw0rd`
 
 [[Rp]]
-==== Resetting your password: `rp`
+==== Resetting your employee password: `rp`
 
 Resets your employee password. This sends a temporary password to your email address.
 
 *Format:* `rp INDEX` +
 
+// TODO: SCREENSHOT + EMAIL SCREENSHOT
 ****
 * The `INDEX` refers to the index number shown in the most recent employee listing.
 * The `INDEX` *must be a positive integer* 1, 2, 3, ...
@@ -609,6 +623,7 @@ Finds employees whose names contain any of the given keywords. +
 * Employees matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
+// TODO: SCREENSHOT BEFORE + AFTER
 Examples:
 
 * To find employees `john` and `John Doe`, type: +
@@ -633,6 +648,7 @@ Displays the shifts of the selected employee on the timetable view. Shifts appli
 *Format:* `select INDEX` +
 *Shorthand:* `s INDEX`
 
+// TODO: SCREENSHOT
 Examples:
 
 * To select employee `2` and displays their shifts in the timetable, type: +
