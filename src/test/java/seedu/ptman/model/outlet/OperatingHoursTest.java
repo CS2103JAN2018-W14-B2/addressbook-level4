@@ -77,6 +77,18 @@ public class OperatingHoursTest {
     }
 
     @Test
+    public void isValidStartTimeEndTimeOrder_invalidOrder_returnsFalse() {
+        assertFalse(OperatingHours.isValidStartTimeEndTimeOrder("22:00-10:00"));
+        assertFalse(OperatingHours.isValidStartTimeEndTimeOrder("10:00-10:00"));
+    }
+
+    @Test
+    public void isValidStartTimeEndTimeOrder_validOrder_returnsTrue() {
+        assertTrue(OperatingHours.isValidStartTimeEndTimeOrder("12:00-20:00"));
+        assertTrue(OperatingHours.isValidStartTimeEndTimeOrder("12:00-12:30"));
+    }
+
+    @Test
     public void convertStringToLocalTime_validInput_returnsLocalTime() {
         LocalTime localTime = LocalTime.of(9, 0);
         String test = "09:00";

@@ -38,6 +38,7 @@ public class ParserUtilTest {
     private static final String INVALID_OUTLET_NAME = "Awesome@Outlet";
     private static final String INVALID_OUTLET_CONTACT = "+1234";
     private static final String INVALID_OPERATING_HOURS = "09:00/18:00";
+    private static final String INVALID_START_END_TIME = "20:00-10:00";
     private static final String INVALID_TIME = "1pm";
     private static final String INVALID_CAPACITY = "one";
     private static final String VALID_NAME = "Rachel Walker";
@@ -409,6 +410,14 @@ public class ParserUtilTest {
                 INVALID_OPERATING_HOURS));
         Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseOperatingHours(
                 Optional.of(INVALID_OPERATING_HOURS)));
+    }
+
+    @Test
+    public void parseOperatingHours_invalidStartEndTimeOrder_throwsIllegalValueException() {
+        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseOperatingHours(
+                INVALID_START_END_TIME));
+        Assert.assertThrows(IllegalValueException.class, () -> ParserUtil.parseOperatingHours(
+                Optional.of(INVALID_START_END_TIME)));
     }
 
     @Test

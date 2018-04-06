@@ -263,6 +263,9 @@ public class ParserUtil {
         if (!OperatingHours.isValidOperatingHours(trimmedOperatingHours)) {
             throw new IllegalValueException(OperatingHours.MESSAGE_OPERATING_HOUR_CONSTRAINTS);
         }
+        if (!OperatingHours.isValidStartTimeEndTimeOrder(trimmedOperatingHours)) {
+            throw new IllegalValueException(OperatingHours.MESSAGE_START_END_TIME_CONSTRAINTS);
+        }
         return new OperatingHours(trimmedOperatingHours);
     }
 
