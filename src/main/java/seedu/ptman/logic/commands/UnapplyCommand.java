@@ -28,12 +28,14 @@ public class UnapplyCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "unapply";
     public static final String COMMAND_ALIAS = "uap";
 
+    public static final String COMMAND_FORMAT = "EMPLOYEE_INDEX "
+            + "SHIFT_INDEX "
+            + "[" + PREFIX_PASSWORD + "PASSWORD]";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes an employee from the shift identified by the index number.\n"
-            + "Parameters: EMPLOYEE_INDEX (must be a positive integer) "
-            + "SHIFT_INDEX "
-            + "[" + PREFIX_PASSWORD + "PASSWORD]\n"
-            + "Example: " + COMMAND_WORD + " 1 1 " + PREFIX_PASSWORD + "hunter2";
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " 1 1 " + PREFIX_PASSWORD + "hunter2";
 
     public static final String MESSAGE_UNAPPLY_SHIFT_SUCCESS = "Employee %1$s removed from shift %2$s";
     public static final String MESSAGE_EMPLOYEE_NOT_FOUND = "Employee is not in the shift.";

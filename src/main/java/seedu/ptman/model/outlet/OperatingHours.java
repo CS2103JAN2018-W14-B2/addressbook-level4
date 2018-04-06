@@ -16,6 +16,7 @@ public class OperatingHours {
     public static final String MESSAGE_OPERATING_HOUR_CONSTRAINTS =
             "Operating hours must be in the format of START-END where START and END must be in "
                     + "the format of hh:mm and in terms of 24 hours. For example, 09:00-22:00";
+    public static final String MESSAGE_START_END_TIME_CONSTRAINTS = "START time must be before END time.";
     public static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
     public static final String OPERATING_HOUR_VALIDATION_REGEX = TIME24HOURS_PATTERN + "-"
             + TIME24HOURS_PATTERN;
@@ -32,6 +33,7 @@ public class OperatingHours {
     public OperatingHours(String operatingHours) {
         requireNonNull(operatingHours);
         checkArgument(isValidOperatingHours(operatingHours), MESSAGE_OPERATING_HOUR_CONSTRAINTS);
+        checkArgument(isValidStartTimeEndTimeOrder(operatingHours), MESSAGE_START_END_TIME_CONSTRAINTS);
         String[] splitedTime = operatingHours.split("-");
         this.startTime = convertStringToLocalTime(splitedTime[0]);
         this.endTime = convertStringToLocalTime(splitedTime[1]);
@@ -61,6 +63,16 @@ public class OperatingHours {
      */
     public static boolean isValidOperatingHours(String test) {
         return test.matches(OPERATING_HOUR_VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if a given string has start time before end time.
+     */
+    public static boolean isValidStartTimeEndTimeOrder(String operatingHours) {
+        String[] splitedTime = operatingHours.split("-");
+        LocalTime startTime = convertStringToLocalTime(splitedTime[0]);
+        LocalTime endTime = convertStringToLocalTime(splitedTime[1]);
+        return startTime.isBefore(endTime);
     }
 
     @Override

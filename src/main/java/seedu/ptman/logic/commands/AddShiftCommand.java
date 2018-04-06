@@ -20,13 +20,14 @@ public class AddShiftCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "addshift";
     public static final String COMMAND_ALIAS = "as";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a shift. "
-            + "Parameters: "
-            + PREFIX_DATE + "DATE (in dd-mm-yy format) "
+    public static final String COMMAND_FORMAT = PREFIX_DATE + "DATE (in dd-mm-yy format) "
             + PREFIX_TIME_START + "START_TIME "
             + PREFIX_TIME_END + "END_TIME "
-            + PREFIX_CAPACITY + "CAPACITY "
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_CAPACITY + "CAPACITY ";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a shift. "
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_DATE + "12-03-18 "
             + PREFIX_TIME_START + "0900 "
             + PREFIX_TIME_END + "1600 "

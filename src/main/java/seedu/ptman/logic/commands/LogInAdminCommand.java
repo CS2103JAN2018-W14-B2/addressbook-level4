@@ -17,14 +17,17 @@ public class LogInAdminCommand extends Command {
     public static final String COMMAND_WORD = "login";
 
 
+    public static final String COMMAND_FORMAT = "pw/ADMIN_PASSWORD";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Log in to access admin command.\n"
-            + "Example: " + COMMAND_WORD + " pw/AdminPassword";
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " pw/hunter2";
 
     public static final String MESSAGE_LOGGEDIN = "You are already logged in";
 
     public static final String MESSAGE_SUCCESS = "You are now in admin mode. \n"
-            + "please remember to log out after amending all the data.";
+            + "Please remember to log out after amending all the data.";
 
 
     private final Password toCheck;

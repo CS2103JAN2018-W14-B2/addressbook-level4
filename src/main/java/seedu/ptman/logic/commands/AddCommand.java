@@ -22,15 +22,16 @@ public class AddCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "add";
     public static final String COMMAND_ALIAS = "a";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a employee to PTMan. "
-            + "Parameters: "
-            + PREFIX_NAME + "NAME "
+    public static final String COMMAND_FORMAT = PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_SALARY + "SALARY "
-            + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " "
+            + "[" + PREFIX_TAG + "TAG]...";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a employee to PTMan. "
+            + "Parameters: "
+            + COMMAND_FORMAT
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
