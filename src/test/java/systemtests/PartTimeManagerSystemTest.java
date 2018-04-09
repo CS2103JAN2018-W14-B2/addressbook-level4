@@ -28,7 +28,7 @@ import guitests.guihandles.MainWindowHandle;
 import guitests.guihandles.OutletDetailsPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
-import guitests.guihandles.TimetablePanelHandle;
+import guitests.guihandles.TimetableViewHandle;
 import seedu.ptman.TestApp;
 import seedu.ptman.commons.core.EventsCenter;
 import seedu.ptman.commons.core.index.Index;
@@ -134,8 +134,8 @@ public abstract class PartTimeManagerSystemTest {
         return mainWindowHandle.getOutletDetailsPanel();
     }
 
-    public TimetablePanelHandle getTimetablePanel() {
-        return mainWindowHandle.getTimetablePanel();
+    public TimetableViewHandle getTimetableView() {
+        return mainWindowHandle.getTimetableView();
     }
 
     public StatusBarFooterHandle getStatusBarFooter() {

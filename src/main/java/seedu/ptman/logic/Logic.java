@@ -1,7 +1,5 @@
 package seedu.ptman.logic;
 
-import java.time.LocalDate;
-
 import javafx.collections.ObservableList;
 import seedu.ptman.logic.commands.CommandResult;
 import seedu.ptman.logic.commands.exceptions.CommandException;
@@ -33,21 +31,6 @@ public interface Logic {
     ListElementPointer getHistorySnapshot();
 
     OutletInformation getOutletInformation();
-
-    /** Returns the current date used to update the filtered shift list */
-    LocalDate getCurrentDisplayedDate();
-
-    /** Sets filteredShiftList to display the next week */
-    void setFilteredShiftListToNextWeek();
-
-    /** Sets filteredShiftList to display the previous week */
-    void setFilteredShiftListToPrevWeek();
-
-    /** Sets filteredShiftList to display the current week */
-    void setFilteredShiftListToCurrentWeek();
-
-    /** Sets filteredShiftList to display the wee of the given date */
-    void setFilteredShiftListToCustomWeek(LocalDate date);
 
     /** Returns if the user is currently in admin mode */
     boolean isAdminMode();

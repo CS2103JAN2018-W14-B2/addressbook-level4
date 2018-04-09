@@ -14,7 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import seedu.ptman.commons.core.ComponentManager;
-import seedu.ptman.commons.core.EventsCenter;
 import seedu.ptman.commons.core.LogsCenter;
 import seedu.ptman.commons.events.model.OutletDataChangedEvent;
 import seedu.ptman.commons.events.model.PartTimeManagerChangedEvent;
@@ -61,12 +60,11 @@ public class ModelManager extends ComponentManager implements Model {
         filteredShifts = new FilteredList<>(this.partTimeManager.getShiftList());
 
         // Only display shifts in the current week
-        setFilteredShiftListToWeek(LocalDate.now());
+        updateFilteredShiftList(shift ->
+                getWeekFromDate(shift.getDate().getLocalDate()) == getWeekFromDate(LocalDate.now()));
 
         tempPasswordMap = new HashMap<>();
         tempAdminPasswordMap = new HashMap<>();
-
-        EventsCenter.getInstance().registerHandler(this);
     }
 
     public ModelManager() {
@@ -203,13 +201,6 @@ public class ModelManager extends ComponentManager implements Model {
         indicatePartTimeManagerChanged();
     }
 
-    //@@author hzxcaryn
-    @Override
-    public void setFilteredShiftListToWeek(LocalDate date) {
-        updateFilteredShiftList(shift ->
-                getWeekFromDate(shift.getDate().getLocalDate()) == getWeekFromDate(date));
-    }
-
     //@@author SunBangjie
     @Override
     public void updateOutlet(OutletInformation editedOutlet) throws NoOutletInformationFieldChangeException {
@@ -239,6 +230,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicatePartTimeManagerChanged();
     }
     //@@author
+
     //=========== Filtered Employee List Accessors =============================================================
     @Override
     public void deleteTagFromAllEmployee(Tag tag) {
@@ -278,4 +270,5 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredEmployees.equals(other.filteredEmployees)
                 && filteredShifts.equals(other.filteredShifts);
     }
+
 }

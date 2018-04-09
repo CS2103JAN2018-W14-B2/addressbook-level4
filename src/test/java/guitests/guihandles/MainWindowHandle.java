@@ -14,7 +14,7 @@ public class MainWindowHandle extends StageHandle {
     private final StatusBarFooterHandle statusBarFooter;
     private final MainMenuHandle mainMenu;
     private final OutletDetailsPanelHandle outletPanel;
-    private final TimetablePanelHandle timetablePanel;
+    private final TimetableViewHandle timetableView;
 
     public MainWindowHandle(Stage stage) {
         super(stage);
@@ -26,7 +26,7 @@ public class MainWindowHandle extends StageHandle {
         statusBarFooter = new StatusBarFooterHandle(getChildNode(StatusBarFooterHandle.STATUS_BAR_PLACEHOLDER));
         mainMenu = new MainMenuHandle(getChildNode(MainMenuHandle.MENU_BAR_ID));
         outletPanel = new OutletDetailsPanelHandle(getChildNode(OutletDetailsPanelHandle.OUTLET_ID));
-        timetablePanel = new TimetablePanelHandle(getChildNode(TimetablePanelHandle.TIMETABLE_PANEL_PLACEHOLDER_ID));
+        timetableView = new TimetableViewHandle(getChildNode(TimetableViewHandle.TIMETABLE_ID));
     }
 
     public EmployeeListPanelHandle getEmployeeListPanel() {
@@ -57,8 +57,8 @@ public class MainWindowHandle extends StageHandle {
         return outletPanel;
     }
 
-    public TimetablePanelHandle getTimetablePanel() {
-        return timetablePanel;
+    public TimetableViewHandle getTimetableView() {
+        return timetableView;
     }
 
 }

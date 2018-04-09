@@ -3,6 +3,7 @@
 :toc-title:
 :toc-placement: preamble
 :sectnums:
+:sectnumlevels: 5
 :imagesDir: images
 :stylesDir: stylesheets
 :xrefstyle: full
@@ -70,7 +71,7 @@ This project follows https://github.com/oss-generic/process/blob/master/docs/Cod
 . Select `Editor` > `Code Style` > `Java`
 . Click on the `Imports` tab to set the order:
 * For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements.
-* For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`.
+* For `Import Layout`: Set the order to be `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`.
 
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
@@ -100,6 +101,8 @@ Here are some tips before you get started with coding:
 2. Take a look at <<GetStartedProgramming>>.
 
 == Design
+// TODO: Update diagrams
+This section explains the design of the app.
 
 [[Design-Architecture]]
 === Architecture
@@ -113,17 +116,19 @@ image::Architecture.png[width="600"]
 [TIP]
 The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-Here are some quick overviews of each component:
+In this section, 'components' refer to the `UI`, `Logic`, `Model`, `Storage`, `Commons`, and `Main` as seen in <<fig-ArchitectureDiagram>>.
 
-* `Main` has only one class called link:{repoURL}/src/main/java/seedu/ptman/MainApp.java[`MainApp`]. It is responsible for:
+Here is a quick overview of each component:
 
-** At app launch: Initializing the components in the correct sequence, and connecting them up with each other.
+* `Main`: Contains a class called link:{repoURL}/src/main/java/seedu/ptman/MainApp.java[`MainApp`], which is responsible for:
+
+** At app launch: Initializing the components in the correct sequence and connecting them up with each other.
 ** At shut down: Shutting down the components and invoking cleanup methods where necessary.
 
-* <<Design-Commons,*`Commons`*>> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architectural level:
+* <<Design-Commons,*`Commons`*>>: Contains a collection of classes used by other components. Two of those classes play important roles at the architectural level:
 
 ** `EventsCenter` : This class (written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]) is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design).
-** `LogsCenter` : Used by many classes to write log messages to the app's log file.
+** `LogsCenter` : This class is used to write log messages to the app's log file.
 
 * <<Design-Ui,*`UI`*>>: Displays the UI of the app.
 * <<Design-Logic,*`Logic`*>>: Executes commands.
@@ -143,7 +148,6 @@ image::LogicClassDiagram.png[width="800"]
 
 [discrete]
 ==== Events-Driven nature of the design
-
 _<<fig-DeleteSeq1>>_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
 [[fig-DeleteSeq1]]
@@ -151,7 +155,7 @@ _<<fig-DeleteSeq1>>_ below shows how the components interact for the scenario wh
 image::SDforDeletePerson.png[width="800"]
 
 [NOTE]
-Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the PTMan data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `PartTimeManagerChangedEvent` when the Part-Time Manager's data is changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 _<<fig-DeleteSeq2>>_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
@@ -176,15 +180,15 @@ image::UiClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/ptman/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `EmployeeListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/ptman/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/ptman/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
 The `UI` component:
 
 * Executes user commands using the `Logic` component.
-* Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
-* Responds to events raised from various parts of the App and updates the UI accordingly.
+* Binds itself to some data in the `Model` so that the UI can automatically update when data in the `Model` changes.
+* Responds to events raised from various parts of the app and updates the UI accordingly.
 
 [[Design-Logic]]
 === Logic component
@@ -206,10 +210,10 @@ link:{repoURL}/src/main/java/seedu/ptman/logic/Logic.java[`Logic.java`]
 
 The `Logic` component:
 
-.  Uses the `PartTimeManagerParser` class to parse the user command.
-.  This results in a `Command` object which is executed by the `LogicManager`.
+. Parses user commands using the `PartTimeManagerParser` class and returns a `Command` object.
+. Executes the `Command` object using `LogicManager`.
   The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
-.  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+. Passes the result of the command execution (`CommandResult`) to the `UI`.
 
 _<<fig-DeleteSd>>_ is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -251,7 +255,7 @@ The `Storage` component:
 
 [[Design-Commons]]
 === Common classes
-
+// TODO: Either add content or delete
 Classes used by multiple components are in the `seedu.ptman.commons` package.
 
 == Implementation
@@ -356,21 +360,26 @@ Any change in the outlet information will be reflected immediately after the com
 
 // tag::shifts[]
 === Shifts feature
+
 ==== Reason for implementation
 
 PTMan is designed to give employees the freedom and flexibility to choose the shifts they want to work in.
 By allowing employers to add or delete shifts, employees can then apply for the shifts that are available.
 
 ==== How it is implemented
-
 The `Shift` class represents a shift in PTMan. +
 
 It stores:
 
 . The `Date` of the shift.
+ `Date` is a class that wraps Java's `LocalDate` class.
 . The starting and ending `Time` of the shift.
+`Time` is a class that wraps Java's `LocalTime` class.
 . The employee `Capacity` for the shift.
+`Capacity` is a class that wraps an integer.
 . The `UniqueEmployeeList` of employees working in the shift.
+`UniqueEmployeeList` is a list that stores the `Employee` objects of employees that have applied for the shift.
+It guarantees there are no duplicate employees in the shift.
 
 _<<fig-ShiftClassDiagram>>_ is a class diagram that displays the association between `Shift` and other components in the `Model`.
 
@@ -378,36 +387,12 @@ _<<fig-ShiftClassDiagram>>_ is a class diagram that displays the association bet
 .Overview of the Shift class in the Model
 image::ShiftClassDiagram.png[width="800"]
 
-*Shift* +
-
-A `Shift` object is created using its constructor:
-----
-Shift(Date date, Time startTime, Time endTime, Capacity capacity)
-----
-
-A shift contains the following classes:
-
-. `Date`: A class that wraps Java's `LocalDate` class. It indicates the date that the shift is on. +
-Example: `new Date("12-03-18")` creates a `Date` object representing 12 March 2018.
-[NOTE]
-The string argument should represent a date in the DD-MM-YY format.
-
-. `Time`: A class that wraps Java's `LocalTime` class. It indicates the either the starting time or ending time of the shift. +
-Example: `new Time("1030")` creates a `Time` object representing 10:30am.
-[NOTE]
-The string argument should represent a time in the 24-hour format.
-
-. `Capacity`: A class that wraps an integer that indicates the number of employees required for the shift. +
-Example: `new Capacity("4")` creates a `Capacity` object representing the integer `4`.
-
-. `UniqueEmployeeList`: This is used to store employees that have applied for the shift and guarantees there are no duplicate employees in the shift.
-
 `Date` and `Time` use Java's `LocalDate` and `LocalTime` classes for easy integration with the timetable.
 They also make formatting and parsing simple through the use of Java's `DateTimeFormatter`.
 
 To store a list of shifts in `PartTimeManager`, we use a `UniqueShiftList` to ensure there are no duplicate shifts.
 
-*Commands* +
+===== Commands
 
 The following are commands that directly interact with the `Shift` class:
 
@@ -424,9 +409,9 @@ Similar to `ApplyCommand`, `UnapplyCommand` will:
 .. Remove the `Employee` from the copy.
 .. Replace the original with the copy.
 
-*Shift Indexing* +
+===== Shift Indexing
 
-The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via its index displayed on the timetable.
+The commands `DeleteShiftCommand`, `ApplyCommand` and `UnapplyCommand` access the specified `Shift` via it's index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1. +
 As seen in _<<fig-ShiftIndexBad>>_ below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.
@@ -810,7 +795,7 @@ We are using the `java.util.logging` package for logging. The `LogsCenter` class
 [[Implementation-Configuration]]
 === Configuration
 
-Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+Certain properties of the application can be controlled (e.g app name, logging level) through the configuration file (default: `config.json`).
 
 == Documentation
 

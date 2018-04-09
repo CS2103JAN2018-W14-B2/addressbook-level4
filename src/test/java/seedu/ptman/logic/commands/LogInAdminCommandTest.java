@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.time.LocalDate;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -144,10 +143,6 @@ public class LogInAdminCommandTest {
             fail("This method should not be called.");
         }
 
-        @Override
-        public void setFilteredShiftListToWeek(LocalDate date) {
-            fail("This method should not be called.");
-        }
 
         @Override
         public void deleteTagFromAllEmployee(Tag tag) {
