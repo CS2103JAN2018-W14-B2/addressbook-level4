@@ -54,7 +54,7 @@ You may refer to <<Commands>> for more details of the available commands.
 [IMPORTANT]
 If you are a manager, you have access to <<Admin Mode, admin mode>>. Admin mode allows you to access all the <<Manager Commands, manager commands>>.
 To prevent unauthorized access, please change your default admin mode password using the `changeadminpw` command.
-You may refer to <<Changing admin password: `changeadminpw`>> for instructions on how to do so.
+You may refer to <<Cap>> for instructions on how to do so.
 
 [[Features]]
 == Features
@@ -74,7 +74,7 @@ The default admin password is `DEFAULT1`.
 
 [IMPORTANT]
 It is crucial to change the default admin password to prevent unauthorized access to admin mode.
-You may refer to <<Changing admin password: `changeadminpw`>> for instructions on how to do so.
+You may refer to <<Cap>> for instructions on how to do so.
 
 ==== Employee password
 For employees, your employee password identifies you and authorizes you to execute employee commands.
@@ -85,7 +85,15 @@ The default employee password is `DEFAULT1`.
 
 [IMPORTANT]
 It is crucial to change the default employee password to prevent unauthorized execution of employee commands.
-You may refer to <<Changing employee password: `cp`>> for instructions on how to do so.
+You may refer to <<Changing your employee password: `cp`>> for instructions on how to do so.
+
+=== Shift Management
+If you are a manager, PTMan allows you to manage your employees' work shifts.
+// TODO: Add how PTMan is better than traditional paperwork
+
+If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.
+
+You are able to view shifts that are in PTMan via the <<Timetable, timetable>>.
 
 === Timetable
 PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
@@ -136,12 +144,6 @@ _<<fig-Feature_Timetable3>>_ below shows the navigation bar, with the two arrow 
 .Navigation Bar of Timetable +
 image::Feature_Timetable3.png[width="790"]
 
-=== Shift Management
-If you are a manager, PTMan allows you to manage your employees' work shifts.
-The timetable automatically displays the shifts in the current week, allowing you and your employees to easily view the shifts.
-
-If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.
-
 // tag::outletManagement[]
 === Outlet Management
 If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
@@ -185,7 +187,9 @@ Currently, PTMan is meant to be used on a single shared device as it is limited 
 By saving PTMan's data to the cloud, both employees and managers can access PTMan from their own devices since the data can be shared.
 
 == Commands
+The main form of interaction with PTMan is via keyboard commands.
 Our commands are split into 3 sub-sections, <<Manager Commands, Manager Commands>>, <<Employee Commands, Employee Commands>>, and <<General Commands, General Commands>>. +
+
 Take note that for this user guide, our commands will follow the format as stated below.
 
 ====
@@ -199,7 +203,7 @@ e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 * Parameters can be in any order. +
 e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, then `p/PHONE_NUMBER n/NAME` is also acceptable.
-* For your convenience, many commands have an alias. +
+* For your convenience, many commands have a shorthand. +
 eg. `list` and `l` will both show a list of all employees in PTMan.
 ====
 
@@ -226,7 +230,7 @@ Logs out of <<Admin Mode, admin mode>>, preventing further usage of manager feat
 *Format:* `logout`
 
 [[Cap]]
-==== Changing admin password: `changeadminpw`
+==== Changing the admin password: `changeadminpw`
 Changes the <<Admin Mode, admin mode>> password.
 
 *Format:* `changeadminpw pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD` +
@@ -247,7 +251,7 @@ Examples:
 The password should be at least 8 characters long.
 
 [[Rap]]
-==== Resetting admin password: `resetadminpw`
+==== Resetting the admin password: `resetadminpw`
 
 Resets your <<Admin Mode, admin mode>> password and sends a randomly generated password to the outlet's email address. +
 You may use the new password to login to admin mode to change the password.
@@ -358,7 +362,7 @@ Please refer to <<Undo>> for more information.
 
 [[Undo]]
 // tag::undoredo[]
-==== Undoing previous command : `undo`
+==== Undoing the previous command : `undo`
 
 Restores PTMan to the state before the previous _undoable_ command was executed. +
 
@@ -412,7 +416,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 // tag::outletCommand[]
 [[Editoutlet]]
-==== Editing outlet information: `editoutlet`
+==== Editing the outlet information: `editoutlet`
 Edits the outlet information. +
 
 *Format:* `editoutlet [n/NAME] [h/OPERATING_HOURS] [c/CONTACT_NUMBER] [e/EMAIL]`  +
@@ -480,7 +484,7 @@ _<<fig-Announce2>>_ shows how PTMan should look like after the above command.
 image::Ui_announcement2.png[width="790"]
 
 [[Encrypt]]
-==== Encrypt local storage files: `encrypt`
+==== Encrypting the local storage files: `encrypt`
 Encrypts data stored in the files in `data` folder.
 
 *Format:* `encrypt`
@@ -504,7 +508,7 @@ _<<fig-Encrypt>>_ shows an example of what the `outletinformation.xml` file shou
 image::OutletInformationEncryptedXMLFile.jpg[width="790"]
 
 [[Decrypt]]
-==== Decrypt local storage files: `decrypt`
+==== Decrypting the local storage files: `decrypt`
 Decrypts data stored in the files in `data` folder.
 
 *Format:* `decrypt`
@@ -702,7 +706,7 @@ These commands can be executed by both employees and managers.
 [[Help]]
 ==== Viewing help: `help`
 
-Displays the help window. +
+Opens this user guide in another window. +
 
 *Format:* `help`
 
@@ -757,7 +761,7 @@ Shows a list of all employees who have applied for the input shift index in PTMa
 *Shorthand:* `vs SHIFT_INDEX`
 
 [[Select]]
-==== Displaying an employee's shifts on the timetable: `select`
+==== Displaying an employee's shift on the timetable: `select`
 
 Displays the shifts of the selected employee on the timetable view. Shifts applied by the selected employee would be displayed
  in blue, while the other shifts would be displayed in brown. +
@@ -836,7 +840,7 @@ Exits the app. +
 
 == Command Summary
 
-=== Shared commands
+=== Shared Commands
 
 * <<Help, *Help*>>: `help`
 * <<Find, *Find*>>: `find KEYWORD [MORE_KEYWORDS]`
@@ -848,7 +852,7 @@ Exits the app. +
 * <<History, *History*>>: `history`
 * <<Exit, *Exit*>>: `exit`
 
-=== Manager commands
+=== Manager Commands
 
 ==== Admin management
 * <<Login, *Login*>>: `login pw/PASSWORD`
@@ -861,11 +865,6 @@ Exits the app. +
 * <<Edit, *Edit*>>: `edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY t/TAG...`
 * <<Delete, *Delete*>>: `delete EMPLOYEE_INDEX`
 
-==== General commands
-* <<Clear, *Clear*>>: `clear`
-* <<Undo, *Undo*>>: `undo`
-* <<Redo, *Redo*>>: `redo`
-
 ==== Outlet management
 * <<Eo, *Edit outlet information*>>: `editoutlet n/NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL`
 * <<Announcement, *Create announcement*>>: `announcement ANNOUNCEMENT_MESSAGE`
@@ -876,7 +875,16 @@ Exits the app. +
 * <<Apply, *Apply*>>: `apply EMPLOYEE_INDEX SHIFT_INDEX`
 * <<Unapply, *Unapply*>>: `unapply EMPLOYEE_INDEX SHIFT_INDEX`
 
-=== Employee commands
+==== Storage management
+* <<Encrypt, *Encrypt storage files*>>: `encrypt`
+* <<Decrypt, *Decrypt storage files*>>: `encrypt`
+
+==== General commands
+* <<Clear, *Clear*>>: `clear`
+* <<Undo, *Undo*>>: `undo`
+* <<Redo, *Redo*>>: `redo`
+
+=== Employee Commands
 
 ==== Shift management
 * <<Apply-2, *Apply*>>: `apply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD`
