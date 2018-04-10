@@ -99,9 +99,9 @@ You are able to view shifts that are in PTMan via the <<Timetable, timetable>>.
 PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
 timetable and you, as a user, so this section aims to familiarise you with the timetable.
 
-==== Shift Colors
+==== Shift colours
 
-The shifts in PTMan are color-coded, and here is what the different colors mean:
+The shifts in PTMan are colour-coded, and here is what the different colours mean:
 
 * Green: Shift is available with multiple slots left.
 * Yellow: Shift is available, but slots are running out.
@@ -122,7 +122,7 @@ _<<fig-Feature_Timetable2>>_ shows how the timetable can look like when an emplo
 .A Sample Timetable with Shifts after `select` +
 image::Feature_Timetable2.png[width="790"]
 
-==== Timetable Navigation
+==== Timetable navigation
 
 There are two ways to navigate through the different weeks in the timetable:
 
