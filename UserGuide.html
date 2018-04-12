@@ -5,47 +5,119 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>AddressBook Level 4 - User Guide</title>
+<title></title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - User Guide</h1>
+<h1><span class="image"><img src="images/ptman_logo_ug.png" alt="ptman logo ug" width="400"></span></h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>W14-B2</code>      Since: <code>March 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#user-authentication">3.1. User Authentication</a>
+<ul class="sectlevel3">
+<li><a href="#admin-mode">3.1.1. Admin mode</a></li>
+<li><a href="#employee-password">3.1.2. Employee password</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#shift-management">3.2. Shift Management</a></li>
+<li><a href="#timetable">3.3. Timetable</a>
+<ul class="sectlevel3">
+<li><a href="#shift-colours">3.3.1. Shift colours</a></li>
+<li><a href="#timetable-navigation">3.3.2. Timetable navigation</a></li>
+</ul>
+</li>
+<li><a href="#outlet-management">3.4. Outlet Management</a></li>
+<li><a href="#saving-the-data">3.5. Saving the data</a></li>
+<li><a href="#backing-up-the-data">3.6. Backing up the data</a></li>
+<li><a href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping track of employees' monthly salaries [Coming in v2.0]</a></li>
+<li><a href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving data to the cloud [Coming in v2.0]</a></li>
+</ul>
+</li>
+<li><a href="#commands">4. Commands</a>
+<ul class="sectlevel2">
+<li><a href="#manager-commands">4.1. Manager Commands</a>
+<ul class="sectlevel3">
+<li><a href="#Login">4.1.1. Logging in to admin mode: <code>login</code></a></li>
+<li><a href="#Logout">4.1.2. Logging out of admin mode: <code>logout</code></a></li>
+<li><a href="#Cap">4.1.3. Changing the admin password: <code>changeadminpw</code></a></li>
+<li><a href="#Rap">4.1.4. Resetting the admin password: <code>resetadminpw</code></a></li>
+<li><a href="#Add">4.1.5. Adding an employee: <code>add</code></a></li>
+<li><a href="#AddSalary">4.1.6. Adding salary to an employee: <code>addsalary</code></a></li>
+<li><a href="#Edit">4.1.7. Editing an employee: <code>edit</code></a></li>
+<li><a href="#Delete">4.1.8. Deleting an employee : <code>delete</code></a></li>
+<li><a href="#Clear">4.1.9. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#Undo">4.1.10. Undoing the previous command : <code>undo</code></a></li>
+<li><a href="#Redo">4.1.11. Redoing the previously undone command: <code>redo</code></a></li>
+<li><a href="#Editoutlet">4.1.12. Editing the outlet information: <code>editoutlet</code></a></li>
+<li><a href="#Announcement">4.1.13. Creating an announcement: <code>announcement</code></a></li>
+<li><a href="#Encrypt">4.1.14. Encrypting the local storage files: <code>encrypt</code></a></li>
+<li><a href="#Decrypt">4.1.15. Decrypting the local storage files: <code>decrypt</code></a></li>
+<li><a href="#Addshift">4.1.16. Adding a shift: <code>addshift</code></a></li>
+<li><a href="#Deleteshift">4.1.17. Deleting a shift: <code>deleteshift</code></a></li>
+<li><a href="#Apply">4.1.18. Applying an employee for a shift: <code>apply</code></a></li>
+<li><a href="#Unapply">4.1.19. Removing an employee from a shift: <code>unapply</code></a></li>
+</ul>
+</li>
+<li><a href="#employee-commands">4.2. Employee Commands</a>
+<ul class="sectlevel3">
+<li><a href="#Apply-2">4.2.1. Applying for a shift: <code>apply</code></a></li>
+<li><a href="#Unapply-2">4.2.2. Removing yourself from a shift: <code>unapply</code></a></li>
+<li><a href="#Cp">4.2.3. Changing your employee password: <code>changepw</code></a></li>
+<li><a href="#Rp">4.2.4. Resetting your employee password: <code>rp</code></a></li>
+</ul>
+</li>
+<li><a href="#general-commands">4.3. General Commands</a>
+<ul class="sectlevel3">
+<li><a href="#Help">4.3.1. Viewing help: <code>help</code></a></li>
+<li><a href="#Find">4.3.2. Locating an employee by name: <code>find</code></a></li>
+<li><a href="#List">4.3.3. Listing all employees: <code>list</code></a></li>
+<li><a href="#Viewshift">4.3.4. Listing all employees: <code>viewshift</code></a></li>
+<li><a href="#Select">4.3.5. Displaying an employee&#8217;s shift on the timetable: <code>select</code></a></li>
+<li><a href="#Main">4.3.6. Displaying the default timetable: <code>main</code></a></li>
+<li><a href="#Export">4.3.7. Exporting the timetable as image: <code>export</code></a></li>
+<li><a href="#History">4.3.8. Listing entered commands: <code>history</code></a></li>
+<li><a href="#Exit">4.3.9. Exiting the program: <code>exit</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#shared-commands">6.1. Shared Commands</a></li>
+<li><a href="#manager-commands-2">6.2. Manager Commands</a>
+<ul class="sectlevel3">
+<li><a href="#admin-management">6.2.1. Admin management</a></li>
+<li><a href="#employee-management">6.2.2. Employee management</a></li>
+<li><a href="#outlet-management-2">6.2.3. Outlet management</a></li>
+<li><a href="#shift-management-2">6.2.4. Shift management</a></li>
+<li><a href="#storage-management">6.2.5. Storage management</a></li>
+<li><a href="#general-commands-2">6.2.6. General commands</a></li>
+</ul>
+</li>
+<li><a href="#employee-commands-2">6.3. Employee Commands</a>
+<ul class="sectlevel3">
+<li><a href="#shift-management-3">6.3.1. Shift management</a></li>
+<li><a href="#password-management">6.3.2. Password management</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -53,17 +125,28 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Part-Time Manager (PTMan) is an application made for companies to manage their part-timers and their respective working schedules.
+PTMan allows managers to easily schedule work shifts and keep track of their employees' information.
+It also allows the part-timers to have the flexibility of choosing their own working schedules by applying for the available shifts.
+The primary mode of interaction with PTMan is via keyboard commands, so if you are a proficient typist, then you will feel right at home using PTMan!
+<br></p>
+</div>
+<div class="paragraph">
+<p>This user guide comes with comprehensive instructions and examples of the various features to help you get started.
+Sounds great? Jump straight to <a href="#quick-start">Quick Start</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Here are the steps required to get PTMan up and running on your computer:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer.</p>
+<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your computer.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -79,52 +162,342 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Download the latest <code>PTMan.jar</code> <a href="https://github.com/CS2103JAN2018-W14-B2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for PTMan.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
+<p>Double-click the file to start the app. The graphical user interface (GUI) as seen in <em><a href="#fig-Startup">Figure 1</a></em> should appear in a few seconds.</p>
+<div id="fig-Startup" class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/Ui_startup.png" alt="Ui startup" width="790">
 </div>
+<div class="title">Figure 1. Successful start up window</div>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type a command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
-</li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You may refer to <a href="#commands">Section 4</a> for more details of the available commands.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you are a manager, you have access to <a href="#Admin Mode">admin mode</a>. Admin mode allows you to access all the <a href="#manager-commands">manager commands</a>.
+To prevent unauthorized access, please change your default admin mode password using the <code>changeadminpw</code> command.
+You may refer to <a href="#Cap">Section 4.1.3</a> for instructions on how to do so.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>In this section, we will be introduce you to the various features of PTMan.</p>
+</div>
+<div class="sect2">
+<h3 id="user-authentication"><a class="link" href="#user-authentication">3.1. User Authentication</a></h3>
+<div class="paragraph">
+<p>PTMan has user authentication for both managers and employees to prevent unauthorized execution of <a href="#commands">commands</a>.</p>
+</div>
+<div class="paragraph">
+<p>Managers can refer to <a href="#admin-mode">Section 3.1.1</a> for admin authentication, while employees can refer to <a href="#employee-password">Section 3.1.2</a> for employee authentication.</p>
+</div>
+<div class="sect3">
+<h4 id="admin-mode"><a class="link" href="#admin-mode">3.1.1. Admin mode</a></h4>
+<div class="paragraph">
+<p>For managers, admin mode allows you to access all the <a href="#manager-commands">manager commands</a> in PTMan.
+To enter admin mode, please refer to <a href="#Login">Section 4.1.1</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default admin password is <code>DEFAULT1</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is crucial to change the default admin password to prevent unauthorized access to admin mode.
+You may refer to <a href="#Cap">Section 4.1.3</a> for instructions on how to do so.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="employee-password"><a class="link" href="#employee-password">3.1.2. Employee password</a></h4>
+<div class="paragraph">
+<p>For employees, your employee password identifies you and authorizes you to execute employee commands.
+It ensures that when executing a command such as <a href="#Apply-2"><code>apply</code></a>, that you are applying yourself, and not someone else, for the shift.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default employee password is <code>DEFAULT1</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is crucial to change the default employee password to prevent unauthorized execution of employee commands.
+You may refer to <a href="#Changing your employee password: <code>cp</code>">[Changing your employee password: <code>cp</code>]</a> for instructions on how to do so.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shift-management"><a class="link" href="#shift-management">3.2. Shift Management</a></h3>
+<div class="paragraph">
+<p>If you are a manager, PTMan allows you to manage your employees' work shifts.</p>
+</div>
+<div class="paragraph">
+<p>If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.</p>
+</div>
+<div class="paragraph">
+<p>You are able to view shifts that are in PTMan via the <a href="#timetable">timetable</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timetable"><a class="link" href="#timetable">3.3. Timetable</a></h3>
+<div class="paragraph">
+<p>PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
+timetable and you, as a user, so this section aims to familiarise you with the timetable.</p>
+</div>
+<div class="sect3">
+<h4 id="shift-colours"><a class="link" href="#shift-colours">3.3.1. Shift colours</a></h4>
+<div class="paragraph">
+<p>The shifts in PTMan are colour-coded, and here is what the different colours mean:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Green: Shift is available with multiple slots left.</p>
+</li>
+<li>
+<p>Yellow: Shift is available, but slots are running out.</p>
+</li>
+<li>
+<p>Red: Shift is no longer available, slots for the shift have run out.</p>
+</li>
+<li>
+<p>Blue: Shift is taken up by currently selected employee.</p>
+</li>
+<li>
+<p>Brown: Shift is not taken up by currently selected employee.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Feature_Timetable1">Figure 2</a></em> below shows how the default timetable can look like in PTMan.<br>
+<br></p>
+</div>
+<div id="fig-Feature_Timetable1" class="imageblock">
+<div class="content">
+<img src="images/Feature_Timetable1.png" alt="Feature Timetable1" width="790">
+</div>
+<div class="title">Figure 2. A Sample Timetable with Shifts<br></div>
+</div>
+<div class="paragraph">
+<p>PTMan also allows employees to view their own shifts using the <a href="#Displaying an employee’s shifts on the timetable: <code>select</code>"><code>select</code></a> command.
+<em><a href="#fig-Feature_Timetable2">Figure 3</a></em> shows how the timetable can look like when an employee is selected.
+<br></p>
+</div>
+<div id="fig-Feature_Timetable2" class="imageblock">
+<div class="content">
+<img src="images/Feature_Timetable2.png" alt="Feature Timetable2" width="790">
+</div>
+<div class="title">Figure 3. A Sample Timetable with Shifts after <code>select</code><br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="timetable-navigation"><a class="link" href="#timetable-navigation">3.3.2. Timetable navigation</a></h4>
+<div class="paragraph">
+<p>There are two ways to navigate through the different weeks in the timetable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using Keyboard Shortcuts</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Windows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&#8594;</kbd> : Navigates timetable to the next week.</p>
+</li>
+<li>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&#8592;</kbd> : Navigates timetable to the previous week.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Mac:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>&#8594;</kbd> : Navigates timetable to the next week.</p>
+</li>
+<li>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>&#8592;</kbd> : Navigates timetable to the previous week.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Using Mouse Clicks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>At the top of the timetable, there is a navigation bar with two arrow buttons which you can click on.
+These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to the previous and next week respectively.
+<em><a href="#fig-Feature_Timetable3">Figure 4</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
+<div id="fig-Feature_Timetable3" class="imageblock">
+<div class="content">
+<img src="images/Feature_Timetable3.png" alt="Feature Timetable3" width="790">
+</div>
+<div class="title">Figure 4. Navigation Bar of Timetable<br></div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="outlet-management"><a class="link" href="#outlet-management">3.4. Outlet Management</a></h3>
+<div class="paragraph">
+<p>If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
+The timetable automatically re-sizes according to the operating hours. You can also create any announcement and broadcast to your employees.</p>
+</div>
+<div class="paragraph">
+<p>If you are an employee, you can view announcement created by your manager and take actions accordingly.</p>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Feature_Outlet">Figure 5</a></em> shows where you can view your outlet information.</p>
+</div>
+<div id="fig-Feature_Outlet" class="imageblock">
+<div class="content">
+<img src="images/IntroductionToOutlet.jpg" alt="IntroductionToOutlet" width="790">
+</div>
+<div class="title">Figure 5. Sample Outlet Information Displayed<br></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.5. Saving the data</a></h3>
+<div class="paragraph">
+<p>All data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="backing-up-the-data"><a class="link" href="#backing-up-the-data">3.6. Backing up the data</a></h3>
+<div class="paragraph">
+<p>Backup files are automatically created and saved in the hard disk upon exit of the app. There is no need to do backup manually.<br>
+You can replace any local storage files with backup files by the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy any backup files named <code>outletinformation.xml.backup</code> or <code>parttimemanager.xml.backup</code>.</p>
+</li>
+<li>
+<p>Open the folder where your app <code>PTMan.jar</code> is at.</p>
+</li>
+<li>
+<p>Open the folder named <code>data</code>.</p>
+</li>
+<li>
+<p>Paste your copied backup files there.</p>
+</li>
+<li>
+<p>Rename <code>outletinformation.xml.backup</code> to <code>outletinformation.xml</code>.</p>
+</li>
+<li>
+<p>Rename <code>parttimemanager.xml.backup</code> to <code>parttimemanager.xml</code>.</p>
+</li>
+<li>
+<p>Run the app <code>PTMan.jar</code> and you will see all the restored data read from backup files.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="keeping-track-of-employees-monthly-salaries-coming-in-v2-0"><a class="link" href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping track of employees' monthly salaries [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>As employees work, their pay is calculated based on the hours they have worked.
+The manager can use this information to distribute their salaries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data-to-the-cloud-coming-in-v2-0"><a class="link" href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving data to the cloud [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>Currently, PTMan is meant to be used on a single shared device as it is limited by local storage.
+By saving PTMan&#8217;s data to the cloud, both employees and managers can access PTMan from their own devices since the data can be shared.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="commands"><a class="link" href="#commands">4. Commands</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main form of interaction with PTMan is via keyboard commands.
+Our commands are split into 3 sub-sections, <a href="#manager-commands">Manager Commands</a>, <a href="#employee-commands">Employee Commands</a>, and <a href="#general-commands">General Commands</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>Take note that for this user guide, our commands will follow the format as stated below.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -133,32 +506,205 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+e.g. In <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional.<br>
+e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times, or none at all.<br>
+e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order.<br>
+e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, then <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+</li>
+<li>
+<p>For your convenience, many commands have a shorthand.<br>
+eg. <code>list</code> and <code>l</code> will both show a list of all employees in PTMan.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="manager-commands"><a class="link" href="#manager-commands">4.1. Manager Commands</a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>As a manager, you are able to access these commands in addition to the <a href="#general-commands">general commands</a>.
+These manager commands require logging in to <a href="#Admin Mode">admin mode</a> as shown in <a href="#Login">Section 4.1.1</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="Login"><a class="link" href="#Login">4.1.1. Logging in to admin mode: <code>login</code></a></h4>
+<div class="paragraph">
+<p>Logs in to <a href="#Admin Mode">admin mode</a>, allowing you to use all the manager commands.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>login pw/ADMIN_PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command with your password as shown in  <em><a href="#fig-Login">Figure 6</a></em>.</p>
+</div>
+<div id="fig-Login" class="imageblock">
+<div class="content">
+<img src="images/loginPassword.png" alt="loginPassword" width="790">
+</div>
+<div class="title">Figure 6. Logging in in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>Once you are logged in, a admin mode icon will appear to indicate that you are in admin mode as shown in  <em><a href="#fig-LoginSuccess">Figure 7</a></em>.</p>
+</div>
+<div id="fig-LoginSuccess" class="imageblock">
+<div class="content">
+<img src="images/loginSuccess.png" alt="loginSuccess" width="790">
+</div>
+<div class="title">Figure 7. logged in in PTMan<br></div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please remember to logout when you are done to prevent unauthorized access to manager commands.<br>
+Refer to <a href="#Logout">Section 4.1.2</a> for more information.
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<div class="sect3">
+<h4 id="Logout"><a class="link" href="#Logout">4.1.2. Logging out of admin mode: <code>logout</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Logs out of <a href="#Admin Mode">admin mode</a>, preventing further usage of manager features.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>logout</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command to log out as shown in <em><a href="#fig-loggingOut">Figure 8</a></em>.</p>
+</div>
+<div id="fig-loggingOut" class="imageblock">
+<div class="content">
+<img src="images/logout.png" alt="logout" width="790">
+</div>
+<div class="title">Figure 8. Logging out in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After <code>logout</code> is executed, the admin icon will disappear from the command box as shown in <em><a href="#fig-logoutSuccess">Figure 9</a></em>.</p>
+</div>
+<div id="fig-logoutSuccess" class="imageblock">
+<div class="content">
+<img src="images/loginNoAdminIcon.png" alt="loginNoAdminIcon" width="790">
+</div>
+<div class="title">Figure 9. Logged out in PTMan<br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Cap"><a class="link" href="#Cap">4.1.3. Changing the admin password: <code>changeadminpw</code></a></h4>
+<div class="paragraph">
+<p>Changes the <a href="#Admin Mode">admin mode</a> password.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>changeadminpw pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>cap</code> <code>pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+To prevent unauthorized access to admin mode, managers should execute this command upon running PTMan for the first time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the current admin password is <code>DEFAULT1</code> and you wish to change it to <code>hunter2</code>, type:
+<code>changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22</code> which will be masked by asterisks in the program as shown in <em><a href="#fig-changingAdminPassword">Figure 10</a></em>.</p>
+</div>
+<div id="fig-changingAdminPassword" class="imageblock">
+<div class="content">
+<img src="images/changingAdminPassword.png" alt="changingAdminPassword" width="790">
+</div>
+<div class="title">Figure 10. Changing admin password in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After password is changed successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changedAdminPassword">Figure 11</a></em>.</p>
+</div>
+<div id="fig-changedAdminPassword" class="imageblock">
+<div class="content">
+<img src="images/changedAdminPassword.png" alt="changedAdminPassword" width="790">
+</div>
+<div class="title">Figure 11. Admin password changed in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The password should be at least 8 characters long.<br>
+The sequence of current and new password entered must be of the format.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Rap"><a class="link" href="#Rap">4.1.4. Resetting the admin password: <code>resetadminpw</code></a></h4>
+<div class="paragraph">
+<p>Resets your <a href="#Admin Mode">admin mode</a> password and sends a randomly generated password to the outlet&#8217;s email address.<br>
+You may use the new password to login to admin mode to change the password.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>resetadminpw</code><br>
+<strong>Shorthand:</strong> <code>rap</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command to reset admin password as shown in <em><a href="#fig-resetAdminPassword">Figure 12</a></em></p>
+</div>
+<div id="fig-resetAdminPassword" class="imageblock">
+<div class="content">
+<img src="images/resetAdminPassword.png" alt="resetAdminPassword" width="790">
+</div>
+<div class="title">Figure 12. Resetting admin password in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After the command is executed successfully, a notification will be displayed as shown in <em><a href="#fig-resetAdminPasswordSuccess">Figure 13</a></em>.</p>
+</div>
+<div id="fig-resetAdminPasswordSuccess" class="imageblock">
+<div class="content">
+<img src="images/resetAdminPasswordSuccess.png" alt="resetAdminPasswordSuccess" width="790">
+</div>
+<div class="title">Figure 13. Reset admin password in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The temporary password will be sent to the outlet&#8217;s email stored in PTMan.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Add"><a class="link" href="#Add">4.1.5. Adding an employee: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds an employee to PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY [t/TAG]&#8230;&#8203;</code><br>
+<strong>Shorthand:</strong> <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -167,7 +713,240 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;<
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+An employee can have any number of tags (including 0)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Guided Example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We have an employee <strong>John Doe</strong> with phone number <strong>98765432</strong>, email address <strong>johnd@example.com</strong>, and stays in <strong>311, Clementi Ave 2, #02-25</strong>.
+He has earned <strong>$0</strong> so far, and takes the role of a <strong>Barista</strong> and a <strong>Cashier</strong>.<br>
+To add John Doe into PTMan, we can do the following as illustrated in <em><a href="#fig-Add1">Figure 14</a></em>.</p>
+<div id="fig-Add1" class="imageblock">
+<div class="content">
+<img src="images/Ui_add1.png" alt="Ui add1" width="790">
+</div>
+<div class="title">Figure 14. Example of <code>add</code> command usage<br></div>
+</div>
+</li>
+<li>
+<p>Click <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and John Doe being added into your Employee list.
+<em><a href="#fig-Add2">Figure 15</a></em> shows how PTMan should look like after the above command.</p>
+<div id="fig-Add2" class="imageblock">
+<div class="content">
+<img src="images/Ui_add2.png" alt="Ui add2" width="790">
+</div>
+<div class="title">Figure 15. Successful addition of employee into PTMan<br></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>More Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To add an employee named <code>John Doe</code> with phone number <code>98765432</code>, address <code>John street, block 123, #01-01</code>, and salary of $<code>0</code>, type:<br>
+<code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 s/0</code> <br></p>
+</li>
+<li>
+<p>To add an employee named <code>Betsy Crowe</code> with email <code>betsycrowe@example.com</code>, address <code>Newgate Prison</code>, phone number <code>1234567</code>, and salary of $<code>100</code>, type:<br>
+<code>add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 s/100</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="AddSalary"><a class="link" href="#AddSalary">4.1.6. Adding salary to an employee: <code>addsalary</code></a></h4>
+<div class="paragraph">
+<p>Adds an existing employee&#8217;s salary by an amount.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>addsalary INDEX s/SALARY_INCREASE_BY</code><br>
+<strong>Shorthand:</strong> <code>adds</code> <code>INDEX s/SALARY_INCREASE_BY</code></p>
+</div>
+<div class="paragraph">
+<p>You can increase an employer salary by an amount as shown below in  <em><a href="#fig-addingSalary">Figure 16</a></em>.</p>
+</div>
+<div id="fig-addingSalary" class="imageblock">
+<div class="content">
+<img src="images/addingSalary.png" alt="addingSalary" width="790">
+</div>
+<div class="title">Figure 16. Adding salary for employee in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After you executed the command, you will see the result from the result display and the applied salary as shown in <em><a href="#fig-addSalarySuccess">Figure 17</a></em>.</p>
+</div>
+<div id="fig-addSalarySuccess" class="imageblock">
+<div class="content">
+<img src="images/addSalarySuccess.png" alt="addSalarySuccess" width="790">
+</div>
+<div class="title">Figure 17. Adding salary for employee in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An employee&#8217;s salary can not be deducted from using this command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Edit"><a class="link" href="#Edit">4.1.7. Editing an employee: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing employee in PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]&#8230;&#8203;</code><br>
+<strong>Shorthand:</strong> <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An employee&#8217;s password can only be edited by the employee.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the employee at the specified <code>INDEX</code>. The index refers to the index number shown in the last employee listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the employee will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the employee&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To edit the phone number and email address of the employee <code>1</code> to be <code>91234567</code> and <code>johndoe@example.com</code> respectively, type:<br>
+<code>edit 1 p/91234567 e/johndoe@example.com</code><br></p>
+</li>
+<li>
+<p>To edit the name of the employee <code>2</code> to be <code>Betsy Crower</code> and clear all existing tags, type:<br>
+<code>edit 2 n/Betsy Crower t/</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Delete"><a class="link" href="#Delete">4.1.8. Deleting an employee : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified employee from PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>delete EMPLOYEE_INDEX</code><br>
+<strong>Shorthand:</strong> <code>d EMPLOYEE_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The employee will be deleted at the specified INDEX.</p>
+</li>
+<li>
+<p>The INDEX refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The INDEX <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To delete employee <code>2</code>, type:<br>
+<code>delete 2</code><br></p>
+</li>
+<li>
+<p>To delete employee <code>1</code> from the results of the <code>find</code> command, type:<br>
+<code>find Betsy</code><br>
+<code>delete 1</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Clear"><a class="link" href="#Clear">4.1.9. Clearing all entries : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Clears all shifts and employees from PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>clear</code><br>
+<strong>Shorthand:</strong> <code>c</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+You may use the <code>undo</code> command if you have accidentally cleared all shifts and employees.<br>
+Please refer to <a href="#Undo">Section 4.1.10</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Undo"><a class="link" href="#Undo">4.1.10. Undoing the previous command : <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Restores PTMan to the state before the previous <em>undoable</em> command was executed.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>undo</code><br>
+<strong>Shorthand:</strong> <code>u</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: Commands that modify PTMan&#8217;s data (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, <code>addshift</code>, <code>deleteshift</code>, <code>apply</code>, <code>unapply</code>, <code>editoutlet</code> and <code>announcement</code>).</p>
+</div>
 </td>
 </tr>
 </table>
@@ -178,34 +957,71 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="Redo"><a class="link" href="#Redo">4.1.11. Redoing the previously undone command: <code>redo</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Reverses the most recent <code>undo</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>redo</code><br>
+<strong>Shorthand:</strong> <code>r</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1 pw/ADMIN_PASSWORD</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<div class="sect3">
+<h4 id="Editoutlet"><a class="link" href="#Editoutlet">4.1.12. Editing the outlet information: <code>editoutlet</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Edits the outlet information.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>editoutlet [n/NAME] [h/OPERATING_HOURS] [c/CONTACT_NUMBER] [e/EMAIL]</code> <br>
+<strong>Shorthand:</strong> <code>eo</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
@@ -213,10 +1029,200 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p><code>OPERATING_HOURS</code> are in HHMM-HHMM format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Ensure that the outlet email is valid as it will be used to reset the admin password should you forget it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When you first start using PTMan, your outlet information will be default values as shown in <em><a href="#fig-DefaultOutlet">Figure 18</a></em>.</p>
+<div id="fig-DefaultOutlet" class="imageblock">
+<div class="content">
+<img src="images/DefaultOutlet.jpg" alt="DefaultOutlet" width="790">
+</div>
+<div class="title">Figure 18. Default Outlet Information<br></div>
+</div>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can edit the name, operating hours, contact number, and email of the outlet to be <code>AwesomeCoffee</code>, <code>10am to 11pm</code>, <code>98134086</code>, and <code>awesomecoffee@gmail.com</code> respectively, type:<br>
+<code>editoutlet n/AwesomeCoffee h/1000-2300 c/98134086 e/awesomecoffee@gmail.com</code>. Or you can refer to <em><a href="#fig-Edit1">Figure 19</a></em>.</p>
+<div id="fig-Edit1" class="imageblock">
+<div class="content">
+<img src="images/Ui_editoutlet1.png" alt="Ui editoutlet1" width="790">
+</div>
+<div class="title">Figure 19. Example of <code>editoutlet</code> command usage<br></div>
+</div>
+</li>
+<li>
+<p>Click <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
+<em><a href="#fig-Edit2">Figure 20</a></em> shows how PTMan should look like after the above command.</p>
+<div id="fig-Edit2" class="imageblock">
+<div class="content">
+<img src="images/Ui_editoutlet2.png" alt="Ui editoutlet2" width="790">
+</div>
+<div class="title">Figure 20. Successful editing of outlet information in PTMan<br></div>
+</div>
+</li>
+<li>
+<p>To only edit the name and contact number to be <code>Nice Dim Sum</code> and <code>901234567</code> respectively, type: <code>editoutlet n/Nice Dim Sum c/901234567</code>.
+You will see changes as shown in <em><a href="#fig-Edit3">Figure 21</a></em>.</p>
+<div id="fig-Edit3" class="imageblock">
+<div class="content">
+<img src="images/Ui_editoutlet3.png" alt="Ui editoutlet3" width="790">
+</div>
+<div class="title">Figure 21. Successful editing of outlet information in PTMan<br></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Announcement"><a class="link" href="#Announcement">4.1.13. Creating an announcement: <code>announcement</code></a></h4>
+<div class="paragraph">
+<p>Sets an announcement for the outlet.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>announcement ANNOUNCEMENT_MESSAGE</code><br>
+<strong>Shorthand:</strong> <code>announce</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Your store has a <strong>new drink released this coming Wednesday</strong>, and you want your employees who come working on Wednesday to be
+familiar with the recipe for it. You can leave a note for your employees so that they can be prepared for their shifts.
+To make an announcement in PTMan, you can type the following command as illustrated in <em><a href="#fig-Announce1">Figure 22</a></em>.</p>
+<div id="fig-Announce1" class="imageblock">
+<div class="content">
+<img src="images/Ui_announcement1.png" alt="Ui announcement1" width="790">
+</div>
+<div class="title">Figure 22. Example of <code>announce</code> command usage<br></div>
+</div>
+</li>
+<li>
+<p>Click <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the announcement.
+<em><a href="#fig-Announce2">Figure 23</a></em> shows how PTMan should look like after the above command.</p>
+<div id="fig-Announce2" class="imageblock">
+<div class="content">
+<img src="images/Ui_announcement2.png" alt="Ui announcement2" width="790">
+</div>
+<div class="title">Figure 23. Successful announcement made in PTMan<br></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Encrypt"><a class="link" href="#Encrypt">4.1.14. Encrypting the local storage files: <code>encrypt</code></a></h4>
+<div class="paragraph">
+<p>Encrypts data stored in the files in <code>data</code> folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>encrypt</code></p>
+</div>
+<div class="paragraph">
+<p>After your <code>encrypt</code> command is executed successfully, you would see a confirmation message below the command bar as shown in <em><a href="#fig-SuccessfulEncryptCommand">Figure 24</a></em>.</p>
+</div>
+<div id="fig-SuccessfulEncryptCommand" class="imageblock">
+<div class="content">
+<img src="images/SuccessfulEncryptCommand.jpg" alt="SuccessfulEncryptCommand" width="790">
+</div>
+<div class="title">Figure 24. Successful <code>encrypt</code> command made in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>In addition, you can view your data stored in local files by the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the folder where your app <code>PTMan.jar</code> is at.</p>
+</li>
+<li>
+<p>Open the folder named <code>data</code>. You will see two files <code>outletinformation.xml</code> and <code>parttimemanager.xml</code> there.</p>
+</li>
+<li>
+<p>Open <code>outletinformation.xml</code>. The third line of the file indicates the encryption status with reference to <em><a href="#fig-Encrypt">Figure 25</a></em>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Encrypt">Figure 25</a></em> shows an example of what the <code>outletinformation.xml</code> file should look like when the <code>encrypt</code> command is successfully executed.</p>
+</div>
+<div id="fig-Encrypt" class="imageblock">
+<div class="content">
+<img src="images/OutletInformationEncryptedXMLFile.jpg" alt="OutletInformationEncryptedXMLFile" width="790">
+</div>
+<div class="title">Figure 25. Example of Encrypted <code>outletinformation.xml</code> File in <code>data</code> Folder<br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Decrypt"><a class="link" href="#Decrypt">4.1.15. Decrypting the local storage files: <code>decrypt</code></a></h4>
+<div class="paragraph">
+<p>Decrypts data stored in the files in <code>data</code> folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>decrypt</code></p>
+</div>
+<div class="paragraph">
+<p>After your <code>decrypt</code> command is executed successfully, you would see a confirmation message below the command bar as shown in <em><a href="#fig-SuccessfulDecryptCommand">Figure 26</a></em>.</p>
+</div>
+<div id="fig-SuccessfulDecryptCommand" class="imageblock">
+<div class="content">
+<img src="images/SuccessfulDecryptCommand.jpg" alt="SuccessfulDecryptCommand" width="790">
+</div>
+<div class="title">Figure 26. Successful <code>decrypt</code> command made in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>Open <code>outletinformation.xm;</code> file again, now you can read and understand the data stored as shown in <em><a href="#fig-Decrypt">Figure 27</a></em>.</p>
+</div>
+<div id="fig-Decrypt" class="imageblock">
+<div class="content">
+<img src="images/OutletInformationDecryptedXMLFile.jpg" alt="OutletInformationDecryptedXMLFile" width="790">
+</div>
+<div class="title">Figure 27. Example of Decrypted <code>outletinformation.xml</code> File in <code>data</code> Folder<br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Addshift"><a class="link" href="#Addshift">4.1.16. Adding a shift: <code>addshift</code></a></h4>
+<div class="paragraph">
+<p>Adds a shift to the timetable to indicate that you require employees at that period.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>addshift d/DATE ts/START_TIME te/END_TIME c/EMPLOYEE_CAPACITY</code><br>
+<strong>Shorthand:</strong> <code>as</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>DATE</code> should be in DD-MM-YY format.<br></p>
+</li>
+<li>
+<p>The <code>START_TIME</code> and <code>END_TIME</code> are in HHMM format.<br></p>
+</li>
+<li>
+<p>The <code>CAPACITY</code> should be a positive integer.</p>
 </li>
 </ul>
 </div>
@@ -228,21 +1234,377 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p>To add a shift on 12 March 2018 from 12pm to 7pm that requires 4 employees, type:<br>
+<code>addshift d/12-03-18 ts/1200 te/1900 c/4</code></p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p>To add a shift on 3 May 2018 from 8am to 1pm that requires 2 employees, type:<br>
+<code>addshift d/03-05-18 ts/0800 te/1300 c/2</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="Deleteshift"><a class="link" href="#Deleteshift">4.1.17. Deleting a shift: <code>deleteshift</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Deletes a shift from the timetable.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deleteshift SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>ds</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To delete shift <code>4</code>, type:<br>
+<code>deleteshift 4</code></p>
+</li>
+<li>
+<p>To delete shift <code>2</code>, type:<br>
+<code>deleteshift 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Apply"><a class="link" href="#Apply">4.1.18. Applying an employee for a shift: <code>apply</code></a></h4>
+<div class="paragraph">
+<p>Applies an employee for a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>apply EMPLOYEE_INDEX SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>ap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To apply employee <code>2</code> for shift <code>1</code>, type:<br>
+<code>apply 2 1</code></p>
+</li>
+<li>
+<p>To apply employee <code>6</code> for shift <code>5</code>, type:<br>
+<code>apply 6 5</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have accidentally applied the employee for the wrong shift, you may use the <code>unapply</code> command.<br>
+Refer to <a href="#Unapply">Section 4.1.19</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Unapply"><a class="link" href="#Unapply">4.1.19. Removing an employee from a shift: <code>unapply</code></a></h4>
+<div class="paragraph">
+<p>Removes an employee from a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>unapply EMPLOYEE_INDEX SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>uap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To remove employee <code>6</code> from shift <code>3</code>, type:<br>
+<code>unapply 6 3</code></p>
+</li>
+<li>
+<p>To remove employee <code>2</code> from shift <code>6</code>, type:<br>
+<code>unapply 2 6</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="employee-commands"><a class="link" href="#employee-commands">4.2. Employee Commands</a></h3>
+<div class="paragraph">
+<p>As an employee, you are able to access these commands in addition to the <a href="#general-commands">general commands</a>.
+These employee commands require the use of your employee password.</p>
+</div>
+<div class="sect3">
+<h4 id="Apply-2"><a class="link" href="#Apply-2">4.2.1. Applying for a shift: <code>apply</code></a></h4>
+<div class="paragraph">
+<p>Applies for a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>apply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>ap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index in the employee list is <code>2</code> and you want to apply for shift <code>1</code>, type:<br>
+<code>apply 2 1 pw/YOUR_PASSWORD</code></p>
+</li>
+<li>
+<p>If your index in the employee list is <code>6</code> and you want to apply for shift <code>5</code>, type:<br>
+<code>apply 6 5 pw/YOUR_PASSWORD</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have accidentally applied for the wrong shift, you may use the <code>unapply</code> command.<br>
+Refer to <a href="#Unapply-2">Section 4.2.2</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Unapply-2"><a class="link" href="#Unapply-2">4.2.2. Removing yourself from a shift: <code>unapply</code></a></h4>
+<div class="paragraph">
+<p>Removes youreself from a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>unapply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>uap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index is <code>4</code> and you wish to unapply from shift <code>3</code>, type:<br>
+<code>unapply 4 3 pw/YOUR_PASSWORD</code></p>
+</li>
+<li>
+<p>If your index is <code>2</code> and you wish to unapply from shift <code>1</code>, type:<br>
+<code>unapply 2 1 pw/YOUR_PASSWORD</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Cp"><a class="link" href="#Cp">4.2.3. Changing your employee password: <code>changepw</code></a></h4>
+<div class="paragraph">
+<p>Changes your employee password.
+For security purposes, you are highly encouraged to change your password the moment your account is created.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>changepw INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>cp</code> <code>INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index is <code>5</code>, your current password is <code>DEFAULT1</code>, and you wish to change it to <code>hunter2</code>, type:<br>
+<code>cp 5 pw/DEFAULT1 pw/hunter2 pw/hunter2</code></p>
+</li>
+<li>
+<p>If your index is <code>2</code>, your current password is <code>mypassword</code>, and you wish to change it to <code>NewPassw0rd</code>, type:<br>
+<code>cp 2 pw/mypassword pw/NewPassw0rd pw/NewPassw0rd</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Rp"><a class="link" href="#Rp">4.2.4. Resetting your employee password: <code>rp</code></a></h4>
+<div class="paragraph">
+<p>Resets your employee password. This sends a temporary password to your email address.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>rp INDEX</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index is <code>5</code>, type:<br>
+<code>rp 5</code></p>
+</li>
+<li>
+<p>If your index is <code>3</code>, type:<br>
+<code>rp 3</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="general-commands"><a class="link" href="#general-commands">4.3. General Commands</a></h3>
+<div class="paragraph">
+<p>These commands can be executed by both employees and managers.</p>
+</div>
+<div class="sect3">
+<h4 id="Help"><a class="link" href="#Help">4.3.1. Viewing help: <code>help</code></a></h4>
+<div class="paragraph">
+<p>Opens this user guide in another window.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>help</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 28</a></em>.</p>
+</div>
+<div id="fig-Help" class="imageblock">
+<div class="content">
+<img src="images/Ui_help.png" alt="Ui help" width="790">
+</div>
+<div class="title">Figure 28. Accessing the Help Option From the Menu Bar</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Find"><a class="link" href="#Find">4.3.2. Locating an employee by name: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds employees whose names contain any of the given keywords.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<strong>Shorthand:</strong> <code>f KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -261,7 +1623,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Employees matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -273,79 +1635,45 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p>To find employees <code>john</code> and <code>John Doe</code>, type:<br>
+<code>find John</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p>To find any employee having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, type:<br>
+<code>find Betsy Tim John</code><br></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="List"><a class="link" href="#List">4.3.3. Listing all employees: <code>list</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
+<p>Shows a list of all employees in PTMan.<br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
+<p><strong>Format:</strong> <code>list</code><br>
+<strong>Shorthand:</strong> <code>l</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
+<div class="sect3">
+<h4 id="Viewshift"><a class="link" href="#Viewshift">4.3.4. Listing all employees: <code>viewshift</code></a></h4>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code></p>
+<p>Shows a list of all employees who have applied for the input shift index in PTMan.<br></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>viewshift SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>vs SHIFT_INDEX</code></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="Select"><a class="link" href="#Select">4.3.5. Displaying an employee&#8217;s shift on the timetable: <code>select</code></a></h4>
+<div class="paragraph">
+<p>Displays the shifts of the selected employee on the timetable view. Shifts applied by the selected employee would be displayed
+ in blue, while the other shifts would be displayed in brown.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select EMPLOYEE_INDEX</code><br>
+<strong>Shorthand:</strong> <code>s EMPLOYEE_INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -353,23 +1681,92 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+<p>To select employee <code>2</code> and displays their shifts in the timetable, type:<br>
+<code>select 2</code><br></p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
+<p>To select the employee <code>1</code> in the results of the <code>find</code> command and display their shifts in the timetable, type:<br>
+<code>find Betsy</code><br>
+<code>select 1</code><br></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Alternatively, you can select an employee simply by clicking on the employee&#8217;s card in the employee list
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To stop displaying the employee&#8217;s shifts on the timetable, use the <code>main</code> command.<br>
+Refer to <a href="#Main">Section 4.3.6</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Main"><a class="link" href="#Main">4.3.6. Displaying the default timetable: <code>main</code></a></h4>
+<div class="paragraph">
+<p>Displays the main timetable view (of the current week). Useful for users to navigate back to the default timetable
+after using the <code>select</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>main</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Export"><a class="link" href="#Export">4.3.7. Exporting the timetable as image: <code>export</code></a></h4>
+<div class="paragraph">
+<p>Exports the current timetable displayed as an image and either saves it locally into the location for your jar file,
+ or emails the exported timetable to the input email address.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>export [e/EMAIL]</code><br>
+<strong>Shorthand:</strong> <code>exp [e/EMAIL]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To export the current timetable in PTMan, type:<br>
+<code>export</code><br></p>
+</li>
+<li>
+<p>To export the timetable with the shifts of employee <code>1</code> in PTMan, type:<br>
 <code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+<code>export</code><br></p>
+</li>
+<li>
+<p>To export the timetable with the shifts of employee <code>1</code> in PTMan and send the exported timetable as email, type:<br>
+<code>select `<br>
+`export e/email@example.com</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
+<div class="sect3">
+<h4 id="History"><a class="link" href="#History">4.3.8. Listing entered commands: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+<p>Lists all the commands that you have entered in reverse chronological order.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>history</code><br>
+<strong>Shorthand:</strong> <code>h</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -386,172 +1783,198 @@ Format: <code>history</code></p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
+<div class="sect3">
+<h4 id="Exit"><a class="link" href="#Exit">4.3.9. Exiting the program: <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Exits the app.<br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Format:</strong> <code>exit</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p><strong>Q</strong>: How do I transfer my data to another computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous PTMan folder.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="shared-commands"><a class="link" href="#shared-commands">6.1. Shared Commands</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><a href="#Help"><strong>Help</strong></a>: <code>help</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><a href="#Find"><strong>Find</strong></a>: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><a href="#List"><strong>List</strong></a>: <code>list</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><a href="#Viewshift"><strong>View shift</strong></a>: <code>viewshift SHIFT_INDEX</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><a href="#Select"><strong>Display employee&#8217;s shifts</strong></a>: <code>select EMPLOYEE_INDEX</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><a href="#Main"><strong>Display default timetable</strong></a>: <code>main</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><a href="#Export"><strong>Export timetable</strong></a>: <code>export</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><a href="#History"><strong>History</strong></a>: <code>history</code></p>
 </li>
 <li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
+<p><a href="#Exit"><strong>Exit</strong></a>: <code>exit</code></p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manager-commands-2"><a class="link" href="#manager-commands-2">6.2. Manager Commands</a></h3>
+<div class="sect3">
+<h4 id="admin-management"><a class="link" href="#admin-management">6.2.1. Admin management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Login"><strong>Login</strong></a>: <code>login pw/PASSWORD</code></p>
+</li>
+<li>
+<p><a href="#Logout"><strong>Logout</strong></a>: <code>logout</code></p>
+</li>
+<li>
+<p><a href="#Cap"><strong>Change admin password</strong></a>: <code>cap</code> <code>pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br></p>
+</li>
+<li>
+<p><a href="#Rap"><strong>Reset admin password</strong></a>: <code>rap</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="employee-management"><a class="link" href="#employee-management">6.2.2. Employee management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Add"><strong>Add</strong></a>: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY pw/AdminPassword t/TAG&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><a href="#Edit"><strong>Edit</strong></a>: <code>edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY t/TAG&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><a href="#Delete"><strong>Delete</strong></a>: <code>delete EMPLOYEE_INDEX</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="outlet-management-2"><a class="link" href="#outlet-management-2">6.2.3. Outlet management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Eo"><strong>Edit outlet information</strong></a>: <code>editoutlet n/NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL</code></p>
+</li>
+<li>
+<p><a href="#Announcement"><strong>Create announcement</strong></a>: <code>announcement ANNOUNCEMENT_MESSAGE</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="shift-management-2"><a class="link" href="#shift-management-2">6.2.4. Shift management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Addshift"><strong>Add shift</strong></a>: <code>addshift d/DATE ts/TIME_START te/TIME_END c/CAPACITY</code></p>
+</li>
+<li>
+<p><a href="#Deleteshift"><strong>Delete shift</strong></a>: <code>deleteshift SHIFT_INDEX</code></p>
+</li>
+<li>
+<p><a href="#Apply"><strong>Apply</strong></a>: <code>apply EMPLOYEE_INDEX SHIFT_INDEX</code></p>
+</li>
+<li>
+<p><a href="#Unapply"><strong>Unapply</strong></a>: <code>unapply EMPLOYEE_INDEX SHIFT_INDEX</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storage-management"><a class="link" href="#storage-management">6.2.5. Storage management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Encrypt"><strong>Encrypt storage files</strong></a>: <code>encrypt</code></p>
+</li>
+<li>
+<p><a href="#Decrypt"><strong>Decrypt storage files</strong></a>: <code>encrypt</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="general-commands-2"><a class="link" href="#general-commands-2">6.2.6. General commands</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Clear"><strong>Clear</strong></a>: <code>clear</code></p>
+</li>
+<li>
+<p><a href="#Undo"><strong>Undo</strong></a>: <code>undo</code></p>
+</li>
+<li>
+<p><a href="#Redo"><strong>Redo</strong></a>: <code>redo</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="employee-commands-2"><a class="link" href="#employee-commands-2">6.3. Employee Commands</a></h3>
+<div class="sect3">
+<h4 id="shift-management-3"><a class="link" href="#shift-management-3">6.3.1. Shift management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Apply-2"><strong>Apply</strong></a>: <code>apply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code></p>
+</li>
+<li>
+<p><a href="#Unapply-2"><strong>Unapply</strong></a>: <code>unapply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="password-management"><a class="link" href="#password-management">6.3.2. Password management</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Cp"><strong>Change password</strong></a>: <code>cp EMPLOYEE_INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
+</li>
+<li>
+<p><a href="#Rp"><strong>Reset password</strong></a>: <code>rp EMPLOYEE_INDEX</code></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-04-12 04:12:29 UTC
 </div>
 </div>
 </body>

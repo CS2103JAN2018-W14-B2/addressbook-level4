@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Shannon Wong - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Shannon Wong - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-part-time-manager-ptman"><a class="link" href="#project-part-time-manager-ptman">PROJECT: Part-Time Manager (PTMan)</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PTMan is a desktop human resource application used for managing part-time employees.<br></p>
+</div>
+<div class="paragraph">
+<p>PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the employer.
+Thereby reducing the hassle of work scheduling for both employers and employees.<br></p>
+</div>
+<div class="paragraph">
+<p>The user interacts with the application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added the <strong>shift</strong> feature.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows employers to create work shifts. Employees can then apply for the shifts that they want to work in.</p>
+</li>
+<li>
+<p>Justification: This feature allows for easy management of manpower while giving employees the freedom and flexibility to work whenever they want to.</p>
+</li>
+<li>
+<p>Highlights: This enhancement modifies the app&#8217;s model to store shifts.
+The storage component also had to be modified to save shifts to local storage.
+There were design considerations to integrate shifts into the existing model while minimizing coupling with the other components.
+To enable user interaction with this feature, various commands that manipulate shifts had to be implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added command aliases that are shorthands for the full commands.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/functional/shanwpf.md">Functional code</a>]
+[<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/test/shanwpf.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed milestones and issue-tracking on GitHub.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added cross-reference links to the User Guide and Developer Guide:
+[<a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/154">#154</a>]
+[<a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/159">#159</a>]</p>
+</li>
+<li>
+<p>Ensured that the language and format of the documentation are correct and consistent:
+[<a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/154">#154</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated TravisCI to the team repo.</p>
+</li>
+<li>
+<p>Integrated Coveralls to the team repo.</p>
+</li>
+<li>
+<p>Integrated Codacy to the team repo.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="Addshift"><a class="link" href="#Addshift">Adding a shift: <code>addshift</code></a></h4>
+<div class="paragraph">
+<p>Adds a shift to the timetable to indicate that you require employees at that period.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>addshift d/DATE ts/START_TIME te/END_TIME c/EMPLOYEE_CAPACITY</code><br>
+<strong>Shorthand:</strong> <code>as</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>DATE</code> should be in DD-MM-YY format.<br></p>
+</li>
+<li>
+<p>The <code>START_TIME</code> and <code>END_TIME</code> are in HHMM format.<br></p>
+</li>
+<li>
+<p>The <code>CAPACITY</code> should be a positive integer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To add a shift on 12 March 2018 from 12pm to 7pm that requires 4 employees, type:<br>
+<code>addshift d/12-03-18 ts/1200 te/1900 c/4</code></p>
+</li>
+<li>
+<p>To add a shift on 3 May 2018 from 8am to 1pm that requires 2 employees, type:<br>
+<code>addshift d/03-05-18 ts/0800 te/1300 c/2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Deleteshift"><a class="link" href="#Deleteshift">Deleting a shift: <code>deleteshift</code></a></h4>
+<div class="paragraph">
+<p>Deletes a shift from the timetable.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deleteshift SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>ds</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To delete shift <code>4</code>, type:<br>
+<code>deleteshift 4</code></p>
+</li>
+<li>
+<p>To delete shift <code>2</code>, type:<br>
+<code>deleteshift 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Apply"><a class="link" href="#Apply">Applying an employee for a shift: <code>apply</code></a></h4>
+<div class="paragraph">
+<p>Applies an employee for a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>apply EMPLOYEE_INDEX SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>ap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To apply employee <code>2</code> for shift <code>1</code>, type:<br>
+<code>apply 2 1</code></p>
+</li>
+<li>
+<p>To apply employee <code>6</code> for shift <code>5</code>, type:<br>
+<code>apply 6 5</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have accidentally applied the employee for the wrong shift, you may use the <code>unapply</code> command.<br>
+Refer to <a href="#Unapply">Removing an employee from a shift: <code>unapply</code></a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Unapply"><a class="link" href="#Unapply">Removing an employee from a shift: <code>unapply</code></a></h4>
+<div class="paragraph">
+<p>Removes an employee from a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>unapply EMPLOYEE_INDEX SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>uap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To remove employee <code>6</code> from shift <code>3</code>, type:<br>
+<code>unapply 6 3</code></p>
+</li>
+<li>
+<p>To remove employee <code>2</code> from shift <code>6</code>, type:<br>
+<code>unapply 2 6</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Apply-2"><a class="link" href="#Apply-2">Applying for a shift: <code>apply</code></a></h4>
+<div class="paragraph">
+<p>Applies for a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>apply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>ap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index in the employee list is <code>2</code> and you want to apply for shift <code>1</code>, type:<br>
+<code>apply 2 1 pw/YOUR_PASSWORD</code></p>
+</li>
+<li>
+<p>If your index in the employee list is <code>6</code> and you want to apply for shift <code>5</code>, type:<br>
+<code>apply 6 5 pw/YOUR_PASSWORD</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have accidentally applied for the wrong shift, you may use the <code>unapply</code> command.<br>
+Refer to <a href="#Unapply-2">Removing yourself from a shift: <code>unapply</code></a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Unapply-2"><a class="link" href="#Unapply-2">Removing yourself from a shift: <code>unapply</code></a></h4>
+<div class="paragraph">
+<p>Removes youreself from a shift.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>unapply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>uap</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
+</li>
+<li>
+<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your index is <code>4</code> and you wish to unapply from shift <code>3</code>, type:<br>
+<code>unapply 4 3 pw/YOUR_PASSWORD</code></p>
+</li>
+<li>
+<p>If your index is <code>2</code> and you wish to unapply from shift <code>1</code>, type:<br>
+<code>unapply 2 1 pw/YOUR_PASSWORD</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="shifts-feature"><a class="link" href="#shifts-feature">Shifts Feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h4>
+<div class="paragraph">
+<p>PTMan is designed to give employees the freedom and flexibility to choose the shifts they want to work in.
+By allowing employers to add or delete shifts, employees can then apply for the shifts that are available.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">How it is implemented</a></h4>
+<div class="paragraph">
+<p>The <code>Shift</code> class represents a shift in PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p>It stores:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Date</code> of the shift.
+<code>Date</code> is a class that wraps Java&#8217;s <code>LocalDate</code> class.</p>
+</li>
+<li>
+<p>The starting and ending <code>Time</code> of the shift.
+<code>Time</code> is a class that wraps Java&#8217;s <code>LocalTime</code> class.</p>
+</li>
+<li>
+<p>The employee <code>Capacity</code> for the shift.
+<code>Capacity</code> is a class that wraps an integer.</p>
+</li>
+<li>
+<p>The <code>UniqueEmployeeList</code> of employees working in the shift.
+<code>UniqueEmployeeList</code> is a list that stores the <code>Employee</code> objects of employees that have applied for the shift.
+It guarantees there are no duplicate employees in the shift.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-ShiftClassDiagram">Figure 1</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
+</div>
+<div id="fig-ShiftClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/ShiftClassDiagram.png" alt="ShiftClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Overview of the Shift Class in the Model Component</div>
+</div>
+<div class="paragraph">
+<p><code>Date</code> and <code>Time</code> use Java&#8217;s <code>LocalDate</code> and <code>LocalTime</code> classes for easy integration with the timetable.
+They also make formatting and parsing simple through the use of Java&#8217;s <code>DateTimeFormatter</code>.</p>
+</div>
+<div class="paragraph">
+<p>To store a list of shifts in <code>PartTimeManager</code>, we use a <code>UniqueShiftList</code> to ensure there are no duplicate shifts.</p>
+</div>
+<div class="sect4">
+<h5 id="commands"><a class="link" href="#commands">Commands</a></h5>
+<div class="paragraph">
+<p>The following are commands that directly interact with the <code>Shift</code> class:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>AddShiftCommand</code>: Creates a <code>Shift</code> and adds it to the <code>UniqueShiftList</code> in <code>PartTimeManager</code>.<br></p>
+</li>
+<li>
+<p><code>DeleteShiftCommand</code>: Deletes a <code>Shift</code> from the <code>UniqueShiftList</code> in <code>PartTimeManager</code>.</p>
+</li>
+<li>
+<p><code>ApplyCommand</code>: Adds an <code>Employee</code> to the <code>UniqueEmployeeList</code> in the <code>Shift</code>.<br>
+To adhere to defensive programming practices, instead of simply adding the <code>Employee</code> to the <code>Shift</code>, <code>ApplyCommand</code> does the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a copy of the specified <code>Shift</code></p>
+</li>
+<li>
+<p>Add the <code>Employee</code> to the copy.</p>
+</li>
+<li>
+<p>Replace the original <code>Shift</code> with the copy.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><code>UnapplyCommand</code>: Removes an <code>Employee</code> from the <code>UniqueEmployeeList</code> in the <code>Shift</code>.<br>
+Similar to <code>ApplyCommand</code>, <code>UnapplyCommand</code> will:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a copy of the specified <code>Shift</code>.</p>
+</li>
+<li>
+<p>Remove the <code>Employee</code> from the copy.</p>
+</li>
+<li>
+<p>Replace the original with the copy.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="shift-indexing"><a class="link" href="#shift-indexing">Shift indexing</a></h5>
+<div class="paragraph">
+<p>The commands <code>DeleteShiftCommand</code>, <code>ApplyCommand</code> and <code>UnapplyCommand</code> access the specified <code>Shift</code> via it&#8217;s index displayed on the timetable.
+The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
+However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1.<br>
+As seen in <em><a href="#fig-ShiftIndexBad">Figure 2</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
+</div>
+<div id="fig-ShiftIndexBad" class="imageblock">
+<div class="content">
+<img src="../images/ShiftIndexBad.png" alt="ShiftIndexBad" width="800">
+</div>
+<div class="title">Figure 2. Example of Undesired Shift Indexing</div>
+</div>
+<div class="paragraph">
+<p>To avoid this, we only want to index shifts that are visible in the current timetable view.<br>
+This can be achieved by setting the <code>Predicate&lt;Shift&gt;</code> for the <code>FilteredList&lt;Shift&gt;</code> in <code>ModelManager</code> to filter shifts in the current week as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// In Model
+public static Predicate&lt;Shift&gt; PREDICATE_SHOW_WEEK_SHIFTS = shift -&gt;
+    getWeekFromDate(shift.getDate().getLocalDate()) == getWeekFromDate(LocalDate.now());
+
+// In ModelManager
+updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 3</a></em> below.</p>
+</div>
+<div id="fig-ShiftIndexGood" class="imageblock">
+<div class="content">
+<img src="../images/ShiftIndexGood.png" alt="ShiftIndexGood" width="800">
+</div>
+<div class="title">Figure 3. Example of Desired Shift Indexing</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 04:12:29 UTC
+</div>
+</div>
+</body>
+</html>

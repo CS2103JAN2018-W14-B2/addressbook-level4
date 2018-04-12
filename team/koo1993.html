@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Koo Chin Chye - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Koo Chin Chye - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-part-time-manager-ptman"><a class="link" href="#project-part-time-manager-ptman">PROJECT: Part-time Manager (PTMan)</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PTMan is a desktop human resource application used for managing part-time employees.<br></p>
+</div>
+<div class="paragraph">
+<p>PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the employer.
+Thereby reducing the hassle of work scheduling for both employers and employees.<br></p>
+</div>
+<div class="paragraph">
+<p>The user interacts with the application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added <strong>access control</strong> that manages functions for employer and employee. [<a href="https://github.com/CS2103JAN2018-W14-B2/main/issues/39">Issue #39</a>]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Each employer and employee is assigned to a password. This restrict employee to use functions that are meant for the employer.</p>
+</li>
+<li>
+<p>What it includes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Admin commands are restricted to employer only.</p>
+</li>
+<li>
+<p>API for password checking that need password.</p>
+</li>
+<li>
+<p>Login/Logout to admin mode for employer to use admin commands at ease.</p>
+</li>
+<li>
+<p>Change/reset password is available for both group of user with email service.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This ensure only authenticated personnel can use the system and prevent misuse of PTMan.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added salary parameter and addsalary command for employer to manage employees' pay.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/functional/koo1993.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/test/koo1993.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Constantly collate updates from the team and call for meeting if there is a need to.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implemented obfuscation for password in input text field and history. (Pull requests <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/132">#132</a>, <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/141">#141</a>, <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/157">#157</a>)</p>
+</li>
+<li>
+<p>Wrote email service to send reset password to employer and employee via email. (Pull requests <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/113">#113</a>)</p>
+</li>
+<li>
+<p>Fixed a bug when closing the application when minimized (pull requests <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/133">#133</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (Issue:  <a href="https://github.com/CS2103JAN2018-W10-B2/main/issues/68">#68</a>, <a href="https://github.com/CS2103JAN2018-W10-B2/main/issues/69">#69</a>, <a href="https://github.com/CS2103JAN2018-W10-B2/main/issues/72">#72</a>, <a href="https://github.com/CS2103JAN2018-W10-B2/main/issues/85">#85</a>, <a href="https://github.com/CS2103JAN2018-W10-B2/main/issues/89">#89</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="Login"><a class="link" href="#Login">Logging in to admin mode: <code>login</code></a></h4>
+<div class="paragraph">
+<p>Logs in to <a href="#Admin Mode">admin mode</a>, allowing you to use all the manager commands.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>login pw/ADMIN_PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command with your password as shown in  <em><a href="#fig-Login">Figure 1</a></em>.</p>
+</div>
+<div id="fig-Login" class="imageblock">
+<div class="content">
+<img src="../images/loginPassword.png" alt="loginPassword" width="790">
+</div>
+<div class="title">Figure 1. Logging in in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>Once you are logged in, a admin mode icon will appear to indicate that you are in admin mode as shown in  <em><a href="#fig-LoginSuccess">Figure 2</a></em>.</p>
+</div>
+<div id="fig-LoginSuccess" class="imageblock">
+<div class="content">
+<img src="../images/loginSuccess.png" alt="loginSuccess" width="790">
+</div>
+<div class="title">Figure 2. logged in in PTMan<br></div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please remember to logout when you are done to prevent unauthorized access to manager commands.<br>
+Refer to <a href="#Logout">Logging out of admin mode: <code>logout</code></a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Logout"><a class="link" href="#Logout">Logging out of admin mode: <code>logout</code></a></h4>
+<div class="paragraph">
+<p>Logs out of <a href="#Admin Mode">admin mode</a>, preventing further usage of manager features.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>logout</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command to log out as shown in <em><a href="#fig-loggingOut">Figure 3</a></em>.</p>
+</div>
+<div id="fig-loggingOut" class="imageblock">
+<div class="content">
+<img src="../images/logout.png" alt="logout" width="790">
+</div>
+<div class="title">Figure 3. Logging out in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After <code>logout</code> is executed, the admin icon will disappear from the command box as shown in <em><a href="#fig-logoutSuccess">Figure 4</a></em>.</p>
+</div>
+<div id="fig-logoutSuccess" class="imageblock">
+<div class="content">
+<img src="../images/loginNoAdminIcon.png" alt="loginNoAdminIcon" width="790">
+</div>
+<div class="title">Figure 4. Logged out in PTMan<br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Cap"><a class="link" href="#Cap">Changing the admin password: <code>changeadminpw</code></a></h4>
+<div class="paragraph">
+<p>Changes the <a href="#Admin Mode">admin mode</a> password.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>changeadminpw pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br>
+<strong>Shorthand:</strong> <code>cap</code> <code>pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+To prevent unauthorized access to admin mode, managers should execute this command upon running PTMan for the first time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the current admin password is <code>DEFAULT1</code> and you wish to change it to <code>hunter2</code>, type:
+<code>changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22</code> which will be masked by asterisks in the program as shown in <em><a href="#fig-changingAdminPassword">Figure 5</a></em>.</p>
+</div>
+<div id="fig-changingAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/changingAdminPassword.png" alt="changingAdminPassword" width="790">
+</div>
+<div class="title">Figure 5. Changing admin password in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After password is changed successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changedAdminPassword">Figure 6</a></em>.</p>
+</div>
+<div id="fig-changedAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/changedAdminPassword.png" alt="changedAdminPassword" width="790">
+</div>
+<div class="title">Figure 6. Admin password changed in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The password should be at least 8 characters long.<br>
+The sequence of current and new password entered must be of the format.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Rap"><a class="link" href="#Rap">Resetting the admin password: <code>resetadminpw</code></a></h4>
+<div class="paragraph">
+<p>Resets your <a href="#Admin Mode">admin mode</a> password and sends a randomly generated password to the outlet&#8217;s email address.<br>
+You may use the new password to login to admin mode to change the password.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>resetadminpw</code><br>
+<strong>Shorthand:</strong> <code>rap</code></p>
+</div>
+<div class="paragraph">
+<p>You can key in the command to reset admin password as shown in <em><a href="#fig-resetAdminPassword">Figure 7</a></em></p>
+</div>
+<div id="fig-resetAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/resetAdminPassword.png" alt="resetAdminPassword" width="790">
+</div>
+<div class="title">Figure 7. Resetting admin password in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After the command is executed successfully, a notification will be displayed as shown in <em><a href="#fig-resetAdminPasswordSuccess">Figure 8</a></em>.</p>
+</div>
+<div id="fig-resetAdminPasswordSuccess" class="imageblock">
+<div class="content">
+<img src="../images/resetAdminPasswordSuccess.png" alt="resetAdminPasswordSuccess" width="790">
+</div>
+<div class="title">Figure 8. Reset admin password in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The temporary password will be sent to the outlet&#8217;s email stored in PTMan.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="password-feature"><a class="link" href="#password-feature">Password Feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h4>
+<div class="paragraph">
+<p>As PTMan is currently designed to use locally on a system, both employer and employee must go through the same system to allocate their preferred slot or to edit the data in PTMan. A Password class is given to both employer and employee to ensure that they are the authorized person that is using the system.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">How it is implemented</a></h4>
+<div class="paragraph">
+<p>A Password class is created with two constructors.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>new Password();
+new Password(String hashCode);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>new Password()</code> produce hash code converted by <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a> using the default password "DEFAULT1" and store it within the class.<br></p>
+</div>
+<div class="paragraph">
+<p><code>new Password(String hashCode)</code> allows storage to directly insert the generated hash code to create the password class upon loading.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To create a password with desired password String, one can invoke the method below.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>createPassword(String password)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As of version 1.2, each person and outlet now has a <code>Password</code> class. You may refer to <em><a href="#fig-PasswordCD">Figure 9</a></em> for an overview of the <code>Password</code> class.</p>
+</div>
+<div id="fig-PasswordCD" class="imageblock">
+<div class="content">
+<img src="../images/PasswordClassDiagram.png" alt="PasswordClassDiagram" width="700">
+</div>
+<div class="title">Figure 9. Overview of the Password Class in Model Component</div>
+</div>
+<div class="paragraph">
+<p>The reason of converting password string to hashCode is to protect user’s password from being seen in the storage file.  Anyone who get hold of the data are not able to convert the hashCode back to the original password string as SHA-256 is a <a href="https://en.wikipedia.org/wiki/Collision_resistance">collision resistant</a> hash.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="admin-mode-and-command-feature"><a class="link" href="#admin-mode-and-command-feature">Admin Mode and Command Feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h4>
+<div class="paragraph">
+<p>Initial startup of PTMan require huge amount of manual input by admin. To promote hassle-free commands, employers can log in to admin mode with <code>login</code> command and use the command provided without the need to be autheticated for every command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented-admin-mode"><a class="link" href="#how-it-is-implemented-admin-mode">How it is implemented  (admin mode)</a></h4>
+<div class="paragraph">
+<p>Model component now implement three new API for logic component to use.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>boolean isAdminMode();
+boolean setTrueAdminMode(Password password);
+
+/** guarantee to set adminMode to false */
+setFalseAdminMode();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>setTrueAdminMode(Password password)</code> requires a password that will check against the outlet password and set admin mode accordingly. Failing to give the correct password will result in returning false.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented-admin-command"><a class="link" href="#how-it-is-implemented-admin-command">How it is implemented (admin command)</a></h4>
+<div class="paragraph">
+<p>In order to enable commands to be usable only in admin mode the code below must be added to the execution() of the command <strong>first</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>if (!model.isAdminMode()) {
+    throw new CommandException(MESSAGE_ACCESS_DENIED);
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-DeleteSD">Figure 10</a></em> below illustrates how the admin command is generally executed.</p>
+</div>
+<div id="fig-DeleteSD" class="imageblock">
+<div class="content">
+<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+</div>
+<div class="title">Figure 10. Interactions inside the Logic Component for the <code>delete 1</code> Admin Command</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email-service-feature"><a class="link" href="#email-service-feature">Email Service Feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">Reason for implementation</a></h4>
+<div class="paragraph">
+<p>Email service can be useful to send reset password and notification to employee. To facilitate easy sending of email, a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a> <code>EmailService</code> class is introduced.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implementation"><a class="link" href="#how-it-is-implementation">How it is implementation</a></h4>
+<div class="paragraph">
+<p>To get an instance of the email service the following code can be called anywhere.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>EmailService.getInstance();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently, there are two specialized methods in <code>EmailService</code> class that can be used to send email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sendTimetableAttachment(String email, String filename)
+sendResetPasswordMessage(String name, String email, String newPassword)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>sendTimetableAttachment</code> crafts a specialized email and send to the specified <code>email</code> with attachment from <code>filename</code><br></p>
+</div>
+<div class="paragraph">
+<p><code>sendResetPasswordMessage</code> crafts a specialized email and send to the specified <code>email</code> to the intended personnel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>EmailService</code> class is free for extension.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 04:12:29 UTC
+</div>
+</div>
+</body>
+</html>

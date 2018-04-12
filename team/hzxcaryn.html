@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Caryn Heng - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Caryn Heng - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-part-time-manager-ptman"><a class="link" href="#project-part-time-manager-ptman">PROJECT: Part-time Manager (PTMan)</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PTMan is a desktop human resource application used for managing part-time employees.<br></p>
+</div>
+<div class="paragraph">
+<p>PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the employer.
+Thereby reducing the hassle of work scheduling for both employers and employees.<br></p>
+</div>
+<div class="paragraph">
+<p>The user interacts with the application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added an interactive <strong>timetable</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides a sophisticated timetable which displays the shifts added by employers.</p>
+</li>
+<li>
+<p>Instantly reflects any changes to shifts on the timetable. This includes the addition/deletion of a shift, and the application/removal of an employee to/from a shift.</p>
+</li>
+<li>
+<p>Allows easy navigation across the different weeks through keyboard shortcuts and mouse clicks.</p>
+</li>
+<li>
+<p>Allows employees to view the shifts they are assigned to on the timetable.</p>
+</li>
+<li>
+<p>Allows users to view which employees are working in any particular shift.</p>
+</li>
+<li>
+<p>Supports the exporting of timetable as image to be saved as a file locally, or forwarded to users through our email service.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This feature improves the user experience of PTMan significantly because a user can get helpful visual feedback whenever changes are made to the shifts in PTMan.
+Convenience is also brought to employees through the ability to export their work timetable, allowing them to refer to it in the future without the need to access the app.</p>
+</li>
+<li>
+<p>Highlights:
+This enhancement puts user experience in high regard.
+Lots of consideration is put into making the feature easy to use and useful for users.
+The implementation too was challenging as it required changes to existing commands.</p>
+</li>
+<li>
+<p>Credits: <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Allocated different colors for different tags that are assigned to employees. This allows user to easily classify and identify the different tags.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/functional/hzxcaryn.md">Functional code</a>]
+[<a href="https://github.com/CS2103JAN2018-W14-B2/main/blob/master/collated/test/hzxcaryn.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2</code>, <code>v1.4</code>, <code>v1.4.1</code>, <code>v1.5rc</code> and <code>v1.5</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI theme. <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/150">#150</a>, <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/166">#166</a></p>
+</li>
+<li>
+<p>Add an <code>Admin Mode</code> label when user enters admin mode. <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/125">#125</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added screenshots and examples to the User Guide.</p>
+</li>
+<li>
+<p>Added user stories and use cases for the Developer Guide. <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/9">#9</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class.
+<a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/148">#148</a>,
+<a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/178">#178</a>
+<a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/153">#153</a>,
+<a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/164">#164</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library (<a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a>) to the project (<a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/116">#116</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="Viewshift"><a class="link" href="#Viewshift">Listing all employees: <code>viewshift</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all employees who have applied for the input shift index in PTMan.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>viewshift SHIFT_INDEX</code><br>
+<strong>Shorthand:</strong> <code>vs SHIFT_INDEX</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Select"><a class="link" href="#Select">Displaying an employee&#8217;s shift on the timetable: <code>select</code></a></h4>
+<div class="paragraph">
+<p>Displays the shifts of the selected employee on the timetable view. Shifts applied by the selected employee would be displayed
+ in blue, while the other shifts would be displayed in brown.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select EMPLOYEE_INDEX</code><br>
+<strong>Shorthand:</strong> <code>s EMPLOYEE_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To select employee <code>2</code> and displays their shifts in the timetable, type:<br>
+<code>select 2</code><br></p>
+</li>
+<li>
+<p>To select the employee <code>1</code> in the results of the <code>find</code> command and display their shifts in the timetable, type:<br>
+<code>find Betsy</code><br>
+<code>select 1</code><br></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Alternatively, you can select an employee simply by clicking on the employee&#8217;s card in the employee list
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To stop displaying the employee&#8217;s shifts on the timetable, use the <code>main</code> command.<br>
+Refer to <a href="#Main">Displaying the default timetable: <code>main</code></a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Main"><a class="link" href="#Main">Displaying the default timetable: <code>main</code></a></h4>
+<div class="paragraph">
+<p>Displays the main timetable view (of the current week). Useful for users to navigate back to the default timetable
+after using the <code>select</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>main</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Export"><a class="link" href="#Export">Exporting the timetable as image: <code>export</code></a></h4>
+<div class="paragraph">
+<p>Exports the current timetable displayed as an image and either saves it locally into the location for your jar file,
+ or emails the exported timetable to the input email address.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>export [e/EMAIL]</code><br>
+<strong>Shorthand:</strong> <code>exp [e/EMAIL]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To export the current timetable in PTMan, type:<br>
+<code>export</code><br></p>
+</li>
+<li>
+<p>To export the timetable with the shifts of employee <code>1</code> in PTMan, type:<br>
+<code>select 1</code><br>
+<code>export</code><br></p>
+</li>
+<li>
+<p>To export the timetable with the shifts of employee <code>1</code> in PTMan and send the exported timetable as email, type:<br>
+<code>select `<br>
+`export e/email@example.com</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="timetable-feature"><a class="link" href="#timetable-feature">Timetable Feature</a></h3>
+<div class="paragraph">
+<p>We have a timetable that increases interactivity between users and the shifts in PTMan.
+<em><a href="#fig-Feature_Timetable1">Figure 1</a></em> below shows how the timetable looks like.</p>
+</div>
+<div id="fig-Feature_Timetable1" class="imageblock">
+<div class="content">
+<img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="800">
+</div>
+<div class="title">Figure 1. Example of the Timetable in PTMan</div>
+</div>
+<div class="sect3">
+<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h4>
+<div class="paragraph">
+<p>A timetable is useful for both employers and employees, as it allows them to visualise the shifts and access them via their indexes.
+The timetable also instantly reflects any changes to the shifts and allows selected employee&#8217;s shifts to be highlighted.
+On top of these, users are allowed to export the timetable as an image for future reference.
+All in all, the timetable feature improves user experience and brings convenience to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">How it is implemented</a></h4>
+<div class="paragraph">
+<p>The timetable is created with the help of the <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a> library, and <code>TimetablePanel</code>
+ is the main class in charge of displaying the timetable.<br></p>
+</div>
+<div class="paragraph">
+<p><code>TimetablePanel</code> contains the following JavaFX components:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A <code>CalendarView</code> object.
+<code>CalendarView</code> is an object from CalendarFX, and it is responsible for displaying the timetable in the <code>TimetablePanel</code>.</p>
+</li>
+<li>
+<p>A <code>BorderPane</code> object.
+<code>BorderPane</code> is the object in charge of displaying the navigation bar of the timetable.</p>
+</li>
+<li>
+<p>A <code>Label</code> object.
+<code>Label</code> is the object in charge of displaying the text (in this case, the month) in the navigation bar.</p>
+</li>
+<li>
+<p>Two <code>Button</code> objects.
+Each of the <code>Button</code> object is in charge of displaying the left/right buttons in the navigation bar.
+It allows users to click on them to navigate through the weeks in the timetable.</p>
+</li>
+<li>
+<p>A <code>VBox</code> object.
+<code>VBox</code> is in charge of laying <code>BorderPane</code> and <code>CalendarView</code> out in a vertical column.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 2</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
+<br></p>
+</div>
+<div id="fig-TimetablePanelClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/TimetablePanelClassDiagram.png" alt="TimetablePanelClassDiagram" width="800">
+</div>
+<div class="title">Figure 2. Overview of the TimetablePanel Class in the UI Component</div>
+</div>
+<div class="paragraph">
+<p>A <code>TimetablePanel</code> is created with its constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> TimetablePanel(Logic logic) {
+    <span class="comment">// ...</span>
+    <span class="local-variable">this</span>.logic = logic;
+    <span class="local-variable">this</span>.shiftObservableList = logic.getFilteredShiftList();
+    <span class="local-variable">this</span>.outletInformation = logic.getOutletInformation();
+    <span class="comment">// ...</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the <code>logic</code> argument, the <code>TimetablePanel</code> constructor initialises <code>shiftObservableList</code> and <code>outletInformation</code>.
+These pieces of information are important to the <code>TimetablePanel</code> because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>shiftObservableList</code> is an <code>ObservableList&lt;Shift&gt;</code> object, and is responsible for providing <code>TimetablePanel</code> with the shifts required to build the timetable.
+Shifts are added to the timetable in the method <code>setShifts()</code>.</p>
+</li>
+<li>
+<p><code>outletInformation</code> is an <code>OutletInformation</code> object, and is responsible for providing <code>TimetablePanel</code> with the operating hours of the outlet.
+The timetable re-scales according to the operating hours of the outlet, in the method <code>setTimetableRange()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="updating-the-timetable"><a class="link" href="#updating-the-timetable">Updating the timetable</a></h5>
+<div class="paragraph">
+<p>The main method in charge of updating the timetable is <code>updateTimetableView()</code>.
+When this method is called, the <code>Label</code> in the navigation bar is set to show the month that is being displayed
+on the timetable, and the timetable is rebuilt with the newly set shifts and operating hours.
+<code>updateTimetableView()</code> is called whenever a <code>PartTimeManagerChangedEvent</code>, <code>TimetableWeekChangeRequestEvent</code> or <code>EmployeePanelSelectionChangedEvent</code> is posted.<br></p>
+</div>
+<div class="paragraph">
+<p>We will use <code>PartTimeManagerChangedEvent</code> to illustrate <code>updateTimetableView()</code> works.
+<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 3</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
+ is posted and how it causes the <code>UI</code> to call <code>updateTimetableView()</code>.<br>
+<br></p>
+</div>
+<div id="fig-updateTimetableViewHighLevelSequenceDiagram" class="imageblock">
+<div class="content">
+<img src="../images/updateTimetableViewHighLevelSequenceDiagram.png" alt="updateTimetableViewHighLevelSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 3. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 4</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
+respond to a <code>PartTimeManagerChangedEvent</code>.<br>
+<br></p>
+</div>
+<div id="fig-updateTimetableViewSequenceDiagram" class="imageblock">
+<div class="content">
+<img src="../images/updateTimetableViewSequenceDiagram.png" alt="updateTimetableViewSequenceDiagram" width="750">
+</div>
+<div class="title">Figure 4. Sequence Diagram to Update Timetable</div>
+</div>
+<div class="paragraph">
+<p>Here are some examples of when <code>updateTimetableView()</code> is called:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Shift</code> is added, removed, or altered:
+<code>PartTimeManagerChangedEvent</code> is posted which calls <code>updateTimetableView()</code> to rebuild the timetable with the changed shifts.</p>
+</li>
+<li>
+<p><code>OutletInformation</code> is edited:
+<code>PartTimeManagerChangedEvent</code> is posted which calls <code>updateTimetableView()</code> to rebuild the timetable to fit in the updated operating hours.</p>
+</li>
+<li>
+<p>The user wants to navigate the timetable to the next/previous week:
+<code>TimetableWeekChangeRequestEvent</code> is posted which calls <code>navigateToNextWeek()</code> or <code>navigateToPreviousWeek()</code> accordingly.
+Both of these methods call <code>updateTimetableView()</code> to rebuild the timetable showing the appropriate weeks.</p>
+</li>
+<li>
+<p>Selection of an employee:
+<code>EmployeePanelSelectionChangedEvent</code> is posted which calls <code>loadEmployeeTimetable</code> or <code>loadMainTimetable</code> accordingly. Both of these
+methods call <code>updateTimetableView()</code> to rebuild the timetable with the appropriate colours of the entries.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="commands"><a class="link" href="#commands">Commands</a></h5>
+<div class="paragraph">
+<p>The following are commands that are supported as part of the timetable feature:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="Viewing of individual employee&.html#8217;s shifts"><code>SelectCommand</code></a>: Selects an employee and highlight their shifts on the timetable.</p>
+</li>
+<li>
+<p><a href="#Returning to main view of timetable "><code>MainCommand</code></a>: Returns the timetable back to the default view of the current week.</p>
+</li>
+<li>
+<p><a href="#exporting-timetable"><code>ExportCommand</code></a>: Exports timetable as an image.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="viewing-of-individual-employee-s-shifts"><a class="link" href="#viewing-of-individual-employee-s-shifts">Viewing of individual employee&#8217;s shifts</a></h5>
+<div class="paragraph">
+<p>PTMan allows employees to highlight their own shifts on the timetable GUI through <code>SelectCommand</code>. When a particular employee is
+being selected, an <code>EmployeePanelSelectionChangedEvent</code> is posted with the selected employee as the argument to indicate the change.<br></p>
+</div>
+<div class="paragraph">
+<p><code>EmployeePanelSelectionChangedEvent</code> has the following constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public EmployeePanelSelectionChangedEvent(EmployeeCard newSelection)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>TimetablePanel</code> subscribes to this event and handles it by calling the <code>loadEmployeeTimetable</code> method for the <code>newSelection</code>.<br>
+<br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="returning-to-main-view-of-timetable"><a class="link" href="#returning-to-main-view-of-timetable">Returning to main view of timetable</a></h5>
+<div class="paragraph">
+<p>The returning to main timetable view is called through <code>MainCommand</code>, which also posts an <code>EmployeePanelSelectionChangedEvent</code> event
+with null as the argument.</p>
+</div>
+<div class="paragraph">
+<p><code>TimetablePanel</code> subscribes to this event and handles it by calling the <code>loadMainTimetable</code> method.<br>
+<br></p>
+</div>
+<div class="sect5">
+<h6 id="exporting-timetable"><a class="link" href="#exporting-timetable">Exporting timetable</a></h6>
+<div class="paragraph">
+<p>Exporting of the timetable is triggered by <code>ExportCommand</code>, which:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Saves the timetable as an image locally if no email address is specified, or</p>
+</li>
+<li>
+<p>Sends the timetable as an image through email if an email address is specified.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The former posts an <code>ExportTimetableAsImageRequestEvent</code>, while the latter posts an <code>ExportTimetableAsImageAndEmailRequestEvent</code>,
+both of which are subscribed to by <code>TimetablePanel</code>.<br>
+<code>TimetablePanel</code> handles them by calling <code>exportTimetableAsImage</code> and <code>exportTimetableAsImageAndEmail</code> methods respectively.
+How the exporting works is that a Snapshot is first taken of the <code>timetableView</code> Node, and then being written into a file locally.
+If <code>exportTimetableAsImageAndEmail</code> is called instead of <code>exportTimetableAsImage</code>, we will go on further to email this image
+through the <code>EmailService</code> class, and then finally delete the local file containing the Snapshot.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 04:12:29 UTC
+</div>
+</div>
+</body>
+</html>
