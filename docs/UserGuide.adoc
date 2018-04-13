@@ -89,11 +89,12 @@ You may refer to <<Changing your employee password: `cp`>> for instructions on h
 
 === Shift Management
 If you are a manager, PTMan allows you to manage your employees' work shifts.
-// TODO: Add how PTMan is better than traditional paperwork
+You can add shifts, remove shifts and decide which employees are working at each shift.
+This can significantly reduce your paperwork related to employee scheduling.
 
 If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.
 
-You are able to view shifts that are in PTMan via the <<Timetable, timetable>>.
+Shifts that are in PTMan can be viewed via the <<Timetable, timetable>>.
 
 === Timetable
 PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
@@ -187,7 +188,7 @@ Currently, PTMan is meant to be used on a single shared device as it is limited 
 By saving PTMan's data to the cloud, both employees and managers can access PTMan from their own devices since the data can be shared.
 
 == Commands
-The main form of interaction with PTMan is via keyboard commands.
+The main method of user interaction with PTMan is via keyboard commands.
 Our commands are split into 3 sub-sections, <<Manager Commands, Manager Commands>>, <<Employee Commands, Employee Commands>>, and <<General Commands, General Commands>>. +
 
 Take note that for this user guide, our commands will follow the format as stated below.
