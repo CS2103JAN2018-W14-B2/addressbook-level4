@@ -78,7 +78,7 @@
 <li><a href="#Apply-2">4.2.1. Applying for a shift: <code>apply</code></a></li>
 <li><a href="#Unapply-2">4.2.2. Removing yourself from a shift: <code>unapply</code></a></li>
 <li><a href="#Cp">4.2.3. Changing your employee password: <code>changepw</code></a></li>
-<li><a href="#Rp">4.2.4. Resetting your employee password: <code>rp</code></a></li>
+<li><a href="#Rp">4.2.4. Resetting your employee password: <code>resetpw</code></a></li>
 </ul>
 </li>
 <li><a href="#general-commands">4.3. General Commands</a>
@@ -1494,72 +1494,76 @@ For security purposes, you are highly encouraged to change your password the mom
 <p><strong>Format:</strong> <code>changepw INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br>
 <strong>Shorthand:</strong> <code>cp</code> <code>INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>Your <code>INDEX</code> will be displayed at the right side panel of PTMan. For example, if you are Asther toh, you can execute the command as shown in <em><a href="#fig-changingpw">Figure 28</a></em>.</p>
+</div>
+<div id="fig-changingpw" class="imageblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>INDEX</code> refers to the index number shown in the most recent employee listing.</p>
-</li>
-<li>
-<p>The <code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
+<img src="images/changingpw.png" alt="changingpw" width="790">
 </div>
-</div>
+<div class="title">Figure 28. Resetting password in PTMan</div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>After executing <code>changepw</code> successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changepw">Figure 29</a></em>.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>If your index is <code>5</code>, your current password is <code>DEFAULT1</code>, and you wish to change it to <code>hunter2</code>, type:<br>
-<code>cp 5 pw/DEFAULT1 pw/hunter2 pw/hunter2</code></p>
-</li>
-<li>
-<p>If your index is <code>2</code>, your current password is <code>mypassword</code>, and you wish to change it to <code>NewPassw0rd</code>, type:<br>
-<code>cp 2 pw/mypassword pw/NewPassw0rd pw/NewPassw0rd</code></p>
-</li>
-</ul>
+<div id="fig-changepw" class="imageblock">
+<div class="content">
+<img src="images/changepw.png" alt="changepw" width="790">
+</div>
+<div class="title">Figure 29. Resetting password in PTMan</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The password should be at least 8 characters long.<br>
+The sequence of current and new password entered must be of the format.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Rp"><a class="link" href="#Rp">4.2.4. Resetting your employee password: <code>rp</code></a></h4>
+<h4 id="Rp"><a class="link" href="#Rp">4.2.4. Resetting your employee password: <code>resetpw</code></a></h4>
 <div class="paragraph">
 <p>Resets your employee password. This sends a temporary password to your email address.</p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>rp INDEX</code><br></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>INDEX</code> refers to the index number shown in the most recent employee listing.</p>
-</li>
-<li>
-<p>The <code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
+<p><strong>Format:</strong> <code>resetpw INDEX</code><br>
+<strong>Shorthand:</strong> <code>rp</code> <code>INDEX</code><br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>If you forgot your password, you can simply reset your password with your <code>INDEX</code> displayed at the right panel as shown in <em><a href="#fig-resetPw">Figure 30</a></em>.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>If your index is <code>5</code>, type:<br>
-<code>rp 5</code></p>
-</li>
-<li>
-<p>If your index is <code>3</code>, type:<br>
-<code>rp 3</code></p>
-</li>
-</ul>
+<div id="fig-resetPw" class="imageblock">
+<div class="content">
+<img src="images/resettingpw.png" alt="resettingpw" width="790">
+</div>
+<div class="title">Figure 30. Resetting password in PTMan</div>
+</div>
+<div class="paragraph">
+<p>After executing <code>resetpw</code>, a temporarily password  will be sent to your email registered with your outlet manager as shown in <em><a href="#fig-resetPw">Figure 30</a></em>.</p>
+</div>
+<div id="fig-resetPw" class="imageblock">
+<div class="content">
+<img src="images/resetpw.png" alt="resetpw" width="790">
+</div>
+<div class="title">Figure 31. Reset password in PTMan</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Temporary password should be changed immediately after resetting.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1584,13 +1588,13 @@ For security purposes, you are highly encouraged to change your password the mom
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 28</a></em>.</p>
+<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 32</a></em>.</p>
 </div>
 <div id="fig-Help" class="imageblock">
 <div class="content">
 <img src="images/Ui_help.png" alt="Ui help" width="790">
 </div>
-<div class="title">Figure 28. Accessing the Help Option From the Menu Bar</div>
+<div class="title">Figure 32. Accessing the Help Option From the Menu Bar</div>
 </div>
 </td>
 </tr>
@@ -1974,7 +1978,7 @@ after using the <code>select</code> command.<br></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 04:12:29 UTC
+Last updated 2018-04-13 09:22:24 UTC
 </div>
 </div>
 </body>
