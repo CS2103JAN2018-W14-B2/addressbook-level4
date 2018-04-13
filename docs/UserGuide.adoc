@@ -44,7 +44,7 @@ This app will not work with earlier versions of Java 8.
 +
 [[fig-Startup]]
 .Successful start up window
-image::Ui_startup.png[width="790"]
+image::Ui.png[width="790"]
 .  Type a command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
@@ -53,15 +53,40 @@ You may refer to <<Commands>> for more details of the available commands.
 
 [IMPORTANT]
 If you are a manager, you have access to <<Admin Mode, admin mode>>. Admin mode allows you to access all the <<Manager Commands, manager commands>>.
-To prevent unauthorized access, please change your default admin mode password using the `changeadminpw` command.
+To prevent unauthorised access, please change your default admin mode password using the `changeadminpw` command.
 You may refer to <<Cap>> for instructions on how to do so.
+
+// tag::guiWalkthrough[]
+== Graphical User Interface
+
+This section will help you understand the different sections of PTMan's Graphical User Interface(GUI).
+
+_<<fig-GUIwalkthrough>>_ below shows a typical PTMan GUI with its different sections highlighted and labelled.
+
+[[fig-GUIwalkthrough]]
+.Typical PTMan with UI Sections Highlighted +
+image::GUIwalkthrough.png[width="790"]
+
+Following the labels in _<<fig-GUIwalkthrough>>_, here are what the different sections are responsible for.
+
+[width=100%, cols="1,4,20"]
+|=======================================================================
+|Label |Name |What it is for
+
+|1 |Command Box |Allows you to type in your commands into PTMan.
+|2 |Result Display |Shows the resulting feedback from your most recent command.
+|3 |Outlet Display |Displays all your outlet details.
+|4 |Timetable Panel |Displays the weekly timetable containing all the shifts stored in PTMan.
+|5 |Employee List Panel |Shows a list of all the part-time employees stored in PTMan.
+|=======================================================================
+// end::guiWalkthrough[]
 
 [[Features]]
 == Features
-In this section, we will be introduce you to the various features of PTMan.
+In this section, you will be introduced to the various features of PTMan.
 
 === User Authentication
-PTMan has user authentication for both managers and employees to prevent unauthorized execution of <<Commands, commands>>.
+PTMan has user authentication for both managers and employees to prevent unauthorised execution of <<Commands, commands>>.
 
 Managers can refer to <<Admin mode>> for admin authentication, while employees can refer to <<Employee password>> for employee authentication.
 
@@ -73,19 +98,34 @@ To enter admin mode, please refer to <<Logging in to admin mode: `login`>>.
 The default admin password is `DEFAULT1`.
 
 [IMPORTANT]
-It is crucial to change the default admin password to prevent unauthorized access to admin mode.
+It is crucial to change the default admin password to prevent unauthorised access to admin mode.
 You may refer to <<Cap>> for instructions on how to do so.
 
 ==== Employee password
-For employees, your employee password identifies you and authorizes you to execute employee commands.
-It ensures that when executing a command such as <<Applying for a shift: `apply`, `apply`>>, that you are applying yourself, and not someone else, for the shift.
+For employees, your employee password identifies you and authorizes you to execute <<Employee Commands, employee commands>>.
+It ensures that you are unable to, for example, <<Applying for a shift: `apply`, `apply`>> someone else for a shift without knowing their password.
 
 [NOTE]
 The default employee password is `DEFAULT1`.
 
 [IMPORTANT]
-It is crucial to change the default employee password to prevent unauthorized execution of employee commands.
-You may refer to <<Changing your employee password: `cp`>> for instructions on how to do so.
+It is crucial to change the default employee password to prevent unauthorised execution of employee commands.
+You may refer to <<Changing your employee password: `changepw`>> for instructions on how to do so.
+
+// tag::outletManagement[]
+=== Outlet Management
+If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
+The timetable automatically re-sizes according to the operating hours. You can also create announcements to broadcast to your employees.
+Moreover, PTMan allows you to encrypt and decrypt data stored locally to prevent unauthorised users from interpreting and understanding essential and private data.
+
+If you are an employee, you can view announcements created by your manager and take actions accordingly.
+
+_<<fig-Feature_Outlet>>_ shows the Outlet Display where you can view your outlet information.
+
+[[fig-Feature_Outlet]]
+.Sample Outlet Information Displayed +
+image::IntroductionToOutlet.jpg[width="790"]
+// end::outletManagement[]
 
 === Shift Management
 If you are a manager, PTMan allows you to manage your employees' work shifts.
@@ -96,6 +136,7 @@ If you are an employee, PTMan gives you flexibility in your working hours by all
 
 Shifts that are in PTMan can be viewed via the <<Timetable, timetable>>.
 
+// tag::timetableIntro[]
 === Timetable
 PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
 timetable and you, as a user, so this section aims to familiarise you with the timetable.
@@ -104,20 +145,20 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 
 The shifts in PTMan are colour-coded, and here is what the different colours mean:
 
-* Green: Shift is available with multiple slots left.
-* Yellow: Shift is available, but slots are running out.
-* Red: Shift is no longer available, slots for the shift have run out.
-* Blue: Shift is taken up by currently selected employee.
-* Brown: Shift is not taken up by currently selected employee.
+* *Green*: Shift is available with multiple slots left.
+* *Yellow*: Shift is available, but slots are running out.
+* *Red*: Shift is no longer available, all slots for the shift have run out.
+* *Blue*: Shift is taken up by currently selected employee.
+* *Brown*: Shift is not taken up by currently selected employee.
 
-_<<fig-Feature_Timetable1>>_ below shows how the default timetable can look like in PTMan. +
+_<<fig-Feature_Timetable1>>_ below shows how the timetable looks like in a sample PTMan app. +
  +
 [[fig-Feature_Timetable1]]
 .A Sample Timetable with Shifts +
 image::Feature_Timetable1.png[width="790"]
 
 PTMan also allows employees to view their own shifts using the <<Displaying an employee’s shifts on the timetable: `select`, `select`>> command.
-_<<fig-Feature_Timetable2>>_ shows how the timetable can look like when an employee is selected.
+_<<fig-Feature_Timetable2>>_ shows how the timetable look like in a sample PTMan app when an employee is selected.
  +
 [[fig-Feature_Timetable2]]
 .A Sample Timetable with Shifts after `select` +
@@ -132,9 +173,11 @@ There are two ways to navigate through the different weeks in the timetable:
 * For Windows:
 ** kbd:[Ctrl] + kbd:[Shift] + kbd:[->] : Navigates timetable to the next week.
 ** kbd:[Ctrl] + kbd:[Shift] + kbd:[<-] : Navigates timetable to the previous week.
+** kbd:[Ctrl] + kbd:[Shift] + kbd:[↓] : Navigates timetable to the current week.
 * For Mac:
 ** kbd:[Command] + kbd:[Shift] + kbd:[->] : Navigates timetable to the next week.
 ** kbd:[Command] + kbd:[Shift] + kbd:[<-] : Navigates timetable to the previous week.
+** kbd:[Command] + kbd:[Shift] + kbd:[↓] : Navigates timetable to the current week.
 . Using Mouse Clicks
 +
 * At the top of the timetable, there is a navigation bar with two arrow buttons which you can click on.
@@ -144,52 +187,40 @@ _<<fig-Feature_Timetable3>>_ below shows the navigation bar, with the two arrow 
 [[fig-Feature_Timetable3]]
 .Navigation Bar of Timetable +
 image::Feature_Timetable3.png[width="790"]
+// end::timetableIntro[]
 
-// tag::outletManagement[]
-=== Outlet Management
-If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
-The timetable automatically re-sizes according to the operating hours. You can also create any announcement and broadcast to your employees.
 
-If you are an employee, you can view announcement created by your manager and take actions accordingly.
+=== Saving the Data
 
-_<<fig-Feature_Outlet>>_ shows where you can view your outlet information.
-
-[[fig-Feature_Outlet]]
-.Sample Outlet Information Displayed +
-image::IntroductionToOutlet.jpg[width="790"]
-// end::outletManagement[]
-
-=== Saving the data
-
-All data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+All the data is saved in the hard disk automatically upon execution of any command that changes the data. There is no need to manually save your changes.
 
 // tag::backup[]
-=== Backing up the data
-Backup files are automatically created and saved in the hard disk upon exit of the app. There is no need to do backup manually. +
-You can replace any local storage files with backup files by the following steps:
+=== Backing Up the Data
+Backup files are automatically created and saved in the hard disk upon exiting the app. There is no need to do backup manually. +
+Following these steps, you can replace your corrupted local storage files with the backup files:
 
-. Copy any backup files named `outletinformation.xml.backup` or `parttimemanager.xml.backup`.
-. Open the folder where your app `PTMan.jar` is at.
-. Open the folder named `data`.
-. Paste your copied backup files there.
+. Copy the backup files named `outletinformation.xml.backup` and `parttimemanager.xml.backup`.
+. Open the folder where you store `PTMan.jar`.
+. Open the `data` folder.
+. Paste your copied backup files in this `data` folder.
 . Rename `outletinformation.xml.backup` to `outletinformation.xml`.
 . Rename `parttimemanager.xml.backup` to `parttimemanager.xml`.
 . Run the app `PTMan.jar` and you will see all the restored data read from backup files.
 // end::backup[]
 
-=== Keeping track of employees' monthly salaries [Coming in v2.0]
+=== Keeping Track of Employees' Monthly Salaries [Coming in v2.0]
 
-As employees work, their pay is calculated based on the hours they have worked.
-The manager can use this information to distribute their salaries.
+If you are a manager, PTMan will help you keep track of your employees' monthly salaries.
+PTMan do so by calculating the number of hours each employee has worked based on the shifts that they applied for throughout the month.
 
-=== Saving data to the cloud [Coming in v2.0]
+=== Saving Data to the Cloud [Coming in v2.0]
 
 Currently, PTMan is meant to be used on a single shared device as it is limited by local storage.
-By saving PTMan's data to the cloud, both employees and managers can access PTMan from their own devices since the data can be shared.
+By saving PTMan's data to the cloud, both employees and managers can access PTMan from their own devices since data can now be shared.
 
 == Commands
 The main method of user interaction with PTMan is via keyboard commands.
-Our commands are split into 3 sub-sections, <<Manager Commands, Manager Commands>>, <<Employee Commands, Employee Commands>>, and <<General Commands, General Commands>>. +
+Commands are split into 3 sub-sections, <<Manager Commands, Manager Commands>>, <<Employee Commands, Employee Commands>>, and <<General Commands, General Commands>>. +
 
 Take note that for this user guide, our commands will follow the format as stated below.
 
@@ -209,104 +240,112 @@ eg. `list` and `l` will both show a list of all employees in PTMan.
 ====
 
 === Manager Commands
-As a manager, you are able to access these commands in addition to the <<General Commands, general commands>>.
-These manager commands require logging in to <<Admin Mode, admin mode>> as shown in <<Logging in to admin mode: `login`>>.
+As a manager, you are able to access all commands in this section in addition to the <<General Commands, general commands>>.
+These manager commands require prior logging in to <<Admin Mode, admin mode>> as shown in <<Logging in to admin mode: `login`>>.
 
 // tag::accessControl[]
 
 [[Login]]
 ==== Logging in to admin mode: `login`
-Logs in to <<Admin Mode, admin mode>>, allowing you to use all the manager commands.
-
+Logs in to <<Admin mode, admin mode>>, allowing you to use all the manager commands.
 
 *Format:* `login pw/ADMIN_PASSWORD`
 
-You can key in the command with your password as shown in  _<<fig-Login>>_.
+[IMPORTANT]
+Please remember to logout after you are done making changes.
+This is to prevent unauthorised access to manager commands. +
+Refer to <<Logging out of admin mode: `logout`>> for more information.
+
+*Guided Example:*
+
+* To login, key in the command with your password as shown in  _<<fig-Login>>_.
++
 [[fig-Login]]
-.Logging in in PTMan +
+.PTMan Manager Login +
 image::loginPassword.png[width="790"]
 
-Once you are logged in, a admin mode icon will appear to indicate that you are in admin mode as shown in  _<<fig-LoginSuccess>>_.
-
+* Once you are logged in, an `AdminMode` label will appear in the command box.
+This indicates that you are now in admin mode as shown in _<<fig-LoginSuccess>>_.
++
 [[fig-LoginSuccess]]
-.logged in in PTMan +
+.Successful PTMan Manager Login +
 image::loginSuccess.png[width="790"]
-
-[IMPORTANT]
-Please remember to logout when you are done to prevent unauthorized access to manager commands. +
-Refer to <<Logging out of admin mode: `logout`>> for more information.
 
 [[Logout]]
 ==== Logging out of admin mode: `logout`
-Logs out of <<Admin Mode, admin mode>>, preventing further usage of manager features.
+Logs out of <<Admin mode, admin mode>>, preventing further usage of manager commands.
 
 *Format:* `logout`
 
-You can key in the command to log out as shown in _<<fig-loggingOut>>_.
+*Guided Example:*
+
+* To logout, key in the command as shown in _<<fig-loggingOut>>_.
++
 [[fig-loggingOut]]
-.Logging out in PTMan +
+.Logging Out in PTMan +
 image::logout.png[width="790"]
 
-After `logout` is executed, the admin icon will disappear from the command box as shown in _<<fig-logoutSuccess>>_.
-
+* After you have logged out, the `AdminMode` label will disappear from the command box as shown in _<<fig-logoutSuccess>>_.
++
 [[fig-logoutSuccess]]
-.Logged out in PTMan +
+.Logged Out in PTMan +
 image::loginNoAdminIcon.png[width="790"]
 
 [[Cap]]
 ==== Changing the admin password: `changeadminpw`
-Changes the <<Admin Mode, admin mode>> password.
+Changes the password to enter <<Admin mode, admin mode>>.
 
 *Format:* `changeadminpw pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD` +
 *Shorthand:* `cap` `pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD`
 
 [IMPORTANT]
-To prevent unauthorized access to admin mode, managers should execute this command upon running PTMan for the first time.
-
-
-
-If the current admin password is `DEFAULT1` and you wish to change it to `hunter2`, type:
-`changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22` which will be masked by asterisks in the program as shown in _<<fig-changingAdminPassword>>_.
-
-[[fig-changingAdminPassword]]
-.Changing admin password in PTMan +
-image::changingAdminPassword.png[width="790"]
-
-After password is changed successfully, a notification will be displayed below the command box as shown in _<<fig-changedAdminPassword>>_.
-
-[[fig-changedAdminPassword]]
-.Admin password changed in PTMan +
-image::changedAdminPassword.png[width="790"]
+To prevent unauthorised access to admin mode, managers should change the admin password when running PTMan for the first time.
 
 [NOTE]
 The password should be at least 8 characters long. +
-The sequence of current and new password entered must be of the format.
+You must key in the current and new password in the correct sequence as given in the format.
+
+*Guided Example:*
+
+* To change the password from `DEFAULT1` to `hunter2`, type: `changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22`.
+The passwords will be masked by asterisks as shown in _<<fig-changingAdminPassword>>_.
++
+[[fig-changingAdminPassword]]
+.Changing Admin Password in PTMan +
+image::changingAdminPassword.png[width="790"]
+
+* After the password is successfully changed, a confirmation message will be displayed in the result display as seen in _<<fig-changedAdminPassword>>_.
++
+[[fig-changedAdminPassword]]
+.Admin Password Successfully Changed in PTMan +
+image::changedAdminPassword.png[width="790"]
 
 [[Rap]]
 ==== Resetting the admin password: `resetadminpw`
 
-Resets your <<Admin Mode, admin mode>> password and sends a randomly generated password to the outlet's email address. +
-You may use the new password to login to admin mode to change the password.
+Resets the password to enter <<Admin mode, admin mode>> and sends a randomly generated password to the outlet's email address. +
+You may use the new password to login and change to your preferred password.
 
 *Format:* `resetadminpw` +
 *Shorthand:* `rap`
 
-You can key in the command to reset admin password as shown in _<<fig-resetAdminPassword>>_
+[NOTE]
+The randomly generated password will be sent to the outlet's email address stored in PTMan.
+You can view this email address under the outlet display of the GUI.
 
+*Guided Example:*
+
+* To reset admin password, key in the command as shown in _<<fig-resetAdminPassword>>_.
++
 [[fig-resetAdminPassword]]
-.Resetting admin password in PTMan +
+.Resetting Admin Password in PTMan +
 image::resetAdminPassword.png[width="790"]
 
-After the command is executed successfully, a notification will be displayed as shown in _<<fig-resetAdminPasswordSuccess>>_.
-
-
+* After the command is executed successfully, a confirmation message will be displayed in the result display as shown in _<<fig-resetAdminPasswordSuccess>>_.
++
 [[fig-resetAdminPasswordSuccess]]
-.Reset admin password in PTMan +
+.Admin Password Successfully Reset in PTMan +
 image::resetAdminPasswordSuccess.png[width="790"]
-
-
-[NOTE]
-The temporary password will be sent to the outlet's email stored in PTMan.
 
 // end::accessControl[]
 
@@ -323,74 +362,85 @@ An employee can have any number of tags (including 0)
 
 *Guided Example*:
 
-. We have an employee *John Doe* with phone number *98765432*, email address *johnd@example.com*, and stays in *311, Clementi Ave 2, #02-25*.
-He has earned *$0* so far, and takes the role of a *Barista* and a *Cashier*. +
-To add John Doe into PTMan, we can do the following as illustrated in _<<fig-Add1>>_.
+* To add an employee into PTMan, key in the following as illustrated in _<<fig-Add1>>_.
 +
 [[fig-Add1]]
-.Example of `add` command usage +
+.Adding an Employee into PTMan +
 image::Ui_add1.png[width="790"]
 
-. Click kbd:[Enter] and you would see a confirmation message below the command bar, and John Doe being added into your Employee list.
+* Upon successful addition of the employee, you will see a confirmation message in the result display, and the employee being added into your Employee list.
 _<<fig-Add2>>_ shows how PTMan should look like after the above command.
-
 +
-
 [[fig-Add2]]
-.Successful addition of employee into PTMan +
+.Successful Addition of Employee into PTMan +
 image::Ui_add2.png[width="790"]
 
 
-*More Examples*:
-
-* To add an employee named `John Doe` with phone number `98765432`, address `John street, block 123, #01-01`, and salary of $`0`, type: +
-`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 s/0`  +
-* To add an employee named `Betsy Crowe` with email `betsycrowe@example.com`, address `Newgate Prison`, phone number `1234567`, and salary of $`100`, type: +
-`add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 s/100`
+// tag::accessControl[]
 
 [[AddSalary]]
 ==== Adding salary to an employee: `addsalary`
-Adds an existing employee's salary by an amount.
 
-*Format:* `addsalary INDEX s/SALARY_INCREASE_BY` +
-*Shorthand:* `adds` `INDEX s/SALARY_INCREASE_BY`
+Adds a specified amount to an employee's salary.
 
-You can increase an employer salary by an amount as shown below in  _<<fig-addingSalary>>_.
+*Format:* `addsalary EMPLOYEE_INDEX s/AMOUNT_TO_ADD` +
+*Shorthand:* `adds EMPLOYEE_INDEX s/AMOUNT_TO_ADD`
 
+*Guided Example:*
+
+* To increase the first employee's salary by $100, key in the command as shown below in _<<fig-addingSalary>>_.
++
 [[fig-addingSalary]]
-.Adding salary for employee in PTMan +
+.Adding Salary for Employee in PTMan +
 image::addingSalary.png[width="790"]
 
-After you executed the command, you will see the result from the result display and the applied salary as shown in _<<fig-addSalarySuccess>>_.
-
+* Upon successful execution of the command, you will see a confirmation message in the result display and the applied salary as shown in _<<fig-addSalarySuccess>>_.
++
 [[fig-addSalarySuccess]]
-.Adding salary for employee in PTMan +
+.Successful Addition of Salary for Employee in PTMan +
 image::addSalarySuccess.png[width="790"]
 
 [NOTE]
-An employee's salary can not be deducted from using this command.
+Employee's salary cannot be deducted using this command.
+
+// end::accessControl[]
 
 [[Edit]]
 ==== Editing an employee: `edit`
 
 Edits an existing employee in PTMan. +
 
-*Format:* `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]...` +
-*Shorthand:* `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]...`
+*Format:* `edit EMPLOYEE_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]...` +
+*Shorthand:* `e EMPLOYEE_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [t/TAG]...`
 
 [NOTE]
 An employee's password can only be edited by the employee. +
 
 ****
-* Edits the employee at the specified `INDEX`. The index refers to the index number shown in the last employee listing. The index *must be a positive integer* 1, 2, 3, ...
+* Edits the employee at the specified `EMPLOYEE_INDEX`. The index refers to the index number shown in the last employee listing. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the employee will be removed i.e adding of tags is not cumulative.
 * You can remove all the employee's tags by typing `t/` without specifying any tags after it.
 ****
 
-// TODO: SCREENSHOT BEFORE + AFTER
-*Examples*:
+*Guided Example:*
+
+* To edit the first employee's email and tags, key in the following as illustrated in _<<fig-Ui_edit1>>_.
++
+[[fig-Ui_edit1]]
+.Editing Employee Details in PTMan +
+image::Ui_edit1.png[width="790"]
+
+* Upon successful execution of the command, you will see a confirmation message in the result display, and the edited details of the employee as shown in _<<fig-Ui_edit2>>_.
++
+[[fig-Ui_edit2]]
+.Successful Edit of Employee Details in PTMan +
+image::Ui_edit2.png[width="790"]
+
+
+// TODO: SCREENSHOT BEFORE + AFTER?
+*More Examples:*
 
 * To edit the phone number and email address of the employee `1` to be `91234567` and `johndoe@example.com` respectively, type: +
 `edit 1 p/91234567 e/johndoe@example.com` +
@@ -406,18 +456,39 @@ Deletes the specified employee from PTMan. +
 *Shorthand:* `d EMPLOYEE_INDEX`
 
 ****
-* The employee will be deleted at the specified INDEX.
-* The INDEX refers to the index number shown in the most recent listing.
-* The INDEX *must be a positive integer* 1, 2, 3, ...
+* The employee will be deleted at the specified EMPLOYEE_INDEX.
+* The EMPLOYEE_INDEX refers to the index number shown in the most recent employee listing.
+* The EMPLOYEE_INDEX *must be a positive integer* 1, 2, 3, ...
 ****
 
-*Examples*:
+*Guided Example:*
 
-* To delete employee `2`, type: +
-`delete 2` +
-* To delete employee `1` from the results of the `find` command, type: +
+* To delete the first employee from PTMan, key in the following as illustrated in _<<fig-Ui_delete1>>_.
++
+[[fig-Ui_delete1]]
+.Editing Employee Details in PTMan +
+image::Ui_delete1.png[width="790"]
+
+* _<<fig-Ui_delete2>>_ shows the employee list panel before the `delete` command is carried out.
++
+[[fig-Ui_delete2]]
+.Editing Employee Details in PTMan +
+image::Ui_delete2.png[width="300"]
+
+* Upon successful deletion, you will see a confirmation message in the result display and the employee being deleted from the employee list panel as shown in _<<fig-Ui_delete3>>_.
++
+[[fig-Ui_delete3]]
+.Successful Edit of Employee Details in PTMan +
+image::Ui_delete3.png[width="790"]
+
+*More Examples:*
+
+* To delete employee `1` from the results of the <<Find, `find`>> command, type: +
 `find Betsy` +
 `delete 1` +
+* To delete employee `2` from the results of the <<Viewshift, `viewshift`>> command type: +
+`viewshift SHIFT_INDEX`
+`delete 2` +
 
 [[Clear]]
 ==== Clearing all entries : `clear`
@@ -490,8 +561,8 @@ The `redo` command fails as there are no `undo` commands executed previously.
 ==== Editing the outlet information: `editoutlet`
 Edits the outlet information. +
 
-*Format:* `editoutlet [n/NAME] [h/OPERATING_HOURS] [c/CONTACT_NUMBER] [e/EMAIL]`  +
-*Shorthand:* `eo`
+*Format:* `editoutlet n/OUTLET_NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL`  +
+*Shorthand:* `eo n/OUTLET_NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL`
 ****
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -501,34 +572,33 @@ Edits the outlet information. +
 [IMPORTANT]
 Ensure that the outlet email is valid as it will be used to reset the admin password should you forget it.
 
-*Example*:
+*Guided Example:*
 
-. When you first start using PTMan, your outlet information will be default values as shown in _<<fig-DefaultOutlet>>_.
-+
-[[fig-DefaultOutlet]]
-.Default Outlet Information +
-image::DefaultOutlet.jpg[width="790"]
-
-. You can edit the name, operating hours, contact number, and email of the outlet to be `AwesomeCoffee`, `10am to 11pm`, `98134086`, and `awesomecoffee@gmail.com` respectively, type: +
-`editoutlet n/AwesomeCoffee h/1000-2300 c/98134086 e/awesomecoffee@gmail.com`. Or you can refer to _<<fig-Edit1>>_.
+* To edit the name, operating hours, contact number, and email of the outlet, key in the following as shown in _<<fig-Edit1>>_.
 +
 [[fig-Edit1]]
-.Example of `editoutlet` command usage +
+.Editing Outlet Information in PTMan +
 image::Ui_editoutlet1.png[width="790"]
 
-. Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
+* Upon successful execution of the command, you would see a confirmation message below the command bar, and the changes applied to the outlet information.
 _<<fig-Edit2>>_ shows how PTMan should look like after the above command.
 +
 [[fig-Edit2]]
-.Successful editing of outlet information in PTMan +
-image::Ui_editoutlet2.png[width="790"]
+.Successful Edit of Outlet Information in PTMan +
+image::Ui_editoutlet2.png[width="600"]
 
-. To only edit the name and contact number to be `Nice Dim Sum` and `901234567` respectively, type: `editoutlet n/Nice Dim Sum c/901234567`.
-You will see changes as shown in _<<fig-Edit3>>_.
+* To edit only the name and contact number, key in the following as shown in _<<fig-Edit3>>_
 +
 [[fig-Edit3]]
-.Successful editing of outlet information in PTMan +
+.Editing Selective Outlet Information in PTMan +
 image::Ui_editoutlet3.png[width="790"]
+
+* Upon successful execution of the command, a confirmation message will be displayed in the result display, and changes will be applied to the outlet information.
+  _<<fig-Edit4>>_ shows how PTMan should look like after the above command.
++
+[[fig-Edit4]]
+.Successful Edit of Selective Outlet Information in PTMan +
+image::Ui_editoutlet4.png[width="600"]
 
 [[Announcement]]
 ==== Creating an announcement: `announcement`
@@ -537,45 +607,46 @@ Sets an announcement for the outlet. +
 *Format:* `announcement ANNOUNCEMENT_MESSAGE` +
 *Shorthand:* `announce`
 
-*Example*:
+*Guided Example:*
 
-. Your store has a *new drink released this coming Wednesday*, and you want your employees who come working on Wednesday to be
-familiar with the recipe for it. You can leave a note for your employees so that they can be prepared for their shifts.
-To make an announcement in PTMan, you can type the following command as illustrated in _<<fig-Announce1>>_.
+* To make an announcement in PTMan, type the following command as illustrated in _<<fig-Announce1>>_.
 +
 [[fig-Announce1]]
-.Example of `announce` command usage +
+.Making an Announcement in PTMan +
 image::Ui_announcement1.png[width="790"]
 
-. Click kbd:[Enter] and you would see a confirmation message below the command bar, and the changes applied to the announcement.
+* When a successful announcement is made, a confirmation message will be displayed in the result display, and the changes will  be applied to the announcement.
 _<<fig-Announce2>>_ shows how PTMan should look like after the above command.
 +
 [[fig-Announce2]]
-.Successful announcement made in PTMan +
-image::Ui_announcement2.png[width="790"]
+.Successful Announcement Made in PTMan +
+image::Ui_announcement2.png[width="600"]
 
 [[Encrypt]]
 ==== Encrypting the local storage files: `encrypt`
-Encrypts data stored in the files in `data` folder.
+Encrypts data stored in the files of the `data` folder.
 
 *Format:* `encrypt`
 
-After your `encrypt` command is executed successfully, you would see a confirmation message below the command bar as shown in _<<fig-SuccessfulEncryptCommand>>_.
+*Guided Example:*
 
+* After your `encrypt` command is executed successfully, a confirmation message will be displayed in the result display as shown in _<<fig-SuccessfulEncryptCommand>>_.
++
 [[fig-SuccessfulEncryptCommand]]
-.Successful `encrypt` command made in PTMan +
-image::SuccessfulEncryptCommand.jpg[width="790"]
-
-In addition, you can view your data stored in local files by the following steps:
+.Successful Encryption of Local Files in PTMan +
+image::SuccessfulEncryptCommand.png[width="450"]
++
+You can view your data stored in local files with the following steps:
 
 . Open the folder where your app `PTMan.jar` is at.
 . Open the folder named `data`. You will see two files `outletinformation.xml` and `parttimemanager.xml` there.
-. Open `outletinformation.xml`. The third line of the file indicates the encryption status with reference to _<<fig-Encrypt>>_.
+. Open `outletinformation.xml` with Internet Explorer (IE) or your favourite editor. The third line of the file indicates the encryption status with reference to _<<fig-Encrypt>>_.
 
-_<<fig-Encrypt>>_ shows an example of what the `outletinformation.xml` file should look like when the `encrypt` command is successfully executed.
+* _<<fig-Encrypt>>_ shows an example of what the `outletinformation.xml` file should look like when the `encrypt` command is successfully executed.
 
++
 [[fig-Encrypt]]
-.Example of Encrypted `outletinformation.xml` File in `data` Folder +
+.Example of an Encrypted `outletinformation.xml` File +
 image::OutletInformationEncryptedXMLFile.jpg[width="790"]
 
 [[Decrypt]]
@@ -584,17 +655,34 @@ Decrypts data stored in the files in `data` folder.
 
 *Format:* `decrypt`
 
-After your `decrypt` command is executed successfully, you would see a confirmation message below the command bar as shown in _<<fig-SuccessfulDecryptCommand>>_.
+*Guided Example:*
 
+* After your `decrypt` command is executed successfully, a confirmation message will be displayed in the result display as shown in _<<fig-SuccessfulDecryptCommand>>_.
++
 [[fig-SuccessfulDecryptCommand]]
-.Successful `decrypt` command made in PTMan +
-image::SuccessfulDecryptCommand.jpg[width="790"]
+.Successful Decryption of Local Files in PTMan +
+image::SuccessfulDecryptCommand.png[width="450"]
 
-Open `outletinformation.xm;` file again, now you can read and understand the data stored as shown in _<<fig-Decrypt>>_.
-
+* Open `outletinformation.xml` file again, now you can read and understand the data stored as shown in _<<fig-Decrypt>>_.
++
 [[fig-Decrypt]]
-.Example of Decrypted `outletinformation.xml` File in `data` Folder +
+.Example of a Decrypted `outletinformation.xml` File +
 image::OutletInformationDecryptedXMLFile.jpg[width="790"]
+
+==== Viewing encryption status: `viewencrytion`
+
+Shows encryption status of local storage files.
+
+*Format:* `viewencryption` +
+*Shorthand:* `ve`
+
+*Guided Example:*
+
+* After your `viewencryption` command is executed successfully, the encryption status will be displayed in the result display as shown in _<<fig-SuccessfulVECommand>>_.
++
+[[fig-SuccessfulVECommand]]
+.Encryption Status Shown in PTMan +
+image::SuccessfulVECommand.png[width="450"]
 // end::outletCommand[]
 
 // tag::shiftmanager[]
@@ -603,7 +691,7 @@ image::OutletInformationDecryptedXMLFile.jpg[width="790"]
 Adds a shift to the timetable to indicate that you require employees at that period. +
 
 *Format:* `addshift d/DATE ts/START_TIME te/END_TIME c/EMPLOYEE_CAPACITY` +
-*Shorthand:* `as`
+*Shorthand:* `as d/DATE ts/START_TIME te/END_TIME c/EMPLOYEE_CAPACITY`
 
 ****
 * The `DATE` should be in DD-MM-YY format. +
@@ -638,7 +726,7 @@ Deletes a shift from the timetable.
 * The `SHIFT_INDEX` *must be a positive integer* 1, 2, 3, ...
 ****
 
-*Example*:
+*Guided Example*:
 
 . If you wish to delete shift 1, execute the command `deleteshift 1` as shown in _<<fig-deleteShiftBefore>>_ below.
 +
@@ -658,16 +746,16 @@ image::DeleteShiftAfter.png[width="800"]
 Applies an employee for a shift. +
 
 *Format:* `apply EMPLOYEE_INDEX SHIFT_INDEX` +
-*Shorthand:* `ap`
+*Shorthand:* `ap EMPLOYEE_INDEX SHIFT_INDEX`
 ****
 * The `EMPLOYEE_INDEX` refers to the index number shown in the most recent employee listing.
 * The `SHIFT_INDEX` refers to the shift number in the timetable.
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
-*Example*:
+*Guided Example*:
 
-. To apply the 2nd employee in the list for shift 3, execute the command `apply 2 3` as shown in _<<fig-applyAdminBefore>>_ below.
+. To apply Sum Ting Wong for shift 3, execute the command `apply 2 3` as shown in _<<fig-applyAdminBefore>>_ below.
 +
 [[fig-applyAdminBefore]]
 .Applying Employee 2 to Shift 3 +
@@ -690,16 +778,16 @@ Refer to <<Removing an employee from a shift: `unapply`>> for more information.
 Removes an employee from a shift. +
 
 *Format:* `unapply EMPLOYEE_INDEX SHIFT_INDEX` +
-*Shorthand:* `uap`
+*Shorthand:* `uap EMPLOYEE_INDEX SHIFT_INDEX`
 ****
 * The `EMPLOYEE_INDEX` refers to the index number shown in the most recent employee listing.
 * The `SHIFT_INDEX` refers to the shift number in the timetable.
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
-*Example*:
+*Guided Example*:
 
-. To remove the 2nd employee from shift 3, execute the command `unapply 2 3` as shown in _<<fig-unapplyAdminBefore>>_ below.
+. To remove Sum Ting Wong from shift 3, execute the command `unapply 2 3` as shown in _<<fig-unapplyAdminBefore>>_ below.
 +
 [[fig-unapplyAdminBefore]]
 .Removing Employee 2 from Shift 3 +
@@ -729,9 +817,9 @@ Applies for a shift. +
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
-*Example*:
+*Guided Example*:
 
-. If you are the 2nd employee in the list and you wish to apply for shift 3, execute the command +
+. If you are Sum Ting Wong and you wish to apply for shift 3, execute the command +
 `apply 2 3 pw/YOUR_PASSWORD` as shown in _<<fig-applyBefore>>_ below.
 +
 [[fig-applyBefore]]
@@ -754,16 +842,16 @@ Refer to <<Removing yourself from a shift: `unapply`>> for more information.
 Removes youreself from a shift. +
 
 *Format:* `unapply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD` +
-*Shorthand:* `uap`
+*Shorthand:* `uap EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD`
 ****
 * The `EMPLOYEE_INDEX` refers to the index number shown in the most recent employee listing.
 * The `SHIFT_INDEX` refers to the shift number in the timetable.
 * Both indexes *must be positive integers* 1, 2, 3, ...
 ****
 
-*Example*:
+*Guided Example*:
 
-. If you are the 2nd employee in the list and you wish to remove yourself from shift 3, execute the command +
+. If you are Sum Ting Wong and you wish to remove yourself from shift 3, execute the command +
 `unapply 2 3 pw/YOUR_PASSWORD` as shown in _<<fig-unapplyBefore>>_ below.
 +
 [[fig-unapplyBefore]]
@@ -778,24 +866,29 @@ and the slots left in the shift will increase by 1 upon successful removal.
 image::UnapplyAfter.png[width="800"]
 // end::shiftemployee[]
 
+
+
 [[Cp]]
 ==== Changing your employee password: `changepw`
+
 Changes your employee password.
-For security purposes, you are highly encouraged to change your password the moment your account is created. +
+For security purposes, you are highly encouraged to change your password once your manager creates your account. +
 
-*Format:* `changepw INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD` +
-*Shorthand:* `cp` `INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD`
+*Format:* `changepw EMPLOYEE_INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD` +
+*Shorthand:* `cp EMPLOYEE_INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD`
 
-Your `INDEX` will be displayed at the right side panel of PTMan. For example, if you are Asther toh, you can execute the command as shown in _<<fig-changingpw>>_.
+*Guided Example:*
 
+* If you are Asther toh, you can execute the command as shown in _<<fig-changingpw>>_.
++
 [[fig-changingpw]]
-.Resetting password in PTMan
+.Changing Employee Password in PTMan
 image::changingpw.png[width="790"]
 
-After executing `changepw` successfully, a notification will be displayed below the command box as shown in _<<fig-changepw>>_.
-
+* Upon successful execution of `changepw`, a confirmation message will be displayed in the result display as shown in _<<fig-changepw>>_.
++
 [[fig-changepw]]
-.Resetting password in PTMan
+.Successful Change of Employee Password in PTMan
 image::changepw.png[width="790"]
 
 [NOTE]
@@ -807,10 +900,10 @@ The sequence of current and new password entered must be of the format.
 //* The `INDEX` *must be a positive integer* 1, 2, 3, ...
 //****
 
-//Examples:
+*More Examples:*
 
-//* If your index is `5`, your current password is `DEFAULT1`, and you wish to change it to `hunter2`, type: +
-//`cp 5 pw/DEFAULT1 pw/hunter2 pw/hunter2`
+* If your index is `5`, your current password is `DEFAULT1`, and you wish to change it to `hunter2`, type: +
+`cp 5 pw/DEFAULT1 pw/hunter2 pw/hunter2`
 //* If your index is `2`, your current password is `mypassword`, and you wish to change it to `NewPassw0rd`, type: +
 //`cp 2 pw/mypassword pw/NewPassw0rd pw/NewPassw0rd`
 
@@ -818,13 +911,17 @@ The sequence of current and new password entered must be of the format.
 ==== Resetting your employee password: `resetpw`
 
 Resets your employee password. This sends a temporary password to your email address.
+You can use this command if you have forgotten your password.
 
-*Format:* `resetpw INDEX` +
-*Shorthand:* `rp` `INDEX` +
+*Format:* `resetpw EMPLOYEE_INDEX` +
+*Shorthand:* `rp EMPLOYEE_INDEX` +
 
-If you forgot your password, you can simply reset your password with your `INDEX` displayed at the right panel as shown in _<<fig-resetPw>>_.
-[[fig-resetPw]]
-.Resetting password in PTMan
+*Guided Example:*
+
+* To reset your password, execute the command with your `EMPLOYEE_INDEX`, as illustrated in _<<fig-resetingPw>>_.
++
+[[fig-resetingPw]]
+.Resetting Employee Password in PTMan
 image::resettingpw.png[width="790"]
 
 //****
@@ -832,15 +929,15 @@ image::resettingpw.png[width="790"]
 //* The `INDEX` *must be a positive integer* 1, 2, 3, ...
 //****
 
-After executing `resetpw`, a temporarily password  will be sent to your email registered with your outlet manager as shown in _<<fig-resetPw>>_.
-
+* After executing `resetpw`, a temporary password will be sent to the email address that your manager has registered you with.
+ _<<fig-resetPw>>_ shows what you should see after executing the command.
++
 [[fig-resetPw]]
-.Reset password in PTMan
+.Successful Reset of Employee Password in PTMan
 image::resetpw.png[width="790"]
 
 [NOTE]
 Temporary password should be changed immediately after resetting.
-
 
 
 //Examples:
@@ -906,10 +1003,28 @@ Shows a list of all employees in PTMan. +
 [[Viewshift]]
 ==== Listing all employees: `viewshift`
 
-Shows a list of all employees who have applied for the input shift index in PTMan. +
+Shows a list of all employees who have applied for the specified shift index in PTMan. +
 
 *Format:* `viewshift SHIFT_INDEX` +
 *Shorthand:* `vs SHIFT_INDEX`
+
+[TIP]
+To stop displaying the employees of the specified shift, use the <<List, `list`>> command.
+
+*Guided Example:*
+
+* To view all employees in the second shift, key in the following as illustrated in _<<fig-Ui_viewshift1>>_.
++
+[[fig-Ui_viewshift1]]
+.Viewing Employees in Shift 2 +
+image::Ui_viewshift1.png[width="790"]
+
+* Upon successful execution of the command, you will see a confirmation message in the result display, and the employees listed in the employee list panel as shown in _<<fig-Ui_viewshift2>>_.
++
+[[fig-Ui_viewshift2]]
+.Successful Edit of Employee Details in PTMan +
+image::Ui_viewshift2.png[width="790"]
+
 
 [[Select]]
 ==== Displaying an employee's shift on the timetable: `select`
@@ -918,31 +1033,49 @@ Displays the shifts of the selected employee on the timetable view. Shifts appli
  in blue, while the other shifts would be displayed in brown. +
 
 *Format:* `select EMPLOYEE_INDEX` +
-*Shorthand:* `s EMPLOYEE_INDEX`
+*Shorthand:* `sel EMPLOYEE_INDEX`
 
-// TODO: SCREENSHOT
-*Examples*:
+[TIP]
+Alternatively, you can select an employee by clicking on the employee's card in the employee list.
 
-* To select employee `2` and displays their shifts in the timetable, type: +
-`select 2` +
+[TIP]
+To stop displaying the employee's shifts on the timetable, use the <<Dsel,`deselect`>> command. +
+
+*Guided Example:*
+
+* To highlight shifts applied by the third employee, key in the following as illustrated in _<<fig-Ui_select1>>_.
++
+[[fig-Ui_select1]]
+.Selecting Employee to Highlight Applied Shifts +
+image::Ui_select1.png[width="790"]
++
+_<<fig-Feature_Timetable1>>_ shows how the timetable looks like prior to the `select` command.
++
+[[fig-Feature_Timetable1]]
+.Initial Timetable Before Selection of Employee +
+image::Feature_Timetable1.png[width="500"]
+
+
+* Upon successful execution of the command, you will see a confirmation message in the result display, and the shifts highlighted in the timetable as shown in _<<fig-Ui_select2>>_.
++
+[[fig-Ui_select2]]
+.Successful Selection of Employee with Shifts Highlighted +
+image::Ui_select2.png[width="790"]
+
+*More Examples:*
+
 * To select the employee `1` in the results of the `find` command and display their shifts in the timetable, type: +
 `find Betsy` +
 `select 1` +
 
-[TIP]
-Alternatively, you can select an employee simply by clicking on the employee's card in the employee list
+[[Dsel]]
+==== Deselecting an employee: `deselect`
 
-[TIP]
-To stop displaying the employee's shifts on the timetable, use the `main` command. +
-Refer to <<Displaying the default timetable: `main`>> for more information.
+Displays the timetable without any employee selected.
+Useful for users to navigate back to the default timetable after using the `select` command. +
 
-[[Main]]
-==== Displaying the default timetable: `main`
-
-Displays the main timetable view (of the current week). Useful for users to navigate back to the default timetable
-after using the `select` command. +
-
-*Format:* `main`
+*Format:* `deselect`
+*Shorthand:* `dsel`
 
 [[Export]]
 ==== Exporting the timetable as image: `export`
@@ -953,7 +1086,28 @@ Exports the current timetable displayed as an image and either saves it locally 
 *Format:* `export [e/EMAIL]` +
 *Shorthand:* `exp [e/EMAIL]`
 
-*Examples*:
+*Guided Example:*
+
+* To export the timetable and email it to yourself, key in the following as illustrated in _<<fig-Ui_export1>>_.
++
+[[fig-Ui_export1]]
+.Exporting Timetable to Email +
+image::Ui_export1.png[width="790"]
+
+* Upon successful execution of the command, you will see a confirmation message in the result display as shown in _<<fig-Ui_export2>>_.
++
+[[fig-Ui_export2]]
+.Successful Export of Timetable to Email +
+image::Ui_export2.png[width="450"]
++
+An email will also be sent to you as show in _<<fig-Ui_export3>>_.
++
+[[fig-Ui_export3]]
+.Successful Selection of Employee with Shifts Highlighted +
+image::Ui_export3.png[width="790"]
+
+
+*More Examples:*
 
 * To export the current timetable in PTMan, type: +
 `export` +
@@ -961,7 +1115,7 @@ Exports the current timetable displayed as an image and either saves it locally 
 `select 1` +
 `export` +
 * To export the timetable with the shifts of employee `1` in PTMan and send the exported timetable as email, type: +
-`select ` +
+`select 1` +
 `export e/email@example.com`
 // end::timetableInteractions[]
 
@@ -999,7 +1153,7 @@ Exits the app. +
 * <<List, *List*>>: `list`
 * <<Viewshift, *View shift*>>: `viewshift SHIFT_INDEX`
 * <<Select, *Display employee's shifts*>>: `select EMPLOYEE_INDEX`
-* <<Main, *Display default timetable*>>: `main`
+* <<Dsel, *Stop displaying employee's shifts*>>: `deselect`
 * <<Export, *Export timetable*>>: `export`
 * <<History, *History*>>: `history`
 * <<Exit, *Exit*>>: `exit`

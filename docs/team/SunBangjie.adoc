@@ -7,12 +7,14 @@
 
 == Overview
 
-Part-Time Manager (PTMan) is a desktop human resource application used for managing part-time employees. +
+Part-Time Manager (PTMan) is a desktop human resource application used for managing part-time employees in outlets such as bubble tea shops and fast food restaurants. +
 
-PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the employer.
-Thereby reducing the hassle of work scheduling for both employers and employees. +
+PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the outlet managers.
+Instead of huge amount of paper work and time spent on communication via phone calls and messages, PTMan helps both managers and employees reduce the hassle of work scheduling. +
 
-The user interacts with the application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+The user interacts with the application using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. It is written in Java, and has about 10 kLoC.
+
+This project portfolio page aims to showcase my work in the project.
 
 == Summary of contributions
 
@@ -36,6 +38,8 @@ This enhancement also changes the storage component significantly as data stored
 
 ** Project management:
 *** Managed release `v1.3` (1 release) on GitHub.
+** Enhancements to existing features:
+*** Provided methods to encrypt and decrypt local storage files. (Pull requests: https://github.com/CS2103JAN2018-W14-B2/main/pull/121[#121], https://github.com/CS2103JAN2018-W14-B2/main/pull/145[#145], https://github.com/CS2103JAN2018-W14-B2/main/pull/193[#193])
 ** Documentation:
 *** Updated user stories, use cases and NFRs in Developer guide: https://github.com/CS2103JAN2018-W14-B2/main/pull/2[#2], https://github.com/CS2103JAN2018-W14-B2/main/pull/10[#10]
 *** Updated formatting of Developer Guide: https://github.com/CS2103JAN2018-W14-B2/main/pull/23[#23]
@@ -63,3 +67,4 @@ include::../UserGuide.adoc[tag=backup]
 |===
 
 include::../DeveloperGuide.adoc[tag=outlet]
+include::../DeveloperGuide.adoc[tag=backup]
