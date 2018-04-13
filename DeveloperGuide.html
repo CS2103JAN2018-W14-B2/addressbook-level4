@@ -653,7 +653,7 @@ Such details are essential to facilitate other functions such as the access cont
 It supports relevant commands that utilize attributes of this class. It is also responsible for information displayed in the UI and data stored in local storage files.<br></p>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-OutletClassDiagram">Figure 11</a></em> is a class diagram that displays the association between <code>OutletInformation</code> and other components in the <code>Model</code>.</p>
+<p><em><a href="#fig-OutletClassDiagram">Figure 11</a></em> is a class diagram that displays the association between <code>OutletInformation</code> and other classes in the <code>Model</code>.</p>
 </div>
 <div id="fig-OutletClassDiagram" class="imageblock">
 <div class="content">
@@ -696,8 +696,10 @@ Otherwise, users are unable to log in with correct password when they start usin
 <div class="sect4">
 <h5 id="commands"><a class="link" href="#commands">4.1.2.2. Commands</a></h5>
 <div class="paragraph">
-<p>Currently, there are two commands that allow employers to change attributes of the <code>OutletInformation</code>.
-There are also commands that allow employers to encrypt and decrypt local storage files.<br></p>
+<p>Currently, there are two commands that allow employers to change attributes of the <code>OutletInformation</code>: <code>editoutlet</code> and <code>announcement</code> commands which are implemented in similar ways.
+The implementation of <code>editoutlet</code> command will be explained in details.
+In addition, there are also commands that allow employers to encrypt and decrypt local storage files.
+The implementation of <code>encrypt</code> command and how data is encrypted will be explained in details.<br></p>
 </div>
 <div class="sect5">
 <h6 id="edit-outlet-command"><a class="link" href="#edit-outlet-command">4.1.2.2.1. Edit outlet command</a></h6>
@@ -722,13 +724,9 @@ When all fields are null, it throws a new exception as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public void setOutletInformation(...) throws NoOutletInformationFieldChangeException {
-    ...
-    if (name == null &amp;&amp; operatingHours == null &amp;&amp; outletContact == null &amp;&amp; outletEmail == null) {
-        throw new NoOutletInformationFieldChangeException();
-    }
-    ...
-}</pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (name == <span class="predefined-constant">null</span> &amp;&amp; operatingHours == <span class="predefined-constant">null</span> &amp;&amp; outletContact == <span class="predefined-constant">null</span> &amp;&amp; outletEmail == <span class="predefined-constant">null</span>) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> NoOutletInformationFieldChangeException();
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -738,15 +736,11 @@ with reference to the function below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public CommandResult executeUndoableCommand() throws CommandException {
-    ...
-    try {
-        editedOutlet.setOutletInformation(name, operatingHours, outletContact, outletEmail);
-    } catch (NoOutletInformationFieldChangeException e) {
-        throw new CommandException(MESSAGE_EDIT_OUTLET_FAILURE);
-    }
-    ...
-}</pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">try</span> {
+    editedOutlet.setOutletInformation(name, operatingHours, outletContact, outletEmail);
+} <span class="keyword">catch</span> (NoOutletInformationFieldChangeException e) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_EDIT_OUTLET_FAILURE);
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -759,7 +753,7 @@ with reference to the function below:</p>
 <div class="title">Figure 13. Interactions inside the Logic Component for the <code>editoutlet n/Edited Outlet</code> Admin Command</div>
 </div>
 <div class="paragraph">
-<p>When an <code>editoutlet</code> executes successfully, three events will be raised and handled with reference to <em><a href="#fig-EditOutletCommandHighLevelSequenceDiagram">Figure 14</a></em>:</p>
+<p>When an <code>editoutlet</code> executes successfully, three events will be raised and handled as shown in <em><a href="#fig-EditOutletCommandHighLevelSequenceDiagram">Figure 14</a></em>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -767,10 +761,10 @@ with reference to the function below:</p>
 <p><code>OutletNameChangedEvent</code> updates the outlet name displayed in the app.</p>
 </li>
 <li>
-<p><code>OutletInformationChangedEvent</code> updates the operating hours, contact numbers and email displayed in the app.</p>
+<p><code>OutletInformationChangedEvent</code> updates the operating hours, contact number and email displayed in the app.</p>
 </li>
 <li>
-<p><code>OutletDataChangedEvent</code> saves latest outlet information in local storage file "data/outletinformation.xml".</p>
+<p><code>OutletDataChangedEvent</code> saves latest outlet information to local storage file "data/outletinformation.xml".</p>
 </li>
 </ol>
 </div>
@@ -782,38 +776,7 @@ with reference to the function below:</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="announcement-command"><a class="link" href="#announcement-command">4.1.2.2.2. Announcement command</a></h6>
-<div class="paragraph">
-<p>Similar to <code>editoutlet</code> command, <code>announcement</code> command changes the <code>announcement</code> attribute of <code>OutletInformation</code>.
-The implementation is similar to the implementation of <code>editoutlet</code> command mentioned previously.
-Take note that there is not any input constraint on the <code>announcement</code>, unlike outlet name, operating hours, contact number and email which have specific input constraints.</p>
-</div>
-<div class="paragraph">
-<p>Thus, an alternative implementation of the <code>Announcement</code> class can put certain constraints on the input string, and check whether the input string matches the validation regex as shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>public static final String ANNOUNCEMENT_VALIDATION_REGEX = //your own validation regex;
-public static boolean isValidAnnouncement(String test) {
-    return test.matches(ANNOUNCEMENT_VALIDATION_REGEX);
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When an <code>announcement</code> command executes successfully, <code>AnnouncementChangedEvent</code> is raised and handled to update the information displayed in the app as highlighted in <em><a href="#fig-AnnouncementDisplayed">Figure 15</a></em>.</p>
-</div>
-<div id="fig-AnnouncementDisplayed" class="imageblock">
-<div class="content">
-<img src="images/announcementdisplay.jpg" alt="announcementdisplay" width="600">
-</div>
-<div class="title">Figure 15. Example of the Announcement Displayed</div>
-</div>
-<div class="paragraph">
-<p>Similarly, <code>OutletDataChangedEvent</code> is also raised and handled to save the latest announcement into local storage file "data/outletinformation.xml".</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="encrypt-and-decrypt-commands"><a class="link" href="#encrypt-and-decrypt-commands">4.1.2.2.3. Encrypt and decrypt commands</a></h6>
+<h6 id="encrypt-and-decrypt-commands"><a class="link" href="#encrypt-and-decrypt-commands">4.1.2.2.2. Encrypt and decrypt commands</a></h6>
 <div class="paragraph">
 <p>Since PTMan stores files locally, it is highly possible that any worker in the outlet can open the storage files and read data inside.
 Such files store a large amount of essential and private data such as admin password, employees' passwords, employees' phones, addresses, and emails.
@@ -821,24 +784,24 @@ By using the <code>encrypt</code> command, the data in local storage files can b
 Employers can use the <code>decrypt</code> command to make the files human-readable.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram (<em><a href="#fig-EncryptCommandSequenceDiagram">Figure 16</a></em>) illustrates how an <code>encrypt</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
+<p>The following sequence diagram (<em><a href="#fig-EncryptCommandSequenceDiagram">Figure 15</a></em>) illustrates how an <code>encrypt</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
 </div>
 <div id="fig-EncryptCommandSequenceDiagram" class="imageblock">
 <div class="content">
 <img src="images/EncryptDataCommandSequenceDiagram.png" alt="EncryptDataCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 16. Interactions inside the Logic Component for the <code>encrypt</code> Admin Command</div>
+<div class="title">Figure 15. Interactions inside the Logic Component for the <code>encrypt</code> Admin Command</div>
 </div>
 <div class="paragraph">
-<p>When an <code>encrypt</code> executes successfully, two events will be raised and handled with reference to <em><a href="#fig-EncryptCommandHighLevelSequenceDiagram">Figure 17</a></em>:</p>
+<p>When an <code>encrypt</code> executes successfully, two events will be raised and handled with reference to <em><a href="#fig-EncryptCommandHighLevelSequenceDiagram">Figure 16</a></em>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>PartTimeManagerChangedEvent</code> saves encrypted or decrypted information on employees and shifts in local storage file "data/parttimemanager.xml".</p>
+<p><code>PartTimeManagerChangedEvent</code> saves encrypted or decrypted information of employees and shifts to local storage file "data/parttimemanager.xml".</p>
 </li>
 <li>
-<p><code>OutletDataChangedEvent</code> saves encrypted or decrypted outlet information in local storage file "data/outletinformation.xml".</p>
+<p><code>OutletDataChangedEvent</code> saves encrypted or decrypted outlet information to local storage file "data/outletinformation.xml".</p>
 </li>
 </ol>
 </div>
@@ -846,20 +809,20 @@ Employers can use the <code>decrypt</code> command to make the files human-reada
 <div class="content">
 <img src="images/EncryptCommandHighLevelSequenceDiagrams.png" alt="EncryptCommandHighLevelSequenceDiagrams" width="800">
 </div>
-<div class="title">Figure 17. High Level Sequence Diagram for the <code>encrypt</code> Command</div>
+<div class="title">Figure 16. High Level Sequence Diagram for the <code>encrypt</code> Command</div>
 </div>
 <div class="paragraph">
 <p>Currently, the local data is encrypted in the Advanced Encryption Standard (AES) in XML files.
 If data is encrypted, data read from XML files must be decrypted before passing to the constructor of any object.
-The function below demonstrates how outlet data is encrypted using the encrypt(String text) function:<br></p>
+The function below demonstrates how outlet data is encrypted using the encrypt(String text) function when converting to a XML file:<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public XmlAdaptedOutletInformation(String outletName, ...) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> XmlAdaptedOutletInformation(<span class="predefined-type">String</span> outletName, ...) {
     ...
     this.outletName = encrypt(outletName);
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -867,14 +830,14 @@ The function below demonstrates how outlet data is encrypted using the encrypt(S
 </div>
 <div class="paragraph">
 <p>The current implementation successfully prevents any user of the computer directly interpreting the stored information.
-However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in <em><a href="#fig-OutletEncrypt">Figure 18</a></em>.
+However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in <em><a href="#fig-OutletEncrypt">Figure 17</a></em>.
 It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found patterns.</p>
 </div>
 <div id="fig-OutletEncrypt" class="imageblock">
 <div class="content">
 <img src="images/OutletInformationEncryptedXMLFile.jpg" alt="OutletInformationEncryptedXMLFile" width="800">
 </div>
-<div class="title">Figure 18. Example of an Encrypted XML File of Outlet Information</div>
+<div class="title">Figure 17. Example of an Encrypted XML File of Outlet Information</div>
 </div>
 <div class="paragraph">
 <p>The limitation of the current implementation leads to an alternative implementation that encrypts the entire XML file.
@@ -882,10 +845,10 @@ The XMLCipher package from apache.org can be used to encrypt the XML file stored
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Document encryptedDoc = XMLUtil.encryptDocument(document, secretKey, XMLCipher.AES_128);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Document</span> encryptedDoc = XMLUtil.encryptDocument(document, secretKey, XMLCipher.AES_128);
 XMLUtil.saveDocumentTo(encryptedDoc, encryptedFile);
-Document decryptedDoc = XMLUtil.decryptDocument(encryptedDoc, secretKey, XMLCipher.AES_128);
-XMLUtil.saveDocumentTo(decryptedDoc, decryptedFile);</pre>
+<span class="predefined-type">Document</span> decryptedDoc = XMLUtil.decryptDocument(encryptedDoc, secretKey, XMLCipher.AES_128);
+XMLUtil.saveDocumentTo(decryptedDoc, decryptedFile);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -893,13 +856,13 @@ XMLUtil.saveDocumentTo(decryptedDoc, decryptedFile);</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public static Document encryptDocument(Document document, SecretKey secretKey, String algorithm) throws Exception {
-    Element rootElement = document.getDocumentElement();
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">Document</span> encryptDocument(<span class="predefined-type">Document</span> document, <span class="predefined-type">SecretKey</span> secretKey, <span class="predefined-type">String</span> algorithm) <span class="directive">throws</span> <span class="exception">Exception</span> {
+    <span class="predefined-type">Element</span> rootElement = document.getDocumentElement();
     XMLCipher xmlCipher = XMLCipher.getInstance(algorithm);
     xmlCipher.init(XMLCipher.ENCRYPT_MODE, secretKey);
-    xmlCipher.doFinal(document, rootElement, true);
-    return document;
-}</pre>
+    xmlCipher.doFinal(document, rootElement, <span class="predefined-constant">true</span>);
+    <span class="keyword">return</span> document;
+}</code></pre>
 </div>
 </div>
 </div>
@@ -945,13 +908,13 @@ It guarantees there are no duplicate employees in the shift.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-ShiftClassDiagram">Figure 19</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
+<p><em><a href="#fig-ShiftClassDiagram">Figure 18</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
 </div>
 <div id="fig-ShiftClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/ShiftClassDiagram.png" alt="ShiftClassDiagram" width="800">
 </div>
-<div class="title">Figure 19. Overview of the Shift Class in the Model Component</div>
+<div class="title">Figure 18. Overview of the Shift Class in the Model Component</div>
 </div>
 <div class="paragraph">
 <p><code>Date</code> and <code>Time</code> use Java&#8217;s <code>LocalDate</code> and <code>LocalTime</code> classes for easy integration with the timetable.
@@ -1016,13 +979,13 @@ Similar to <code>ApplyCommand</code>, <code>UnapplyCommand</code> will:</p>
 <p>The commands <code>DeleteShiftCommand</code>, <code>ApplyCommand</code> and <code>UnapplyCommand</code> access the specified <code>Shift</code> via it&#8217;s index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1.<br>
-As seen in <em><a href="#fig-ShiftIndexBad">Figure 20</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
+As seen in <em><a href="#fig-ShiftIndexBad">Figure 19</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
 </div>
 <div id="fig-ShiftIndexBad" class="imageblock">
 <div class="content">
 <img src="images/ShiftIndexBad.png" alt="ShiftIndexBad" width="800">
 </div>
-<div class="title">Figure 20. Example of Undesired Shift Indexing</div>
+<div class="title">Figure 19. Example of Undesired Shift Indexing</div>
 </div>
 <div class="paragraph">
 <p>To avoid this, we only want to index shifts that are visible in the current timetable view.<br>
@@ -1039,13 +1002,13 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 21</a></em> below.</p>
+<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 20</a></em> below.</p>
 </div>
 <div id="fig-ShiftIndexGood" class="imageblock">
 <div class="content">
 <img src="images/ShiftIndexGood.png" alt="ShiftIndexGood" width="800">
 </div>
-<div class="title">Figure 21. Example of Desired Shift Indexing</div>
+<div class="title">Figure 20. Example of Desired Shift Indexing</div>
 </div>
 </div>
 </div>
@@ -1054,13 +1017,13 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 <h3 id="timetable-feature"><a class="link" href="#timetable-feature">4.3. Timetable Feature</a></h3>
 <div class="paragraph">
 <p>We have a timetable that increases interactivity between users and the shifts in PTMan.
-<em><a href="#fig-Feature_Timetable1">Figure 22</a></em> below shows how the timetable looks like.</p>
+<em><a href="#fig-Feature_Timetable1">Figure 21</a></em> below shows how the timetable looks like.</p>
 </div>
 <div id="fig-Feature_Timetable1" class="imageblock">
 <div class="content">
 <img src="images/Feature_Timetable1.png" alt="Feature Timetable1" width="800">
 </div>
-<div class="title">Figure 22. Example of the Timetable in PTMan</div>
+<div class="title">Figure 21. Example of the Timetable in PTMan</div>
 </div>
 <div class="sect3">
 <h4 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">4.3.1. Reason for implementation</a></h4>
@@ -1106,14 +1069,14 @@ It allows users to click on them to navigate through the weeks in the timetable.
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 23</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
+<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 22</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
 <br></p>
 </div>
 <div id="fig-TimetablePanelClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/TimetablePanelClassDiagram.png" alt="TimetablePanelClassDiagram" width="800">
 </div>
-<div class="title">Figure 23. Overview of the TimetablePanel Class in the UI Component</div>
+<div class="title">Figure 22. Overview of the TimetablePanel Class in the UI Component</div>
 </div>
 <div class="paragraph">
 <p>A <code>TimetablePanel</code> is created with its constructor:</p>
@@ -1155,7 +1118,7 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 </div>
 <div class="paragraph">
 <p>We will use <code>PartTimeManagerChangedEvent</code> to illustrate <code>updateTimetableView()</code> works.
-<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 24</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
+<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 23</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
  is posted and how it causes the <code>UI</code> to call <code>updateTimetableView()</code>.<br>
 <br></p>
 </div>
@@ -1163,10 +1126,10 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 <div class="content">
 <img src="images/updateTimetableViewHighLevelSequenceDiagram.png" alt="updateTimetableViewHighLevelSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 24. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
+<div class="title">Figure 23. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 25</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
+<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 24</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
 respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <br></p>
 </div>
@@ -1174,7 +1137,7 @@ respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <div class="content">
 <img src="images/updateTimetableViewSequenceDiagram.png" alt="updateTimetableViewSequenceDiagram" width="750">
 </div>
-<div class="title">Figure 25. Sequence Diagram to Update Timetable</div>
+<div class="title">Figure 24. Sequence Diagram to Update Timetable</div>
 </div>
 <div class="paragraph">
 <p>Here are some examples of when <code>updateTimetableView()</code> is called:<br></p>
@@ -1285,20 +1248,20 @@ through the <code>EmailService</code> class, and then finally delete the local f
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the Part-time Manager (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram (<em><a href="#fig-LogicCommand">Figure 26</a></em>) shows the inheritance diagram for commands:
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram (<em><a href="#fig-LogicCommand">Figure 25</a></em>) shows the inheritance diagram for commands:
 &#160;<br></p>
 </div>
 <div id="fig-LogicCommand" class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 26. Inheritance Diagram for Commands</div>
+<div class="title">Figure 25. Inheritance Diagram for Commands</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>As you can see from <em><a href="#fig-LogicCommand">Figure 26</a></em>, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the Part-time Manager before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implement the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p>As you can see from <em><a href="#fig-LogicCommand">Figure 25</a></em>, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the Part-time Manager before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implement the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are implemented this way:</p>
@@ -1339,25 +1302,25 @@ through the <code>EmailService</code> class, and then finally delete the local f
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the Part-time Manager. The current state of the Part-time Manager is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command) as shown in <em><a href="#fig-Undo1">Figure 27</a></em>.</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the Part-time Manager. The current state of the Part-time Manager is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command) as shown in <em><a href="#fig-Undo1">Figure 26</a></em>.</p>
 </div>
 <div id="fig-Undo1" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
-<div class="title">Figure 27. Demonstration of <code>delete 5</code> Command in Undo and Redo Stack</div>
+<div class="title">Figure 26. Demonstration of <code>delete 5</code> Command in Undo and Redo Stack</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person, as shown in <em><a href="#fig-Undo2">Figure 28</a></em>.</p>
+<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person, as shown in <em><a href="#fig-Undo2">Figure 27</a></em>.</p>
 </div>
 <div id="fig-Undo2" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
-<div class="title">Figure 28. Demonstration of <code>add n/David &#8230;&#8203;</code> Command in Undo and Redo Stack</div>
+<div class="title">Figure 27. Demonstration of <code>add n/David &#8230;&#8203;</code> Command in Undo and Redo Stack</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1378,13 +1341,13 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the Part-time Manager to the state before the <code>add</code> command executed as shown in <em><a href="#fig-Undo3">Figure 29</a></em>..</p>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the Part-time Manager to the state before the <code>add</code> command executed as shown in <em><a href="#fig-Undo3">Figure 28</a></em>..</p>
 </div>
 <div id="fig-Undo3" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
-<div class="title">Figure 29. Demonstration of <code>undo</code> Command in Undo and Redo Stack</div>
+<div class="title">Figure 28. Demonstration of <code>undo</code> Command in Undo and Redo Stack</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1400,13 +1363,13 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="paragraph">
 <p>&#160;<br>
-The following sequence diagram (<em><a href="#fig-UndoRedoSD">Figure 30</a></em>) shows how the undo operation works:</p>
+The following sequence diagram (<em><a href="#fig-UndoRedoSD">Figure 29</a></em>) shows how the undo operation works:</p>
 </div>
 <div id="fig-UndoRedoSD" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 30. Sequence Diagram for Undo Operation</div>
+<div class="title">Figure 29. Sequence Diagram for Undo Operation</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1427,37 +1390,37 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer makes sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow). <em><a href="#fig-Undo4">Figure 31</a></em> shows changes in undoStack and redoStack after a <code>clear</code> command.</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer makes sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow). <em><a href="#fig-Undo4">Figure 30</a></em> shows changes in undoStack and redoStack after a <code>clear</code> command.</p>
 </div>
 <div id="fig-Undo4" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
-<div class="title">Figure 31. Demonstration of <code>clear</code> Command in Undo and Redo Stack</div>
+<div class="title">Figure 30. Demonstration of <code>clear</code> Command in Undo and Redo Stack</div>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in <em><a href="#fig-Undo5">Figure 32</a></em>.</p>
+<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in <em><a href="#fig-Undo5">Figure 31</a></em>.</p>
 </div>
 <div id="fig-Undo5" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
-<div class="title">Figure 32. Demonstration of <code>list</code> Command in Undo and Redo Stack</div>
+<div class="title">Figure 31. Demonstration of <code>list</code> Command in Undo and Redo Stack</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command, as shown in <em><a href="#fig-Undo6">Figure 33</a></em>.</p>
+<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command, as shown in <em><a href="#fig-Undo6">Figure 32</a></em>.</p>
 </div>
 <div id="fig-Undo6" class="imageblock">
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
-<div class="title">Figure 33. Activity Diagram for Undo/Redo Feature</div>
+<div class="title">Figure 32. Activity Diagram for Undo/Redo Feature</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1646,13 +1609,13 @@ To create a password with desired password String, one can invoke the method bel
 </div>
 </div>
 <div class="paragraph">
-<p>As of version 1.2, each person and outlet now has a <code>Password</code> class. You may refer to <em><a href="#fig-PasswordCD">Figure 34</a></em> for an overview of the <code>Password</code> class.</p>
+<p>As of version 1.2, each person and outlet now has a <code>Password</code> class. You may refer to <em><a href="#fig-PasswordCD">Figure 33</a></em> for an overview of the <code>Password</code> class.</p>
 </div>
 <div id="fig-PasswordCD" class="imageblock">
 <div class="content">
 <img src="images/PasswordClassDiagram.png" alt="PasswordClassDiagram" width="700">
 </div>
-<div class="title">Figure 34. Overview of the Password Class in Model Component</div>
+<div class="title">Figure 33. Overview of the Password Class in Model Component</div>
 </div>
 <div class="paragraph">
 <p>The reason of converting password string to hashCode is to protect user’s password from being seen in the storage file.  Anyone who get hold of the data are not able to convert the hashCode back to the original password string as SHA-256 is a <a href="https://en.wikipedia.org/wiki/Collision_resistance">collision resistant</a> hash.</p>
@@ -1698,13 +1661,13 @@ setFalseAdminMode();</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-DeleteSD">Figure 35</a></em> below illustrates how the admin command is generally executed.</p>
+<p><em><a href="#fig-DeleteSD">Figure 34</a></em> below illustrates how the admin command is generally executed.</p>
 </div>
 <div id="fig-DeleteSD" class="imageblock">
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 35. Interactions inside the Logic Component for the <code>delete 1</code> Admin Command</div>
+<div class="title">Figure 34. Interactions inside the Logic Component for the <code>delete 1</code> Admin Command</div>
 </div>
 </div>
 </div>
@@ -1883,13 +1846,13 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>Right click on the file and select <code>Open with</code> &#8594; <code>Google Chrome</code>. You should see a Google Chrome window.</p>
 </li>
 <li>
-<p>Click on the <code>Print</code> option in Chrome&#8217;s menu. You should see a <code>Print</code> window as shown in <em><a href="#fig-SaveDoc">Figure 36</a></em> below.</p>
+<p>Click on the <code>Print</code> option in Chrome&#8217;s menu. You should see a <code>Print</code> window as shown in <em><a href="#fig-SaveDoc">Figure 35</a></em> below.</p>
 </li>
 <li>
 <p>Set the destination to <code>Save as PDF</code>.</p>
 </li>
 <li>
-<p>Click <code>Save</code> to save a copy of the file in PDF format. For the best results, use the settings indicated in <em><a href="#fig-SaveDoc">Figure 36</a></em>.</p>
+<p>Click <code>Save</code> to save a copy of the file in PDF format. For the best results, use the settings indicated in <em><a href="#fig-SaveDoc">Figure 35</a></em>.</p>
 </li>
 </ol>
 </div>
@@ -1897,7 +1860,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 36. Saving Documentation as PDF Files in Chrome</div>
+<div class="title">Figure 35. Saving Documentation as PDF Files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3731,7 +3694,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 09:37:13 UTC
+Last updated 2018-04-13 10:55:44 UTC
 </div>
 </div>
 </body>

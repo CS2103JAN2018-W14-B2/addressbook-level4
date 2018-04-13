@@ -34,18 +34,18 @@
 <li><a href="#employee-password">3.1.2. Employee password</a></li>
 </ul>
 </li>
-<li><a href="#shift-management">3.2. Shift Management</a></li>
-<li><a href="#timetable">3.3. Timetable</a>
+<li><a href="#outlet-management">3.2. Outlet Management</a></li>
+<li><a href="#shift-management">3.3. Shift Management</a></li>
+<li><a href="#timetable">3.4. Timetable</a>
 <ul class="sectlevel3">
-<li><a href="#shift-colours">3.3.1. Shift colours</a></li>
-<li><a href="#timetable-navigation">3.3.2. Timetable navigation</a></li>
+<li><a href="#shift-colours">3.4.1. Shift colours</a></li>
+<li><a href="#timetable-navigation">3.4.2. Timetable navigation</a></li>
 </ul>
 </li>
-<li><a href="#outlet-management">3.4. Outlet Management</a></li>
-<li><a href="#saving-the-data">3.5. Saving the data</a></li>
-<li><a href="#backing-up-the-data">3.6. Backing up the data</a></li>
-<li><a href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping track of employees' monthly salaries [Coming in v2.0]</a></li>
-<li><a href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving data to the cloud [Coming in v2.0]</a></li>
+<li><a href="#saving-the-data">3.5. Saving the Data</a></li>
+<li><a href="#backing-up-the-data">3.6. Backing Up the Data</a></li>
+<li><a href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping Track of Employees' Monthly Salaries [Coming in v2.0]</a></li>
+<li><a href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving Data to the Cloud [Coming in v2.0]</a></li>
 </ul>
 </li>
 <li><a href="#commands">4. Commands</a>
@@ -67,10 +67,11 @@
 <li><a href="#Announcement">4.1.13. Creating an announcement: <code>announcement</code></a></li>
 <li><a href="#Encrypt">4.1.14. Encrypting the local storage files: <code>encrypt</code></a></li>
 <li><a href="#Decrypt">4.1.15. Decrypting the local storage files: <code>decrypt</code></a></li>
-<li><a href="#Addshift">4.1.16. Adding a shift: <code>addshift</code></a></li>
-<li><a href="#Deleteshift">4.1.17. Deleting a shift: <code>deleteshift</code></a></li>
-<li><a href="#Apply">4.1.18. Applying an employee for a shift: <code>apply</code></a></li>
-<li><a href="#Unapply">4.1.19. Removing an employee from a shift: <code>unapply</code></a></li>
+<li><a href="#viewing-encryption-status-code-viewencrytion-code">4.1.16. Viewing encryption status: <code>viewencrytion</code></a></li>
+<li><a href="#Addshift">4.1.17. Adding a shift: <code>addshift</code></a></li>
+<li><a href="#Deleteshift">4.1.18. Deleting a shift: <code>deleteshift</code></a></li>
+<li><a href="#Apply">4.1.19. Applying an employee for a shift: <code>apply</code></a></li>
+<li><a href="#Unapply">4.1.20. Removing an employee from a shift: <code>unapply</code></a></li>
 </ul>
 </li>
 <li><a href="#employee-commands">4.2. Employee Commands</a>
@@ -290,7 +291,26 @@ You may refer to <a href="#Changing your employee password: <code>cp</code>">[Ch
 </div>
 </div>
 <div class="sect2">
-<h3 id="shift-management"><a class="link" href="#shift-management">3.2. Shift Management</a></h3>
+<h3 id="outlet-management"><a class="link" href="#outlet-management">3.2. Outlet Management</a></h3>
+<div class="paragraph">
+<p>If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
+The timetable automatically re-sizes according to the operating hours. You can also create any announcement and broadcast to your employees.</p>
+</div>
+<div class="paragraph">
+<p>If you are an employee, you can view announcement created by your manager and take actions accordingly.</p>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Feature_Outlet">Figure 2</a></em> shows where you can view your outlet information.</p>
+</div>
+<div id="fig-Feature_Outlet" class="imageblock">
+<div class="content">
+<img src="images/IntroductionToOutlet.jpg" alt="IntroductionToOutlet" width="790">
+</div>
+<div class="title">Figure 2. Sample Outlet Information Displayed<br></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shift-management"><a class="link" href="#shift-management">3.3. Shift Management</a></h3>
 <div class="paragraph">
 <p>If you are a manager, PTMan allows you to manage your employees' work shifts.</p>
 </div>
@@ -302,13 +322,13 @@ You may refer to <a href="#Changing your employee password: <code>cp</code>">[Ch
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable"><a class="link" href="#timetable">3.3. Timetable</a></h3>
+<h3 id="timetable"><a class="link" href="#timetable">3.4. Timetable</a></h3>
 <div class="paragraph">
 <p>PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
 timetable and you, as a user, so this section aims to familiarise you with the timetable.</p>
 </div>
 <div class="sect3">
-<h4 id="shift-colours"><a class="link" href="#shift-colours">3.3.1. Shift colours</a></h4>
+<h4 id="shift-colours"><a class="link" href="#shift-colours">3.4.1. Shift colours</a></h4>
 <div class="paragraph">
 <p>The shifts in PTMan are colour-coded, and here is what the different colours mean:</p>
 </div>
@@ -332,29 +352,29 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 </ul>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-Feature_Timetable1">Figure 2</a></em> below shows how the default timetable can look like in PTMan.<br>
+<p><em><a href="#fig-Feature_Timetable1">Figure 3</a></em> below shows how the default timetable can look like in PTMan.<br>
 <br></p>
 </div>
 <div id="fig-Feature_Timetable1" class="imageblock">
 <div class="content">
 <img src="images/Feature_Timetable1.png" alt="Feature Timetable1" width="790">
 </div>
-<div class="title">Figure 2. A Sample Timetable with Shifts<br></div>
+<div class="title">Figure 3. A Sample Timetable with Shifts<br></div>
 </div>
 <div class="paragraph">
 <p>PTMan also allows employees to view their own shifts using the <a href="#Displaying an employee’s shifts on the timetable: <code>select</code>"><code>select</code></a> command.
-<em><a href="#fig-Feature_Timetable2">Figure 3</a></em> shows how the timetable can look like when an employee is selected.
+<em><a href="#fig-Feature_Timetable2">Figure 4</a></em> shows how the timetable can look like when an employee is selected.
 <br></p>
 </div>
 <div id="fig-Feature_Timetable2" class="imageblock">
 <div class="content">
 <img src="images/Feature_Timetable2.png" alt="Feature Timetable2" width="790">
 </div>
-<div class="title">Figure 3. A Sample Timetable with Shifts after <code>select</code><br></div>
+<div class="title">Figure 4. A Sample Timetable with Shifts after <code>select</code><br></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="timetable-navigation"><a class="link" href="#timetable-navigation">3.3.2. Timetable navigation</a></h4>
+<h4 id="timetable-navigation"><a class="link" href="#timetable-navigation">3.4.2. Timetable navigation</a></h4>
 <div class="paragraph">
 <p>There are two ways to navigate through the different weeks in the timetable:</p>
 </div>
@@ -400,12 +420,12 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 <li>
 <p>At the top of the timetable, there is a navigation bar with two arrow buttons which you can click on.
 These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to the previous and next week respectively.
-<em><a href="#fig-Feature_Timetable3">Figure 4</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
+<em><a href="#fig-Feature_Timetable3">Figure 5</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
 <div id="fig-Feature_Timetable3" class="imageblock">
 <div class="content">
 <img src="images/Feature_Timetable3.png" alt="Feature Timetable3" width="790">
 </div>
-<div class="title">Figure 4. Navigation Bar of Timetable<br></div>
+<div class="title">Figure 5. Navigation Bar of Timetable<br></div>
 </div>
 </li>
 </ul>
@@ -416,32 +436,13 @@ These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to
 </div>
 </div>
 <div class="sect2">
-<h3 id="outlet-management"><a class="link" href="#outlet-management">3.4. Outlet Management</a></h3>
-<div class="paragraph">
-<p>If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
-The timetable automatically re-sizes according to the operating hours. You can also create any announcement and broadcast to your employees.</p>
-</div>
-<div class="paragraph">
-<p>If you are an employee, you can view announcement created by your manager and take actions accordingly.</p>
-</div>
-<div class="paragraph">
-<p><em><a href="#fig-Feature_Outlet">Figure 5</a></em> shows where you can view your outlet information.</p>
-</div>
-<div id="fig-Feature_Outlet" class="imageblock">
-<div class="content">
-<img src="images/IntroductionToOutlet.jpg" alt="IntroductionToOutlet" width="790">
-</div>
-<div class="title">Figure 5. Sample Outlet Information Displayed<br></div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.5. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.5. Saving the Data</a></h3>
 <div class="paragraph">
 <p>All data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="backing-up-the-data"><a class="link" href="#backing-up-the-data">3.6. Backing up the data</a></h3>
+<h3 id="backing-up-the-data"><a class="link" href="#backing-up-the-data">3.6. Backing Up the Data</a></h3>
 <div class="paragraph">
 <p>Backup files are automatically created and saved in the hard disk upon exit of the app. There is no need to do backup manually.<br>
 You can replace any local storage files with backup files by the following steps:</p>
@@ -473,14 +474,14 @@ You can replace any local storage files with backup files by the following steps
 </div>
 </div>
 <div class="sect2">
-<h3 id="keeping-track-of-employees-monthly-salaries-coming-in-v2-0"><a class="link" href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping track of employees' monthly salaries [Coming in v2.0]</a></h3>
+<h3 id="keeping-track-of-employees-monthly-salaries-coming-in-v2-0"><a class="link" href="#keeping-track-of-employees-monthly-salaries-coming-in-v2-0">3.7. Keeping Track of Employees' Monthly Salaries [Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>As employees work, their pay is calculated based on the hours they have worked.
 The manager can use this information to distribute their salaries.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data-to-the-cloud-coming-in-v2-0"><a class="link" href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving data to the cloud [Coming in v2.0]</a></h3>
+<h3 id="saving-data-to-the-cloud-coming-in-v2-0"><a class="link" href="#saving-data-to-the-cloud-coming-in-v2-0">3.8. Saving Data to the Cloud [Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Currently, PTMan is meant to be used on a single shared device as it is limited by local storage.
 By saving PTMan&#8217;s data to the cloud, both employees and managers can access PTMan from their own devices since the data can be shared.</p>
@@ -1015,7 +1016,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <p>Edits the outlet information.<br></p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>editoutlet [n/NAME] [h/OPERATING_HOURS] [c/CONTACT_NUMBER] [e/EMAIL]</code> <br>
+<p><strong>Format:</strong> <code>editoutlet n/OUTLET_NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL</code> <br>
 <strong>Shorthand:</strong> <code>eo</code></p>
 </div>
 <div class="sidebarblock">
@@ -1062,8 +1063,9 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </div>
 </li>
 <li>
-<p>You can edit the name, operating hours, contact number, and email of the outlet to be <code>AwesomeCoffee</code>, <code>10am to 11pm</code>, <code>98134086</code>, and <code>awesomecoffee@gmail.com</code> respectively, type:<br>
-<code>editoutlet n/AwesomeCoffee h/1000-2300 c/98134086 e/awesomecoffee@gmail.com</code>. Or you can refer to <em><a href="#fig-Edit1">Figure 19</a></em>.</p>
+<p>In the admin mode, you can edit the name, operating hours, contact number, and email of the outlet to be <code>AwesomeCoffee</code>, <code>10am to 11pm</code>, <code>98134086</code>, and <code>awesomecoffee@gmail.com</code> respectively, by typing:<br>
+<code>editoutlet n/AwesomeCoffee h/1000-2300 c/98134086 e/awesomecoffee@gmail.com</code>.<br>
+You can refer to <em><a href="#fig-Edit1">Figure 19</a></em>.</p>
 <div id="fig-Edit1" class="imageblock">
 <div class="content">
 <img src="images/Ui_editoutlet1.png" alt="Ui editoutlet1" width="790">
@@ -1072,21 +1074,21 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </div>
 </li>
 <li>
-<p>Click <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
+<p>Press <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
 <em><a href="#fig-Edit2">Figure 20</a></em> shows how PTMan should look like after the above command.</p>
 <div id="fig-Edit2" class="imageblock">
 <div class="content">
-<img src="images/Ui_editoutlet2.png" alt="Ui editoutlet2" width="790">
+<img src="images/Ui_editoutlet2.png" alt="Ui editoutlet2" width="600">
 </div>
 <div class="title">Figure 20. Successful editing of outlet information in PTMan<br></div>
 </div>
 </li>
 <li>
-<p>To only edit the name and contact number to be <code>Nice Dim Sum</code> and <code>901234567</code> respectively, type: <code>editoutlet n/Nice Dim Sum c/901234567</code>.
+<p>To only edit the name and contact number to be <code>Nice Dim Sum</code> and <code>901234567</code> respectively, you can type: <code>editoutlet n/Nice Dim Sum c/901234567</code>.
 You will see changes as shown in <em><a href="#fig-Edit3">Figure 21</a></em>.</p>
 <div id="fig-Edit3" class="imageblock">
 <div class="content">
-<img src="images/Ui_editoutlet3.png" alt="Ui editoutlet3" width="790">
+<img src="images/Ui_editoutlet3.png" alt="Ui editoutlet3" width="600">
 </div>
 <div class="title">Figure 21. Successful editing of outlet information in PTMan<br></div>
 </div>
@@ -1109,9 +1111,7 @@ You will see changes as shown in <em><a href="#fig-Edit3">Figure 21</a></em>.</p
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Your store has a <strong>new drink released this coming Wednesday</strong>, and you want your employees who come working on Wednesday to be
-familiar with the recipe for it. You can leave a note for your employees so that they can be prepared for their shifts.
-To make an announcement in PTMan, you can type the following command as illustrated in <em><a href="#fig-Announce1">Figure 22</a></em>.</p>
+<p>You can leave a note for your employees by making an announcement in PTMan. You can type the following command as illustrated in <em><a href="#fig-Announce1">Figure 22</a></em>.</p>
 <div id="fig-Announce1" class="imageblock">
 <div class="content">
 <img src="images/Ui_announcement1.png" alt="Ui announcement1" width="790">
@@ -1124,7 +1124,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 <em><a href="#fig-Announce2">Figure 23</a></em> shows how PTMan should look like after the above command.</p>
 <div id="fig-Announce2" class="imageblock">
 <div class="content">
-<img src="images/Ui_announcement2.png" alt="Ui announcement2" width="790">
+<img src="images/Ui_announcement2.png" alt="Ui announcement2" width="600">
 </div>
 <div class="title">Figure 23. Successful announcement made in PTMan<br></div>
 </div>
@@ -1145,7 +1145,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 </div>
 <div id="fig-SuccessfulEncryptCommand" class="imageblock">
 <div class="content">
-<img src="images/SuccessfulEncryptCommand.jpg" alt="SuccessfulEncryptCommand" width="790">
+<img src="images/SuccessfulEncryptCommand.jpg" alt="SuccessfulEncryptCommand" width="500">
 </div>
 <div class="title">Figure 24. Successful <code>encrypt</code> command made in PTMan<br></div>
 </div>
@@ -1161,7 +1161,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 <p>Open the folder named <code>data</code>. You will see two files <code>outletinformation.xml</code> and <code>parttimemanager.xml</code> there.</p>
 </li>
 <li>
-<p>Open <code>outletinformation.xml</code>. The third line of the file indicates the encryption status with reference to <em><a href="#fig-Encrypt">Figure 25</a></em>.</p>
+<p>Open <code>outletinformation.xml</code> with Internet Explorer (IE). The third line of the file indicates the encryption status with reference to <em><a href="#fig-Encrypt">Figure 25</a></em>.</p>
 </li>
 </ol>
 </div>
@@ -1172,7 +1172,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 <div class="content">
 <img src="images/OutletInformationEncryptedXMLFile.jpg" alt="OutletInformationEncryptedXMLFile" width="790">
 </div>
-<div class="title">Figure 25. Example of Encrypted <code>outletinformation.xml</code> File in <code>data</code> Folder<br></div>
+<div class="title">Figure 25. Example of encrypted <code>outletinformation.xml</code> file in <code>data</code> folder<br></div>
 </div>
 </div>
 <div class="sect3">
@@ -1188,7 +1188,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 </div>
 <div id="fig-SuccessfulDecryptCommand" class="imageblock">
 <div class="content">
-<img src="images/SuccessfulDecryptCommand.jpg" alt="SuccessfulDecryptCommand" width="790">
+<img src="images/SuccessfulDecryptCommand.jpg" alt="SuccessfulDecryptCommand" width="500">
 </div>
 <div class="title">Figure 26. Successful <code>decrypt</code> command made in PTMan<br></div>
 </div>
@@ -1199,11 +1199,30 @@ To make an announcement in PTMan, you can type the following command as illustra
 <div class="content">
 <img src="images/OutletInformationDecryptedXMLFile.jpg" alt="OutletInformationDecryptedXMLFile" width="790">
 </div>
-<div class="title">Figure 27. Example of Decrypted <code>outletinformation.xml</code> File in <code>data</code> Folder<br></div>
+<div class="title">Figure 27. Example of decrypted <code>outletinformation.xml</code> file in <code>data</code> folder<br></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Addshift"><a class="link" href="#Addshift">4.1.16. Adding a shift: <code>addshift</code></a></h4>
+<h4 id="viewing-encryption-status-code-viewencrytion-code"><a class="link" href="#viewing-encryption-status-code-viewencrytion-code">4.1.16. Viewing encryption status: <code>viewencrytion</code></a></h4>
+<div class="paragraph">
+<p>Shows encryption status of local storage files.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>viewencryption</code><br>
+<strong>Shorthand:</strong> <code>ve</code></p>
+</div>
+<div class="paragraph">
+<p>After your <code>viewencryption</code> command is executed successfully, you would see an encryption status message below the command bar as shown in <em><a href="#fig-SuccessfulVECommand">Figure 28</a></em>.</p>
+</div>
+<div id="fig-SuccessfulVECommand" class="imageblock">
+<div class="content">
+<img src="images/SuccessfulVECommand.jpg" alt="SuccessfulVECommand" width="400">
+</div>
+<div class="title">Figure 28. Example of <code>viewencryption</code> command made in PTMan<br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Addshift"><a class="link" href="#Addshift">4.1.17. Adding a shift: <code>addshift</code></a></h4>
 <div class="paragraph">
 <p>Adds a shift to the timetable to indicate that you require employees at that period.<br></p>
 </div>
@@ -1245,7 +1264,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 </div>
 </div>
 <div class="sect3">
-<h4 id="Deleteshift"><a class="link" href="#Deleteshift">4.1.17. Deleting a shift: <code>deleteshift</code></a></h4>
+<h4 id="Deleteshift"><a class="link" href="#Deleteshift">4.1.18. Deleting a shift: <code>deleteshift</code></a></h4>
 <div class="paragraph">
 <p>Deletes a shift from the timetable.</p>
 </div>
@@ -1284,7 +1303,7 @@ To make an announcement in PTMan, you can type the following command as illustra
 </div>
 </div>
 <div class="sect3">
-<h4 id="Apply"><a class="link" href="#Apply">4.1.18. Applying an employee for a shift: <code>apply</code></a></h4>
+<h4 id="Apply"><a class="link" href="#Apply">4.1.19. Applying an employee for a shift: <code>apply</code></a></h4>
 <div class="paragraph">
 <p>Applies an employee for a shift.<br></p>
 </div>
@@ -1332,14 +1351,14 @@ To make an announcement in PTMan, you can type the following command as illustra
 </td>
 <td class="content">
 If you have accidentally applied the employee for the wrong shift, you may use the <code>unapply</code> command.<br>
-Refer to <a href="#Unapply">Section 4.1.19</a> for more information.
+Refer to <a href="#Unapply">Section 4.1.20</a> for more information.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Unapply"><a class="link" href="#Unapply">4.1.19. Removing an employee from a shift: <code>unapply</code></a></h4>
+<h4 id="Unapply"><a class="link" href="#Unapply">4.1.20. Removing an employee from a shift: <code>unapply</code></a></h4>
 <div class="paragraph">
 <p>Removes an employee from a shift.<br></p>
 </div>
@@ -1495,22 +1514,22 @@ For security purposes, you are highly encouraged to change your password the mom
 <strong>Shorthand:</strong> <code>cp</code> <code>INDEX pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code></p>
 </div>
 <div class="paragraph">
-<p>Your <code>INDEX</code> will be displayed at the right side panel of PTMan. For example, if you are Asther toh, you can execute the command as shown in <em><a href="#fig-changingpw">Figure 28</a></em>.</p>
+<p>Your <code>INDEX</code> will be displayed at the right side panel of PTMan. For example, if you are Asther toh, you can execute the command as shown in <em><a href="#fig-changingpw">Figure 29</a></em>.</p>
 </div>
 <div id="fig-changingpw" class="imageblock">
 <div class="content">
 <img src="images/changingpw.png" alt="changingpw" width="790">
 </div>
-<div class="title">Figure 28. Resetting password in PTMan</div>
+<div class="title">Figure 29. Resetting password in PTMan</div>
 </div>
 <div class="paragraph">
-<p>After executing <code>changepw</code> successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changepw">Figure 29</a></em>.</p>
+<p>After executing <code>changepw</code> successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changepw">Figure 30</a></em>.</p>
 </div>
 <div id="fig-changepw" class="imageblock">
 <div class="content">
 <img src="images/changepw.png" alt="changepw" width="790">
 </div>
-<div class="title">Figure 29. Resetting password in PTMan</div>
+<div class="title">Figure 30. Resetting password in PTMan</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1536,22 +1555,22 @@ The sequence of current and new password entered must be of the format.
 <strong>Shorthand:</strong> <code>rp</code> <code>INDEX</code><br></p>
 </div>
 <div class="paragraph">
-<p>If you forgot your password, you can simply reset your password with your <code>INDEX</code> displayed at the right panel as shown in <em><a href="#fig-resetPw">Figure 30</a></em>.</p>
+<p>If you forgot your password, you can simply reset your password with your <code>INDEX</code> displayed at the right panel as shown in <em><a href="#fig-resetPw">Figure 31</a></em>.</p>
 </div>
 <div id="fig-resetPw" class="imageblock">
 <div class="content">
 <img src="images/resettingpw.png" alt="resettingpw" width="790">
 </div>
-<div class="title">Figure 30. Resetting password in PTMan</div>
+<div class="title">Figure 31. Resetting password in PTMan</div>
 </div>
 <div class="paragraph">
-<p>After executing <code>resetpw</code>, a temporarily password  will be sent to your email registered with your outlet manager as shown in <em><a href="#fig-resetPw">Figure 30</a></em>.</p>
+<p>After executing <code>resetpw</code>, a temporarily password  will be sent to your email registered with your outlet manager as shown in <em><a href="#fig-resetPw">Figure 31</a></em>.</p>
 </div>
 <div id="fig-resetPw" class="imageblock">
 <div class="content">
 <img src="images/resetpw.png" alt="resetpw" width="790">
 </div>
-<div class="title">Figure 31. Reset password in PTMan</div>
+<div class="title">Figure 32. Reset password in PTMan</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1588,13 +1607,13 @@ Temporary password should be changed immediately after resetting.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 32</a></em>.</p>
+<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 33</a></em>.</p>
 </div>
 <div id="fig-Help" class="imageblock">
 <div class="content">
 <img src="images/Ui_help.png" alt="Ui help" width="790">
 </div>
-<div class="title">Figure 32. Accessing the Help Option From the Menu Bar</div>
+<div class="title">Figure 33. Accessing the Help Option From the Menu Bar</div>
 </div>
 </td>
 </tr>
@@ -1978,7 +1997,7 @@ after using the <code>select</code> command.<br></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 09:37:13 UTC
+Last updated 2018-04-13 10:55:44 UTC
 </div>
 </div>
 </body>
