@@ -177,8 +177,127 @@ The implementation too was challenging as it required changes to existing comman
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="timetable"><a class="link" href="#timetable">Timetable</a></h3>
+<div class="paragraph">
+<p>PTMan has a timetable that displays all the shifts in a weekly format. There are many interactions between the
+timetable and you, as a user, so this section aims to familiarise you with the timetable.</p>
+</div>
 <div class="sect3">
-<h4 id="Viewshift"><a class="link" href="#Viewshift">Listing all employees: <code>viewshift</code></a></h4>
+<h4 id="shift-colours"><a class="link" href="#shift-colours">Shift colours</a></h4>
+<div class="paragraph">
+<p>The shifts in PTMan are colour-coded, and here is what the different colours mean:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Green: Shift is available with multiple slots left.</p>
+</li>
+<li>
+<p>Yellow: Shift is available, but slots are running out.</p>
+</li>
+<li>
+<p>Red: Shift is no longer available, slots for the shift have run out.</p>
+</li>
+<li>
+<p>Blue: Shift is taken up by currently selected employee.</p>
+</li>
+<li>
+<p>Brown: Shift is not taken up by currently selected employee.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Feature_Timetable1">Figure 1</a></em> below shows how the default timetable can look like in PTMan.<br>
+<br></p>
+</div>
+<div id="fig-Feature_Timetable1" class="imageblock">
+<div class="content">
+<img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="790">
+</div>
+<div class="title">Figure 1. A Sample Timetable with Shifts<br></div>
+</div>
+<div class="paragraph">
+<p>PTMan also allows employees to view their own shifts using the <a href="#Displaying an employee’s shifts on the timetable: <code>select</code>"><code>select</code></a> command.
+<em><a href="#fig-Feature_Timetable2">Figure 2</a></em> shows how the timetable can look like when an employee is selected.
+<br></p>
+</div>
+<div id="fig-Feature_Timetable2" class="imageblock">
+<div class="content">
+<img src="../images/Feature_Timetable2.png" alt="Feature Timetable2" width="790">
+</div>
+<div class="title">Figure 2. A Sample Timetable with Shifts after <code>select</code><br></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="timetable-navigation"><a class="link" href="#timetable-navigation">Timetable navigation</a></h4>
+<div class="paragraph">
+<p>There are two ways to navigate through the different weeks in the timetable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using Keyboard Shortcuts</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Windows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> : Navigates timetable to the next week.</p>
+</li>
+<li>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> : Navigates timetable to the previous week.</p>
+</li>
+<li>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> : Navigates timetable to the current week.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Mac:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> : Navigates timetable to the next week.</p>
+</li>
+<li>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> : Navigates timetable to the previous week.</p>
+</li>
+<li>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> : Navigates timetable to the current week.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Using Mouse Clicks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>At the top of the timetable, there is a navigation bar with two arrow buttons which you can click on.
+These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to the previous and next week respectively.
+<em><a href="#fig-Feature_Timetable3">Figure 3</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
+<div id="fig-Feature_Timetable3" class="imageblock">
+<div class="content">
+<img src="../images/Feature_Timetable3.png" alt="Feature Timetable3" width="790">
+</div>
+<div class="title">Figure 3. Navigation Bar of Timetable<br></div>
+</div>
+<div id="Viewshift" class="paragraph">
+<p>==== Listing all employees: <code>viewshift</code></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Shows a list of all employees who have applied for the input shift index in PTMan.<br></p>
 </div>
@@ -285,6 +404,7 @@ where they have navigated the timetable week to.<br></p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
@@ -308,7 +428,7 @@ where they have navigated the timetable week to.<br></p>
 <div class="content">
 <img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="800">
 </div>
-<div class="title">Figure 1. Example of the Timetable in PTMan</div>
+<div class="title">Figure 4. Example of the Timetable in PTMan</div>
 </div>
 <div class="sect3">
 <h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h4>
@@ -354,14 +474,14 @@ It allows users to click on them to navigate through the weeks in the timetable.
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 2</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
+<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 5</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
 <br></p>
 </div>
 <div id="fig-TimetablePanelClassDiagram" class="imageblock">
 <div class="content">
 <img src="../images/TimetablePanelClassDiagram.png" alt="TimetablePanelClassDiagram" width="800">
 </div>
-<div class="title">Figure 2. Overview of the TimetablePanel Class in the UI Component</div>
+<div class="title">Figure 5. Overview of the TimetablePanel Class in the UI Component</div>
 </div>
 <div class="paragraph">
 <p>A <code>TimetablePanel</code> is created with its constructor:</p>
@@ -403,7 +523,7 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 </div>
 <div class="paragraph">
 <p>We will use <code>PartTimeManagerChangedEvent</code> to illustrate <code>updateTimetableView()</code> works.
-<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 3</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
+<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 6</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
  is posted and how it causes the <code>UI</code> to call <code>updateTimetableView()</code>.<br>
 <br></p>
 </div>
@@ -411,10 +531,10 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 <div class="content">
 <img src="../images/updateTimetableViewHighLevelSequenceDiagram.png" alt="updateTimetableViewHighLevelSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
+<div class="title">Figure 6. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 4</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
+<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 7</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
 respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <br></p>
 </div>
@@ -422,7 +542,7 @@ respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <div class="content">
 <img src="../images/updateTimetableViewSequenceDiagram.png" alt="updateTimetableViewSequenceDiagram" width="750">
 </div>
-<div class="title">Figure 4. Sequence Diagram to Update Timetable</div>
+<div class="title">Figure 7. Sequence Diagram to Update Timetable</div>
 </div>
 <div class="paragraph">
 <p>Here are some examples of when <code>updateTimetableView()</code> is called:<br></p>
@@ -530,7 +650,7 @@ through the <code>EmailService</code> class, and then finally delete the local f
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 15:04:29 UTC
+Last updated 2018-04-14 12:27:58 UTC
 </div>
 </div>
 </body>
