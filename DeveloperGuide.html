@@ -640,17 +640,17 @@ The command execution can affect the <code>Model</code> (e.g. adding a person) a
 <h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">4.1.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>PTMan is designed for outlets such as bubble tea shops and fast food restaurants which require a large number of part-time workers.
-This outlet feature stores basic outlet information such as outlet name, operating hours, contact number, email and admin password managed by the employers.
-Such details are essential to facilitate other functions such as the access control system and the timetable displayed in the app.</p>
+This outlet feature stores essential outlet information such as outlet name, operating hours, contact number, email and admin password.
+Such details are also important to facilitate other functions such as the access control system and the timetable displayed in the app.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-and-alternative-implementation-considered"><a class="link" href="#how-it-is-implemented-and-alternative-implementation-considered">4.1.2. How it is implemented and alternative implementation considered</a></h4>
+<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">4.1.2. How it is implemented</a></h4>
 <div class="sect4">
 <h5 id="outletinformation-class"><a class="link" href="#outletinformation-class">4.1.2.1. OutletInformation class</a></h5>
 <div class="paragraph">
 <p>The <code>OutletInformation</code> class represents an outlet in PTMan.
-It supports relevant commands that utilize attributes of this class. It is also responsible for information displayed in the UI and data stored in local storage files.<br></p>
+It supports commands that utilize attributes of this class. It is also responsible for information displayed in the UI and data stored in local storage files.<br></p>
 </div>
 <div class="paragraph">
 <p><em><a href="#fig-OutletClassDiagram">Figure 11</a></em> is a class diagram that displays the association between <code>OutletInformation</code> and other classes in the <code>Model</code>.</p>
@@ -662,43 +662,26 @@ It supports relevant commands that utilize attributes of this class. It is also 
 <div class="title">Figure 11. Overview of the OutletInformation Class in the Model Component</div>
 </div>
 <div class="paragraph">
-<p>Currently, the <code>OutletInformation</code> object initialized in the <code>PartTimeManager</code> is created by calling its default constructor:</p>
+<p>With reference to <em><a href="#fig-OutletClassDiagram">Figure 11</a></em>, an <code>OutletInformation</code> object stores a boolean value <code>isDataEncrypted</code> and six other attributes, including <code>masterPassword</code>, <code>outletName</code>, <code>operatingHours</code>, <code>outletEmail</code>, <code>outletContact</code> and <code>announcement</code>.
+Currently, the <code>OutletInformation</code> object initialized in the <code>PartTimeManager</code> is created by calling its default constructor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>OutletInformation()</pre>
+<pre class="CodeRay highlight"><code data-lang="java">OutletInformation outlet = <span class="keyword">new</span> OutletInformation();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This default constructor initializes a boolean value <code>isDataEncrypted</code> to false and six other fields, including <code>masterPassword</code>, <code>outletName</code>, <code>operatingHours</code>, <code>outletEmail</code>, <code>outletContact</code>, <code>announcement</code> as shown in <em>Figure 11</em>, to respective default values.</p>
-</div>
-<div class="paragraph">
-<p>The reason why it is implemented in this way is that with the help of initial values, any employer new to PTMan does not need to create a new <code>OutletInformation</code> object.
-It saves time as the <code>OutletInformation</code> object has already been created with default values.
-Employers can edit those values by entering an <code>editoutlet</code> command after they log in.</p>
-</div>
-<div class="paragraph">
-<p>In addition, there is an alternative way to create an <code>OutletInformation</code> object:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>OutletInformation(OutletName outletName, OperatingHours operatingHours, OutletContact outletContact, OutletEmail outletEmail, Announcement announcement, Password masterPassword, boolean isDataEncrypted)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This constructor allows flexibility in storing outlet information where all seven attributes can be initialized with specific values.
-However, you must be careful when you want to call this constructor.
-Since <code>isDataEncrypted</code> can be initialized to true, you may want to inform the users new to this app that data stored in local files are encrypted.
-Similarly, you need to update the default admin password in the User Guide to whatever you used to initialize the <code>masterPassword</code>.
-Otherwise, users are unable to log in with correct password when they start using the app for the first time.</p>
+<p>This default constructor initializes a boolean value <code>isDataEncrypted</code> to false and six other attributes to respective default values.
+This is because with the help of initial values, any employer new to PTMan does not need to create a new <code>OutletInformation</code> object using commands such as <code>addoutlet</code>.
+It provides convenience for users. Outlet managers can edit those values by entering an <code>editoutlet</code> command after they log in.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="commands"><a class="link" href="#commands">4.1.2.2. Commands</a></h5>
 <div class="paragraph">
-<p>Currently, there are two commands that allow employers to change attributes of the <code>OutletInformation</code>: <code>editoutlet</code> and <code>announcement</code> commands which are implemented in similar ways.
+<p>Currently, there are two commands that allow outlet managers to change attributes of the <code>OutletInformation</code>: <code>editoutlet</code> and <code>announcement</code> commands which are implemented in similar ways.
 The implementation of <code>editoutlet</code> command will be explained in details.
-In addition, there are also commands that allow employers to encrypt and decrypt local storage files.
+In addition, there are also commands that allow managers to encrypt and decrypt local storage files.
 The implementation of <code>encrypt</code> command and how data is encrypted will be explained in details.<br></p>
 </div>
 <div class="sect5">
@@ -714,7 +697,38 @@ The information displayed will change after a successful command.</p>
 <div class="title">Figure 12. Example of the Outlet Information Displayed</div>
 </div>
 <div class="paragraph">
-<p>Currently, editing with some fields unspecified is allowed.
+<p>When an <code>editoutlet</code> command executes successfully, three events will be raised and handled as shown in <em><a href="#fig-EditOutletCommandHighLevelSequenceDiagram">Figure 13</a></em>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>OutletNameChangedEvent</code> updates the outlet name displayed in the app.</p>
+</li>
+<li>
+<p><code>OutletInformationChangedEvent</code> updates the operating hours, contact number and email displayed in the app.</p>
+</li>
+<li>
+<p><code>OutletDataChangedEvent</code> saves latest outlet information to the local storage file "data/outletinformation.xml".</p>
+</li>
+</ol>
+</div>
+<div id="fig-EditOutletCommandHighLevelSequenceDiagram" class="imageblock">
+<div class="content">
+<img src="images/EditOutletCommandHighLevelSequenceDiagrams.png" alt="EditOutletCommandHighLevelSequenceDiagrams" width="800">
+</div>
+<div class="title">Figure 13. High Level Sequence Diagram for the <code>editoutlet</code> Command</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram (<em><a href="#fig-EditOutletCommandSequenceDiagram">Figure 14</a></em>) illustrates how an <code>editoutlet</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
+</div>
+<div id="fig-EditOutletCommandSequenceDiagram" class="imageblock">
+<div class="content">
+<img src="images/EditOutletCommandSequenceDiagram.png" alt="EditOutletCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 14. Interactions inside the Logic Component for the <code>editoutlet n/Edited Outlet</code> Admin Command</div>
+</div>
+<div class="paragraph">
+<p>Currently, editing outlet information with some fields unspecified is allowed.
 For example, <code>editoutlet n/OUTLETNAME</code> is a valid command.
 The reason why it is implemented in this why is that it enables employers to edit only the information required for change.</p>
 </div>
@@ -743,37 +757,6 @@ with reference to the function below:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The following sequence diagram (<em><a href="#fig-EditOutletCommandSequenceDiagram">Figure 13</a></em>) illustrates how an <code>editoutlet</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
-</div>
-<div id="fig-EditOutletCommandSequenceDiagram" class="imageblock">
-<div class="content">
-<img src="images/EditOutletCommandSequenceDiagram.png" alt="EditOutletCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 13. Interactions inside the Logic Component for the <code>editoutlet n/Edited Outlet</code> Admin Command</div>
-</div>
-<div class="paragraph">
-<p>When an <code>editoutlet</code> executes successfully, three events will be raised and handled as shown in <em><a href="#fig-EditOutletCommandHighLevelSequenceDiagram">Figure 14</a></em>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>OutletNameChangedEvent</code> updates the outlet name displayed in the app.</p>
-</li>
-<li>
-<p><code>OutletInformationChangedEvent</code> updates the operating hours, contact number and email displayed in the app.</p>
-</li>
-<li>
-<p><code>OutletDataChangedEvent</code> saves latest outlet information to local storage file "data/outletinformation.xml".</p>
-</li>
-</ol>
-</div>
-<div id="fig-EditOutletCommandHighLevelSequenceDiagram" class="imageblock">
-<div class="content">
-<img src="images/EditOutletCommandHighLevelSequenceDiagrams.png" alt="EditOutletCommandHighLevelSequenceDiagrams" width="800">
-</div>
-<div class="title">Figure 14. High Level Sequence Diagram for the <code>editoutlet</code> Command</div>
-</div>
 </div>
 <div class="sect5">
 <h6 id="encrypt-and-decrypt-commands"><a class="link" href="#encrypt-and-decrypt-commands">4.1.2.2.2. Encrypt and decrypt commands</a></h6>
@@ -781,27 +764,18 @@ with reference to the function below:</p>
 <p>Since PTMan stores files locally, it is highly possible that any worker in the outlet can open the storage files and read data inside.
 Such files store a large amount of essential and private data such as admin password, employees' passwords, employees' phones, addresses, and emails.
 By using the <code>encrypt</code> command, the data in local storage files can be hidden from any group of people who do not have the access to it.
-Employers can use the <code>decrypt</code> command to make the files human-readable.</p>
+Managers can use the <code>decrypt</code> command to make the files human-readable.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram (<em><a href="#fig-EncryptCommandSequenceDiagram">Figure 15</a></em>) illustrates how an <code>encrypt</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
-</div>
-<div id="fig-EncryptCommandSequenceDiagram" class="imageblock">
-<div class="content">
-<img src="images/EncryptDataCommandSequenceDiagram.png" alt="EncryptDataCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 15. Interactions inside the Logic Component for the <code>encrypt</code> Admin Command</div>
-</div>
-<div class="paragraph">
-<p>When an <code>encrypt</code> executes successfully, two events will be raised and handled with reference to <em><a href="#fig-EncryptCommandHighLevelSequenceDiagram">Figure 16</a></em>:</p>
+<p>When an <code>encrypt</code> command executes successfully, two events will be raised and handled with reference to <em><a href="#fig-EncryptCommandHighLevelSequenceDiagram">Figure 15</a></em>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>PartTimeManagerChangedEvent</code> saves encrypted or decrypted information of employees and shifts to local storage file "data/parttimemanager.xml".</p>
+<p><code>PartTimeManagerChangedEvent</code> saves encrypted or decrypted information of employees and shifts to the local storage file "data/parttimemanager.xml".</p>
 </li>
 <li>
-<p><code>OutletDataChangedEvent</code> saves encrypted or decrypted outlet information to local storage file "data/outletinformation.xml".</p>
+<p><code>OutletDataChangedEvent</code> saves encrypted or decrypted outlet information to the local storage file "data/outletinformation.xml".</p>
 </li>
 </ol>
 </div>
@@ -809,29 +783,35 @@ Employers can use the <code>decrypt</code> command to make the files human-reada
 <div class="content">
 <img src="images/EncryptCommandHighLevelSequenceDiagrams.png" alt="EncryptCommandHighLevelSequenceDiagrams" width="800">
 </div>
-<div class="title">Figure 16. High Level Sequence Diagram for the <code>encrypt</code> Command</div>
+<div class="title">Figure 15. High Level Sequence Diagram for the <code>encrypt</code> Command</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram (<em><a href="#fig-EncryptCommandSequenceDiagram">Figure 16</a></em>) illustrates how an <code>encrypt</code> command is executed in the Logic Component, and how it interacts with the Model Component.</p>
+</div>
+<div id="fig-EncryptCommandSequenceDiagram" class="imageblock">
+<div class="content">
+<img src="images/EncryptDataCommandSequenceDiagram.png" alt="EncryptDataCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 16. Interactions inside the Logic Component for the <code>encrypt</code> Admin Command</div>
 </div>
 <div class="paragraph">
 <p>Currently, the local data is encrypted in the Advanced Encryption Standard (AES) in XML files.
-If data is encrypted, data read from XML files must be decrypted before passing to the constructor of any object.
-The function below demonstrates how outlet data is encrypted using the encrypt(String text) function when converting to a XML file:<br></p>
+The secret key used is a byte array of "TheBestSecretKey".
+The function below demonstrates how encryption is implemented using <code>javax.crypto.Cipher</code>:<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> XmlAdaptedOutletInformation(<span class="predefined-type">String</span> outletName, ...) {
-    ...
-    this.outletName = encrypt(outletName);
-    ...
-}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Key</span> key = generateKey();
+<span class="predefined-type">Cipher</span> c = <span class="predefined-type">Cipher</span>.getInstance(ALGO);
+c.init(<span class="predefined-type">Cipher</span>.ENCRYPT_MODE, key);
+<span class="type">byte</span><span class="type">[]</span> encVal = c.doFinal(data.getBytes());
+<span class="keyword">return</span> Base64.getEncoder().encodeToString(encVal);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly, decrypt(String encryptedText) can be called to decrypt data read from XML files.<br></p>
-</div>
-<div class="paragraph">
-<p>The current implementation successfully prevents any user of the computer directly interpreting the stored information.
-However, the limitation is that the XML file structure is still maintained and the title of each element is not encrypted as shown in <em><a href="#fig-OutletEncrypt">Figure 17</a></em>.
-It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found patterns.</p>
+<p>The encryption status is stored in <code>OutletInformation</code> as a variable <code>isDataEncrypted</code>.
+The encryption status stored in local files, with reference to the third line of <em><a href="#fig-OutletEncrypt">Figure 17</a></em>, is always plaintext because it is used to convert strings in XML files to models.
+In encryption mode, data writen to or read from XML files will be encrypted using <code>encrypt(String plainText)</code> or decrypted using <code>decrypt(String cipherText)</code> respectively.</p>
 </div>
 <div id="fig-OutletEncrypt" class="imageblock">
 <div class="content">
@@ -839,20 +819,77 @@ It is possible that any user with advanced knowledge of data encryption is able 
 </div>
 <div class="title">Figure 17. Example of an Encrypted XML File of Outlet Information</div>
 </div>
-<div class="paragraph">
-<p>The limitation of the current implementation leads to an alternative implementation that encrypts the entire XML file.
-The XMLCipher package from apache.org can be used to encrypt the XML file stored locally, as illustrated below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Document</span> encryptedDoc = XMLUtil.encryptDocument(document, secretKey, XMLCipher.AES_128);
-XMLUtil.saveDocumentTo(encryptedDoc, encryptedFile);
-<span class="predefined-type">Document</span> decryptedDoc = XMLUtil.decryptDocument(encryptedDoc, secretKey, XMLCipher.AES_128);
-XMLUtil.saveDocumentTo(decryptedDoc, decryptedFile);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>You can implement <code>encryptDocument</code> using the code below. Take note that <code>decryptDocument</code> is simply the reverse process of <code>encryptDocument</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-outletinformation-class"><a class="link" href="#aspect-implementation-of-outletinformation-class">4.1.3.1. Aspect: implementation of OutletInformation class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use default constructor to initialize all attributes with default values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Provides convenience to users because they do not have to create a new outlet by themselves.</p>
+</li>
+<li>
+<p>Cons: Lacks flexibility to initialize the attributes with user-defined values.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a constructor with more parameters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows flexibility in storing outlet information.</p>
+</li>
+<li>
+<p>Cons: Needs to be very careful when calling the constructor. Since <code>isDataEncrypted</code> can be initialized to true, users new to this app must be informed clearly that data stored in local files are encrypted.
+Moreover, the default admin password in the User Guide must be updated to what is initialized in the <code>masterPassword</code>.
+Otherwise, users are unable to log in with correct password when they start using the app for the first time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-encryption-and-decryption"><a class="link" href="#aspect-implementation-of-encryption-and-decryption">4.1.3.2. Aspect: implementation of encryption and decryption</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Encrypt and decrypt data writen to and read from XML files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Successfully prevents any user of the computer directly interpreting the stored information in a clean and fast way.</p>
+</li>
+<li>
+<p>Cons: Still maintains the XML file structure and does not encrypt the title of each element as shown in <em><a href="#fig-OutletEncrypt">Figure 17</a></em>. It is possible that any user with advanced knowledge of data encryption is able to decrypt the data with the found patterns.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Encrypt and decrypt XML files with the XMLCipher package from apache.org with reference to the code below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Enhances safety of data since there are no more obvious patterns in XML files.</p>
+</li>
+<li>
+<p>Cons: Increases difficulty in saving and backing up data in local files because additional encrypted and decrypted files need to be created and replace original files.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -868,7 +905,6 @@ XMLUtil.saveDocumentTo(decryptedDoc, decryptedFile);</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="shifts-feature"><a class="link" href="#shifts-feature">4.2. Shifts Feature</a></h3>
 <div class="sect3">
@@ -879,7 +915,7 @@ By allowing employers to add or delete shifts, employees can then apply for the 
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">4.2.2. How it is implemented</a></h4>
+<h4 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">4.2.2. How it is implemented</a></h4>
 <div class="paragraph">
 <p>The <code>Shift</code> class represents a shift in PTMan.<br></p>
 </div>
@@ -1035,7 +1071,7 @@ All in all, the timetable feature improves user experience and brings convenienc
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">4.3.2. How it is implemented</a></h4>
+<h4 id="how-it-is-implemented-3"><a class="link" href="#how-it-is-implemented-3">4.3.2. How it is implemented</a></h4>
 <div class="paragraph">
 <p>The timetable is created with the help of the <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a> library, and <code>TimetablePanel</code>
  is the main class in charge of displaying the timetable.<br></p>
@@ -1243,7 +1279,7 @@ through the <code>EmailService</code> class, and then finally delete the local f
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.4. Undo/Redo Feature</a></h3>
 <div class="sect3">
-<h4 id="how-it-is-implemented-3"><a class="link" href="#how-it-is-implemented-3">4.4.1. How it is implemented</a></h4>
+<h4 id="how-it-is-implemented-4"><a class="link" href="#how-it-is-implemented-4">4.4.1. How it is implemented</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the Part-time Manager (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1427,7 +1463,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.4.2. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design considerations</a></h4>
 <div class="paragraph">
 <p>This section highlights the considerations behind our application&#8217;s design choices.</p>
 </div>
@@ -1575,7 +1611,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-4"><a class="link" href="#how-it-is-implemented-4">4.5.2. How it is implemented</a></h4>
+<h4 id="how-it-is-implemented-5"><a class="link" href="#how-it-is-implemented-5">4.5.2. How it is implemented</a></h4>
 <div class="paragraph">
 <p>A Password class is created with two constructors.</p>
 </div>
@@ -1728,10 +1764,11 @@ It is important to keep backup files to prevent any loss of essential data.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-5"><a class="link" href="#how-it-is-implemented-5">4.8.2. How it is implemented</a></h4>
+<h4 id="how-it-is-implemented-6"><a class="link" href="#how-it-is-implemented-6">4.8.2. How it is implemented</a></h4>
 <div class="paragraph">
 <p>Currently, backup files are stored with file extension ".backup" in the same folder as local storage files.
-Backup files are updated upon exit of the app. It is implemented by calling backupPartTimeManager(ReadOnlyPartTimeManager partTimeManager) and backupOutletInformation(OutletInformation outletInformation) in the MainApp.java as shown below:</p>
+Backup files are updated upon exit of the app.
+It is implemented by calling <code>backupPartTimeManager(ReadOnlyPartTimeManager partTimeManager)</code> and <code>backupOutletInformation(OutletInformation outletInformation)</code> in the <code>MainApp.java</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1745,7 +1782,7 @@ Backup files are updated upon exit of the app. It is implemented by calling back
 </div>
 <div class="paragraph">
 <p>An alternative implementation would be not only saving backup files but also sending them to the cloud such as Dropbox and Google Drive.
-It can be done using the relevant Dropbox and Google Drive APIs.</p>
+It can be done using the respective Dropbox and Google Drive APIs.</p>
 </div>
 </div>
 </div>
@@ -3694,7 +3731,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 15:13:58 UTC
+Last updated 2018-04-14 18:14:08 UTC
 </div>
 </div>
 </body>
