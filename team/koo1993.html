@@ -32,7 +32,7 @@
 Thereby reducing the hassle of work scheduling for both employers and employees.<br></p>
 </div>
 <div class="paragraph">
-<p>The user interacts with the application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -46,29 +46,34 @@ Thereby reducing the hassle of work scheduling for both employers and employees.
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Each employer and employee is assigned to a password. This restrict employee to use functions that are meant for the employer.</p>
-</li>
-<li>
-<p>What it includes:</p>
+<p>What it does:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Admin commands are restricted to employer only.</p>
+<p>Assigns password to each employer and employee.</p>
 </li>
 <li>
-<p>API for password checking that need password.</p>
+<p>Separates command for employer and employee.</p>
 </li>
 <li>
-<p>Login/Logout to admin mode for employer to use admin commands at ease.</p>
+<p>Implements API for password checking that needs password.</p>
 </li>
 <li>
-<p>Change/reset password is available for both group of user with email service.</p>
+<p>Implements Login/Logout to admin mode for employer to use admin commands at ease.</p>
+</li>
+<li>
+<p>Implements Change/reset password for both group of user with email service.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Justification: This ensure only authenticated personnel can use the system and prevent misuse of PTMan.</p>
+<p>Justification: This ensure only authenticated personnel can use the system and restrict employee to use functions that are meant for the employer. This prevent misuse of PTMan.</p>
+</li>
+<li>
+<p>Highlights:
+This enhancement puts security in high regard.
+Lots of consideration is put into avoiding inconvience for the user while maintaining high security.</p>
 </li>
 </ul>
 </div>
@@ -228,7 +233,7 @@ To prevent unauthorized access to admin mode, managers should execute this comma
 </table>
 </div>
 <div class="paragraph">
-<p>If the current admin password is <code>DEFAULT1</code> and you wish to change it to <code>hunter2</code>, type:
+<p>If the current admin password is <code>DEFAULT1</code> and you wish to change it to <code>hunter22</code>, type:
 <code>changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22</code> which will be masked by asterisks in the program as shown in <em><a href="#fig-changingAdminPassword">Figure 5</a></em>.</p>
 </div>
 <div id="fig-changingAdminPassword" class="imageblock">
@@ -301,6 +306,46 @@ The temporary password will be sent to the outlet&#8217;s email stored in PTMan.
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="AddSalary"><a class="link" href="#AddSalary">Adding salary to an employee: <code>addsalary</code></a></h4>
+<div class="paragraph">
+<p>Adds an existing employee&#8217;s salary by an amount.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>addsalary INDEX s/SALARY_INCREASE_BY</code><br>
+<strong>Shorthand:</strong> <code>adds</code> <code>INDEX s/SALARY_INCREASE_BY</code></p>
+</div>
+<div class="paragraph">
+<p>You can increase an employer salary by an amount as shown below in  <em><a href="#fig-addingSalary">Figure 9</a></em>.</p>
+</div>
+<div id="fig-addingSalary" class="imageblock">
+<div class="content">
+<img src="../images/addingSalary.png" alt="addingSalary" width="790">
+</div>
+<div class="title">Figure 9. Adding salary for employee in PTMan<br></div>
+</div>
+<div class="paragraph">
+<p>After you executed the command, you will see the result from the result display and the applied salary as shown in <em><a href="#fig-addSalarySuccess">Figure 10</a></em>.</p>
+</div>
+<div id="fig-addSalarySuccess" class="imageblock">
+<div class="content">
+<img src="../images/addSalarySuccess.png" alt="addSalarySuccess" width="790">
+</div>
+<div class="title">Figure 10. Added salary for employee in PTMan<br></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An employee&#8217;s salary can not be deducted from using this command.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -359,13 +404,13 @@ To create a password with desired password String, one can invoke the method bel
 </div>
 </div>
 <div class="paragraph">
-<p>As of version 1.2, each person and outlet now has a <code>Password</code> class. You may refer to <em><a href="#fig-PasswordCD">Figure 9</a></em> for an overview of the <code>Password</code> class.</p>
+<p>As of version 1.2, each person and outlet now has a <code>Password</code> class. You may refer to <em><a href="#fig-PasswordCD">Figure 11</a></em> for an overview of the <code>Password</code> class.</p>
 </div>
 <div id="fig-PasswordCD" class="imageblock">
 <div class="content">
 <img src="../images/PasswordClassDiagram.png" alt="PasswordClassDiagram" width="700">
 </div>
-<div class="title">Figure 9. Overview of the Password Class in Model Component</div>
+<div class="title">Figure 11. Overview of the Password Class in Model Component</div>
 </div>
 <div class="paragraph">
 <p>The reason of converting password string to hashCode is to protect user’s password from being seen in the storage file.  Anyone who get hold of the data are not able to convert the hashCode back to the original password string as SHA-256 is a <a href="https://en.wikipedia.org/wiki/Collision_resistance">collision resistant</a> hash.</p>
@@ -411,13 +456,13 @@ setFalseAdminMode();</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-DeleteSD">Figure 10</a></em> below illustrates how the admin command is generally executed.</p>
+<p><em><a href="#fig-DeleteSD">Figure 12</a></em> below illustrates how the admin command is generally executed.</p>
 </div>
 <div id="fig-DeleteSD" class="imageblock">
 <div class="content">
 <img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 10. Interactions inside the Logic Component for the <code>delete 1</code> Admin Command</div>
+<div class="title">Figure 12. Interactions inside the Logic Component for the <code>delete 1</code> Admin Command</div>
 </div>
 </div>
 </div>
@@ -473,7 +518,7 @@ sendResetPasswordMessage(String name, String email, String newPassword)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 12:27:58 UTC
+Last updated 2018-04-14 15:13:58 UTC
 </div>
 </div>
 </body>
