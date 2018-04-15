@@ -160,19 +160,31 @@ To enable user interaction with this feature, various commands that manipulate s
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To add a shift on 12 March 2018 from 12pm to 7pm that requires 4 employees, type:<br>
-<code>addshift d/12-03-18 ts/1200 te/1900 c/4</code></p>
+<p>To add a shift on 13th April 2018 from 12pm to 6pm that requires 3 employees, execute the command<br>
+<code>addshift d/13-04-18 ts/1200 te/1800 c/3</code> as shown in <em><a href="#fig-addshiftBefore">Figure 1</a></em>.</p>
+<div id="fig-addshiftBefore" class="imageblock">
+<div class="content">
+<img src="../images/AddShiftBefore.png" alt="AddShiftBefore" width="800">
+</div>
+<div class="title">Figure 1. Adding a Shift<br></div>
+</div>
 </li>
 <li>
-<p>To add a shift on 3 May 2018 from 8am to 1pm that requires 2 employees, type:<br>
-<code>addshift d/03-05-18 ts/0800 te/1300 c/2</code></p>
+<p>You should see a confirmation message in the feedback box along with the shift you&#8217;ve added being displayed in the timetable.
+This is illustrated in <em><a href="#fig-addshiftAfter">Figure 2</a></em>.</p>
+<div id="fig-addshiftAfter" class="imageblock">
+<div class="content">
+<img src="../images/AddShiftAfter.png" alt="AddShiftAfter" width="800">
+</div>
+<div class="title">Figure 2. Successful Adding of a Shift<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -199,19 +211,30 @@ To enable user interaction with this feature, various commands that manipulate s
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To delete shift <code>4</code>, type:<br>
-<code>deleteshift 4</code></p>
+<p>If you wish to delete shift 1, execute the command <code>deleteshift 1</code> as shown in <em><a href="#fig-deleteShiftBefore">Figure 3</a></em> below.</p>
+<div id="fig-deleteShiftBefore" class="imageblock">
+<div class="content">
+<img src="../images/DeleteShiftBefore.png" alt="DeleteShiftBefore" width="800">
+</div>
+<div class="title">Figure 3. Deleting Shift 1<br></div>
+</div>
 </li>
 <li>
-<p>To delete shift <code>2</code>, type:<br>
-<code>deleteshift 2</code></p>
+<p>Upon successful deletion, you will see a confirmation message in the feedback box and you can no longer see the shift in the timetable.
+<em><a href="#fig-deleteShiftAfter">Figure 4</a></em> illustrates the successful deletion of shift 1.</p>
+<div id="fig-deleteShiftAfter" class="imageblock">
+<div class="content">
+<img src="../images/DeleteShiftAfter.png" alt="DeleteShiftAfter" width="800">
+</div>
+<div class="title">Figure 4. Successful Deletion of Shift 1<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -241,19 +264,30 @@ To enable user interaction with this feature, various commands that manipulate s
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To apply employee <code>2</code> for shift <code>1</code>, type:<br>
-<code>apply 2 1</code></p>
+<p>To apply Sum Ting Wong for shift 3, execute the command <code>apply 2 3</code> as shown in <em><a href="#fig-applyAdminBefore">Figure 5</a></em> below.</p>
+<div id="fig-applyAdminBefore" class="imageblock">
+<div class="content">
+<img src="../images/ApplyAdminBefore.png" alt="ApplyAdminBefore" width="800">
+</div>
+<div class="title">Figure 5. Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>To apply employee <code>6</code> for shift <code>5</code>, type:<br>
-<code>apply 6 5</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-applyAdminAfter">Figure 6</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will decrease by 1 upon successful application.</p>
+<div id="fig-applyAdminAfter" class="imageblock">
+<div class="content">
+<img src="../images/ApplyAdminAfter.png" alt="ApplyAdminAfter" width="800">
+</div>
+<div class="title">Figure 6. Successful Application of Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -296,19 +330,30 @@ Refer to <a href="#Unapply">Removing an employee from a shift: <code>unapply</co
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To remove employee <code>6</code> from shift <code>3</code>, type:<br>
-<code>unapply 6 3</code></p>
+<p>To remove Sum Ting Wong from shift 3, execute the command <code>unapply 2 3</code> as shown in <em><a href="#fig-unapplyAdminBefore">Figure 7</a></em> below.</p>
+<div id="fig-unapplyAdminBefore" class="imageblock">
+<div class="content">
+<img src="../images/UnapplyAdminBefore.png" alt="UnapplyAdminBefore" width="800">
+</div>
+<div class="title">Figure 7. Removing Employee 2 from Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>To remove employee <code>2</code> from shift <code>6</code>, type:<br>
-<code>unapply 2 6</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-unapplyAdminAfter">Figure 8</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will increase by 1 upon successful removal.</p>
+<div id="fig-unapplyAdminAfter" class="imageblock">
+<div class="content">
+<img src="../images/UnapplyAdminAfter.png" alt="UnapplyAdminAfter" width="800">
+</div>
+<div class="title">Figure 8. Successful Removal of Employee 2 from Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -338,19 +383,31 @@ Refer to <a href="#Unapply">Removing an employee from a shift: <code>unapply</co
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>If your index in the employee list is <code>2</code> and you want to apply for shift <code>1</code>, type:<br>
-<code>apply 2 1 pw/YOUR_PASSWORD</code></p>
+<p>If you are Sum Ting Wong and you wish to apply for shift 3, execute the command<br>
+<code>apply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-applyBefore">Figure 9</a></em> below.</p>
+<div id="fig-applyBefore" class="imageblock">
+<div class="content">
+<img src="../images/ApplyBefore.png" alt="ApplyBefore" width="800">
+</div>
+<div class="title">Figure 9. Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>If your index in the employee list is <code>6</code> and you want to apply for shift <code>5</code>, type:<br>
-<code>apply 6 5 pw/YOUR_PASSWORD</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-applyAfter">Figure 10</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will decrease by 1 upon successful application.</p>
+<div id="fig-applyAfter" class="imageblock">
+<div class="content">
+<img src="../images/ApplyAfter.png" alt="ApplyAfter" width="800">
+</div>
+<div class="title">Figure 10. Successful Application of Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -393,19 +450,31 @@ Refer to <a href="#Unapply-2">Removing yourself from a shift: <code>unapply</cod
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>If your index is <code>4</code> and you wish to unapply from shift <code>3</code>, type:<br>
-<code>unapply 4 3 pw/YOUR_PASSWORD</code></p>
+<p>If you are Sum Ting Wong and you wish to remove yourself from shift 3, execute the command<br>
+<code>unapply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-unapplyBefore">Figure 11</a></em> below.</p>
+<div id="fig-unapplyBefore" class="imageblock">
+<div class="content">
+<img src="../images/UnapplyBefore.png" alt="UnapplyBefore" width="800">
+</div>
+<div class="title">Figure 11. Removing Employee 2 from Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>If your index is <code>2</code> and you wish to unapply from shift <code>1</code>, type:<br>
-<code>unapply 2 1 pw/YOUR_PASSWORD</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-unapplyAfter">Figure 12</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will increase by 1 upon successful removal.</p>
+<div id="fig-unapplyAfter" class="imageblock">
+<div class="content">
+<img src="../images/UnapplyAfter.png" alt="UnapplyAfter" width="800">
+</div>
+<div class="title">Figure 12. Excpected Outcome After Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
@@ -462,13 +531,13 @@ It guarantees there are no duplicate employees in the shift.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-ShiftClassDiagram">Figure 1</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
+<p><em><a href="#fig-ShiftClassDiagram">Figure 13</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
 </div>
 <div id="fig-ShiftClassDiagram" class="imageblock">
 <div class="content">
 <img src="../images/ShiftClassDiagram.png" alt="ShiftClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Overview of the Shift Class in the Model Component</div>
+<div class="title">Figure 13. Overview of the Shift Class in the Model Component</div>
 </div>
 <div class="paragraph">
 <p><code>Date</code> and <code>Time</code> use Java&#8217;s <code>LocalDate</code> and <code>LocalTime</code> classes for easy integration with the timetable.
@@ -533,13 +602,13 @@ Similar to <code>ApplyCommand</code>, <code>UnapplyCommand</code> will:</p>
 <p>The commands <code>DeleteShiftCommand</code>, <code>ApplyCommand</code> and <code>UnapplyCommand</code> access the specified <code>Shift</code> via it&#8217;s index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1.<br>
-As seen in <em><a href="#fig-ShiftIndexBad">Figure 2</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
+As seen in <em><a href="#fig-ShiftIndexBad">Figure 14</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
 </div>
 <div id="fig-ShiftIndexBad" class="imageblock">
 <div class="content">
 <img src="../images/ShiftIndexBad.png" alt="ShiftIndexBad" width="800">
 </div>
-<div class="title">Figure 2. Example of Undesired Shift Indexing</div>
+<div class="title">Figure 14. Example of Undesired Shift Indexing</div>
 </div>
 <div class="paragraph">
 <p>To avoid this, we only want to index shifts that are visible in the current timetable view.<br>
@@ -556,13 +625,13 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 3</a></em> below.</p>
+<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 15</a></em> below.</p>
 </div>
 <div id="fig-ShiftIndexGood" class="imageblock">
 <div class="content">
 <img src="../images/ShiftIndexGood.png" alt="ShiftIndexGood" width="800">
 </div>
-<div class="title">Figure 3. Example of Desired Shift Indexing</div>
+<div class="title">Figure 15. Example of Desired Shift Indexing</div>
 </div>
 </div>
 </div>
@@ -572,7 +641,7 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:18:47 UTC
+Last updated 2018-04-15 08:21:33 UTC
 </div>
 </div>
 </body>

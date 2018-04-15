@@ -375,13 +375,15 @@ Moreover, PTMan allows you to encrypt and decrypt data stored locally to prevent
 <div class="sect2">
 <h3 id="shift-management"><a class="link" href="#shift-management">4.3. Shift Management</a></h3>
 <div class="paragraph">
-<p>If you are a manager, PTMan allows you to manage your employees' work shifts.</p>
+<p>If you are a manager, PTMan allows you to manage your employees' work shifts.
+You can add shifts, remove shifts and decide which employees are working at each shift.
+This can significantly reduce your paperwork related to employee scheduling.</p>
 </div>
 <div class="paragraph">
 <p>If you are an employee, PTMan gives you flexibility in your working hours by allowing you to apply for shifts that you wish to work in.</p>
 </div>
 <div class="paragraph">
-<p>You are able to view shifts that are in PTMan via the <a href="#timetable">timetable</a>.</p>
+<p>Shifts that are in PTMan can be viewed via the <a href="#timetable">timetable</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -562,7 +564,7 @@ By saving PTMan&#8217;s data to the cloud, both employees and managers can acces
 <h2 id="commands"><a class="link" href="#commands">5. Commands</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The main form of interaction with PTMan is via keyboard commands.
+<p>The main method of user interaction with PTMan is via keyboard commands.
 Commands are split into 3 sub-sections, <a href="#manager-commands">Manager Commands</a>, <a href="#employee-commands">Employee Commands</a>, and <a href="#general-commands">General Commands</a>.<br></p>
 </div>
 <div class="paragraph">
@@ -820,7 +822,7 @@ An employee can have any number of tags (including 0)
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Guided Example:</strong></p>
+<p><strong>Guided Example</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1103,7 +1105,7 @@ Please refer to <a href="#Undo">Section 5.1.10</a> for more information.
 </table>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1135,7 +1137,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <strong>Shorthand:</strong> <code>r</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1417,19 +1419,31 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To add a shift on 12 March 2018 from 12pm to 7pm that requires 4 employees, type:<br>
-<code>addshift d/12-03-18 ts/1200 te/1900 c/4</code></p>
+<p>To add a shift on 13th April 2018 from 12pm to 6pm that requires 3 employees, execute the command<br>
+<code>addshift d/13-04-18 ts/1200 te/1800 c/3</code> as shown in <em><a href="#fig-addshiftBefore">Figure 35</a></em>.</p>
+<div id="fig-addshiftBefore" class="imageblock">
+<div class="content">
+<img src="images/AddShiftBefore.png" alt="AddShiftBefore" width="800">
+</div>
+<div class="title">Figure 35. Adding a Shift<br></div>
+</div>
 </li>
 <li>
-<p>To add a shift on 3 May 2018 from 8am to 1pm that requires 2 employees, type:<br>
-<code>addshift d/03-05-18 ts/0800 te/1300 c/2</code></p>
+<p>You should see a confirmation message in the feedback box along with the shift you&#8217;ve added being displayed in the timetable.
+This is illustrated in <em><a href="#fig-addshiftAfter">Figure 36</a></em>.</p>
+<div id="fig-addshiftAfter" class="imageblock">
+<div class="content">
+<img src="images/AddShiftAfter.png" alt="AddShiftAfter" width="800">
+</div>
+<div class="title">Figure 36. Successful Adding of a Shift<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -1456,19 +1470,30 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To delete shift <code>4</code>, type:<br>
-<code>deleteshift 4</code></p>
+<p>If you wish to delete shift 1, execute the command <code>deleteshift 1</code> as shown in <em><a href="#fig-deleteShiftBefore">Figure 37</a></em> below.</p>
+<div id="fig-deleteShiftBefore" class="imageblock">
+<div class="content">
+<img src="images/DeleteShiftBefore.png" alt="DeleteShiftBefore" width="800">
+</div>
+<div class="title">Figure 37. Deleting Shift 1<br></div>
+</div>
 </li>
 <li>
-<p>To delete shift <code>2</code>, type:<br>
-<code>deleteshift 2</code></p>
+<p>Upon successful deletion, you will see a confirmation message in the feedback box and you can no longer see the shift in the timetable.
+<em><a href="#fig-deleteShiftAfter">Figure 38</a></em> illustrates the successful deletion of shift 1.</p>
+<div id="fig-deleteShiftAfter" class="imageblock">
+<div class="content">
+<img src="images/DeleteShiftAfter.png" alt="DeleteShiftAfter" width="800">
+</div>
+<div class="title">Figure 38. Successful Deletion of Shift 1<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -1498,19 +1523,30 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To apply employee <code>2</code> for shift <code>1</code>, type:<br>
-<code>apply 2 1</code></p>
+<p>To apply Sum Ting Wong for shift 3, execute the command <code>apply 2 3</code> as shown in <em><a href="#fig-applyAdminBefore">Figure 39</a></em> below.</p>
+<div id="fig-applyAdminBefore" class="imageblock">
+<div class="content">
+<img src="images/ApplyAdminBefore.png" alt="ApplyAdminBefore" width="800">
+</div>
+<div class="title">Figure 39. Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>To apply employee <code>6</code> for shift <code>5</code>, type:<br>
-<code>apply 6 5</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-applyAdminAfter">Figure 40</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will decrease by 1 upon successful application.</p>
+<div id="fig-applyAdminAfter" class="imageblock">
+<div class="content">
+<img src="images/ApplyAdminAfter.png" alt="ApplyAdminAfter" width="800">
+</div>
+<div class="title">Figure 40. Successful Application of Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1553,19 +1589,30 @@ Refer to <a href="#Unapply">Section 5.1.20</a> for more information.
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>To remove employee <code>6</code> from shift <code>3</code>, type:<br>
-<code>unapply 6 3</code></p>
+<p>To remove Sum Ting Wong from shift 3, execute the command <code>unapply 2 3</code> as shown in <em><a href="#fig-unapplyAdminBefore">Figure 41</a></em> below.</p>
+<div id="fig-unapplyAdminBefore" class="imageblock">
+<div class="content">
+<img src="images/UnapplyAdminBefore.png" alt="UnapplyAdminBefore" width="800">
+</div>
+<div class="title">Figure 41. Removing Employee 2 from Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>To remove employee <code>2</code> from shift <code>6</code>, type:<br>
-<code>unapply 2 6</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-unapplyAdminAfter">Figure 42</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will increase by 1 upon successful removal.</p>
+<div id="fig-unapplyAdminAfter" class="imageblock">
+<div class="content">
+<img src="images/UnapplyAdminAfter.png" alt="UnapplyAdminAfter" width="800">
+</div>
+<div class="title">Figure 42. Successful Removal of Employee 2 from Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
@@ -1602,19 +1649,31 @@ These employee commands require the use of your employee password.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>If your index in the employee list is <code>2</code> and you want to apply for shift <code>1</code>, type:<br>
-<code>apply 2 1 pw/YOUR_PASSWORD</code></p>
+<p>If you are Sum Ting Wong and you wish to apply for shift 3, execute the command<br>
+<code>apply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-applyBefore">Figure 43</a></em> below.</p>
+<div id="fig-applyBefore" class="imageblock">
+<div class="content">
+<img src="images/ApplyBefore.png" alt="ApplyBefore" width="800">
+</div>
+<div class="title">Figure 43. Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>If your index in the employee list is <code>6</code> and you want to apply for shift <code>5</code>, type:<br>
-<code>apply 6 5 pw/YOUR_PASSWORD</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-applyAfter">Figure 44</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will decrease by 1 upon successful application.</p>
+<div id="fig-applyAfter" class="imageblock">
+<div class="content">
+<img src="images/ApplyAfter.png" alt="ApplyAfter" width="800">
+</div>
+<div class="title">Figure 44. Successful Application of Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1657,19 +1716,31 @@ Refer to <a href="#Unapply-2">Section 5.2.2</a> for more information.
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example</strong>:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>If your index is <code>4</code> and you wish to unapply from shift <code>3</code>, type:<br>
-<code>unapply 4 3 pw/YOUR_PASSWORD</code></p>
+<p>If you are Sum Ting Wong and you wish to remove yourself from shift 3, execute the command<br>
+<code>unapply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-unapplyBefore">Figure 45</a></em> below.</p>
+<div id="fig-unapplyBefore" class="imageblock">
+<div class="content">
+<img src="images/UnapplyBefore.png" alt="UnapplyBefore" width="800">
+</div>
+<div class="title">Figure 45. Removing Employee 2 from Shift 3<br></div>
+</div>
 </li>
 <li>
-<p>If your index is <code>2</code> and you wish to unapply from shift <code>1</code>, type:<br>
-<code>unapply 2 1 pw/YOUR_PASSWORD</code></p>
+<p>As highlighted by the red boxes in <em><a href="#fig-unapplyAfter">Figure 46</a></em>, you should see a confirmation message in the feedback box
+and the slots left in the shift will increase by 1 upon successful removal.</p>
+<div id="fig-unapplyAfter" class="imageblock">
+<div class="content">
+<img src="images/UnapplyAfter.png" alt="UnapplyAfter" width="800">
+</div>
+<div class="title">Figure 46. Excpected Outcome After Applying Employee 2 to Shift 3<br></div>
+</div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -1688,21 +1759,21 @@ For security purposes, you are highly encouraged to change your password once yo
 <div class="ulist">
 <ul>
 <li>
-<p>If you are Asther toh, you can execute the command as shown in <em><a href="#fig-changingpw">Figure 35</a></em>.</p>
+<p>If you are Asther toh, you can execute the command as shown in <em><a href="#fig-changingpw">Figure 47</a></em>.</p>
 <div id="fig-changingpw" class="imageblock">
 <div class="content">
 <img src="images/changingpw.png" alt="changingpw" width="790">
 </div>
-<div class="title">Figure 35. Changing Employee Password in PTMan</div>
+<div class="title">Figure 47. Changing Employee Password in PTMan</div>
 </div>
 </li>
 <li>
-<p>Upon successful execution of <code>changepw</code>, a confirmation message will be displayed in the result display as shown in <em><a href="#fig-changepw">Figure 36</a></em>.</p>
+<p>Upon successful execution of <code>changepw</code>, a confirmation message will be displayed in the result display as shown in <em><a href="#fig-changepw">Figure 48</a></em>.</p>
 <div id="fig-changepw" class="imageblock">
 <div class="content">
 <img src="images/changepw.png" alt="changepw" width="790">
 </div>
-<div class="title">Figure 36. Successful Change of Employee Password in PTMan</div>
+<div class="title">Figure 48. Successful Change of Employee Password in PTMan</div>
 </div>
 </li>
 </ul>
@@ -1748,12 +1819,12 @@ You can use this command if you have forgotten your password.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>To reset your password, execute the command with your <code>EMPLOYEE_INDEX</code>, as illustrated in <em><a href="#fig-resetingPw">Figure 37</a></em>.</p>
+<p>To reset your password, execute the command with your <code>EMPLOYEE_INDEX</code>, as illustrated in <em><a href="#fig-resetingPw">Figure 49</a></em>.</p>
 <div id="fig-resetingPw" class="imageblock">
 <div class="content">
 <img src="images/resettingpw.png" alt="resettingpw" width="790">
 </div>
-<div class="title">Figure 37. Resetting Employee Password in PTMan</div>
+<div class="title">Figure 49. Resetting Employee Password in PTMan</div>
 </div>
 </li>
 </ul>
@@ -1762,12 +1833,12 @@ You can use this command if you have forgotten your password.</p>
 <ul>
 <li>
 <p>After executing <code>resetpw</code>, a temporary password will be sent to the email address that your manager has registered you with.
-<em><a href="#fig-resetPw">Figure 38</a></em> shows what you should see after executing the command.</p>
+<em><a href="#fig-resetPw">Figure 50</a></em> shows what you should see after executing the command.</p>
 <div id="fig-resetPw" class="imageblock">
 <div class="content">
 <img src="images/resetpw.png" alt="resetpw" width="790">
 </div>
-<div class="title">Figure 38. Successful Reset of Employee Password in PTMan</div>
+<div class="title">Figure 50. Successful Reset of Employee Password in PTMan</div>
 </div>
 </li>
 </ul>
@@ -1807,13 +1878,13 @@ Temporary password should be changed immediately after resetting.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 39</a></em>.</p>
+<p>Alternatively, you can find the help option by pressing <kbd>F1</kbd> or from the menu bar, as shown in <em><a href="#fig-Help">Figure 51</a></em>.</p>
 </div>
 <div id="fig-Help" class="imageblock">
 <div class="content">
 <img src="images/Ui_help.png" alt="Ui help" width="790">
 </div>
-<div class="title">Figure 39. Accessing the Help Option From the Menu Bar</div>
+<div class="title">Figure 51. Accessing the Help Option From the Menu Bar</div>
 </div>
 </td>
 </tr>
@@ -1853,7 +1924,7 @@ Temporary password should be changed immediately after resetting.
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1905,21 +1976,21 @@ To stop displaying the employees of the specified shift, use the <a href="#List"
 <div class="ulist">
 <ul>
 <li>
-<p>To view all employees in the second shift, key in the following as illustrated in <em><a href="#fig-Ui_viewshift1">Figure 40</a></em>.</p>
+<p>To view all employees in the second shift, key in the following as illustrated in <em><a href="#fig-Ui_viewshift1">Figure 52</a></em>.</p>
 <div id="fig-Ui_viewshift1" class="imageblock">
 <div class="content">
 <img src="images/Ui_viewshift1.png" alt="Ui viewshift1" width="790">
 </div>
-<div class="title">Figure 40. Viewing Employees in Shift 2<br></div>
+<div class="title">Figure 52. Viewing Employees in Shift 2<br></div>
 </div>
 </li>
 <li>
-<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the employees listed in the employee list panel as shown in <em><a href="#fig-Ui_viewshift2">Figure 41</a></em>.</p>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the employees listed in the employee list panel as shown in <em><a href="#fig-Ui_viewshift2">Figure 53</a></em>.</p>
 <div id="fig-Ui_viewshift2" class="imageblock">
 <div class="content">
 <img src="images/Ui_viewshift2.png" alt="Ui viewshift2" width="790">
 </div>
-<div class="title">Figure 41. Successful Edit of Employee Details in PTMan<br></div>
+<div class="title">Figure 53. Successful Edit of Employee Details in PTMan<br></div>
 </div>
 </li>
 </ul>
@@ -1965,12 +2036,12 @@ To stop displaying the employee&#8217;s shifts on the timetable, use the <a href
 <div class="ulist">
 <ul>
 <li>
-<p>To highlight shifts applied by the third employee, key in the following as illustrated in <em><a href="#fig-Ui_select1">Figure 42</a></em>.</p>
+<p>To highlight shifts applied by the third employee, key in the following as illustrated in <em><a href="#fig-Ui_select1">Figure 54</a></em>.</p>
 <div id="fig-Ui_select1" class="imageblock">
 <div class="content">
 <img src="images/Ui_select1.png" alt="Ui select1" width="790">
 </div>
-<div class="title">Figure 42. Selecting Employee to Highlight Applied Shifts<br></div>
+<div class="title">Figure 54. Selecting Employee to Highlight Applied Shifts<br></div>
 </div>
 <div class="paragraph">
 <p><em><a href="#fig-Feature_Timetable1">Figure 4</a></em> shows how the timetable looks like prior to the <code>select</code> command.</p>
@@ -1979,16 +2050,16 @@ To stop displaying the employee&#8217;s shifts on the timetable, use the <a href
 <div class="content">
 <img src="images/Feature_Timetable1.png" alt="Feature Timetable1" width="500">
 </div>
-<div class="title">Figure 43. Initial Timetable Before Selection of Employee<br></div>
+<div class="title">Figure 55. Initial Timetable Before Selection of Employee<br></div>
 </div>
 </li>
 <li>
-<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the shifts highlighted in the timetable as shown in <em><a href="#fig-Ui_select2">Figure 44</a></em>.</p>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the shifts highlighted in the timetable as shown in <em><a href="#fig-Ui_select2">Figure 56</a></em>.</p>
 <div id="fig-Ui_select2" class="imageblock">
 <div class="content">
 <img src="images/Ui_select2.png" alt="Ui select2" width="790">
 </div>
-<div class="title">Figure 44. Successful Selection of Employee with Shifts Highlighted<br></div>
+<div class="title">Figure 56. Successful Selection of Employee with Shifts Highlighted<br></div>
 </div>
 </li>
 </ul>
@@ -2033,30 +2104,30 @@ Useful for users to navigate back to the default timetable after using the <code
 <div class="ulist">
 <ul>
 <li>
-<p>To export the timetable and email it to yourself, key in the following as illustrated in <em><a href="#fig-Ui_export1">Figure 45</a></em>.</p>
+<p>To export the timetable and email it to yourself, key in the following as illustrated in <em><a href="#fig-Ui_export1">Figure 57</a></em>.</p>
 <div id="fig-Ui_export1" class="imageblock">
 <div class="content">
 <img src="images/Ui_export1.png" alt="Ui export1" width="790">
 </div>
-<div class="title">Figure 45. Exporting Timetable to Email<br></div>
+<div class="title">Figure 57. Exporting Timetable to Email<br></div>
 </div>
 </li>
 <li>
-<p>Upon successful execution of the command, you will see a confirmation message in the result display as shown in <em><a href="#fig-Ui_export2">Figure 46</a></em>.</p>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display as shown in <em><a href="#fig-Ui_export2">Figure 58</a></em>.</p>
 <div id="fig-Ui_export2" class="imageblock">
 <div class="content">
 <img src="images/Ui_export2.png" alt="Ui export2" width="450">
 </div>
-<div class="title">Figure 46. Successful Export of Timetable to Email<br></div>
+<div class="title">Figure 58. Successful Export of Timetable to Email<br></div>
 </div>
 <div class="paragraph">
-<p>An email will also be sent to you as show in <em><a href="#fig-Ui_export3">Figure 47</a></em>.</p>
+<p>An email will also be sent to you as show in <em><a href="#fig-Ui_export3">Figure 59</a></em>.</p>
 </div>
 <div id="fig-Ui_export3" class="imageblock">
 <div class="content">
 <img src="images/Ui_export3.png" alt="Ui export3" width="790">
 </div>
-<div class="title">Figure 47. Successful Selection of Employee with Shifts Highlighted<br></div>
+<div class="title">Figure 59. Successful Selection of Employee with Shifts Highlighted<br></div>
 </div>
 </li>
 </ul>
@@ -2298,7 +2369,7 @@ Useful for users to navigate back to the default timetable after using the <code
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:18:47 UTC
+Last updated 2018-04-15 08:21:32 UTC
 </div>
 </div>
 </body>
