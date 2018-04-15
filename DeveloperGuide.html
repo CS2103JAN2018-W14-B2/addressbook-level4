@@ -95,12 +95,14 @@
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
 <li><a href="#use-cases">Appendix D: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-add-employee">D.1. Use case: Add employee</a></li>
-<li><a href="#use-case-add-shift">D.2. Use case: Add shift</a></li>
-<li><a href="#use-case-delete-shift">D.3. Use case: Delete shift</a></li>
-<li><a href="#use-case-delete-employee">D.4. Use case: Delete employee</a></li>
-<li><a href="#use-case-edit-employee">D.5. Use case: Edit employee</a></li>
-<li><a href="#use-case-sign-up-for-available-shifts">D.6. Use case: Sign up for available shifts</a></li>
+<li><a href="#use-case-add-employee">D.1. Use Case: Add Employee</a></li>
+<li><a href="#use-case-add-shift">D.2. Use Case: Add Shift</a></li>
+<li><a href="#use-case-delete-shift">D.3. Use Case: Delete Shift</a></li>
+<li><a href="#use-case-delete-employee">D.4. Use Case: Delete Employee</a></li>
+<li><a href="#use-case-edit-employee">D.5. Use Case: Edit Employee</a></li>
+<li><a href="#use-case-edit-outlet-information">D.6. Use Case: Edit Outlet Information</a></li>
+<li><a href="#use-case-sign-up-for-available-shifts">D.7. Use Case: Sign Up for Available Shifts</a></li>
+<li><a href="#use-case-encrypt-local-files">Use Case: Encrypt Local Files</a></li>
 </ul>
 </li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
@@ -108,10 +110,18 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-an-employee">G.2. Deleting an Employee</a></li>
+<li><a href="#admin-mode-logging-in-logging-out">G.2. Admin Mode Logging in / Logging out</a></li>
 <li><a href="#editing-outlet-information">G.3. Editing Outlet Information</a></li>
-<li><a href="#encrypting-and-decrypting-local-storage-files">G.4. Encrypting and Decrypting Local Storage Files</a></li>
-<li><a href="#saving-and-recovering-data">G.5. Saving and Recovering Data</a></li>
+<li><a href="#changing-password">G.4. Changing Password</a></li>
+<li><a href="#resetting-password">G.5. Resetting Password</a></li>
+<li><a href="#adding-a-shift">G.6. Adding a Shift</a></li>
+<li><a href="#deleting-a-shift">G.7. Deleting a Shift</a></li>
+<li><a href="#applying-an-employee-for-a-shift">G.8. Applying an Employee for a Shift</a></li>
+<li><a href="#unapplying-an-employee-from-a-shift">G.9. Unapplying an Employee from a Shift</a></li>
+<li><a href="#displaying-an-employee-s-shift-on-the-timetable">G.10. Displaying an Employee&#8217;s Shift on the Timetable</a></li>
+<li><a href="#viewing-all-employees-in-a-shift">G.11. Viewing All Employees in a Shift</a></li>
+<li><a href="#encrypting-and-decrypting-local-storage-files">G.12. Encrypting and Decrypting Local Storage Files</a></li>
+<li><a href="#saving-and-recovering-data">G.13. Saving and Recovering Data</a></li>
 </ul>
 </li>
 </ul>
@@ -3106,7 +3116,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">employer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">employer, I want to encrypt and decrypt local storage files on demand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">encrypt and decrypt local storage files on demand</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prevent unauthorised users from retrieving local file data.</p></td>
 </tr>
 <tr>
@@ -3228,7 +3238,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>(For all use cases below, the <strong>System</strong> is the <code>PTMan</code> and the <strong>Actor</strong> is the <code>employer</code>, unless specified otherwise)</p>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-employee"><a class="link" href="#use-case-add-employee">D.1. Use case: Add employee</a></h3>
+<h3 id="use-case-add-employee"><a class="link" href="#use-case-add-employee">D.1. Use Case: Add Employee</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3270,7 +3280,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-shift"><a class="link" href="#use-case-add-shift">D.2. Use case: Add shift</a></h3>
+<h3 id="use-case-add-shift"><a class="link" href="#use-case-add-shift">D.2. Use Case: Add Shift</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3312,7 +3322,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-shift"><a class="link" href="#use-case-delete-shift">D.3. Use case: Delete shift</a></h3>
+<h3 id="use-case-delete-shift"><a class="link" href="#use-case-delete-shift">D.3. Use Case: Delete Shift</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3367,7 +3377,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-employee"><a class="link" href="#use-case-delete-employee">D.4. Use case: Delete employee</a></h3>
+<h3 id="use-case-delete-employee"><a class="link" href="#use-case-delete-employee">D.4. Use Case: Delete Employee</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3418,7 +3428,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-edit-employee"><a class="link" href="#use-case-edit-employee">D.5. Use case: Edit employee</a></h3>
+<h3 id="use-case-edit-employee"><a class="link" href="#use-case-edit-employee">D.5. Use Case: Edit Employee</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3486,7 +3496,65 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-sign-up-for-available-shifts"><a class="link" href="#use-case-sign-up-for-available-shifts">D.6. Use case: Sign up for available shifts</a></h3>
+<h3 id="use-case-edit-outlet-information"><a class="link" href="#use-case-edit-outlet-information">D.6. Use Case: Edit Outlet Information</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Employer logs in to their admin account.</p>
+</li>
+<li>
+<p>PTMan changes to admin mode.</p>
+</li>
+<li>
+<p>Employer enters new values for outlet.</p>
+</li>
+<li>
+<p>PTMan changes the outlet&#8217;s details.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The entered format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. PTMan shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The entered format of new details is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. PTMan shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-sign-up-for-available-shifts"><a class="link" href="#use-case-sign-up-for-available-shifts">D.7. Use Case: Sign Up for Available Shifts</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3526,6 +3594,58 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p>1b. The shift is full.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. PTMan shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-encrypt-local-files"><a class="link" href="#use-case-encrypt-local-files">Use Case: Encrypt Local Files</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Employer requests to encrypt local files.</p>
+</li>
+<li>
+<p>PTMan encrypts local files and sends a confirmation message to the employer.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The entered format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. PTMan shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Local files have already been encrypted.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -3682,27 +3802,35 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-employee"><a class="link" href="#deleting-an-employee">G.2. Deleting an Employee</a></h3>
+<h3 id="admin-mode-logging-in-logging-out"><a class="link" href="#admin-mode-logging-in-logging-out">G.2. Admin Mode Logging in / Logging out</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting an employee while all employees are listed</p>
+<p>Logging in to admin mode in order to do admin-only commands.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all employees using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: It must be your first login and you did not change the admin password.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First employee is deleted from the list. Details of the deleted employee shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: <code>login pw/DEFAULT1</code><br>
+Expected: log in successfully and you will see red sign "Admin Mode" at the top right corner of the app.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No employee is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>login pw/wrongPassword123</code><br>
+Expected: login fails.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
-Expected: Similar to previous.</p>
+<p>Logging out of admin mode.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>logout</code><br>
+Expected: If you logged in, now you will log out and red sign "Admin Mode" will disappear.
+Otherwise, you cannot log out again.</p>
 </li>
 </ol>
 </div>
@@ -3762,7 +3890,197 @@ Expected: Announcement displayed changes accordingly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-and-decrypting-local-storage-files"><a class="link" href="#encrypting-and-decrypting-local-storage-files">G.4. Encrypting and Decrypting Local Storage Files</a></h3>
+<h3 id="changing-password"><a class="link" href="#changing-password">G.4. Changing Password</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Changing admin password.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>)</p>
+</li>
+<li>
+<p>Test case: <code>changeadminpw pw/DEFAULT1 pw/newPassword pw/newPassword</code><br>
+Expected: Your master password changed successfully and now you can login with the new password.</p>
+</li>
+<li>
+<p>Test case: <code>changeadminpw pw/WRONG_PASSWORD pw/newPassword pw/newPassword</code><br>
+Expected: Your old password is incorrect. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resetting-password"><a class="link" href="#resetting-password">G.5. Resetting Password</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Resetting admin password.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Make sure the email address of the outlet is valid (your own email address for testing) and Internet is in good condition. Otherwise, you are unable to receive the email.</p>
+</li>
+<li>
+<p>Test case: <code>resetadminpw</code>
+Expected: Email will be sent to the outlet email address after a few seconds depending on your Internet speed.<br>
+Note: You can now log in with the password sent to you. It is a temporary password, you must change ur password immediately.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-shift"><a class="link" href="#adding-a-shift">G.6. Adding a Shift</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a Shift</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>addshift d/21-04-18 ts/1200 te/1500 c/5</code><br>
+Expected: A shift is successfully added.</p>
+</li>
+<li>
+<p>Test case: <code>addshift d/10-03-18 ts/1200 te/1500 c/5</code><br>
+Expected: No shift added. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>addshift d/21-04-18 ts/1600 te/1500 c/5</code><br>
+Expected: No shift added. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-shift"><a class="link" href="#deleting-a-shift">G.7. Deleting a Shift</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a Shift</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>deleteshift 1</code><br>
+Expected: A chosen shift is deleted. Shift indices updated.</p>
+</li>
+<li>
+<p>Test case: <code>deleteshift x</code> where x is larger than all the shift indices in the timetable.<br>
+Expected: No shift deleted. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="applying-an-employee-for-a-shift"><a class="link" href="#applying-an-employee-for-a-shift">G.8. Applying an Employee for a Shift</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Applying an employee for a shift</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>).
+Make sure you have added some shifts.</p>
+</li>
+<li>
+<p>Test case: <code>apply 1 1</code><br>
+Expected: The first employee is successfully added to the first shift.</p>
+</li>
+<li>
+<p>Test case: <code>apply 1 1</code> again<br>
+Expected: Employee is already in the shift. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>apply 1 x</code> where x is a shift on a past date, or an invalid index.
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unapplying-an-employee-from-a-shift"><a class="link" href="#unapplying-an-employee-from-a-shift">G.9. Unapplying an Employee from a Shift</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unapplying an employee from a shift</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>).
+Make sure you have added some employees into some shifts.</p>
+</li>
+<li>
+<p>Test case: <code>unapply 1 1</code><br>
+Expected: The first employee is successfully removed from the first shift.</p>
+</li>
+<li>
+<p>Test case: <code>unapply 1 1</code> again<br>
+Expectd: Employee is not in the shift as just removed. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaying-an-employee-s-shift-on-the-timetable"><a class="link" href="#displaying-an-employee-s-shift-on-the-timetable">G.10. Displaying an Employee&#8217;s Shift on the Timetable</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Displaying an employee on the timetable</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>select 1</code> &#8594; <code>apply 1 1</code><br>
+Expected: You can see shift 1 colour has changed from brown to blue, indicating that the first employee is enrolled in shift 1.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-all-employees-in-a-shift"><a class="link" href="#viewing-all-employees-in-a-shift">G.11. Viewing All Employees in a Shift</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing all employees in a shift</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Make sure you have added some shifts and added some employees into the shifts.</p>
+</li>
+<li>
+<p>Test case: <code>viewshift 1</code><br>
+Expected: Correct number of employees listed in employee list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encrypting-and-decrypting-local-storage-files"><a class="link" href="#encrypting-and-decrypting-local-storage-files">G.12. Encrypting and Decrypting Local Storage Files</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3799,7 +4117,7 @@ If your files have already been decrypted, after this command, files will not be
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-and-recovering-data"><a class="link" href="#saving-and-recovering-data">G.5. Saving and Recovering Data</a></h3>
+<h3 id="saving-and-recovering-data"><a class="link" href="#saving-and-recovering-data">G.13. Saving and Recovering Data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3861,7 +4179,7 @@ If your files have already been decrypted, after this command, files will not be
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:25:16 UTC
+Last updated 2018-04-15 15:02:01 UTC
 </div>
 </div>
 </body>
