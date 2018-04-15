@@ -25,10 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Part-Time Manager (PTMan) is a desktop human resource application used for managing part-time employees in outlets such as bubble tea shops and fast food restaurants.<br></p>
-</div>
-<div class="paragraph">
-<p>PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the outlet managers.
+<p>Part-Time Manager (PTMan) is a desktop human resource application used for managing part-time employees in outlets such as bubble tea shops and fast food restaurants. PTMan aims to give part-time employees the freedom of choosing when they want to work by registering for the available shifts set by the outlet managers.
 Instead of huge amount of paper work and time spent on communication via phone calls and messages, PTMan helps both managers and employees reduce the hassle of work scheduling.<br></p>
 </div>
 <div class="paragraph">
@@ -127,6 +124,9 @@ This enhancement also changes the storage component significantly as data stored
 </li>
 <li>
 <p>Updated formatting of Developer Guide: <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/23">#23</a></p>
+</li>
+<li>
+<p>Updated manual testing in Developer Guide: <a href="https://github.com/CS2103JAN2018-W14-B2/main/pull/231">#231</a></p>
 </li>
 </ul>
 </div>
@@ -729,44 +729,12 @@ Otherwise, users are unable to log in with correct password when they start usin
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="backup-storage"><a class="link" href="#backup-storage">Backup Storage</a></h3>
-<div class="sect3">
-<h4 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h4>
-<div class="paragraph">
-<p>Sometimes local storage files might be corrupted due to accidents.
-It is important to keep backup files to prevent any loss of essential data.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">How it is implemented</a></h4>
-<div class="paragraph">
-<p>Currently, backup files are stored with file extension ".backup" in the same folder as local storage files.
-Backup files are updated upon exit of the app.
-It is implemented by calling <code>backupPartTimeManager(ReadOnlyPartTimeManager partTimeManager)</code> and <code>backupOutletInformation(OutletInformation outletInformation)</code> in the <code>MainApp.java</code> as shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>public void stop() {
-    ...
-    storage.backupPartTimeManager(model.getPartTimeManager());
-    storage.backupOutletInformation(model.getOutletInformation());
-    ...
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>An alternative implementation would be not only saving backup files but also sending them to the cloud such as Dropbox and Google Drive.
-It can be done using the respective Dropbox and Google Drive APIs.</p>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:21:33 UTC
+Last updated 2018-04-15 08:26:56 UTC
 </div>
 </div>
 </body>

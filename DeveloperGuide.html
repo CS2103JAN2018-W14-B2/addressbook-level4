@@ -109,7 +109,9 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-an-employee">G.2. Deleting an Employee</a></li>
-<li><a href="#saving-data">G.3. Saving Data</a></li>
+<li><a href="#editing-outlet-information">G.3. Editing Outlet Information</a></li>
+<li><a href="#encrypting-and-decrypting-local-storage-files">G.4. Encrypting and Decrypting Local Storage Files</a></li>
+<li><a href="#saving-and-recovering-data">G.5. Saving and Recovering Data</a></li>
 </ul>
 </li>
 </ul>
@@ -3673,9 +3675,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-an-employee"><a class="link" href="#deleting-an-employee">G.2. Deleting an Employee</a></h3>
@@ -3697,7 +3696,7 @@ Expected: First employee is deleted from the list. Details of the deleted employ
 Expected: No employee is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -3707,7 +3706,95 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving Data</a></h3>
+<h3 id="editing-outlet-information"><a class="link" href="#editing-outlet-information">G.3. Editing Outlet Information</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing outlet information</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>)</p>
+</li>
+<li>
+<p>Test case: <code>editoutlet n/Cool Coffee h/1000-2000 c/92223333 e/coolcoffee@gmail.com</code><br>
+Expected: Outlet information displayed changes accordingly. Timetable resizes accordingly.</p>
+</li>
+<li>
+<p>Test case: <code>editoutlet n/Cool Tea NUS</code><br>
+Expected: Outlet information displayed changes accordingly.</p>
+</li>
+<li>
+<p>Test case: <code>editoutlet n/Cool Tea @ NUS</code><br>
+Expected: No outlet information is changed. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>editoutlet h/2000-1000</code><br>
+Expected: No outlet information is changed. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing announcement</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>)</p>
+</li>
+<li>
+<p>Test case: <code>announcement It is a new announcement!</code><br>
+Expected: Announcement displayed changes accordingly.</p>
+</li>
+<li>
+<p>Test case: <code>announce It is another announcement!</code><br>
+Expected: Announcement displayed changes accordingly.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encrypting-and-decrypting-local-storage-files"><a class="link" href="#encrypting-and-decrypting-local-storage-files">G.4. Encrypting and Decrypting Local Storage Files</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Encrypting local storage files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>)</p>
+</li>
+<li>
+<p>Test case: <code>encrypt</code><br>
+Expectd: If your files are not encrypted, after this command, files will be encrypted after a few seconds.
+If your files have already been encrypted, after this command, files will not be affected and error details will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Decrypting local storage files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Login with the correct admin password. Make sure you are in the admin mode. (The default admin password is <code>DEFAULT1</code>)</p>
+</li>
+<li>
+<p>Test case: <code>decrypt</code><br>
+Expectd: If your files are encrypted, after this command, files will be decrypted after a few seconds.
+If your files have already been decrypted, after this command, files will not be affected and error details will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-and-recovering-data"><a class="link" href="#saving-and-recovering-data">G.5. Saving and Recovering Data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3715,15 +3802,53 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: You have already run the app once, and exited. You will see files with extension ".backup" in <code>data</code> folder.</p>
+</li>
+<li>
+<p>Simulate missing/corrupted data files:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Open <code>data</code> folder.</p>
+</li>
+<li>
+<p>Delete "parttimemanager.xml" and "outletinformation.xml".</p>
+</li>
+<li>
+<p>Copy "parttimemanager.xml.backup" and "outletinformation.xml.backup" to another folder.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Recover data:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Rename "parttimemanager.xml.backup" to "parttimemanager.xml".</p>
+</li>
+<li>
+<p>Rename "outletinformation.xml.backup" to "outletinformation.xml".</p>
+</li>
+<li>
+<p>Paste those two files back into <code>data</code> folder.</p>
+</li>
+<li>
+<p>Run the app and you will see data recovered.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If both of your <code>.xml</code> and <code>.backup</code> files are missing/corrupted, you are unable to recover data.</p>
+</li>
+<li>
+<p>If you feel that data read from local files are not correct, <strong>DO NOT</strong> close the app. Quickly copy and paste <code>.backup</code> files into another folder and follow <code>recover data</code> procedures.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
@@ -3731,7 +3856,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:21:32 UTC
+Last updated 2018-04-15 08:26:56 UTC
 </div>
 </div>
 </body>
