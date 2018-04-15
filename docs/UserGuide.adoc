@@ -699,7 +699,7 @@ Adds a shift to the timetable to indicate that you require employees at that per
 * The `CAPACITY` should be a positive integer.
 ****
 
-*Example*:
+*Guided Example*:
 
 . To add a shift on 13th April 2018 from 12pm to 6pm that requires 3 employees, execute the command +
 `addshift d/13-04-18 ts/1200 te/1800 c/3` as shown in _<<fig-addshiftBefore>>_.
@@ -740,6 +740,7 @@ _<<fig-deleteShiftAfter>>_ illustrates the successful deletion of shift 1.
 [[fig-deleteShiftAfter]]
 .Successful Deletion of Shift 1 +
 image::DeleteShiftAfter.png[width="800"]
+// end::shiftmanager[]
 
 [[Apply]]
 ==== Applying an employee for a shift: `apply`
@@ -798,7 +799,6 @@ and the slots left in the shift will increase by 1 upon successful removal.
 [[fig-unapplyAdminAfter]]
 .Successful Removal of Employee 2 from Shift 3 +
 image::UnapplyAdminAfter.png[width="800"]
-// end::shiftmanager[]
 
 === Employee Commands
 As an employee, you are able to access these commands in addition to the <<General Commands, general commands>>.
