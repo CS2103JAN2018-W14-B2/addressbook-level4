@@ -1054,7 +1054,7 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 <div class="sect2">
 <h3 id="timetable-feature"><a class="link" href="#timetable-feature">4.3. Timetable Feature</a></h3>
 <div class="paragraph">
-<p>We have a timetable that increases interactivity between users and the shifts in PTMan.
+<p>PTMan has a timetable that increases interactivity between users and shifts.
 <em><a href="#fig-Feature_Timetable1">Figure 21</a></em> below shows how the timetable looks like.</p>
 </div>
 <div id="fig-Feature_Timetable1" class="imageblock">
@@ -1067,8 +1067,8 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 <h4 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">4.3.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>A timetable is useful for both employers and employees, as it allows them to visualise the shifts and access them via their indexes.
-The timetable also instantly reflects any changes to the shifts and allows selected employee&#8217;s shifts to be highlighted.
-On top of these, users are allowed to export the timetable as an image for future reference.
+The timetable instantly reflects any changes to the shifts and allows selected employee&#8217;s shifts to be highlighted.
+Users are also allowed to export the timetable as image for future reference.
 All in all, the timetable feature improves user experience and brings convenience to the user.</p>
 </div>
 </div>
@@ -1085,7 +1085,7 @@ All in all, the timetable feature improves user experience and brings convenienc
 <ol class="arabic">
 <li>
 <p>A <code>CalendarView</code> object.
-<code>CalendarView</code> is an object from CalendarFX, and it is responsible for displaying the timetable in the <code>TimetablePanel</code>.</p>
+<code>CalendarView</code> is a class in CalendarFX, and it is responsible for displaying the timetable in the <code>TimetablePanel</code>.</p>
 </li>
 <li>
 <p>A <code>BorderPane</code> object.
@@ -1093,7 +1093,7 @@ All in all, the timetable feature improves user experience and brings convenienc
 </li>
 <li>
 <p>A <code>Label</code> object.
-<code>Label</code> is the object in charge of displaying the text (in this case, the month) in the navigation bar.</p>
+<code>Label</code> is the object in charge of displaying the text (in this case, the month and year) in the navigation bar.</p>
 </li>
 <li>
 <p>Two <code>Button</code> objects.
@@ -1184,20 +1184,20 @@ respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <ul>
 <li>
 <p>A <code>Shift</code> is added, removed, or altered:
-<code>PartTimeManagerChangedEvent</code> is posted which calls <code>updateTimetableView()</code> to rebuild the timetable with the changed shifts.</p>
+<code>PartTimeManagerChangedEvent</code> is posted which is handled by calling <code>updateTimetableView()</code> to rebuild the timetable with the changed shifts.</p>
 </li>
 <li>
 <p><code>OutletInformation</code> is edited:
-<code>PartTimeManagerChangedEvent</code> is posted which calls <code>updateTimetableView()</code> to rebuild the timetable to fit in the updated operating hours.</p>
+<code>OutletInformationChangedEvent</code> is posted which is handled by calling <code>updateTimetableView()</code> to rebuild the timetable and fit in the updated operating hours.</p>
 </li>
 <li>
-<p>The user wants to navigate the timetable to the next/previous week:
-<code>TimetableWeekChangeRequestEvent</code> is posted which calls <code>navigateToNextWeek()</code> or <code>navigateToPreviousWeek()</code> accordingly.
-Both of these methods call <code>updateTimetableView()</code> to rebuild the timetable showing the appropriate weeks.</p>
+<p>The user wants to navigate the timetable to the next/previous/current week:
+<code>TimetableWeekChangeRequestEvent</code> is posted which is handled by calling <code>navigateToNextWeek()</code>, <code>navigateToPreviousWeek()</code> or <code>navigateToCurrWeek()</code> accordingly.
+All of these methods call <code>updateTimetableView()</code> to rebuild the timetable displaying the appropriate weeks.</p>
 </li>
 <li>
-<p>Selection of an employee:
-<code>EmployeePanelSelectionChangedEvent</code> is posted which calls <code>loadEmployeeTimetable</code> or <code>loadMainTimetable</code> accordingly. Both of these
+<p>Selection/Deselection of an employee:
+<code>EmployeePanelSelectionChangedEvent</code> is posted which is handled by calling <code>loadEmployeeTimetable(employee)</code> or <code>loadDefaultTimetable()</code> accordingly. Both of these
 methods call <code>updateTimetableView()</code> to rebuild the timetable with the appropriate colours of the entries.</p>
 </li>
 </ul>
@@ -1211,22 +1211,22 @@ methods call <code>updateTimetableView()</code> to rebuild the timetable with th
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="Viewing of individual employee&.html#8217;s shifts"><code>SelectCommand</code></a>: Selects an employee and highlight their shifts on the timetable.</p>
+<p><a href="#Select"><code>SelectCommand</code></a>: Selects an employee and highlight their shifts on the timetable.</p>
 </li>
 <li>
-<p><a href="#Returning to main view of timetable "><code>MainCommand</code></a>: Returns the timetable back to the default view of the current week.</p>
+<p><a href="#Deselect"><code>DeselectCommand</code></a>: Returns the timetable back to the default view of the current week.</p>
 </li>
 <li>
-<p><a href="#exporting-timetable"><code>ExportCommand</code></a>: Exports timetable as an image.</p>
+<p><a href="#Export"><code>ExportCommand</code></a>: Exports timetable as an image.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="viewing-of-individual-employee-s-shifts"><a class="link" href="#viewing-of-individual-employee-s-shifts">4.3.2.3. Viewing of individual employee&#8217;s shifts</a></h5>
+<h5 id="Select"><a class="link" href="#Select">4.3.2.3. Viewing of individual employee&#8217;s shifts</a></h5>
 <div class="paragraph">
-<p>PTMan allows employees to highlight their own shifts on the timetable GUI through <code>SelectCommand</code>. When a particular employee is
-being selected, an <code>EmployeePanelSelectionChangedEvent</code> is posted with the selected employee as the argument to indicate the change.<br></p>
+<p>PTMan allows employees to highlight their own shifts on the timetable through <code>SelectCommand</code>. When a particular employee is
+being selected, <code>EmployeePanelSelectionChangedEvent</code> is posted with the selected employee as its argument.<br></p>
 </div>
 <div class="paragraph">
 <p><code>EmployeePanelSelectionChangedEvent</code> has the following constructor:</p>
@@ -1242,17 +1242,18 @@ being selected, an <code>EmployeePanelSelectionChangedEvent</code> is posted wit
 </div>
 </div>
 <div class="sect4">
-<h5 id="returning-to-default-view-of-timetable"><a class="link" href="#returning-to-default-view-of-timetable">4.3.2.4. Returning to default view of timetable</a></h5>
+<h5 id="Deselect"><a class="link" href="#Deselect">4.3.2.4. Returning to default view of timetable</a></h5>
 <div class="paragraph">
-<p>The returning to default timetable view is called through <code>DefaultViewCommand</code>, which also posts an <code>EmployeePanelSelectionChangedEvent</code> event
-with null as the argument.</p>
+<p>The <code>DeselectCommand</code> deselects any selected employee and returns the timetable back to its default style.
+<code>EmployeePanelSelectionChangedEvent</code> is posted with <code>null</code> as its argument.</p>
 </div>
 <div class="paragraph">
-<p><code>TimetablePanel</code> subscribes to this event and handles it by calling the <code>loadMainTimetable</code> method.<br>
+<p><code>TimetablePanel</code> subscribes to this event and handles it by calling the <code>loadDefaultTimetable</code> method.<br>
 <br></p>
 </div>
-<div class="sect5">
-<h6 id="exporting-timetable"><a class="link" href="#exporting-timetable">4.3.2.4.1. Exporting timetable</a></h6>
+</div>
+<div class="sect4">
+<h5 id="Export"><a class="link" href="#Export">4.3.2.5. Exporting timetable</a></h5>
 <div class="paragraph">
 <p>Exporting of the timetable is triggered by <code>ExportCommand</code>, which:</p>
 </div>
@@ -1268,12 +1269,13 @@ with null as the argument.</p>
 </div>
 <div class="paragraph">
 <p>The former posts an <code>ExportTimetableAsImageRequestEvent</code>, while the latter posts an <code>ExportTimetableAsImageAndEmailRequestEvent</code>,
-both of which are subscribed to by <code>TimetablePanel</code>.<br>
-<code>TimetablePanel</code> handles them by calling <code>exportTimetableAsImage</code> and <code>exportTimetableAsImageAndEmail</code> methods respectively.
-How the exporting works is that a Snapshot is first taken of the <code>timetableView</code> Node, and then being written into a file locally.
-If <code>exportTimetableAsImageAndEmail</code> is called instead of <code>exportTimetableAsImage</code>, we will go on further to email this image
-through the <code>EmailService</code> class, and then finally delete the local file containing the Snapshot.</p>
+both of which are subscribed to by <code>TimetablePanel</code>.<br></p>
 </div>
+<div class="paragraph">
+<p><code>TimetablePanel</code> handles them by calling <code>exportTimetableAsImage</code> or <code>exportTimetableAsImageAndEmail</code> accordingly.
+The exporting works by taking a Snapshot of the <code>timetableView</code> node, and then writing it into a local file.
+If <code>exportTimetableAsImageAndEmail</code> is called instead of <code>exportTimetableAsImage</code>, this image
+will be emailed through the <code>EmailService</code> class, and then deleted from local storage.</p>
 </div>
 </div>
 </div>
@@ -3856,7 +3858,7 @@ If your files have already been decrypted, after this command, files will not be
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:16:34 UTC
+Last updated 2018-04-15 10:33:34 UTC
 </div>
 </div>
 </body>
