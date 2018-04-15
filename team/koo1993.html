@@ -147,28 +147,10 @@ Lots of consideration is put into avoiding inconvience for the user while mainta
 <div class="sect3">
 <h4 id="Login"><a class="link" href="#Login">Logging in to admin mode: <code>login</code></a></h4>
 <div class="paragraph">
-<p>Logs in to <a href="#Admin Mode">admin mode</a>, allowing you to use all the manager commands.</p>
+<p>Logs in to <a href="#Admin mode">admin mode</a>, allowing you to use all the manager commands.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>login pw/ADMIN_PASSWORD</code></p>
-</div>
-<div class="paragraph">
-<p>You can key in the command with your password as shown in  <em><a href="#fig-Login">Figure 1</a></em>.</p>
-</div>
-<div id="fig-Login" class="imageblock">
-<div class="content">
-<img src="../images/loginPassword.png" alt="loginPassword" width="790">
-</div>
-<div class="title">Figure 1. Logging in in PTMan<br></div>
-</div>
-<div class="paragraph">
-<p>Once you are logged in, a admin mode icon will appear to indicate that you are in admin mode as shown in  <em><a href="#fig-LoginSuccess">Figure 2</a></em>.</p>
-</div>
-<div id="fig-LoginSuccess" class="imageblock">
-<div class="content">
-<img src="../images/loginSuccess.png" alt="loginSuccess" width="790">
-</div>
-<div class="title">Figure 2. logged in in PTMan<br></div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -177,44 +159,78 @@ Lots of consideration is put into avoiding inconvience for the user while mainta
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Please remember to logout when you are done to prevent unauthorized access to manager commands.<br>
+Please remember to logout after you are done making changes.
+This is to prevent unauthorised access to manager commands.<br>
 Refer to <a href="#Logout">Logging out of admin mode: <code>logout</code></a> for more information.
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p><strong>Guided Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To login, key in the command with your password as shown in  <em><a href="#fig-Login">Figure 1</a></em>.</p>
+<div id="fig-Login" class="imageblock">
+<div class="content">
+<img src="../images/loginPassword.png" alt="loginPassword" width="790">
+</div>
+<div class="title">Figure 1. PTMan Manager Login<br></div>
+</div>
+</li>
+<li>
+<p>Once you are logged in, an <code>AdminMode</code> label will appear in the command box.
+This indicates that you are now in admin mode as shown in <em><a href="#fig-LoginSuccess">Figure 2</a></em>.</p>
+<div id="fig-LoginSuccess" class="imageblock">
+<div class="content">
+<img src="../images/loginSuccess.png" alt="loginSuccess" width="790">
+</div>
+<div class="title">Figure 2. Successful PTMan Manager Login<br></div>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="Logout"><a class="link" href="#Logout">Logging out of admin mode: <code>logout</code></a></h4>
 <div class="paragraph">
-<p>Logs out of <a href="#Admin Mode">admin mode</a>, preventing further usage of manager features.</p>
+<p>Logs out of <a href="#Admin mode">admin mode</a>, preventing further usage of manager commands.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>logout</code></p>
 </div>
 <div class="paragraph">
-<p>You can key in the command to log out as shown in <em><a href="#fig-loggingOut">Figure 3</a></em>.</p>
+<p><strong>Guided Example:</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>To logout, key in the command as shown in <em><a href="#fig-loggingOut">Figure 3</a></em>.</p>
 <div id="fig-loggingOut" class="imageblock">
 <div class="content">
 <img src="../images/logout.png" alt="logout" width="790">
 </div>
-<div class="title">Figure 3. Logging out in PTMan<br></div>
+<div class="title">Figure 3. Logging Out in PTMan<br></div>
 </div>
-<div class="paragraph">
-<p>After <code>logout</code> is executed, the admin icon will disappear from the command box as shown in <em><a href="#fig-logoutSuccess">Figure 4</a></em>.</p>
-</div>
+</li>
+<li>
+<p>After you have logged out, the <code>AdminMode</code> label will disappear from the command box as shown in <em><a href="#fig-logoutSuccess">Figure 4</a></em>.</p>
 <div id="fig-logoutSuccess" class="imageblock">
 <div class="content">
 <img src="../images/loginNoAdminIcon.png" alt="loginNoAdminIcon" width="790">
 </div>
-<div class="title">Figure 4. Logged out in PTMan<br></div>
+<div class="title">Figure 4. Logged Out in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="Cap"><a class="link" href="#Cap">Changing the admin password: <code>changeadminpw</code></a></h4>
 <div class="paragraph">
-<p>Changes the <a href="#Admin Mode">admin mode</a> password.</p>
+<p>Changes the password to enter <a href="#Admin mode">admin mode</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>changeadminpw pw/CURRENT_PASSWORD pw/NEW_PASSWORD pw/CONFIRM_NEW_PASSWORD</code><br>
@@ -227,29 +243,10 @@ Refer to <a href="#Logout">Logging out of admin mode: <code>logout</code></a> fo
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-To prevent unauthorized access to admin mode, managers should execute this command upon running PTMan for the first time.
+To prevent unauthorised access to admin mode, managers should change the admin password when running PTMan for the first time.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>If the current admin password is <code>DEFAULT1</code> and you wish to change it to <code>hunter22</code>, type:
-<code>changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22</code> which will be masked by asterisks in the program as shown in <em><a href="#fig-changingAdminPassword">Figure 5</a></em>.</p>
-</div>
-<div id="fig-changingAdminPassword" class="imageblock">
-<div class="content">
-<img src="../images/changingAdminPassword.png" alt="changingAdminPassword" width="790">
-</div>
-<div class="title">Figure 5. Changing admin password in PTMan<br></div>
-</div>
-<div class="paragraph">
-<p>After password is changed successfully, a notification will be displayed below the command box as shown in <em><a href="#fig-changedAdminPassword">Figure 6</a></em>.</p>
-</div>
-<div id="fig-changedAdminPassword" class="imageblock">
-<div class="content">
-<img src="../images/changedAdminPassword.png" alt="changedAdminPassword" width="790">
-</div>
-<div class="title">Figure 6. Admin password changed in PTMan<br></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -259,40 +256,48 @@ To prevent unauthorized access to admin mode, managers should execute this comma
 </td>
 <td class="content">
 The password should be at least 8 characters long.<br>
-The sequence of current and new password entered must be of the format.
+You must key in the current and new password in the correct sequence as given in the format.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p><strong>Guided Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To change the password from <code>DEFAULT1</code> to <code>hunter2</code>, type: <code>changeadminpw pw/DEFAULT1 pw/hunter22 pw/hunter22</code>.
+The passwords will be masked by asterisks as shown in <em><a href="#fig-changingAdminPassword">Figure 5</a></em>.</p>
+<div id="fig-changingAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/changingAdminPassword.png" alt="changingAdminPassword" width="790">
+</div>
+<div class="title">Figure 5. Changing Admin Password in PTMan<br></div>
+</div>
+</li>
+<li>
+<p>After the password is successfully changed, a confirmation message will be displayed in the result display as seen in <em><a href="#fig-changedAdminPassword">Figure 6</a></em>.</p>
+<div id="fig-changedAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/changedAdminPassword.png" alt="changedAdminPassword" width="790">
+</div>
+<div class="title">Figure 6. Admin Password Successfully Changed in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="Rap"><a class="link" href="#Rap">Resetting the admin password: <code>resetadminpw</code></a></h4>
 <div class="paragraph">
-<p>Resets your <a href="#Admin Mode">admin mode</a> password and sends a randomly generated password to the outlet&#8217;s email address.<br>
-You may use the new password to login to admin mode to change the password.</p>
+<p>Resets the password to enter <a href="#Admin mode">admin mode</a> and sends a randomly generated password to the outlet&#8217;s email address.<br>
+You may use the new password to login and change to your preferred password.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>resetadminpw</code><br>
 <strong>Shorthand:</strong> <code>rap</code></p>
 </div>
-<div class="paragraph">
-<p>You can key in the command to reset admin password as shown in <em><a href="#fig-resetAdminPassword">Figure 7</a></em></p>
-</div>
-<div id="fig-resetAdminPassword" class="imageblock">
-<div class="content">
-<img src="../images/resetAdminPassword.png" alt="resetAdminPassword" width="790">
-</div>
-<div class="title">Figure 7. Resetting admin password in PTMan<br></div>
-</div>
-<div class="paragraph">
-<p>After the command is executed successfully, a notification will be displayed as shown in <em><a href="#fig-resetAdminPasswordSuccess">Figure 8</a></em>.</p>
-</div>
-<div id="fig-resetAdminPasswordSuccess" class="imageblock">
-<div class="content">
-<img src="../images/resetAdminPasswordSuccess.png" alt="resetAdminPasswordSuccess" width="790">
-</div>
-<div class="title">Figure 8. Reset admin password in PTMan<br></div>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -300,38 +305,71 @@ You may use the new password to login to admin mode to change the password.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The temporary password will be sent to the outlet&#8217;s email stored in PTMan.
+The randomly generated password will be sent to the outlet&#8217;s email address stored in PTMan.
+You can view this email address under the outlet display of the GUI.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p><strong>Guided Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To reset admin password, key in the command as shown in <em><a href="#fig-resetAdminPassword">Figure 7</a></em>.</p>
+<div id="fig-resetAdminPassword" class="imageblock">
+<div class="content">
+<img src="../images/resetAdminPassword.png" alt="resetAdminPassword" width="790">
+</div>
+<div class="title">Figure 7. Resetting Admin Password in PTMan<br></div>
+</div>
+</li>
+<li>
+<p>After the command is executed successfully, a confirmation message will be displayed in the result display as shown in <em><a href="#fig-resetAdminPasswordSuccess">Figure 8</a></em>.</p>
+<div id="fig-resetAdminPasswordSuccess" class="imageblock">
+<div class="content">
+<img src="../images/resetAdminPasswordSuccess.png" alt="resetAdminPasswordSuccess" width="790">
+</div>
+<div class="title">Figure 8. Admin Password Successfully Reset in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="AddSalary"><a class="link" href="#AddSalary">Adding salary to an employee: <code>addsalary</code></a></h4>
 <div class="paragraph">
-<p>Adds an existing employee&#8217;s salary by an amount.</p>
+<p>Adds a specified amount to an employee&#8217;s salary.</p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>addsalary INDEX s/SALARY_INCREASE_BY</code><br>
-<strong>Shorthand:</strong> <code>adds</code> <code>INDEX s/SALARY_INCREASE_BY</code></p>
+<p><strong>Format:</strong> <code>addsalary EMPLOYEE_INDEX s/AMOUNT_TO_ADD</code><br>
+<strong>Shorthand:</strong> <code>adds EMPLOYEE_INDEX s/AMOUNT_TO_ADD</code></p>
 </div>
 <div class="paragraph">
-<p>You can increase an employer salary by an amount as shown below in  <em><a href="#fig-addingSalary">Figure 9</a></em>.</p>
+<p><strong>Guided Example:</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>To increase the first employee&#8217;s salary by $100, key in the command as shown below in <em><a href="#fig-addingSalary">Figure 9</a></em>.</p>
 <div id="fig-addingSalary" class="imageblock">
 <div class="content">
 <img src="../images/addingSalary.png" alt="addingSalary" width="790">
 </div>
-<div class="title">Figure 9. Adding salary for employee in PTMan<br></div>
+<div class="title">Figure 9. Adding Salary for Employee in PTMan<br></div>
 </div>
-<div class="paragraph">
-<p>After you executed the command, you will see the result from the result display and the applied salary as shown in <em><a href="#fig-addSalarySuccess">Figure 10</a></em>.</p>
-</div>
+</li>
+<li>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display and the applied salary as shown in <em><a href="#fig-addSalarySuccess">Figure 10</a></em>.</p>
 <div id="fig-addSalarySuccess" class="imageblock">
 <div class="content">
 <img src="../images/addSalarySuccess.png" alt="addSalarySuccess" width="790">
 </div>
-<div class="title">Figure 10. Added salary for employee in PTMan<br></div>
+<div class="title">Figure 10. Successful Addition of Salary for Employee in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -340,7 +378,7 @@ The temporary password will be sent to the outlet&#8217;s email stored in PTMan.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-An employee&#8217;s salary can not be deducted from using this command.
+Employee&#8217;s salary cannot be deducted using this command.
 </td>
 </tr>
 </table>
@@ -518,7 +556,7 @@ sendResetPasswordMessage(String name, String email, String newPassword)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 18:14:08 UTC
+Last updated 2018-04-15 06:18:47 UTC
 </div>
 </div>
 </body>

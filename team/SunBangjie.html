@@ -165,14 +165,14 @@ This enhancement also changes the storage component significantly as data stored
 <h3 id="outlet-management"><a class="link" href="#outlet-management">Outlet Management</a></h3>
 <div class="paragraph">
 <p>If you are a manager, PTMan allows you to manage your outlet. You can edit your outlet name, operating hours, contact number and email.
-The timetable automatically re-sizes according to the operating hours. You can also create any announcement and broadcast to your employees.
-Moreover, PTMan allows you to encrypt and decrypt data stored locally to prevent any group of people who do not have access to it from interpreting and understanding essential and private data.</p>
+The timetable automatically re-sizes according to the operating hours. You can also create announcements to broadcast to your employees.
+Moreover, PTMan allows you to encrypt and decrypt data stored locally to prevent unauthorised users from interpreting and understanding essential and private data.</p>
 </div>
 <div class="paragraph">
-<p>If you are an employee, you can view announcement created by your manager and take actions accordingly.</p>
+<p>If you are an employee, you can view announcements created by your manager and take actions accordingly.</p>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-Feature_Outlet">Figure 1</a></em> shows where you can view your outlet information.</p>
+<p><em><a href="#fig-Feature_Outlet">Figure 1</a></em> shows the Outlet Display where you can view your outlet information.</p>
 </div>
 <div id="fig-Feature_Outlet" class="imageblock">
 <div class="content">
@@ -187,7 +187,7 @@ Moreover, PTMan allows you to encrypt and decrypt data stored locally to prevent
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>editoutlet n/OUTLET_NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL</code> <br>
-<strong>Shorthand:</strong> <code>eo</code></p>
+<strong>Shorthand:</strong> <code>eo n/OUTLET_NAME h/OPERATING_HOURS c/CONTACT_NUMBER e/EMAIL</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -219,51 +219,49 @@ Ensure that the outlet email is valid as it will be used to reset the admin pass
 </table>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example:</strong></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>When you first start using PTMan, your outlet information will be default values as shown in <em><a href="#fig-DefaultOutlet">Figure 2</a></em>.</p>
-<div id="fig-DefaultOutlet" class="imageblock">
-<div class="content">
-<img src="../images/DefaultOutlet.jpg" alt="DefaultOutlet" width="790">
-</div>
-<div class="title">Figure 2. Default Outlet Information<br></div>
-</div>
-</li>
-<li>
-<p>In the admin mode, you can edit the name, operating hours, contact number, and email of the outlet to be <code>AwesomeCoffee</code>, <code>10am to 11pm</code>, <code>98134086</code>, and <code>awesomecoffee@gmail.com</code> respectively, by typing:<br>
-<code>editoutlet n/AwesomeCoffee h/1000-2300 c/98134086 e/awesomecoffee@gmail.com</code>.<br>
-You can refer to <em><a href="#fig-Edit1">Figure 3</a></em>.</p>
+<p>To edit the name, operating hours, contact number, and email of the outlet, key in the following as shown in <em><a href="#fig-Edit1">Figure 2</a></em>.</p>
 <div id="fig-Edit1" class="imageblock">
 <div class="content">
 <img src="../images/Ui_editoutlet1.png" alt="Ui editoutlet1" width="790">
 </div>
-<div class="title">Figure 3. Example of <code>editoutlet</code> command usage<br></div>
+<div class="title">Figure 2. Editing Outlet Information in PTMan<br></div>
 </div>
 </li>
 <li>
-<p>Press <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the outlet information.
-<em><a href="#fig-Edit2">Figure 4</a></em> shows how PTMan should look like after the above command.</p>
+<p>Upon successful execution of the command, you would see a confirmation message below the command bar, and the changes applied to the outlet information.
+<em><a href="#fig-Edit2">Figure 3</a></em> shows how PTMan should look like after the above command.</p>
 <div id="fig-Edit2" class="imageblock">
 <div class="content">
 <img src="../images/Ui_editoutlet2.png" alt="Ui editoutlet2" width="600">
 </div>
-<div class="title">Figure 4. Successful editing of outlet information in PTMan<br></div>
+<div class="title">Figure 3. Successful Edit of Outlet Information in PTMan<br></div>
 </div>
 </li>
 <li>
-<p>To only edit the name and contact number to be <code>Nice Dim Sum</code> and <code>901234567</code> respectively, you can type: <code>editoutlet n/Nice Dim Sum c/901234567</code>.
-You will see changes as shown in <em><a href="#fig-Edit3">Figure 5</a></em>.</p>
+<p>To edit only the name and contact number, key in the following as shown in <em><a href="#fig-Edit3">Figure 4</a></em></p>
 <div id="fig-Edit3" class="imageblock">
 <div class="content">
-<img src="../images/Ui_editoutlet3.png" alt="Ui editoutlet3" width="600">
+<img src="../images/Ui_editoutlet3.png" alt="Ui editoutlet3" width="790">
 </div>
-<div class="title">Figure 5. Successful editing of outlet information in PTMan<br></div>
+<div class="title">Figure 4. Editing Selective Outlet Information in PTMan<br></div>
 </div>
 </li>
-</ol>
+<li>
+<p>Upon successful execution of the command, a confirmation message will be displayed in the result display, and changes will be applied to the outlet information.
+<em><a href="#fig-Edit4">Figure 5</a></em> shows how PTMan should look like after the above command.</p>
+<div id="fig-Edit4" class="imageblock">
+<div class="content">
+<img src="../images/Ui_editoutlet4.png" alt="Ui editoutlet4" width="600">
+</div>
+<div class="title">Figure 5. Successful Edit of Selective Outlet Information in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -276,51 +274,55 @@ You will see changes as shown in <em><a href="#fig-Edit3">Figure 5</a></em>.</p>
 <strong>Shorthand:</strong> <code>announce</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example:</strong></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>You can leave a note for your employees by making an announcement in PTMan. You can type the following command as illustrated in <em><a href="#fig-Announce1">Figure 6</a></em>.</p>
+<p>To make an announcement in PTMan, type the following command as illustrated in <em><a href="#fig-Announce1">Figure 6</a></em>.</p>
 <div id="fig-Announce1" class="imageblock">
 <div class="content">
 <img src="../images/Ui_announcement1.png" alt="Ui announcement1" width="790">
 </div>
-<div class="title">Figure 6. Example of <code>announce</code> command usage<br></div>
+<div class="title">Figure 6. Making an Announcement in PTMan<br></div>
 </div>
 </li>
 <li>
-<p>Click <kbd>Enter</kbd> and you would see a confirmation message below the command bar, and the changes applied to the announcement.
+<p>When a successful announcement is made, a confirmation message will be displayed in the result display, and the changes will  be applied to the announcement.
 <em><a href="#fig-Announce2">Figure 7</a></em> shows how PTMan should look like after the above command.</p>
 <div id="fig-Announce2" class="imageblock">
 <div class="content">
 <img src="../images/Ui_announcement2.png" alt="Ui announcement2" width="600">
 </div>
-<div class="title">Figure 7. Successful announcement made in PTMan<br></div>
+<div class="title">Figure 7. Successful Announcement Made in PTMan<br></div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="Encrypt"><a class="link" href="#Encrypt">Encrypting the local storage files: <code>encrypt</code></a></h4>
 <div class="paragraph">
-<p>Encrypts data stored in the files in <code>data</code> folder.</p>
+<p>Encrypts data stored in the files of the <code>data</code> folder.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>encrypt</code></p>
 </div>
 <div class="paragraph">
-<p>After your <code>encrypt</code> command is executed successfully, you would see a confirmation message below the command bar as shown in <em><a href="#fig-SuccessfulEncryptCommand">Figure 8</a></em>.</p>
+<p><strong>Guided Example:</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>After your <code>encrypt</code> command is executed successfully, a confirmation message will be displayed in the result display as shown in <em><a href="#fig-SuccessfulEncryptCommand">Figure 8</a></em>.</p>
 <div id="fig-SuccessfulEncryptCommand" class="imageblock">
 <div class="content">
-<img src="../images/SuccessfulEncryptCommand.jpg" alt="SuccessfulEncryptCommand" width="500">
+<img src="../images/SuccessfulEncryptCommand.png" alt="SuccessfulEncryptCommand" width="450">
 </div>
-<div class="title">Figure 8. Successful <code>encrypt</code> command made in PTMan<br></div>
+<div class="title">Figure 8. Successful Encryption of Local Files in PTMan<br></div>
 </div>
 <div class="paragraph">
-<p>In addition, you can view your data stored in local files by the following steps:</p>
+<p>You can view your data stored in local files with the following steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -331,18 +333,21 @@ You will see changes as shown in <em><a href="#fig-Edit3">Figure 5</a></em>.</p>
 <p>Open the folder named <code>data</code>. You will see two files <code>outletinformation.xml</code> and <code>parttimemanager.xml</code> there.</p>
 </li>
 <li>
-<p>Open <code>outletinformation.xml</code> with Internet Explorer (IE). The third line of the file indicates the encryption status with reference to <em><a href="#fig-Encrypt">Figure 9</a></em>.</p>
+<p>Open <code>outletinformation.xml</code> with Internet Explorer (IE) or your favourite editor. The third line of the file indicates the encryption status with reference to <em><a href="#fig-Encrypt">Figure 9</a></em>.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p><em><a href="#fig-Encrypt">Figure 9</a></em> shows an example of what the <code>outletinformation.xml</code> file should look like when the <code>encrypt</code> command is successfully executed.</p>
-</div>
 <div id="fig-Encrypt" class="imageblock">
 <div class="content">
 <img src="../images/OutletInformationEncryptedXMLFile.jpg" alt="OutletInformationEncryptedXMLFile" width="790">
 </div>
-<div class="title">Figure 9. Example of encrypted <code>outletinformation.xml</code> file in <code>data</code> folder<br></div>
+<div class="title">Figure 9. Example of an Encrypted <code>outletinformation.xml</code> File<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -354,22 +359,29 @@ You will see changes as shown in <em><a href="#fig-Edit3">Figure 5</a></em>.</p>
 <p><strong>Format:</strong> <code>decrypt</code></p>
 </div>
 <div class="paragraph">
-<p>After your <code>decrypt</code> command is executed successfully, you would see a confirmation message below the command bar as shown in <em><a href="#fig-SuccessfulDecryptCommand">Figure 10</a></em>.</p>
+<p><strong>Guided Example:</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>After your <code>decrypt</code> command is executed successfully, a confirmation message will be displayed in the result display as shown in <em><a href="#fig-SuccessfulDecryptCommand">Figure 10</a></em>.</p>
 <div id="fig-SuccessfulDecryptCommand" class="imageblock">
 <div class="content">
-<img src="../images/SuccessfulDecryptCommand.jpg" alt="SuccessfulDecryptCommand" width="500">
+<img src="../images/SuccessfulDecryptCommand.png" alt="SuccessfulDecryptCommand" width="450">
 </div>
-<div class="title">Figure 10. Successful <code>decrypt</code> command made in PTMan<br></div>
+<div class="title">Figure 10. Successful Decryption of Local Files in PTMan<br></div>
 </div>
-<div class="paragraph">
-<p>Open <code>outletinformation.xm;</code> file again, now you can read and understand the data stored as shown in <em><a href="#fig-Decrypt">Figure 11</a></em>.</p>
-</div>
+</li>
+<li>
+<p>Open <code>outletinformation.xml</code> file again, now you can read and understand the data stored as shown in <em><a href="#fig-Decrypt">Figure 11</a></em>.</p>
 <div id="fig-Decrypt" class="imageblock">
 <div class="content">
 <img src="../images/OutletInformationDecryptedXMLFile.jpg" alt="OutletInformationDecryptedXMLFile" width="790">
 </div>
-<div class="title">Figure 11. Example of decrypted <code>outletinformation.xml</code> file in <code>data</code> folder<br></div>
+<div class="title">Figure 11. Example of a Decrypted <code>outletinformation.xml</code> File<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -382,35 +394,42 @@ You will see changes as shown in <em><a href="#fig-Edit3">Figure 5</a></em>.</p>
 <strong>Shorthand:</strong> <code>ve</code></p>
 </div>
 <div class="paragraph">
-<p>After your <code>viewencryption</code> command is executed successfully, you would see an encryption status message below the command bar as shown in <em><a href="#fig-SuccessfulVECommand">Figure 12</a></em>.</p>
+<p><strong>Guided Example:</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>After your <code>viewencryption</code> command is executed successfully, the encryption status will be displayed in the result display as shown in <em><a href="#fig-SuccessfulVECommand">Figure 12</a></em>.</p>
 <div id="fig-SuccessfulVECommand" class="imageblock">
 <div class="content">
-<img src="../images/SuccessfulVECommand.jpg" alt="SuccessfulVECommand" width="400">
+<img src="../images/SuccessfulVECommand.png" alt="SuccessfulVECommand" width="450">
 </div>
-<div class="title">Figure 12. Example of <code>viewencryption</code> command made in PTMan<br></div>
+<div class="title">Figure 12. Encryption Status Shown in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="backing-up-the-data"><a class="link" href="#backing-up-the-data">Backing Up the Data</a></h3>
 <div class="paragraph">
-<p>Backup files are automatically created and saved in the hard disk upon exit of the app. There is no need to do backup manually.
-You can replace any local storage files with backup files by the following steps:</p>
+<p>Backup files are automatically created and saved in the hard disk upon exiting the app. There is no need to do backup manually.<br>
+Following these steps, you can replace your corrupted local storage files with the backup files:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Copy any backup files named <code>outletinformation.xml.backup</code> or <code>parttimemanager.xml.backup</code>.</p>
+<p>Copy the backup files named <code>outletinformation.xml.backup</code> and <code>parttimemanager.xml.backup</code>.</p>
 </li>
 <li>
-<p>Open the folder where your app <code>PTMan.jar</code> is at.</p>
+<p>Open the folder where you store <code>PTMan.jar</code>.</p>
 </li>
 <li>
-<p>Open the folder named <code>data</code>.</p>
+<p>Open the <code>data</code> folder.</p>
 </li>
 <li>
-<p>Paste your copied backup files there.</p>
+<p>Paste your copied backup files in this <code>data</code> folder.</p>
 </li>
 <li>
 <p>Rename <code>outletinformation.xml.backup</code> to <code>outletinformation.xml</code>.</p>
@@ -747,7 +766,7 @@ It can be done using the respective Dropbox and Google Drive APIs.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 18:14:08 UTC
+Last updated 2018-04-15 06:18:47 UTC
 </div>
 </div>
 </body>

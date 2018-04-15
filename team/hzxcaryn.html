@@ -177,6 +177,67 @@ The implementation too was challenging as it required changes to existing comman
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="graphical-user-interface"><a class="link" href="#graphical-user-interface">Graphical User Interface</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section will help you understand the different sections of PTMan&#8217;s Graphical User Interface(GUI).</p>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-GUIwalkthrough">Figure 1</a></em> below shows a typical PTMan GUI with its different sections highlighted and labelled.</p>
+</div>
+<div id="fig-GUIwalkthrough" class="imageblock">
+<div class="content">
+<img src="../images/GUIwalkthrough.png" alt="GUIwalkthrough" width="790">
+</div>
+<div class="title">Figure 1. Typical PTMan with UI Sections Highlighted<br></div>
+</div>
+<div class="paragraph">
+<p>Following the labels in <em><a href="#fig-GUIwalkthrough">Figure 1</a></em>, here are what the different sections are responsible for.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 4%;">
+<col style="width: 16%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Label</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command Box</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to type in your commands into PTMan.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Result Display</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows the resulting feedback from your most recent command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outlet Display</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays all your outlet details.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timetable Panel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays the weekly timetable containing all the shifts stored in PTMan.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Employee List Panel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows a list of all the part-time employees stored in PTMan.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
 <h3 id="timetable"><a class="link" href="#timetable">Timetable</a></h3>
 <div class="paragraph">
@@ -191,42 +252,42 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 <div class="ulist">
 <ul>
 <li>
-<p>Green: Shift is available with multiple slots left.</p>
+<p><strong>Green</strong>: Shift is available with multiple slots left.</p>
 </li>
 <li>
-<p>Yellow: Shift is available, but slots are running out.</p>
+<p><strong>Yellow</strong>: Shift is available, but slots are running out.</p>
 </li>
 <li>
-<p>Red: Shift is no longer available, slots for the shift have run out.</p>
+<p><strong>Red</strong>: Shift is no longer available, all slots for the shift have run out.</p>
 </li>
 <li>
-<p>Blue: Shift is taken up by currently selected employee.</p>
+<p><strong>Blue</strong>: Shift is taken up by currently selected employee.</p>
 </li>
 <li>
-<p>Brown: Shift is not taken up by currently selected employee.</p>
+<p><strong>Brown</strong>: Shift is not taken up by currently selected employee.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-Feature_Timetable1">Figure 1</a></em> below shows how the default timetable can look like in PTMan.<br>
+<p><em><a href="#fig-Feature_Timetable1">Figure 2</a></em> below shows how the timetable looks like in a sample PTMan app.<br>
 <br></p>
 </div>
 <div id="fig-Feature_Timetable1" class="imageblock">
 <div class="content">
 <img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="790">
 </div>
-<div class="title">Figure 1. A Sample Timetable with Shifts<br></div>
+<div class="title">Figure 2. A Sample Timetable with Shifts<br></div>
 </div>
 <div class="paragraph">
 <p>PTMan also allows employees to view their own shifts using the <a href="#Displaying an employee’s shifts on the timetable: <code>select</code>"><code>select</code></a> command.
-<em><a href="#fig-Feature_Timetable2">Figure 2</a></em> shows how the timetable can look like when an employee is selected.
+<em><a href="#fig-Feature_Timetable2">Figure 3</a></em> shows how the timetable look like in a sample PTMan app when an employee is selected.
 <br></p>
 </div>
 <div id="fig-Feature_Timetable2" class="imageblock">
 <div class="content">
 <img src="../images/Feature_Timetable2.png" alt="Feature Timetable2" width="790">
 </div>
-<div class="title">Figure 2. A Sample Timetable with Shifts after <code>select</code><br></div>
+<div class="title">Figure 3. A Sample Timetable with Shifts after <code>select</code><br></div>
 </div>
 </div>
 <div class="sect3">
@@ -245,10 +306,10 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 <div class="ulist">
 <ul>
 <li>
-<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> : Navigates timetable to the next week.</p>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&#8594;</kbd> : Navigates timetable to the next week.</p>
 </li>
 <li>
-<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> : Navigates timetable to the previous week.</p>
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&#8592;</kbd> : Navigates timetable to the previous week.</p>
 </li>
 <li>
 <p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> : Navigates timetable to the current week.</p>
@@ -261,10 +322,10 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 <div class="ulist">
 <ul>
 <li>
-<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> : Navigates timetable to the next week.</p>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>&#8594;</kbd> : Navigates timetable to the next week.</p>
 </li>
 <li>
-<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> : Navigates timetable to the previous week.</p>
+<p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>&#8592;</kbd> : Navigates timetable to the previous week.</p>
 </li>
 <li>
 <p><kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> : Navigates timetable to the current week.</p>
@@ -282,12 +343,12 @@ timetable and you, as a user, so this section aims to familiarise you with the t
 <li>
 <p>At the top of the timetable, there is a navigation bar with two arrow buttons which you can click on.
 These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to the previous and next week respectively.
-<em><a href="#fig-Feature_Timetable3">Figure 3</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
+<em><a href="#fig-Feature_Timetable3">Figure 4</a></em> below shows the navigation bar, with the two arrow buttons circled.<br></p>
 <div id="fig-Feature_Timetable3" class="imageblock">
 <div class="content">
 <img src="../images/Feature_Timetable3.png" alt="Feature Timetable3" width="790">
 </div>
-<div class="title">Figure 3. Navigation Bar of Timetable<br></div>
+<div class="title">Figure 4. Navigation Bar of Timetable<br></div>
 </div>
 <div id="Viewshift" class="paragraph">
 <p>==== Listing all employees: <code>viewshift</code></p>
@@ -299,11 +360,48 @@ These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to
 </ol>
 </div>
 <div class="paragraph">
-<p>Shows a list of all employees who have applied for the input shift index in PTMan.<br></p>
+<p>Shows a list of all employees who have applied for the specified shift index in PTMan.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>viewshift SHIFT_INDEX</code><br>
 <strong>Shorthand:</strong> <code>vs SHIFT_INDEX</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To stop displaying the employees of the specified shift, use the <a href="#List"><code>list</code></a> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Guided Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To view all employees in the second shift, key in the following as illustrated in <em><a href="#fig-Ui_viewshift1">Figure 5</a></em>.</p>
+<div id="fig-Ui_viewshift1" class="imageblock">
+<div class="content">
+<img src="../images/Ui_viewshift1.png" alt="Ui viewshift1" width="790">
+</div>
+<div class="title">Figure 5. Viewing Employees in Shift 2<br></div>
+</div>
+</li>
+<li>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the employees listed in the employee list panel as shown in <em><a href="#fig-Ui_viewshift2">Figure 6</a></em>.</p>
+<div id="fig-Ui_viewshift2" class="imageblock">
+<div class="content">
+<img src="../images/Ui_viewshift2.png" alt="Ui viewshift2" width="790">
+</div>
+<div class="title">Figure 6. Successful Edit of Employee Details in PTMan<br></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -316,15 +414,69 @@ These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to
 <p><strong>Format:</strong> <code>select EMPLOYEE_INDEX</code><br>
 <strong>Shorthand:</strong> <code>sel EMPLOYEE_INDEX</code></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Alternatively, you can select an employee by clicking on the employee&#8217;s card in the employee list.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To stop displaying the employee&#8217;s shifts on the timetable, use the <a href="#Dsel"><code>deselect</code></a> command.<br>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>To select employee <code>2</code> and displays their shifts in the timetable, type:<br>
-<code>select 2</code><br></p>
+<p>To highlight shifts applied by the third employee, key in the following as illustrated in <em><a href="#fig-Ui_select1">Figure 7</a></em>.</p>
+<div id="fig-Ui_select1" class="imageblock">
+<div class="content">
+<img src="../images/Ui_select1.png" alt="Ui select1" width="790">
+</div>
+<div class="title">Figure 7. Selecting Employee to Highlight Applied Shifts<br></div>
+</div>
+<div class="paragraph">
+<p><em><a href="#fig-Feature_Timetable1">Figure 2</a></em> shows how the timetable looks like prior to the <code>select</code> command.</p>
+</div>
+<div id="fig-Feature_Timetable1" class="imageblock">
+<div class="content">
+<img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="500">
+</div>
+<div class="title">Figure 8. Initial Timetable Before Selection of Employee<br></div>
+</div>
 </li>
+<li>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display, and the shifts highlighted in the timetable as shown in <em><a href="#fig-Ui_select2">Figure 9</a></em>.</p>
+<div id="fig-Ui_select2" class="imageblock">
+<div class="content">
+<img src="../images/Ui_select2.png" alt="Ui select2" width="790">
+</div>
+<div class="title">Figure 9. Successful Selection of Employee with Shifts Highlighted<br></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>More Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>To select the employee <code>1</code> in the results of the <code>find</code> command and display their shifts in the timetable, type:<br>
 <code>find Betsy</code><br>
@@ -332,38 +484,12 @@ These buttons <code>&lt;</code> and <code>&gt;</code> navigates the timetable to
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Alternatively, you can select an employee simply by clicking on the employee&#8217;s card in the employee list
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-To stop displaying the employee&#8217;s shifts on the timetable, use the <code>defaultview</code> command.<br>
-Refer to <a href="#Displaying the default timetable: <code>defaultview</code>">[Displaying the default timetable: <code>defaultview</code>]</a> for more information.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
-<h4 id="Dv"><a class="link" href="#Dv">Deselecting an employee: <code>deselect</code></a></h4>
+<h4 id="Dsel"><a class="link" href="#Dsel">Deselecting an employee: <code>deselect</code></a></h4>
 <div class="paragraph">
 <p>Displays the timetable without any employee selected.
-Useful for users to navigate back to the default timetable after using the <code>select</code> command, or when they have lost track of
-where they have navigated the timetable week to.<br></p>
+Useful for users to navigate back to the default timetable after using the <code>select</code> command.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>deselect</code>
@@ -381,7 +507,41 @@ where they have navigated the timetable week to.<br></p>
 <strong>Shorthand:</strong> <code>exp [e/EMAIL]</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Guided Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To export the timetable and email it to yourself, key in the following as illustrated in <em><a href="#fig-Ui_export1">Figure 10</a></em>.</p>
+<div id="fig-Ui_export1" class="imageblock">
+<div class="content">
+<img src="../images/Ui_export1.png" alt="Ui export1" width="790">
+</div>
+<div class="title">Figure 10. Exporting Timetable to Email<br></div>
+</div>
+</li>
+<li>
+<p>Upon successful execution of the command, you will see a confirmation message in the result display as shown in <em><a href="#fig-Ui_export2">Figure 11</a></em>.</p>
+<div id="fig-Ui_export2" class="imageblock">
+<div class="content">
+<img src="../images/Ui_export2.png" alt="Ui export2" width="450">
+</div>
+<div class="title">Figure 11. Successful Export of Timetable to Email<br></div>
+</div>
+<div class="paragraph">
+<p>An email will also be sent to you as show in <em><a href="#fig-Ui_export3">Figure 12</a></em>.</p>
+</div>
+<div id="fig-Ui_export3" class="imageblock">
+<div class="content">
+<img src="../images/Ui_export3.png" alt="Ui export3" width="790">
+</div>
+<div class="title">Figure 12. Successful Selection of Employee with Shifts Highlighted<br></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>More Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -396,8 +556,8 @@ where they have navigated the timetable week to.<br></p>
 </li>
 <li>
 <p>To export the timetable with the shifts of employee <code>1</code> in PTMan and send the exported timetable as email, type:<br>
-<code>select `<br>
-`export e/email@example.com</code></p>
+<code>select 1</code><br>
+<code>export e/email@example.com</code></p>
 </li>
 </ul>
 </div>
@@ -422,13 +582,13 @@ where they have navigated the timetable week to.<br></p>
 <h3 id="timetable-feature"><a class="link" href="#timetable-feature">Timetable Feature</a></h3>
 <div class="paragraph">
 <p>We have a timetable that increases interactivity between users and the shifts in PTMan.
-<em><a href="#fig-Feature_Timetable1">Figure 1</a></em> below shows how the timetable looks like.</p>
+<em><a href="#fig-Feature_Timetable1">Figure 2</a></em> below shows how the timetable looks like.</p>
 </div>
 <div id="fig-Feature_Timetable1" class="imageblock">
 <div class="content">
 <img src="../images/Feature_Timetable1.png" alt="Feature Timetable1" width="800">
 </div>
-<div class="title">Figure 4. Example of the Timetable in PTMan</div>
+<div class="title">Figure 13. Example of the Timetable in PTMan</div>
 </div>
 <div class="sect3">
 <h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h4>
@@ -474,14 +634,14 @@ It allows users to click on them to navigate through the weeks in the timetable.
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 5</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
+<p><em><a href="#fig-TimetablePanelClassDiagram">Figure 14</a></em> below shows a class diagram of the <code>TimetablePanel</code> and its association with JavaFX components.<br>
 <br></p>
 </div>
 <div id="fig-TimetablePanelClassDiagram" class="imageblock">
 <div class="content">
 <img src="../images/TimetablePanelClassDiagram.png" alt="TimetablePanelClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Overview of the TimetablePanel Class in the UI Component</div>
+<div class="title">Figure 14. Overview of the TimetablePanel Class in the UI Component</div>
 </div>
 <div class="paragraph">
 <p>A <code>TimetablePanel</code> is created with its constructor:</p>
@@ -523,7 +683,7 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 </div>
 <div class="paragraph">
 <p>We will use <code>PartTimeManagerChangedEvent</code> to illustrate <code>updateTimetableView()</code> works.
-<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 6</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
+<em><a href="#fig-updateTimetableViewHighLevelSequenceDiagram">Figure 15</a></em> below shows a high level sequence diagram of what happens when a <code>PartTimeManagerChangedEvent</code>
  is posted and how it causes the <code>UI</code> to call <code>updateTimetableView()</code>.<br>
 <br></p>
 </div>
@@ -531,10 +691,10 @@ on the timetable, and the timetable is rebuilt with the newly set shifts and ope
 <div class="content">
 <img src="../images/updateTimetableViewHighLevelSequenceDiagram.png" alt="updateTimetableViewHighLevelSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 6. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
+<div class="title">Figure 15. Component Interactions for a <code>PartTimeManagerChangedEvent</code></div>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 7</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
+<p><em><a href="#fig-updateTimetableViewSequenceDiagram">Figure 16</a></em> below shows the sequence diagram of how <code>TimetablePanel</code> carries out <code>updateTimetableView()</code> to
 respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <br></p>
 </div>
@@ -542,7 +702,7 @@ respond to a <code>PartTimeManagerChangedEvent</code>.<br>
 <div class="content">
 <img src="../images/updateTimetableViewSequenceDiagram.png" alt="updateTimetableViewSequenceDiagram" width="750">
 </div>
-<div class="title">Figure 7. Sequence Diagram to Update Timetable</div>
+<div class="title">Figure 16. Sequence Diagram to Update Timetable</div>
 </div>
 <div class="paragraph">
 <p>Here are some examples of when <code>updateTimetableView()</code> is called:<br></p>
@@ -650,7 +810,7 @@ through the <code>EmailService</code> class, and then finally delete the local f
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 18:14:08 UTC
+Last updated 2018-04-15 06:18:47 UTC
 </div>
 </div>
 </body>
