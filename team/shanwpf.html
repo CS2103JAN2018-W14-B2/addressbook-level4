@@ -237,127 +237,6 @@ This is illustrated in <em><a href="#fig-addshiftAfter">Figure 2</a></em>.</p>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Apply-2"><a class="link" href="#Apply-2">Applying for a shift: <code>apply</code></a></h4>
-<div class="paragraph">
-<p>Applies for a shift.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>apply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
-<strong>Shorthand:</strong> <code>ap</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
-</li>
-<li>
-<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
-</li>
-<li>
-<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Guided Example</strong>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If you are Sum Ting Wong and you wish to apply for shift 3, execute the command<br>
-<code>apply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-applyBefore">Figure 5</a></em> below.</p>
-<div id="fig-applyBefore" class="imageblock">
-<div class="content">
-<img src="../images/ApplyBefore.png" alt="ApplyBefore" width="800">
-</div>
-<div class="title">Figure 5. Applying Employee 2 to Shift 3<br></div>
-</div>
-</li>
-<li>
-<p>As highlighted by the red boxes in <em><a href="#fig-applyAfter">Figure 6</a></em>, you should see a confirmation message in the result display
-and the slots left in the shift will decrease by 1 upon successful application.</p>
-<div id="fig-applyAfter" class="imageblock">
-<div class="content">
-<img src="../images/ApplyAfter.png" alt="ApplyAfter" width="800">
-</div>
-<div class="title">Figure 6. Successful Application of Employee 2 to Shift 3<br></div>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you have accidentally applied for the wrong shift, you may use the <code>unapply</code> command.<br>
-Refer to <a href="#Unapply-2">Removing yourself from a shift: <code>unapply</code></a> for more information.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="Unapply-2"><a class="link" href="#Unapply-2">Removing yourself from a shift: <code>unapply</code></a></h4>
-<div class="paragraph">
-<p>Removes youreself from a shift.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>unapply EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code><br>
-<strong>Shorthand:</strong> <code>uap EMPLOYEE_INDEX SHIFT_INDEX pw/PASSWORD</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>EMPLOYEE_INDEX</code> refers to the index number shown in the most recent employee listing.</p>
-</li>
-<li>
-<p>The <code>SHIFT_INDEX</code> refers to the shift number in the timetable.</p>
-</li>
-<li>
-<p>Both indexes <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Guided Example</strong>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If you are Sum Ting Wong and you wish to remove yourself from shift 3, execute the command<br>
-<code>unapply 2 3 pw/YOUR_PASSWORD</code> as shown in <em><a href="#fig-unapplyBefore">Figure 7</a></em> below.</p>
-<div id="fig-unapplyBefore" class="imageblock">
-<div class="content">
-<img src="../images/UnapplyBefore.png" alt="UnapplyBefore" width="800">
-</div>
-<div class="title">Figure 7. Removing Employee 2 from Shift 3<br></div>
-</div>
-</li>
-<li>
-<p>As highlighted by the red boxes in <em><a href="#fig-unapplyAfter">Figure 8</a></em>, you should see a confirmation message in the result display
-and the slots left in the shift will increase by 1 upon successful removal.</p>
-<div id="fig-unapplyAfter" class="imageblock">
-<div class="content">
-<img src="../images/UnapplyAfter.png" alt="UnapplyAfter" width="800">
-</div>
-<div class="title">Figure 8. Excpected Outcome After Applying Employee 2 to Shift 3<br></div>
-</div>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -412,13 +291,13 @@ It guarantees there are no duplicate employees in the shift.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em><a href="#fig-ShiftClassDiagram">Figure 9</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
+<p><em><a href="#fig-ShiftClassDiagram">Figure 5</a></em> is a class diagram that displays the association between <code>Shift</code> and other components in the <code>Model</code>.</p>
 </div>
 <div id="fig-ShiftClassDiagram" class="imageblock">
 <div class="content">
 <img src="../images/ShiftClassDiagram.png" alt="ShiftClassDiagram" width="800">
 </div>
-<div class="title">Figure 9. Overview of the Shift Class in the Model Component</div>
+<div class="title">Figure 5. Overview of the Shift Class in the Model Component</div>
 </div>
 <div class="paragraph">
 <p><code>Date</code> and <code>Time</code> use Java&#8217;s <code>LocalDate</code> and <code>LocalTime</code> classes for easy integration with the timetable.
@@ -483,13 +362,13 @@ Similar to <code>ApplyCommand</code>, <code>UnapplyCommand</code> will:</p>
 <p>The commands <code>DeleteShiftCommand</code>, <code>ApplyCommand</code> and <code>UnapplyCommand</code> access the specified <code>Shift</code> via it&#8217;s index displayed on the timetable.
 The preferred behaviour for the indexes is to have the first shift of the week start from index 1, with subsequent shifts incrementing that index.
 However, having shifts that are earlier than the current timetable week will cause the first shift of the week to have an index that is greater than 1.<br>
-As seen in <em><a href="#fig-ShiftIndexBad">Figure 10</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
+As seen in <em><a href="#fig-ShiftIndexBad">Figure 6</a></em> below, the shift on Monday has index 5 because there are 4 other shifts in the week(s) before the current week.</p>
 </div>
 <div id="fig-ShiftIndexBad" class="imageblock">
 <div class="content">
 <img src="../images/ShiftIndexBad.png" alt="ShiftIndexBad" width="800">
 </div>
-<div class="title">Figure 10. Example of Undesired Shift Indexing</div>
+<div class="title">Figure 6. Example of Undesired Shift Indexing</div>
 </div>
 <div class="paragraph">
 <p>To avoid this, we only want to index shifts that are visible in the current timetable view.<br>
@@ -506,13 +385,13 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 11</a></em> below.</p>
+<p>This results in the desired shift indexing as shown in <em><a href="#fig-ShiftIndexGood">Figure 7</a></em> below.</p>
 </div>
 <div id="fig-ShiftIndexGood" class="imageblock">
 <div class="content">
 <img src="../images/ShiftIndexGood.png" alt="ShiftIndexGood" width="800">
 </div>
-<div class="title">Figure 11. Example of Desired Shift Indexing</div>
+<div class="title">Figure 7. Example of Desired Shift Indexing</div>
 </div>
 </div>
 </div>
@@ -522,7 +401,7 @@ updateFilteredShiftList(PREDICATE_SHOW_WEEK_SHIFTS);</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:33:34 UTC
+Last updated 2018-04-15 11:01:52 UTC
 </div>
 </div>
 </body>
