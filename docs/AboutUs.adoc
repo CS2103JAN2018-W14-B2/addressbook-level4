@@ -56,5 +56,15 @@ image::SunBangjie.JPG[width="150", align="left"]
 Role: Developer +
 Responsibilities: Integration + Model component + Documentation
 
+* Features Implemented: : +
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/27[Outlet Class]
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/60[Enable Editing of Outlet Details]
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/96[Create Announcement to Employees]
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/193[Encrypt/Decrypt Local Storage Files]
+
+* Other Contributions:
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/208[Enable Backing Up Files]
+** https://github.com/CS2103JAN2018-W14-B2/main/pull/94/files[Add UI Panel]
+
 '''
 
